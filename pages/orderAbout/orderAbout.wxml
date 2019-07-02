@@ -1,0 +1,270 @@
+<!--pages/orderabout/orderabout.wxml-->
+<!--新版大麦分享-->
+<view bindtap='share_hide' wx:if="{{GetImage}}" style='position:absolute;width:100%;height:100%;background:black;opacity:0.3;z-index:1;' catchtouchmove='{{true}}'>
+</view>
+<view bindtap='' catchtouchmove='{{true}}' wx:if="{{GetImage}}" class="container" style='z-index:100;position:absolute;margin-top:25%;'>
+<!-- <view class='background'></view> -->
+  <image bindtap='share_hide' catchtouchmove='{{true}}' src="{{shareImage}}" class="share-image"></image>
+  <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage"/>
+
+  <!-- <button >绘制</button>
+  <button>保存到本地</button>  bind:tap="eventDraw"-->
+  <button catchtouchmove='{{true}}'  open-type='share'  class="wechat">
+    <image class="wechatimg" src='https://file.maiyatown.com/images/v1.2/explosion_icon_wechat.png'></image>
+  微信好友</button>
+  <button catchtouchmove='{{true}}'  bind:tap="eventSave"  class="wechat1">
+   <image class="wechatimg"  src='https://file.maiyatown.com/images/v1.2/explosion_icon_Img.png'></image>
+  保存图片</button>
+</view>
+
+
+
+
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="{{title}}"
+>
+</navigation>
+<view class='order_about back_hui'>
+  <view class='about_type_box back_main' wx-if="{{status==1}}"> 
+    <image src='https://file.maiyatown.com/images/v1.2/await_image_wait.png'></image>
+    <view class='font_32 color_333' style='font-size:50rpx;font-weight:bold;margin-top:4%;position:absolute;'>{{order_stu}}</view>
+    <view class='font_24 color_666' style='margin-top:20rpx;position:absolute;'>{{dingdansx}}</view>
+  </view>
+  <view class='about_type_box1 back_main' wx-if="{{status==0}}">
+    <image src='https://file.maiyatown.com/images/v1.2/await_image_payment.png'></image>
+    <view class='font_32 color_333' style='font-size:50rpx;font-weight:bold;position: absolute;'>{{order_stu}}</view>
+    <view class='font_24 color_666' style='margin-top:50rpx;font-size:26rpx;line-height:48rpx;color:rgba(51,51,51,1);position: absolute;'>{{dingdansx}}</view>
+  </view>
+  <view class='about_type_box2 back_main' wx-if="{{status==3}}">
+    <image src='https://file.maiyatown.com/images/v1.2/refund_image_complete.png'></image>
+    <view class='font_32 color_333' style='font-size:50rpx;height: 200rpx;line-height: 200rpx;font-weight:bold;position: absolute;'>{{order_stu}}</view>
+    
+  </view>
+
+  <view class='about_type_box3 back_main' wx-if="{{status==4}}">
+    <image src='https://file.maiyatown.com/images/v1.2/payment_image_refund_closed.png'></image>
+    <view class='font_32 color_333' style='font-size:50rpx;height: 200rpx;line-height: 200rpx;font-weight:bold;position: absolute;'>{{order_stu}}</view>
+  </view>
+  <view class='about_type_box4 back_main' wx-if="{{isSubOrder==1&&status==2}}">
+    <image src='https://file.maiyatown.com/images/v1.2/await_image_receipt.png'></image> 
+    <view class='font_32' style='color:rgba(51,51,51,1);;font-size:50rpx;font-weight:bold;line-height: 120rpx;top:16rpx;position: relative;'>{{order_stu}}</view>
+    <view class='font_24 color_666' style='font-size:26rpx;color:rgba(51,51,51,1);position: absolute;'>{{dingdansx}}</view>
+    
+  </view>
+    <view class='about_type_box3 back_main' wx-if="{{status==5}}">
+    <image src='https://file.maiyatown.com/images/v1.2/payment_image_refund_closed.png'></image>
+    <view class='font_32 color_333' style='font-size:50rpx;height: 200rpx;line-height: 200rpx;font-weight:bold;position: absolute;'>{{order_stu}}</view>
+  </view>
+    <view class='about_type_box4 back_main' wx-if="{{status==6}}"> 
+    <image src='https://file.maiyatown.com/images/v1.2/await_image_share.png'></image>
+    <view class='font_32' style='color:rgba(51,51,51,1);;font-size:50rpx;font-weight:bold;line-height: 120rpx;top:16rpx;position: relative;'>{{order_stu}}</view>
+    <view class='font_24 color_666' style='font-size:26rpx;color:rgba(51,51,51,1);position: absolute;'>{{dingdansx}}</view>
+    
+  </view>
+  <view class='about_type_box3 back_main' wx-if="{{isSubOrder==2&&status==2}}">
+    <image src='https://file.maiyatown.com/images/v1.2/payment_image_refund_closed.png'></image>
+    <view class='font_32 color_333' style='font-size:50rpx;height: 200rpx;line-height: 200rpx;font-weight:bold;position: absolute;'>{{order_stu}}</view>
+  </view>
+  <view class='refund_Reason' wx:if="{{all_data.orderType!=5}}">
+    <view wx-if="{{all_data.closeReason!=null&&all_data.closeReason.trim().length != 0&&all_data.closeReason!=''}}" style='padding:20rpx;font-size:28rpx;font-weight:500'>原因:{{all_data.closeReason}}</view>
+  </view>
+  <view class='about_add'>
+    <view class='about_add_type' wx-if="{{peisong}}">
+      <view class='type_logo'>
+        <image src='https://file.maiyatown.com/images/myorder/xiaokache.png'/>
+      </view>
+      <view class='type_text' bindtap='go_ordertracking'>
+        <view class='color_333' wx-if="{{status==1&&baoguo_num==0}}">您的包裹正在准备中</view>
+        <view class='color_333' wx-if="{{status==1&&baoguo_num==1||status==2&&baoguo_num==1}}">您的订单有{{baoguo_num}}个包裹正在配送</view>
+        <view class='color_333' wx-if="{{status==1&&baoguo_num>1||status==2&&baoguo_num>1}}">您的订单被拆成{{baoguo_num}}个包裹配送</view>
+        <view class='color_333' wx-if="{{status==3&&baoguo_num>=1}}">您的包裹已被签收</view>
+        <!-- <view class='color_333' wx-if="status==0">等待付款</view>
+        <view class='color_333' wx-if="false">已经发货</view> -->
+        <!-- <view class='color_666'>2018-11-26</view> -->
+      </view>
+      <van-icon name="arrow" wx-if="{{status==1&&baoguo_num==1||status==1&&baoguo_num>1||status==3&&baoguo_num>=1}}" bindtap='go_ordertracking'/>
+    </view>
+    <view class='about_add_info'>
+      <view class='type_logo'>
+        <image src='https://file.maiyatown.com/images/myorder/dingwei.png'/>
+      </view>
+      <view class='type_text'>
+        <view>
+          <text class='color_333 font font_bold font_28'>收货人：{{receiver}}</text>
+          <text class='color_999 font_28' style='float:right'>{{receivePhone}}</text>
+        </view>
+        <view class='color_333'>{{receiveAddress}}</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{all_data.orderType!=5||(all_data.orderType==5&&all_data.groupBuying==null)}}"></view>
+  <view class='about_add' wx:else>
+    <view class='list_title2' >
+<view class='title_number2' >
+  拼团信息     
+</view>
+<view wx:if="{{all_data.groupBuying.status==2}}" class="pintuaning" bindtap="Go_pintuanOrder">
+  拼团中
+  <van-icon class='arrow_icon' name="arrow" custom-style="vertical-align:middle"/>
+</view>
+<view wx:if="{{all_data.groupBuying.status==3}}" class="pintuaning" bindtap="Go_pintuanOrder">
+  拼团成功
+  <van-icon class='arrow_icon' name="arrow" custom-style="vertical-align:middle"/>
+</view>
+<view wx:if="{{all_data.groupBuying.status==4}}"  class="pintuaning" bindtap="Go_pintuanOrder">
+  拼团失败
+  <van-icon class='arrow_icon' name="arrow" custom-style="vertical-align:middle"/>
+</view>
+ 
+</view>
+<view style='text-align:center;overflow:hidden;padding20rpx;margin-top:20rpx;'>
+    <view style='margin-right:30rpx;width:95rpx;height:95rpx;display:inline-block;border-radius:50%;border:2px solid #FF262C;position:relative;vertical-align:top;' wx:for="{{all_data.groupBuying.groupBuyingPartInfo}}" wx:for-index="index" wx:key="unique" wx:if="{{index < 4}}">
+     <view  wx:if="{{item.isLeader==1}}" style='position:absolute;width:56rpx;height:26rpx;background:#FF262C;border-radius:13rpx;font-size:20rpx;color:white;bottom:0;left:20rpx;'>团长</view>
+      <image src='{{item.headImageUrl}}' style='width:100%;height:100%;border-radius:50%;'></image>     
+    </view>
+
+           <image  wx:for="{{all_data.groupBuying.userLimit<5?all_data.groupBuying.userLimit-all_data.groupBuying.partCount:5-all_data.groupBuying.partCount-1}}"   wx:key="unique" src='https://file.maiyatown.com/images/v1.2/group_buy_img_empty.png' style='width:50px;height:50px;border-radius:50%;margin-right:36rpx;'></image>
+        
+           <image wx:if="{{(all_data.groupBuying.userLimit>=5)}}"  src='https://file.maiyatown.com/images/v1.2/group_buy_img_more.png' style='width:50px;height:50px;border-radius:50%;'></image>
+                 
+</view>
+      <view wx:if="{{all_data.groupBuying.status==2||all_data.groupBuying.status==1}}"  style='color:#666666;font-size:26rpx;margin-top:40rpx;margin-bottom:22rpx; text-align: center'>仅剩<text style='color:#FF262C'>{{usercount}}人</text>，快呼唤小伙伴参加吧！</view> 
+       <view wx:if="{{all_data.groupBuying.status==2||all_data.groupBuying.status==1}}"  style='color:#333333;font-size:26rpx;font-weight:500;padding-bottom:30rpx; text-align: center'>
+          <text style='color:#DDDDDD'>————  </text>
+          <text style='color:#333333;font-weight:500;font-size:30rpx;'> 剩余{{day<=0?0:day}}天 </text>
+          <view style='background:pink;color:#FF262C;tex-align:center;display:inline-block;width:32rpx;height:32rpx;line-height:32rpx;font-size:26rpx;font-weight:500;'> {{hour<10?'0'+hour:hour}} </view>
+          <text style='tex-align:center;color:#FF262C;'> : </text>
+          <view style='background:pink;color:#FF262C;tex-align:center;display:inline-block;width:32rpx;height:32rpx;line-height:32rpx;font-size:26rpx;font-weight:500;'> {{minute<10?'0'+minute:minute}} </view>
+          <text style='tex-align:center;color:#FF262C;'> : </text>
+          <view style='background:pink;color:#FF262C;tex-align:center;display:inline-block;width:32rpx;height:32rpx;line-height:32rpx;font-size:26rpx;font-weight:500;'> {{second<10?'0'+second:second}} </view>
+          <text style='color:#333333;font-weight:500;tex-align:center;font-size:30rpx;'> 结束</text>
+          <text style='color:#DDDDDD'>  ————</text>
+       </view> 
+        <view wx:if="{{all_data.groupBuying.status==3}}"    style='padding:20rpx 0 40rpx 0;text-align:center;color:#333333;font-size:26rpx;font-weight:500;margin-bottom:30rpx;'>
+          <text style='color:#DDDDDD'>————  </text>
+          <text style='color:#333333;font-weight:500'>恭喜您，拼团成功！</text>
+          <text style='color:#DDDDDD'>  ————</text>
+       </view> 
+        <view wx:if="{{all_data.groupBuying.status==4}}"  style='text-align:center;color:#333333;font-size:26rpx;font-weight:500;padding:20rpx 0 40rpx;'>
+          <text style='color:#DDDDDD'>————  </text>
+          <text style='color:#333333;font-weight:500'>拼团失败,退款成功</text>
+         
+          <text style='color:#DDDDDD'>  ————</text>
+       </view>        
+  </view>
+  <view class='order_list_box'>
+    <view class='list_icon' wx:if="{{item.type==1}}">
+      <image src='https://file.maiyatown.com/images/myorder/yinzhang.png'/>
+    </view>
+    <view class='list_title'>
+      <view class='title_number'>商品信息</view>
+    </view>
+    <view class='list_main' wx:for="{{resultList}}" wx:key="index" bindtap='goDetail' data-goodId="{{item.goodId}}" data-activityId="{{item.activityId}}">
+      <view class='list_img'>
+      <view wx:if="{{all_data.orderType==5||all_data.orderType==6||all_data.orderType==7}}" class="zhezhao" style=""></view>
+        <view wx:if="{{all_data.orderType==5}}" class="zhezhao_wenzi">· 拼团 ·</view>
+         <view wx-if="{{all_data.orderType==6||all_data.orderType==7}}" class="zhezhao_wenzi">· 会员礼包 ·</view>
+        <image src='{{item.goodImg}}'/>
+      </view>
+      <view class='list_text'>
+        <view class='list_name'>{{item.goodName}}</view>
+        <view class='list_size'>{{item.goodAttrDesc}}</view>
+      </view>
+      <view class='list_mon'>
+        <view class='list_money'>￥{{item.goodPrices}}</view>
+        <view class='list_number'>x{{item.goodNum}}</view>
+        <!-- <view wx:if="{{item.goodStatus==2}}" class='xq_shouhou'>售后</view> -->
+        <view class='' wx:if="{{item.goodStatus=='0'||item.goodStatus=='1'}}"></view>
+        <view class='list_sta' wx:if="{{item.goodStatus=='2'}}">售后</view>
+      </view>
+    </view>
+    <!-- <view class='list_buttons'>
+      <view class='buy_refund'>申请售后</view>
+    </view> -->
+
+    <view class='order_content_box'>
+      <view class='money_all color_666'><text>商品总额</text><text style='color:#333;font-weight:600;'>￥{{totalAmout}}</text></view>
+      <view class='money_yun color_666'><text>运费</text><text style='color:#333;font-weight:600;'>￥{{orderFreight}}</text></view>
+      <view class='money_you color_666' wx-if="{{disAmt!=0}}"><text>优惠券</text><text style='color:#333;font-weight:600;'>{{disAmt==0?"":"-"}}￥{{disAmt}}</text></view>
+      <view class='money_you color_666' wx-if="{{rebateAmt!=0}}"><text>下单立减</text><text style='color:#333;font-weight:600;'>{{rebateAmt==0?"":"-"}}￥{{rebateAmt}}</text></view>
+      <view class='money_you color_666'wx-if="{{shareDis!=0}}"><text>分享立减</text><text style='color:#333;font-weight:600;'>{{shareDis==0?"":"-"}}￥{{shareDis}}</text></view>
+       <view wx-if="{{orderType==5 && all_data.groupBuying.isLeader==1&&groupDisAmt!=0}}" class='money_you color_666'><text>团长优惠</text><text style='color:#333;font-weight:600;'>{{groupDisAmt==0?"":"-"}}￥{{ groupDisAmt}}</text></view>
+      <view class='money_you color_666'><text>余额抵扣</text><text style='color:#333;font-weight:600;'>{{cashAmt==0?"":"-"}}￥{{cashAmt}}</text></view>
+      <view class='money_you color_666' wx-if="{{crossBorder==1}}"><text>税费</text><text style='color:#333;font-weight:600;'>{{totalTax==0?"":"-"}}￥{{totalTax}}</text></view>
+      <view class='money_shi color_666' wx:if="{{orderStatus!=4&&pay_sta==true}}"><text class='color_hui color_666'>{{orderStatus==0?"需付款":"实付款"}} (含运费）
+        </text><text class='color_red'>￥{{expAmt}}</text>
+      </view>
+      <view class='money_shi'wx:if="{{orderStatus!=4&&pay_sta==false}}"><text class='color_hui color_666'>待付款 (含运费）
+        </text><text class='color_red'>￥{{expAmt}}</text>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{all_data.isInvoice==2&&all_data.isSubOrder==1&&(all_data.orderStatus==2||all_data.orderStatus==3)}}" style='background:#ffffff;margin-top:20rpx;padding:20rpx;font-size:26rpx;'>
+     
+     <view  style='height:50rpx;line-height:50rpx;'>发票类型：<text>{{all_data.invoiceType==1?'电子发票':'纸质发票'}}</text> <view class='fapiao_look'bindtap='go_fapiao'>查看</view></view>
+     <view style='height:50rpx;line-height:50rpx;'>发票抬头：<text>{{all_data.invoiceTitle}}</text></view>
+     <view style='height:50rpx;line-height:50rpx;'>发票内容：<text>{{all_data.invoiceDesc}}</text></view>
+  </view>
+  <view class='order_info'>
+    <view class='order_info_title color_333'>订单信息</view>
+    <view class='info_id font_26 color_666'>
+      <text class='width_number'>订单编号：</text>
+      <text class='id_number'>{{orderNo||orderNum}}</text>
+      <text class='font_26 color_red' bindtap='copyText' data-text="{{orderNum}}" style='width:88rpx;text-align:center;height:44rpx;line-height:42rpx;border:2rpx solid rgba(255,38,44,1);border-radius:22rpx;box-sizing:border-box;'>复制</text>
+      </view>
+    <view class='info_create font_26 color_666'>
+    <text class='width_number'>下单时间：</text><text class='color_333'>{{orderTime}}</text>
+    </view>
+    <view class='info_alpay font_26 color_666' wx:if="{{all_data.payTime!=null}}">
+      <text class='width_number'>支付方式：</text><text class='color_333'>{{payPlatform}}</text>
+    </view>
+    <view class='info_buy font_26 color_666' wx-if="{{all_data.payTime!=null}}">
+      <text class='width_number'>支付时间：</text><text class='color_333'>{{payTime==null?"":payTime}}</text>
+    </view>
+    <!-- <view class='info_fa font_26 color_666' wx-if="{{send_goodTime}}">
+      <text class='width_number'>发货时间：</text><text>{{send_goodTimeText}}</text>
+    </view> -->
+  </view>
+  <view class='list_buttons'>
+<!-- 订单状态 2-0-待支付 1-1-待发货 1-2-待收货 1-3-已完成 2-2-已取消 -->
+    <!-- <van-button class='buy_out' round size='small'  > -->
+    <van-button class='look_logistics' round size='small' bindtap="offOrder" wx:if="{{(isSubOrder==2&&status==0)}}">取消订单</van-button>
+     <van-button class='look_logistics' round size='small' bindtap="pintuanoff" wx:if="{{(isSubOrder==1&&status==6)}}">取消订单</van-button>
+        <van-button bindtap="eventDraw" data-item="{{all_data}}"  class='invite_friend' round size='small' wx:if="{{isSubOrder==1&&status==6}}">邀请好友</van-button>
+    <!-- <van-button class='buy_ok' round size='small'  
+    wx:if="false">立即付款</van-button> -->
+
+    <!-- <van-button class='look_logistics' round size='small'  
+    wx:if="false">申请退款</van-button> -->
+    <!-- <van-button class='look_logistics' round size='small'  
+    wx:if="{{status==3}}">售后详情</van-button> -->
+<!-- all_data.data.isSubOrder    all_data.data.orderStatus -->
+    <van-button class='look_logistics' round size='small'  
+    wx:if="{{isSubOrder==1&&status==3||isSubOrder==2&&status==2||isSubOrder==1&&status==4||isSubOrder==1&&status==5}}" bindtap="delOrder">删除订单</van-button>
+
+    <van-button class='look_logistics' round size='small'  bindtap='apply_sale'
+    wx:if="{{isSubOrder==1 && (status==2 || isshouhou==true&&status==3) &&isAllRefund!=1}}">申请售后</van-button>
+        <van-button class='look_logistics' round size='small'  bindtap='apply_sale'
+    wx:if="{{isSubOrder==1&&status==1&&isAllRefund!=1}}">申请退款</van-button>
+        <van-button class='look_logistics' round size='small'  bindtap='shouhou_xq'
+    wx:if="{{isSubOrder==1&&isRefund==1}}">售后详情</van-button>
+    <van-button class='buy_ok' round size='small' bindtap='Confirm_receipt' 
+    wx:if="{{isSubOrder==1&&status==2}}">确认收货</van-button>
+     <van-button class='buy_ok' round size='small' bindtap='right_pay' 
+    wx:if="{{isSubOrder==2&&status==0}}" >立即付款</van-button>
+    <!-- <van-button style='margin-left:10rpx' class='look_logistics' round size='small' bindtap='View_Logistics' data-orderid="{{all_data}}"
+    wx:if="{{status==1&&deliveryTime!=null}}" >查看物流</van-button> -->
+         <!-- <van-button class='buy_ok' round size='small' bindtap='Confirm_receipt' 
+    wx:if="{{shouhou_show}}" >立即付款</van-button> -->
+    <!-- <view class='look_logistics' wx:if="{{resultList.isSubOrder==2&&resultList.orderStatus==2}}" data-orderid="{{item.id}}"   
+    data-suborderid="{{item.subId}}"  data-status="{{resultList.isSubOrder==1&&resultList.orderStatus==3?1:2}}" 
+    bindtap='delOrder'>删除订单</view> -->
+  </view>
+  <view class='go_home' bindtap='goHome'>
+    <image src='https://file.maiyatown.com/images/myorder/waiting_icon_home.svg'></image>
+  </view>  
+</view>
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

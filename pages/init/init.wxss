@@ -1,0 +1,34 @@
+/* pages/init/init.wxss */
+@import "/static/css/common.wxss";
+.init_box{
+  padding-top: 108rpx;
+}
+.init_box .init_logo {
+  margin: 0 auto;
+  margin-bottom: 100rpx;
+  width:100%;
+  height: 800rpx;
+}
+.init_box .init_logo>image {
+  width: 100%;
+  height: 100%;
+}
+.init_box .init_text {
+  margin-bottom: 297rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 30rpx;
+  color: #666666;
+  text-align: center;
+}
+.init_box .init_button {
+  text-align: center;
+}
+.init_box .init_button .get_info>button {
+  width: 480rpx;
+  height: 98rpx;
+  line-height: 98rpx;
+  font-size: 36rpx;
+  color: #fff;
+  font-weight: 600
+}

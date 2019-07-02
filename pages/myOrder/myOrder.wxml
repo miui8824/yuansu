@@ -1,0 +1,193 @@
+<!--pages/myorder/myorder.wxml-->
+
+<!--新版大麦分享-->
+<view bindtap='share_hide' wx:if="{{GetImage}}" style='position:absolute;width:100%;height:100%;background:black;opacity:0.3;z-index:1;' catchtouchmove='{{true}}'>
+</view>
+<view bindtap='' catchtouchmove='{{true}}' wx:if="{{GetImage}}" class="container" style='z-index:100;position:absolute;margin-top:25%;'>
+<!-- <view class='background'></view> -->
+  <image bindtap='share_hide' catchtouchmove='{{true}}' src="{{shareImage}}" class="share-image"></image>
+  <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage"/>
+
+  <!-- <button >绘制</button>
+  <button>保存到本地</button>  bind:tap="eventDraw"-->
+  <button catchtouchmove='{{true}}'  open-type='share'  class="wechat">
+    <image class="wechatimg" src='https://file.maiyatown.com/images/v1.2/explosion_icon_wechat.png'></image>
+  微信好友</button>
+  <button catchtouchmove='{{true}}'  bind:tap="eventSave"  class="wechat1">
+   <image class="wechatimg"  src='https://file.maiyatown.com/images/v1.2/explosion_icon_Img.png'></image>
+  保存图片</button>
+</view>
+
+
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="我的订单"
+>
+</navigation>
+<view class='order_box'>
+
+  <van-toast id="van-toast" duration="1500"/>
+  <van-tabs class='van_tabs_me' active="{{ navActive }}"  bind:change="tabChange" line-width='45'>
+    <van-tab title="{{item}}" wx:for="{{navNames}}" wx:key="{{index}}">
+    </van-tab>
+  </van-tabs>
+  <!-- 有订单 -->
+  <scroll-view class='scroll_view order_list_box' style="" scroll-y="true" wx:if="{{!showNoOrder}}" 
+  bindscrolltolower="loadMore">
+
+    <!-- 商品列表 -->
+    <view class='order_list' wx:for="{{orderList}}" wx:key="{{index}}" >
+    <!-- 灰色的块 -->
+      <view  class='back_hui clear clear15'></view>
+      <!-- <view class='list_icon'  wx:if="{{orderType=='1'}}">
+        <image src='/images/myorder/yinzhang.png'/>
+      </view> -->
+      <view class='list_title' data-item="{{item}}" bindtap='goOrderAbout'>
+
+        <!--先判断是不是在全部订单-->
+        <view wx:if="{{navActive==0}}" wx:if="{{orderType==0||orderType==4}}">
+          <view class='title_number'>
+            订单号：<text>{{item.orderNo?item.orderNo:item.orderNum}}</text>  
+            <van-icon class='arrow_icon' name="arrow" />
+          </view>
+          
+        </view>
+        <view wx:else>
+          <view class='title_number' wx:if="{{orderType==0||orderType==4}}">
+            订单号：<text>{{item.orderNum}}</text>  
+            <van-icon class='arrow_icon' name="arrow"/>
+          </view>
+          <view class='title_number' wx:else>
+            订单号：<text>{{item.orderNo?item.orderNo:item.orderNum}}</text>
+            <van-icon class='arrow_icon' name="arrow" />
+          </view>
+        </view>
+        <!-- 订单状态 2-0-待支付 1-1-代发货 1-2-待收货 1-3-已完成 2-2-已取消 -->
+        <view style='height:40rpx;border-radius:8rpx;line-height:40rpx;color:white;width:70rpx;text-align:center;background:#FF262C;' wx:if="{{item.isSubOrder==1&&item.isRefund==1}}">售后</view>
+        <view  wx:if="{{item.isSubOrder==2&&item.orderStatus==2}}">
+          已取消
+        </view>
+        <!-- 1 4  原：已关闭状态-->
+        <view  wx:if="{{item.isSubOrder==1&&item.orderStatus==4}}"> 
+          已取消
+        </view>
+        <!-- 客服主动关闭订单 -->
+        <view  wx:if="{{item.isSubOrder==1&&item.orderStatus==5}}"> 
+          已取消
+        </view>
+        <view  wx:if="{{item.isSubOrder==1&&item.orderStatus==6}}"> 
+          待分享
+        </view>
+        <view  wx:if="{{item.isSubOrder==2&&item.orderStatus==0}}">
+          待付款
+        </view>
+          <view  wx:if="{{item.isSubOrder==1&&item.orderStatus==1}}">
+          待发货
+        </view>
+        <view  wx:if="{{item.isSubOrder==1&&item.orderStatus==2}}">
+          待收货
+        </view>
+        
+          <view  wx:if="{{item.isSubOrder==1&&item.orderStatus==3}}">
+          已完成
+        </view>
+        
+        
+      </view>
+
+      <!-- 订单商品列表 -->
+      <!-- 订单只有一个的时候 -->
+      <view class='list_main' wx-if="{{item.orderGoods.length==1}}" wx:for="{{item.orderGoods}}" wx:for-item="it" wx:key="index" data-item="{{item}}" bindtap='goOrderAbout'  >
+        <view class='list_img'>
+        <!-- wx:if="{{item.orderType==5}}" -->
+        <view wx-if="{{item.orderType==5||item.orderType==6||item.orderType==7}}" class="zhezhao" style=""></view>
+        <view wx-if="{{item.orderType==5}}" class="zhezhao_wenzi">· 拼团 ·</view>
+        <view wx-if="{{item.orderType==6||item.orderType==7}}" class="zhezhao_wenzi">· 会员礼包 ·</view>
+          <image src='{{it.goodImg}}'/>
+
+        </view>
+        <view class='list_text'>
+          <view class='list_name'>{{it.goodName}}</view>
+          <view class='list_size'>{{it.goodAttrDesc}}</view>
+        </view>
+        <view class='list_mon'>
+          <view class='list_money'>￥{{it.goodPrices}}</view>
+          <view class='list_number'>x{{it.goodNum}}</view>
+        </view>
+      </view>
+      <view class='list_main1' bindtap='goOrderAbout' wx-if="{{item.orderGoods.length>1}}">
+        <view class='list_img'  wx:for="{{item.orderGoods}}" wx:for-item="it" wx:key="index" data-item="{{item}}">
+        <view wx-if="{{item.orderType==5}}" class="zhezhao" style=""></view>
+        <view wx-if="{{item.orderType==5}}" class="zhezhao_wenzi">· 拼团 ·</view>
+          <image src='{{it.goodImg}}'/>
+        </view>
+        <text class='' style='position:absolute;top:40%;color:rgba(51,51,51,1);font-size:26rpx;right:20rpx;'>共{{item.goodSum}}件 ··· </text>
+        <view class='list_text'>
+          <view class='list_name'>{{it.goodName}}</view>
+          <view class='list_size'>{{it.goodAttrDesc}}</view>
+        </view>
+        <view class='list_mon'>
+          <view class='list_money'>￥{{it.goodPrices}}</view>
+          <view class='list_number'>x{{it.goodNum}}</view>
+        </view>
+      </view>
+      <!-- 实付款 -->
+      <view class='list_moneys'>
+        <text class='moneys_number'>共{{item.goodSum==null?0:item.goodSum}}件商品 {{item.orderStatus==0||item.orderStatus==2?"待付款":"实付款"}}：</text>
+        <text class='moneys_money'>￥{{item.expAmt}}</text>
+      </view>    
+      <view class='list_buttons'>
+          <!-- wx:if="{{orderType==1}}" -->
+          <!-- 订单状态 2-0-待支付 1-2-待收货 1-3-已完成 2-2-已取消 -->
+          <!-- 子订单-1  主订单-2 -->
+          <van-button class='buy_out' round size='small' 
+            wx:if="{{item.isSubOrder==2&&item.orderStatus==0}}" 
+          data-orderid="{{item.id}}" bindtap='offOrder'>取消订单</van-button>
+          <!-- item.isSubOrder==1&&item.orderStatus==6 -->
+          <van-button class='buy_again' round size='small' data-orderid="{{item}}" 
+            wx:if="{{item.isSubOrder==2&&item.orderStatus==0}}" bindtap='right_pay'>付款</van-button>
+           <van-button bind:tap="eventDraw"  class='buy_again' round size='small' data-orderid="{{item}}"
+            wx:if="{{item.isSubOrder==1&&item.orderStatus==6}}"  data-item="{{item}}">邀请好友</van-button>
+          <!-- <van-button class='buy_out' round size='small' 
+          wx:if="{{item.isSubOrder==1&&item.orderStatus==2}}">申请退款</van-button> -->
+          <!-- 待收货里有申请售后  查看物流  确认收货 售后详情 -->
+          <van-button class='buy_out' round size='small' bindtap='View_Logistics' data-orderid="{{item}}"  
+            wx:if="{{item.isSubOrder==1&&item.orderStatus==2}}">查看物流</van-button>
+          <van-button class='buy_out' round size='small'  
+          wx:if="{{item.isSubOrder==1&&(item.orderStatus==3&&(item.refundEndTime==null?0:item.refundEndTime)>item.sysTime || item.orderStatus==2)&&item.isAllRefund!=1}}" data-orderid="{{item}}" bindtap='apply_sale'>申请售后</van-button>
+         <van-button class='buy_out' round size='small'  
+          wx:if="{{item.isSubOrder==1&&item.orderStatus==1&&item.isAllRefund!=1}}" data-orderid="{{item}}" bindtap='apply_sale'>申请退款</van-button>
+          <van-button class='buy_out' round size='small'  
+          wx:if="{{item.isSubOrder==1&&item.isRefund==1}}" data-orderid="{{item}}" bindtap='sale_xq'>售后详情</van-button>
+
+          <van-button class='buy_out' round size='small' 
+            wx:if="{{item.isSubOrder==1&&item.orderStatus==3||item.isSubOrder==2&&item.orderStatus==2||item.isSubOrder==1&&item.orderStatus==4||item.isSubOrder==1&&item.orderStatus==5}}" data-orderid="{{item.id}}"data-suborderid="{{item.subId}}"  data-status="{{item.isSubOrder==1&&item.orderStatus==3?1:2}}" bindtap='delOrder'>删除订单</van-button>
+          
+          <!-- <view class='buy_again' wx:if="{{item.isSubOrder==2&&item.orderStatus==2}}">再次购买</view> -->
+          <van-button class='buy_again' round size='small' bindtap='Confirm_receipt'data-orderid="{{item.subId}}
+            wx:if="{{item.isSubOrder==1&&item.orderStatus==2}}">确认收货</van-button>
+      </view>
+    </view>
+    <!-- 底线 -->
+      <view style="background:#f2f2f2;height:85rpx;line-height:85rpx;text-align:center" class='font_24 color_999' wx:if="{{loadMoreTip}}">~~正在加载中~~</view>
+    <view style="background:#f2f2f2;height:85rpx;line-height:85rpx;text-align:center" class='font_24 color_999' wx:if="{{!loadMoreType}}">~~我也是有底线的~~</view>
+  </scroll-view>
+  
+
+  <!-- 无订单 -->
+  <view class='no_order_box' wx:else>
+    <view>
+      <image class='no_order_logo' src='https://file.maiyatown.com/images/myorder/tu.png'/>
+      <view class='no_order_text'>您还没有订单哦~</view>
+      <view class='no_order_button' bindtap='goHome'>去首页逛逛</view>
+    </view>
+  </view>
+  <van-dialog id="van-dialog" />
+</view>
+ <van-dialog 
+  show="{{isShowDraw}}" 
+  id="van-dialog-draw"
+  bind:confirm='onGoDraw'
+  bind:cancel='onGoOrder'
+/>

@@ -1,0 +1,59 @@
+<!--pages/addAddress/addAddress.wxml-->
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="新增地址"
+>
+</navigation>
+<view class='add_add'>
+  <view class='clear clear20'></view>
+  <view class='common_plank'>
+    <view class='border_botton'>
+      <view class='font_28 color_666'>收货人</view>
+      <input placeholder-class="plank_place" class='plank_middle font_28' type="text" maxlength="5" placeholder='请填写收货人姓名' 
+      value='{{name}}' bindblur="inputName"></input>
+    </view>
+    <view class='border_botton'>
+      <view class='font_28 color_666'>手机号码</view>
+      <input placeholder-class="plank_place" class='plank_middle font_28' type='number' placeholder='请填写联系电话'
+      value='{{phone}}' bindblur="inputPhone"></input>
+    </view>
+    <view class='border_botton' bindtap='addClick'>
+      <view class='font_28 color_666'>所在地区</view>
+      <view placeholder-class="plank_place" class='region plank_middle font_28 color_666' style="color:{{activeAdd? '#333' :  '#999' }}">{{activeAdd||'请选择所在地区'}}</view>
+      <view  class='load_more'>
+        <image src='https://file.maiyatown.com/images/confirmOrder/confirm_order_icon_next_step.svg'></image>
+      </view>
+    </view>
+    <!-- <view class='border_botton'>
+      <view class='font_28 color_666'>所在街道</view>
+      <input class='plank_middle font_28' placeholder='请选择所在街道'></input>
+      <view  class='load_more'>
+        <image src='/images/confirmOrder/confirm_order_icon_next_step.svg'></image>
+      </view>
+    </view> -->
+    <view class='border_botton'>
+      <view class='font_28 color_666'>详细地址</view>
+      <input placeholder-class="plank_place" class='plank_middle font_28' placeholder='请填写街道，楼牌等详细地址'  type="text"
+      value='{{addDetails}}' bindblur="inputAdd"></input>
+    </view>
+  </view>
+  <view class='common_plank mar_t_20'>
+    <view class='border_botton'>
+      <view class='font_28 color_666'>设置默认地址</view>
+      <van-switch style='height:60rpx;' checked="{{ checked }}" bind:change="onChange" />
+    </view>
+  </view>
+ 
+  <van-popup show="{{ show }}" position="bottom" bind:close="onClose">
+    <van-area area-list="{{ areaList }}" title="请选择所在地区"
+    bind:cancel="activeAddOff" bind:confirm="activeAddFun"/>
+  </van-popup>
+
+  <view class='add_add_button' wx:if="{{isAddButton}}">
+    <van-button class='success_button' round size='small' bindtap='bindSuccess'>保存地址</van-button>
+  </view>
+  <view class='add_add_button' wx:else>
+    <van-button class='success_button' round size='small' bindtap='editorAdd'>保存</van-button>
+  </view>
+</view>

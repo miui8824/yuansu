@@ -1,0 +1,470 @@
+@import "/static/css/common.wxss";
+
+page {
+  background: #f2f2f2;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 100vh;
+  color: transparent;
+}
+
+.my_self {
+  background: #f2f2f2;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.my_self .self_top {
+  padding: 30rpx 0rpx 10rpx 0rpx;
+  height: 300rpx;
+  color:#fff;
+  background: linear-gradient(0deg, rgba(223, 56, 82, 1) 0%, rgba(255, 96, 121, 1) 100%);
+}
+
+.my_self .self_info_box {
+  margin-bottom: 78rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30rpx;
+}
+
+.my_self .self_top .self_info {
+  display: flex;
+}
+
+.my_self .self_top .self_user_img {
+  position: relative;
+  width: 118rpx;
+  height: 118rpx;
+  border-radius: 59rpx;
+}
+
+.my_self .self_top .self_user_img>image {
+  width: 118rpx;
+  height: 118rpx;
+  border-radius: 59rpx;
+}
+
+.my_self .self_top .user_info {
+  margin-left: 20rpx;
+  padding-top: 15rpx;
+}
+
+.my_self .user_info .user_name {
+  margin-bottom: 10rpx;
+  width: 260rpx;
+  font-size: 40rpx;
+  line-height: 53rpx;
+  font-weight: 300;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 54rpx;
+}
+
+.my_self .user_info .user_type {
+  width: 100rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  font-size: 20rpx;
+  color: #333;
+  background: #FFD101;
+  text-align: center;
+  border-radius: 4rpx;
+}
+
+.my_self .self_top .self_bind {
+  padding-top: 20rpx;
+  display: flex;
+  color:#fff;
+  text-align: center;
+}
+
+.my_self .self_bind .bind_phone {
+  margin-left: 36rpx;
+}
+
+.my_self .self_bind .bind_phone .bind_icon,
+.my_self .self_bind .bind_wechat .bind_icon {
+  height: 60rpx;
+  color:#fff;
+  text-align: center;
+}
+
+.my_self .self_bind .bind_wechat .bind_icon>image{
+   width: 48rpx;
+  height: 48rpx;
+}
+.my_self .self_bind .bind_phone .bind_icon>image {
+  width: 32rpx;
+  height: 48rpx;
+}
+
+.my_self .self_bind .bind_phone>view, .my_self .self_bind .bind_wechat>view {
+  font-size: 22rpx;
+  line-height: 22rpx;
+  color: #333;
+  text-align: center;
+}
+
+.my_self .self_money_box {
+  display: flex;
+  align-items: center;
+}
+
+.my_self .self_money_box>view {
+  width: 33%;
+  text-align: center;
+}
+
+.my_self .self_money_box .selft_border {
+  margin-top: 10rpx;
+  width: 0px;
+  height: 40rpx;
+  border-right: 1rpx solid #333;
+  opacity: 0.5;
+}
+
+.my_self .self_money_box .balance_number {
+  height: 36rpx;
+  font-size: 36rpx;
+  line-height: 36rpx;
+  font-weight: 500;
+}
+
+.my_self .self_money_box .balance_name {
+  margin-top: 20rpx;
+  height: 26rpx;
+  font-size: 26rpx;
+  line-height: 26rpx;
+}
+
+.my_self .user_balance_box {
+  padding: 34rpx 30rpx 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+  height: 126rpx;
+  background: #fff;
+}
+
+.my_self .user_balance_box .user_balance>view {
+  margin-bottom: 24rpx;
+  font-size: 30rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  color: #333;
+  font-weight: 600;
+}
+
+.my_self .user_balance_box .user_balance>text {
+  font-size: 40rpx;
+  line-height: 40rpx;
+  color: #ff262c;
+  font-weight: 500;
+}
+
+.my_self .user_balance_box .user_button {
+  margin-top: 36rpx;
+  display: flex;
+}
+
+.my_self .user_balance_box  .balance_detail {
+  width: 156rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  font-size: 30rpx;
+  border: 2rpx solid;
+  border-color: #333;
+  border-radius: 28rpx;
+  font-weight: 500;
+}
+
+.my_self .user_balance_box  .balance_reflect {
+  margin-left: 13rpx;
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 30rpx;
+  border-radius: 30rpx;
+  background: #dd232f;
+  font-weight: 500;
+}
+
+.my_self .my_order_box {
+  background: #fff;
+}
+
+.my_order_box .my_order_title {
+  padding: 0rpx 30rpx;
+  display: flex;
+  height: 100rpx;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #eee;
+}
+
+.my_order_box .my_order_title>view {
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.my_order_box .my_order_title>view>image {
+  position: relative;
+  top: 7rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.my_self .order_item_box {
+  /* padding-top:50rpx;
+  padding-right: 10rpx;
+  padding-bottom: 30rpx;  */
+  padding: 30rpx 30rpx 30rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.my_self .order_item {
+  width: 140rpx;
+  text-align: center;
+  font-size: 26rpx;
+  line-height: 26rpx;
+}
+
+.my_self .order_item .item_img {
+  margin-bottom: 18rpx;
+  position: relative;
+}
+
+.my_self .order_item .item_img>image {
+  width: 54rpx;
+  height: 60rpx;
+}
+
+.my_fans .fans_title {
+  padding: 30rpx 30rpx 50rpx 30rpx;
+}
+
+.my_fans .fans_title>image {
+  display: inline-block;
+  width: 26rpx;
+  height: 26rpx;
+  position: relative;
+  top: 6rpx;
+  left: 8rpx;
+}
+
+.my_fans .fans_number_box {
+  margin-bottom: 30rpx;
+  padding-left: 30rpx;
+  height: 68rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.my_fans .fans_number_box .fans_number {
+  font-size: 68rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+}
+
+.my_fans .fans_number_box .fans_data {
+  width: 450rpx;
+}
+
+.my_fans .fans_number_box .today, .my_fans .fans_number_box .yesterday {
+  display: inline-block;
+  width: 220rpx;
+  height: 68rpx;
+  text-align: center;
+}
+
+.my_fans .fans_number_box .today .color_333,
+.my_fans .fans_number_box .yesterday .color_333 {
+  font-weight: 500;
+}
+
+.my_fans .fans_number_box .font_26.color_666 {
+  margin-bottom: 14rpx;
+}
+
+.my_fans .fans_number_box .fans_border {
+  display: inline-block;
+  width: 0rpx;
+  height: 68rpx;
+  border-right: 2rpx solid #f2f2f2;
+}
+
+.my_self .fans_invitation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  height: 40rpx;
+}
+
+.my_self .fans_invitation>image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.my_add_box .fans_invitation {
+  height: 40rpx;
+}
+
+.my_add_box .add_icon1 {
+  position: relative;
+  top: 12rpx;
+  width: 44rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+}
+
+.my_add_box .add_icon2 {
+  position: relative;
+  top: 2rpx;
+  width: 44rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  display: inline-block;
+}
+
+.my_add_box .add_name {
+  margin-left: 20rpx;
+  padding-left: 0;
+  display: inline-block;
+  width: 300rpx;
+  height: 44rpx;
+  font-size: 32rpx;
+  line-height: 44rpx;
+  background: #fff;
+  text-align: left;
+}
+
+.my_self .inviter_box .inviter_item {
+  padding: 15rpx 30rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #333;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.my_self .inviter_box .inviter_item .mar_l_20 {
+  word-break: break-all; /*允许在单词内换行*/
+  text-overflow: -o-ellipsis-lastline; /*css3中webkit内核提供的一个方法类似ellipsis*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box; /*自适应盒子*/
+  -webkit-line-clamp: 1; /*此处为1行,如果是两行就改成2*/
+  -webkit-box-orient: vertical;
+  width: 400rpx;
+}
+
+.my_self .inviter_box .inviter_item:first-child {
+  border-top: 1rpx solid #f2f2f2;
+}
+
+.my_self .inviter_box .inviter_item>image {
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 40rpx;
+}
+
+.my_self .inviter_box .inviter_time {
+  flex-grow: 2;
+  text-align: right;
+  width: 180rpx;
+  font-size: 26rpx;
+  line-height: 26rpx;
+}
+
+.button_replace {
+  position: fixed;
+  bottom: 40rpx;
+  right: 30rpx;
+  width: 100rpx;
+  height: 80rpx;
+  background: transparent;
+  z-index: 99;
+}
+
+.order_one {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  float: right;
+  border: 1px solid red;
+  position: absolute;
+  right: 17%;
+  background: red;
+  color: white;
+  line-height: 30rpx;
+  font-size: 18rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+/* 画图的css */
+
+.share-image {
+  width: 660rpx;
+  height: 975rpx;
+  margin: 0 45rpx;
+  /* border: 1px solid black; */
+  z-index: 1;
+  /* position:absolute; */
+}
+
+.background {
+  width: 600rpx;
+  height: 888rpx;
+  background: #000;
+  opacity: 0.2;
+  position: absolute;
+  left: 78rpx;
+}
+
+button {
+  margin-top: 20rpx;
+}
+
+.wechat {
+  width: 305rpx;
+  height: 98rpx;
+  background: rgba(71, 186, 68, 1);
+  border-radius: 49px;
+  margin: 30rpx;
+  line-height: 98rpx;
+  text-align: center;
+  color: white;
+  display: inline-block;
+}
+
+.wechat1 {
+  width: 305rpx;
+  height: 98rpx;
+  background: #ff911b;
+  border-radius: 49px;
+  margin: 30rpx;
+  line-height: 98rpx;
+  text-align: center;
+  color: white;
+  display: inline-block;
+}
+
+.wechatimg {
+  width: 40rpx;
+  height: 40rpx;
+  top: 5px;
+  position: relative;
+}
+
+/* 画图的css */

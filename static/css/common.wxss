@@ -1,0 +1,95 @@
+button::after{
+  border: none;
+}
+.button_hover {
+  opacity: 0.7;
+}
+.font_bold {
+  font-weight: 600;
+}
+.font_bold500 {
+  font-weight: 500;
+}
+
+.clear15 {height: 15rpx;}
+.clear20 {height: 20rpx;}
+.clear25 {height: 25rpx;}
+.clear30 {height: 30rpx;}
+.clear35 {height: 35rpx;}
+.clear40 {height: 40rpx;}
+.clear45 {height: 45rpx;}
+.clear50 {height: 50rpx;}
+.clear55 {height: 55rpx;}
+.clear60 {height: 60rpx;}
+.clear65 {height: 65rpx;}
+.clear70 {height: 70rpx;}
+.clear75 {height: 75rpx;}
+.clear160 {height: 160rpx;}
+
+.color_red {
+  color: #E23E53;
+}
+.color_font,.color_333 { color: #333333;}
+.color_666 { color: #666666;}
+.color_hui,.color_999 {color: #999999;}
+.color_fff {color: #fff;}
+.color_main {
+  color: #E23E53;
+}
+.color_10 {color: #101010;}
+
+
+.back_main {background: #DD232F;}
+.back_red {background: #ff262c;}
+.back_hui {background: #f2f2f2;}
+.back_fff {background: #fff;}
+
+
+.font_22 {font-size: 22rpx;line-height: 22rpx;}
+.font_24 {font-size: 24rpx;line-height: 24rpx;}
+.font_26 {font-size: 26rpx;line-height: 26rpx;}
+.font_28 {font-size: 28rpx;line-height: 28rpx;}
+.font_30 {font-size: 30rpx;line-height: 30rpx;}
+.font_32 {font-size: 32rpx;line-height: 32rpx;}
+.font_34 {font-size: 34rpx;line-height: 34rpx;}
+.font_36 {font-size: 36rpx;line-height: 36rpx;}
+.mar_t_10 {margin-top:10rpx; }
+.mar_t_20 {margin-top:20rpx; }
+.mar_t_25 {margin-top:25rpx; }
+.mar_t_30 {margin-top:30rpx; }
+.mar_t_35 {margin-top:35rpx; }
+.mar_t_40 {margin-top:40rpx; }
+.mar_b_20 {margin-bottom: 20rpx;}
+.mar_b_25 {margin-bottom: 25rpx;}
+.mar_b_30 {margin-bottom: 30rpx;}
+.mar_b_35 {margin-bottom: 35rpx;}
+.mar_b_40 {margin-bottom: 40rpx;}
+.mar_r_10 {margin-right: 10rpx;}
+.mar_r_20 {margin-right: 20rpx;}
+.mar_r_30 {margin-right: 30rpx;}
+.mar_r_40 {margin-right: 40rpx;}
+.mar_l_10 {margin-left: 10rpx;}
+.mar_l_20 {margin-left: 20rpx;}
+.mar_l_30 {margin-left: 30rpx;}
+
+.pad_30 { padding: 30rpx;}
+
+.border_botton {
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.button_hover {
+  opacity: 0.7;
+}
+
+.have-bottom {
+  width: 100%;
+  background: #fff;
+  float: left;
+  display: block;
+  text-align: center;
+  padding-top: 20rpx;
+  padding-bottom: 40rpx;
+  font-size: 28rpx;
+  color: #a4a4a4;
+}

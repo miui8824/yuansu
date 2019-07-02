@@ -1,0 +1,116 @@
+<!--pages/bagList/bagList.wxml-->
+<van-dialog id="van-dialog" />
+<view bindtap='share_hide' wx:if="{{GetImage}}" style='position:absolute;width:100%;height:100%;background:black;opacity:0.3;z-index:1000;' catchtouchmove='{{true}}'>
+</view>
+<view bindtap='' catchtouchmove='{{true}}' wx:if="{{GetImage}}" class="container" style='z-index:1000;position:absolute;margin-top:105px;'>
+<!-- <view class='background'></view> -->
+  <image bindtap='share_hide' catchtouchmove='{{true}}' src="{{shareImage}}" class="share-image"></image>
+  <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage"/>
+
+  <!-- <button >绘制</button>
+  <button>保存到本地</button>  bind:tap="eventDraw"-->
+  <button catchtouchmove='{{true}}'  open-type='share'  class="wechat">
+    <image class="wechatimg" src='https://file.maiyatown.com/images/v1.2/explosion_icon_wechat.png'></image>
+  微信好友</button>
+  <button catchtouchmove='{{true}}'  bind:tap="eventSave"  class="wechat1">
+   <image class="wechatimg"  src='https://file.maiyatown.com/images/v1.2/explosion_icon_Img.png'></image>
+  保存图片</button>
+</view>
+<navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="会员礼包">
+</navigation>
+<scroll-view class='bag_box' style="top:{{titleBarHeight+statusBarHeight}}px" scroll-y bindscrolltolower="loadMore">
+  <view class='bag_banner_box' wx:if="{{bannerList.length>0}}">
+    <!-- wx:if='{{swiperData.length>0}}' -->
+    <view class='swiper_tip' wx:if="{{bannerList.length>1}}">{{swiperActive+1}}/{{bannerList.length}}</view>
+    <view class='swiper_box'>
+      <image src="{{bannerList[0]}}" class='item_image'/>
+    </view>
+  </view>
+  <view class='clear clear20'></view>
+  <view class='bag_nav_box' bindtap='goBagsList' wx:if="{{noZuheGift}}">
+    <view class='bag_nav' wx:for="{{combinationBanner}}" wx:key="{{index}}">
+      <image src="{{item.bannerUrl}}" class='item_image'/>
+    </view>
+  </view>
+  <view class='clear clear20'></view>
+  <view class='bag_list_box'>
+    <view class='list_title' wx:if="{{levelUpOne}}">
+      <image class='title_image' src='https://file.maiyatown.com/images/v1.4/combination_image_left@2x.png'></image>
+      <text class='title_text'>购买商品满 <text class='moneyNum'> {{levelUpOne}}</text> 元即升级为会员</text>
+      <image class='title_image' src='https://file.maiyatown.com/images/v1.4/combination_image_right@2x.png'></image>
+    </view>
+    <view class='list_item_box'>
+      <view class='list_item' data-item='{{item}}' bindtap='goBagDetails'  wx:for="{{bagsList}}" wx:key="{{index}}">
+        <image class='item_img' src="{{item.goodImg}}"></image>
+        <view class='mar_t_20'>
+          <view class='item_title'>{{item.title}}</view>
+          <view class='item_button_box'>
+            <view>
+              <view class='font_28 color_red'>¥{{item.price}}</view>
+              <view class='money_old'>会员价:¥{{item.memberPrice}}</view>
+            </view>
+            <van-button class='buy_button' round size='small' 
+            data-index='{{index}}' data-item="{{item}}"
+            form-type="submit" hover-class="button_hover" catchtap='buyNow'>立即购买</van-button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='clear clear_nomore' wx:if="{{!isLoadMore}}">~~我也是有底线的~~</view>
+
+  <view class='share_button_box' bind:tap="eventDraw" wx:if="{{bagsInfo.isCustomer==1}}">
+    <image src='https://file.maiyatown.com/images/v1.4/member_icon_share@2x.png'></image>
+    <van-button class='share_button' round size='small' 
+   hover-class="button_hover"></van-button>
+  </view>
+</scroll-view>
+
+<!--规格选择-->
+<van-action-sheet class='action_sheet_me' show="{{ actionSheetShow }}" z-index="1000" catchtouchmove="ture" >
+  <view class='action_sheet_box'>
+    <view class='shop_info mar_b_30'>
+      <view class='shop_img'>
+        <image src='{{bagsList[activeGoodsIndex].goodImg}}'></image>
+      </view>
+      <view class='shop_size_color'>
+        <view class='shop_close mar_b_30'>
+          <view class='shop_money color_red font_36' style='font-weight: 600;'>¥{{activeSkuItem.memberPrice||activeSkuItem.price}}</view>
+          <view class='close_icon' bindtap='onClose'>
+            <image src='https://file.maiyatown.com/images/goodsDetails/explosion_icon_tclosed.svg'></image>
+          </view>
+        </view>
+        <view class='color_999 font_28 mar_b_20'>库存{{activeSkuItem.dummyStock||999}}件</view>
+        <view class='color_999 font_28'>选择商品规格</view>
+      </view>
+    </view>
+    <scroll-view scroll-y="true" scroll-with-animation="true" class='shop_info_size'>
+      <view wx:for="{{specList}}" wx:key="index"  wx:for-item="item" wx:for-index="index">
+        <view class='font_28 color_666 mar_b_20 shop_info_name'>{{item.name}}</view>
+        <view >
+          <!--{{citem.notClick?"button_off":""}}  {{citem.isActiveC?"button_on":""}} -->
+          <van-button class='shop_color_type {{citem.notClick?"button_off":""}}  {{citem.isActiveC?"button_on":""}}' 
+          wx:for="{{item.value}}" wx:for-index="cindex" wx:for-item='citem' wx:key="cindex" 
+          data-index='{{index}}' data-cindex='{{cindex}}' data-cid='{{citem.id}}' data-isactivec='{{citem.isActiveC}}'
+          bind:tap='tabInfoChange' data-citemnoclick='{{citem.notClick}}'
+          >
+          {{citem.cname}}
+          </van-button>
+        </view>
+      </view>
+      <view class='shop_stepper'>
+        <view class='font_28 color_666'>购买数量</view>
+        <!-- 新人团只能购买一件 新人专场只能买一件 -->
+        <van-stepper class='stepper_main' wx:if="{{actionSheetShow}}" value="{{ 1||activeGoodsNumber }}" min="1" bind:change="onChange" disable-input/>
+      </view>
+    </scroll-view>
+    
+    <view class='linetop'></view>
+    <view class='success_box'>
+      <van-button class='success_button' round size='small' bindtap='selectSizeSuccess'>确定</van-button>
+    </view>
+  </view>
+</van-action-sheet>

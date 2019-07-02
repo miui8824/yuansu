@@ -1,0 +1,5 @@
+.board {
+  position: fixed;
+  top: 2000rpx;
+  border:1px solid red;
+}

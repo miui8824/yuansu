@@ -1,0 +1,53 @@
+/* pages/balanceDetail/balanceDetail.wxss */
+@import "/static/css/common.wxss";
+
+page {
+  background: #f2f2f2;
+}
+.fz{
+  font-size: 28rpx;
+}
+.item-mes {
+  word-break: break-all; /*允许在单词内换行*/
+  text-overflow: -o-ellipsis-lastline; /*css3中webkit内核提供的一个方法类似ellipsis*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box; /*自适应盒子*/
+  -webkit-line-clamp: 1; /*此处为1行,如果是两行就改成2*/
+  -webkit-box-orient: vertical;
+  color:#666;
+  width: 100%;
+  float:left;
+}
+.body{
+  width:calc(100% - 26rpx);
+  padding-left:26rpx;
+  background: #fff;
+  margin-top:20rpx;
+  /* float: left; */
+  }
+.item{
+  width:calc(100% - 26rpx);
+  padding-right:26rpx;
+  font-size: 32rpx;
+  /* float: left; */
+  padding:30rpx 0;
+  border-bottom: 2rpx solid #eee;
+}
+.item-top{
+  width: 100%
+}
+.item-sub{
+  font-weight: bold;
+  width: 70%;
+  float: left;
+}
+.item-cash{
+  width: 30%;
+  float: right;
+  font-weight: bold;
+  text-align: right;
+}
+.item-time{
+  color:#999
+}

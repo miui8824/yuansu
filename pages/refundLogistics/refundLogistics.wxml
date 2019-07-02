@@ -1,0 +1,46 @@
+<!--pages/refundLogistics/refundLogistics.wxml-->
+<navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="填写退货物流"
+>
+</navigation>
+
+<view class='bind_phone'>  
+  <van-cell-group>
+    <van-field
+    value="{{ logisticNum }}"
+    label="快递单号"
+    placeholder="请输入快递单号"
+    placeholder-style="color:#ccc;font-size:32rpx;"
+    bind:input="inputLogisticNum"/>
+
+    <van-field
+    value="{{ companyName }}"
+    label="物流公司"
+    placeholder="请选择物流公司"
+    placeholder-style="color:#ccc"
+    icon="arrow"
+    use-button-slot
+    disabled
+    bind:click-icon="chooseCompany"
+    border="{{ false }}">
+    </van-field>
+  </van-cell-group>
+  <van-button class='bind_button' bindtap='submit' round size='small'>提交</van-button>
+  <van-toast id="van-toast" />
+</view>
+
+
+
+<van-popup
+  show="{{ show }}"
+  position="bottom"
+  overlay="{{ true }}"
+  bind:close="onClose"
+  close-on-click-overlay="{{true}}"
+>
+
+<van-area area-list="{{ columns }}" columns-num="{{ 1 }}" title="选择物流公司" bind:confirm="onConfirm" bind:cancel="onCancel"/>
+</van-popup>
+

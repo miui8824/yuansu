@@ -1,0 +1,29 @@
+/* pages/aftersaleRuleDetail/aftersaleRuleDetail.wxss */
+.container-all{
+width: 100%;
+height: 100%;
+}
+.bg-img{
+width: 100%;
+height: 100%;
+display: block;
+}
+
+page{
+  min-height: 100%;
+  background-color: #f2f2f2;
+  position: relative;
+}
+.ruleBox{
+  margin-top: 20rpx;
+  padding: 30rpx 30rpx 60rpx 30rpx;
+  background-color: #fff;
+  height: 100%;
+  font-size: 32rpx;
+  color: #333;
+}
+.ruleBox .wxParse-p{
+  font-size: 32rpx;
+  line-height: 58rpx;
+  color: #333;
+}

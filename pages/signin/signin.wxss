@@ -1,0 +1,327 @@
+/* pages/signin/signin.wxss */
+@import "/static/css/common.wxss";
+.signin_box {
+  width: 100%;
+  background: #f2f2f2;
+  overflow: hidden;
+}
+.signin_box .signin_top {
+  position: relative;
+  height: 395rpx;
+  width: 100%;
+}
+.signin_box .signin_top>image {
+  width: 100%;
+  height: 395rpx;
+}
+.signin_box .signin_logo_box {
+  position: absolute;
+  padding-top: 22rpx;
+  left: 0;
+  top:0;
+  width: 100%;
+  height: auto;
+}
+.signin_box .signin_logo_box .logo_back {
+  margin: 0 auto;
+  width: 210rpx;
+  height: 210rpx;
+  border-radius: 105rpx;
+  background: #ffffff;
+  opacity: 0.2;
+}
+.signin_box .signin_logo_box .logo_main {
+  margin: 0 auto;
+  margin-top: -185rpx;
+  width: 160rpx;
+  height: 160rpx;
+  line-height: 160rpx;
+  background: #ffffff;
+  border-radius: 80rpx;
+  color: #FD252F;
+  opacity: 0.7;
+  font-size: 36rpx;
+  text-align: center;
+}
+.signin_box .signin_logo_box .signin_rules {
+  margin-top: 55rpx;
+  text-align: center;
+  font-size: 28rpx;
+  text-decoration:underline;
+  color:#ffffff;
+}
+.signin_box .signin_logo_box .signin_share {
+  position: absolute;
+  padding-left: 18rpx;
+  top:30rpx;
+  right: 0;
+  width: 80rpx;
+  height: 50rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  color: #975731;
+  background: #F7D341;
+  border-radius: 25rpx 0 0 25rpx;
+}
+.signin_box .signin_main {
+  position: relative;
+  padding-right: 30rpx; 
+  height: auto;
+}
+.signin_box .signin_main .signin_list_box {
+  position: absolute;
+  top: -70rpx;
+  left: 30rpx;
+  width: 690rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  z-index: 10;
+}
+.signin_box .signin_main  .list_title {
+  width: 100%;
+  height: 112rpx;
+  line-height: 112rpx;
+  text-align: center;
+  font-size: 34rpx;
+  background: #fff774;
+  color: #9E6132;
+  border-radius: 20rpx 20rpx 0 0;
+}
+.signin_box .list_title .main_icon_left {
+  position: absolute;
+  left: 70rpx;
+  top: -40rpx;
+  width: 63rpx;
+  height: 116rpx;
+}
+.signin_box .list_title .main_icon_right {
+  position: absolute;
+  right: 70rpx;
+  top: -40rpx;
+  width: 63rpx;
+  height: 116rpx;
+}
+.signin_box .list_title .main_icon_left>image ,
+.signin_box .list_title .main_icon_right>image {
+  width: 63rpx;
+  height: 116rpx;
+}
+.signin_box .signin_main .list_day {
+  position: relative;
+  padding-left: 75rpx;
+}
+.signin_box .signin_main .day_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #333333;
+  font-size: 30rpx;
+}
+.signin_box .signin_main .day_item_right {
+  padding-right: 30rpx;
+}
+.signin_box .signin_main .list_steps {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 75rpx;
+  height: 700rpx;
+}
+.signin_box .signin_main .setps_box {
+  position: relative;
+  width: 75rpx;
+  height: 100rpx;
+  overflow: hidden;
+}
+.signin_box .list_steps .setps_stick {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin-left: -2rpx;
+  width: 4rpx;
+  height: 50rpx;
+  background: #D7D7D7;
+}
+.signin_box .setps_box:first-child .setps_stick {
+  display: none;
+}
+.signin_box .list_steps .setps_stick1 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -2rpx;
+  width: 4rpx;
+  height: 50rpx;
+  background: #D7D7D7;
+}
+.signin_box .setps_box:last-child .setps_stick1 {
+  display: none;
+}
+.signin_box .list_steps .setps_stick.setps_stick_on,
+.signin_box .list_steps .setps_stick1.setps_stick1_on {
+  background: #FF262C!important;
+}
+.signin_box .list_steps .setps_ball {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -10rpx;
+  margin-top: -10rpx;
+  width: 20rpx;
+  height: 20rpx;
+  background: #D7D7D7;
+  border-radius: 10rpx;
+}
+.signin_box .list_steps .setps_ball.setps_ball_on {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -10rpx;
+  margin-top: -10rpx;
+  width: 20rpx;
+  height: 20rpx;
+  background: #FF262C;
+  border-radius: 10rpx;
+}
+.signin_box .list_steps .setps_ball_box {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -19rpx;
+  margin-top: -19rpx;
+  width: 38rpx;
+  height: 38rpx;
+  background: #FF262C;
+  border-radius: 19rpx;
+  opacity: 0.3;
+}
+.signin_box .list_steps .setps_ball_box.setps_ball_box_on {
+  display: block;
+}
+.signin_box .signin_ok_box .signin_ok_back,
+.signin_box .signin_rules_box .signin_ok_back {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  background: #000000;
+  opacity: 0.8;
+  z-index: 99;
+}
+.signin_box .signin_ok {
+  position: fixed;
+  left: 75rpx;
+  top: 152rpx;
+  width: 600rpx;
+  height: 650rpx;
+  border-radius: 20rpx;
+  z-index: 101;
+}
+.signin_box .signin_ok>image {
+  width: 100%;
+  height: 100%;
+}
+.signin_box .signin_ok .signin_text_box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.signin_box .signin_text_box .title {
+  color: #ffffff;
+  font-size: 70rpx;
+  line-height: 70rpx;
+  height: 70rpx;
+}
+.signin_box .signin_text_box .title_day {
+  margin: 0 auto;
+  margin-top: 44rpx;
+  width: 266rpx;
+  height: 64rpx;
+  font-size: 30rpx;
+  color: #FF262C;
+  line-height: 64rpx;
+  background: #ffffff;
+  border-radius: 32rpx;
+}
+.signin_box .signin_text_box .title_get {
+  margin-top: 214rpx;
+  font-size: 40rpx;
+  line-height: 40rpx;
+  color: #FF262C;
+}
+.signin_box .signin_text_box .title_goon {
+  margin-top:30rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #999999;
+}
+.signin_box .signin_ok_box  .title_out {
+  position: fixed;
+  top: 850rpx;
+  left: 50%;
+  margin-left: -36rpx;
+  width: 72rpx;
+  height: 72rpx;
+  z-index: 101;
+}
+.signin_box .signin_ok_box  .title_out>image,
+.signin_box .signin_rules_box  .rules_out>image {
+  width: 72rpx;
+  height: 72rpx;
+}
+.signin_box .signin_rules_box .signin_rules {
+  position: fixed;
+  padding: 50rpx 40rpx 40rpx 40rpx;
+  top: 133rpx;
+  left: 75rpx;
+  width: 520rpx;
+  height: 600rpx;
+  background: #ffffff;
+  text-align: center;
+  border-radius: 20rpx;
+  z-index: 100;
+}
+.signin_box .signin_rules_box .rules_title {
+  margin-bottom: 50rpx;
+  width: 100%;
+  height: 32rpx;
+  text-align: left;
+}
+.signin_box .signin_rules_box .rules_title>image {
+  width: 520rpx;
+  height: 32rpx;
+}
+.signin_box .signin_rules_box  .rules_out {
+  position: fixed;
+  top: 873rpx;
+  left: 50%;
+  margin-left: -36rpx;
+  width: 72rpx;
+  height: 72rpx;
+  z-index: 101;
+}
+.signin_box .signin_rules_box .rules_text_box {
+  width: 100%;
+  height: 520rpx;
+  overflow-y: auto;
+}
+.signin_box .signin_rules_box .rules_text_box::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.signin_box .signin_rules_box .rules_text {
+  margin-bottom: 30rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #333333;
+  text-align: left;
+  word-wrap:break-word;
+}

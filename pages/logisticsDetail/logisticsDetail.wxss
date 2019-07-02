@@ -1,0 +1,100 @@
+/* pages/logisticsDetail/logisticsDetail.wxss */
+@import "/static/css/common.wxss";
+page{
+  height: 100%;
+}
+.logistics_detail {
+  width: 100%;
+  height: 100%;
+  background: #f2f2f2;
+}
+.logistics_detail  .logistics_title {
+  padding: 30rpx;
+  height: 40rpx;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #333;
+  background: #fff;
+  font-weight: 500rpx;
+}
+.logistics_detail  .logistics_about {
+  width: 100%;
+  height: 65rpx;
+  background: #f2f2f2;
+  font-size: 26rpx;
+  color: #999;
+  text-align: center;
+  line-height: 65rpx;
+}
+.logistics_detail_item  {
+  margin-bottom: 20rpx;
+  background: #fff;
+}
+.logistics_detail_item .item_top {
+  padding: 0 30rpx;
+  height: 78rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logistics_detail_item .item_top_left {
+  display: flex;
+  align-items: center;
+}
+.logistics_detail_item .item_top .left_icon {
+  margin-right: 20rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.logistics_detail_item .item_top .left_icon>image {
+  width: 38rpx;
+  height: 38rpx;
+}
+.logistics_detail_item .item_main {
+  border-bottom: 1rpx solid #f2f2f2;
+}
+.logistics_detail_item .item_main>view {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  height: 120rpx;
+}
+.item_main .item_imgs {
+  margin-right: 20rpx;
+  display: inline-block;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 10rpx;
+}
+.item_main  .item_dian {
+  display: inline-block;
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: center;
+}
+.item_main .item_imgs>image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 10rpx;
+}
+.logistics_detail_item .item_botton {
+  padding: 0 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 24rpx;
+  color: #333;
+  text-align: right;
+  overflow: hidden
+}
+.ib-xq{
+  width: 130rpx;
+  height: 44rpx;
+  border-radius: 22rpx;
+  float: right;
+  border: 1rpx solid #333;
+  line-height: 44rpx;
+  text-align: center;
+  font-size: 25rpx;
+  margin-top:-62rpx; 
+  font-weight: 600;
+}

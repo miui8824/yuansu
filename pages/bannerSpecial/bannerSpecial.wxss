@@ -1,0 +1,304 @@
+@import "/static/css/common.wxss";
+@import "/wxParse/wxParse.wxss";
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}
+.container-all{
+width: 100%;
+height: 100%;
+}
+.bg-img{
+width: 100%;
+height: 100%;
+display: block;
+}
+page{
+  height: 100%;
+  background:#f2f2f2;
+}
+.banner_box{
+  width: 100%;
+  height: 100%;
+}
+.mainPic{
+  width: 100%;
+  height: 494rpx;
+}
+.mainPic image{
+  width: 100%;
+  display: inline-block;
+  height: 494rpx;
+}
+.bannerMain{
+  /* height: 100%; */
+  padding: 30rpx 30rpx 60rpx;
+  position: relative;
+  background: #f2f2f2
+}
+.bannerMain .banner_item{
+  height: 300rpx;
+  background-color: #fff;
+  border-radius: 8rpx;
+  margin-top: 20rpx;
+}
+.bannerMain .banner_item:nth-child(1){
+  margin-top: 0
+}
+.bannerMain .banner_item .content_image{
+  width: 300rpx;
+  height: 300rpx;
+  display: inline-block;
+  padding: 30rpx;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+.bannerMain .banner_item .content_image image{
+  width: 100%;
+  height: 100%;
+  background: #f4f4f4;
+}
+.bannerMain .banner_item .content_right{
+  display: inline-block;
+  height: 100%;
+  width: 390rpx;
+  padding: 30rpx 30rpx 30rpx 0;
+  box-sizing: border-box;
+}
+.bannerMain .banner_item .content_right .content_title{
+  font-size: 28rpx;
+  color: #333;
+  width: 100%;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  margin-bottom: 20rpx;
+  font-weight: 500;
+}
+.bannerMain .banner_item .content_right .content_tip{
+  font-size: 24rpx;
+  color: #999;
+  width: 100%;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 48rpx;
+  line-height: 24rpx;
+}
+.bannerMain .banner_item .content_right .content_data{
+  font-size: 24rpx;
+  margin-top:20rpx; 
+}
+.bannerMain .banner_item .content_right .content_money{
+  position: relative;
+  margin: 40rpx 0;
+}
+.bannerMain .banner_item .content_right .content_money .money_nownumber{
+  font-weight: 600;
+  color: #DF3852;
+}
+.bannerMain .banner_item .content_right .content_money .addShopcar{
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  background: #DD232F;
+  position: absolute;
+  right:0;
+  bottom: 0;
+}
+.bannerMain .banner_item .content_right .content_money .addShopcar image{
+  width: 100%;
+  height: 100%;
+}
+.bannerMain .banner_item .content_right .money_number{
+  font-size: 36rpx;
+}
+.bannerMain .banner_item .content_right .money_oldnumber{
+  font-size: 22rpx;
+  color: #999;
+  text-decoration: line-through;
+}
+.bannerMain .banner_more{
+  padding-top:20rpx;
+  height: 340rpx;
+}
+.bannerMain .banner_more>image{
+  width: 100%;
+  height: 340rpx;
+  border-radius: 8rpx;
+  /* //.. */
+}
+.bannerMain .banner_more_text {
+  line-height: 60rpx;
+  height: 60rpx;
+  font-size: 24rpx;
+  color: #999;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  /* bottom: 0; */
+  left: 50%;
+  transform: translateX(-50%)
+}
+.action_sheet_box {
+  padding: 30rpx 30rpx 0 30rpx;
+  /* min-height: 840rpx; */
+}
+.action_sheet_box .shop_info {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.action_sheet_box .shop_info_size {
+  width: 100%;
+  height: auto;
+  max-height: 360rpx;
+  position: relative
+}
+.action_sheet_box .shop_info_name {
+  height: 28rpx;
+  position: relative;
+}
+.action_sheet_box .shop_img {
+  height: 200rpx;
+  width: 200rpx;
+  /* position: absolute;
+  top: -85rpx; */
+  overflow: visible;
+  /* z-index: 1001 */
+}
+.action_sheet_box .shop_img>image {
+  height: 200rpx;
+  width: 200rpx;
+  overflow: visible;
+}
+.action_sheet_box .shop_size_color {
+  flex-grow: 2;
+  padding-left:15rpx;
+  position:absolute;
+  left:220rpx;
+  top:50rpx;
+}
+.action_sheet_box .shop_close {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.action_sheet_box .shop_close 
+.action_sheet_box  .shop_money {
+  font-size: 44rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  
+}
+.action_sheet_box .close_icon {
+  width: 43rpx;
+  height: 43rpx;
+    position:fixed;
+  top:30rpx;
+  right:30rpx;
+}
+.action_sheet_box .close_icon>image {
+  width: 43rpx;
+  height: 43rpx;
+}
+.action_sheet_box .shop_color_type>button {
+  margin-right: 30rpx;
+  margin-bottom: 20rpx;
+  padding: 0 20rpx;
+  height: 58rpx;
+  min-width: 124rpx;
+  max-width:750rpx; 
+  line-height: 58rpx;
+  text-align: center;
+  border-radius: 29rpx;
+  overflow: hidden;
+  font-size: 28rpx;
+  color: #666;
+  background: #fff;
+  border:1rpx solid #eee;
+  text-overflow: ellipsis;
+  display: -webkit-inline-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  font-weight: 400;
+  font-family: SimHei;
+}
+.action_sheet_box .shop_color_type.button_on>button {
+  color: #333;
+  background: #DD232F;
+  border:1rpx solid #DD232F;
+}
+.action_sheet_box .shop_color_type.button_off>button {
+  color: #666;
+  background: #cecece;
+  border:1rpx solid #cecece;
+  opacity: 0.5;
+}
+.action_sheet_box  .shop_stepper {
+  margin-top: 10rpx;
+  margin-bottom: 68rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.van-stepper .van-stepper__minus {
+  width: 60rpx!important;
+}
+.action_sheet_box .linetop{
+  width: 100%;
+  height: 2rpx;
+  background-color: #eee;
+  position: absolute;
+  bottom: 158rpx;
+  left: 0
+}
+.action_sheet_box .success_box {
+  padding: 30rpx 0rpx;
+  position: relative;
+}
+.action_sheet_box .success_button{
+  width: 100%;
+}
+.action_sheet_box .success_button>button {
+  display: block;
+  height: 98rpx;
+  line-height: 100rpx;
+  text-align: center;
+  border-radius: 50rpx;
+  overflow: hidden;
+  font-size: 36rpx;
+  color: #333;
+  font-weight: 600;
+  background: #DD232F;
+  border:1rpx solid #DD232F;
+  width: 100%;
+}
+/* 活动已过期 */
+.helpred_box_over {
+  width: 100%;
+  height: 100vh;
+  background: #f2f2f2;
+  text-align: center;
+}
+.helpred_box_over .clear_146 {
+  height: 146rpx;
+}
+.helpred_box_over .over_logo {
+  margin: 0 auto;
+  width: 360rpx;
+  height: 204rpx;
+}
+.helpred_box_over .over_logo>image {
+  width: 360rpx;
+  height: 204rpx;
+}
+.helpred_box_over .font_32.color_666 {
+  margin-top: 50rpx;
+}

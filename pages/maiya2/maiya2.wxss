@@ -1,0 +1,80 @@
+/* pages/maiya/maiya.wxss */
+@import "/static/css/common.wxss";
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #f2f2f2;
+}
+.back_pic{
+  text-align:center;
+  background:white;
+  overflow-y:auto; 
+}
+.button_replace {
+  position: fixed;
+  bottom:40rpx;
+  right: 30rpx;
+  width: 100rpx;
+  height: 80rpx;
+  background: transparent;
+  z-index: 99;
+}
+.line{
+  width: 120%;
+  height: 10rpx;
+  margin-top:30rpx;
+  margin-bottom: 25rpx;
+  border-bottom: 1rpx solid #F0f0f0;
+  margin-left: -17%;
+}
+/* 画图的css */
+.share-image {
+  width: 660rpx;
+  height: 975rpx;
+  margin: 0 45rpx;
+  /* border: 1px solid black; */
+  z-index: 1;
+  /* position:absolute; */
+}
+.background{
+  width: 600rpx;
+  height: 888rpx;
+  background: #000000;
+  opacity: 0.2;
+  position:absolute;
+  left: 78rpx;
+}
+
+button {
+  margin-top: 20rpx;
+}
+.wechat{
+  width:305rpx;
+  height:98rpx;
+  background:rgba(71,186,68,1);
+  border-radius:49px;
+  margin: 30rpx;
+  line-height: 98rpx;
+  text-align: center;
+  color: white;
+  display: inline-block
+}
+.wechat1{
+  width:305rpx;
+  height:98rpx;
+  background:#FF911B;
+  border-radius:49px;
+  margin: 30rpx;
+  line-height: 98rpx;
+  text-align: center;
+  color: white;
+   display: inline-block
+}
+.wechatimg{
+  width:40rpx;
+height:40rpx;
+top:5px;
+position:relative;
+
+}
+/* 画图的css */

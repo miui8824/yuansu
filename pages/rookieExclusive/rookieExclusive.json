@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "navigation": "/components/navigation/navigation",
+    "canvasdrawer": "/components/canvasdrawer/canvasdrawer",
+    "van-dialog": "../../dist/dialog/index"
+  },
+  "navigationBarTitleText": "新人专享"
+}

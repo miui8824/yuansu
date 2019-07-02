@@ -1,0 +1,112 @@
+<!--pages/myRegimentDetails/myRegimentDetails.wxml-->
+<import src="/wxParse/wxParse.wxml"/>
+  <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="{{title}}"
+>
+</navigation>
+<view class='order_box'>
+ <view style='width:100%;height:100%'>
+   <view class='order_list' wx:for="{{orderGoods}}" wx:for-index="index" wx:key="unique">
+    <view  class='back_hui '></view>
+        <view class='list_main'>
+           <view class='list_img' style='position:relative;'>
+            <view class="zhezhao" style=""></view>
+             <view class="zhezhao_wenzi">· 拼团 ·</view>
+              <image style="width:200rpx;height:200rpx" src='{{item.goodImg}}'></image>
+           </view>
+           <view class='list_text'>
+              <view class='list_name'>{{item.goodName}}</view>
+              <view class='list_size'>￥{{item.goodPrices}}</view>
+           </view>     
+        </view>
+  </view>
+ </view>
+</view>
+ <view  class='back_hui '></view>
+<view class='list_title' bindtap='GO_details'>
+    <view class='title_number' >
+      拼团信息     
+    </view>
+    <view wx:if="{{status==2}}" class="pintuaning" >
+      拼团中
+    </view>
+    <view wx:if="{{status==3}}" class="pintuaning" >
+      拼团成功
+    </view>
+    <view wx:if="{{status==4}}"  class="pintuaning" >
+      拼团失败
+    </view>
+</view>
+<view class='pintuan_infor'>
+    <view style='text-align:center;overflow:hidden;'>
+           <view style='margin-right:36rpx;width:95rpx;height:95rpx;display:inline-block;border-radius:50%;border:3rpx solid #FF262C;position:relative;vertical-align:top;' wx:for="{{items}}" wx:for-index="index" wx:key="unique" wx:if="{{index < 6}}">
+           <view  wx:if="{{item.isLeader==1}}" style='position:absolute;width:56rpx;height:26rpx;background:#FF262C;border-radius:13rpx;font-size:20rpx;color:white;bottom:2rpx;left:20rpx;'>团长</view>
+              <image src='{{item.headImageUrl}}' style='width:100%;height:100%;border-radius:50%;'></image>   
+           </view>
+          <image wx:if="{{all_data.userLimit-all_data.userCount!=0&&index<3}}"  wx:for="{{all_data.userLimit<5?all_data.userLimit-all_data.userCount:5-all_data.userCount-1}}"  wx:key="unique" src='https://file.maiyatown.com/images/v1.2/group_buy_img_empty.png' style='width:50px;height:50px;border-radius:50%;margin-right:36rpx;'></image>
+           <image wx:if="{{(all_data.userLimit>5)}}" src='https://file.maiyatown.com/images/v1.2/group_buy_img_more.png' style='width:50px;height:50px;border-radius:50%;'></image>
+           
+    </view>
+    <view style='text-align:center;overflow:hidden;'>
+       <view wx:if="{{status==2}}"  style='color:#666666;font-size:26rpx;margin-top:40rpx;margin-bottom:22rpx;'>仅剩<text style='color:#FF262C'>{{usercount}}人</text>，快呼唤小伙伴参加吧！</view> 
+       <view wx:if="{{status==2}}"  style='color:#333333;font-size:26rpx;font-weight:500;margin-bottom:30rpx;'>
+          <text style='color:#DDDDDD'>————  </text>
+          <text style='color:#333333;font-weight:500;font-size:30rpx;'>剩余{{day}}天 </text>
+          <view style='background:pink;color:#ff262c;tex-align:center;display:inline-block;width:32rpx;height:32rpx;line-height:32rpx;font-size:26rpx;'> {{hour}} </view>
+          <text style='tex-align:center'> : </text>
+          <view style='background:pink;color:#ff262c;tex-align:center;display:inline-block;width:32rpx;height:32rpx;line-height:32rpx;font-size:26rpx;'> {{minute}} </view>
+          <text style='tex-align:center'> : </text>
+          <view style='background:pink;color:#ff262c;tex-align:center;display:inline-block;width:32rpx;height:32rpx;line-height:32rpx;font-size:26rpx;'> {{second}} </view>
+          <text style='color:#333333;font-weight:500;tex-align:center'> 结 束 </text>
+          <text style='color:#DDDDDD'>  ————</text>
+       </view> 
+       <!-- overflow:hidden; text-overflow:ellipsis;white-space:nowrap; -->
+        <view  bindtap="goElespintuan"  style='width:620rpx;height:98rpx;background:#DD232F;border-radius:50rpx;text-align:center;line-height:98rpx;color:black;font-size:36rpx;margin:30rpx;'>
+      <view style=' overflow: hidden;text-overflow:ellipsis;white-space: nowrap;display:inline-block;'>参与</view>
+      <!-- <view class='test'></view> -->
+      <view style='overflow: hidden;text-overflow:ellipsis;white-space: nowrap;display:inline-block;max-width:160px'>{{items[0].nickName}}</view>
+      <view style='overflow: hidden;text-overflow:ellipsis;white-space: nowrap;display:inline-block;'>的拼团</view>
+    </view>
+    </view>
+
+</view>
+
+ <view style='width:100%;'>
+   <view style='height:30rpx;font-size:32rpx;color:#333333;font-weight:500;padding:30rpx;'>玩法规则</view>
+   <view class='guize' style='padding:20rpx;'>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    <!-- {{all_data.assembleSetting}} -->
+   </view>
+ </view>  
+  <view style='height:140px;'  class='back_hui'></view>
+  <view class='go_home' bindtap='goHome'>
+    <image src='https://file.maiyatown.com/images/myorder/waiting_icon_home.svg'></image>
+  </view> 
+
+    <!-- 帮开红包 -->
+  <view class='help_red_layer' wx:if="{{helpRedShow}}" catchtouchmove="{{true}}"></view>
+  <image class='help_red_guang' wx:if="{{helpRedOnShow}}" src='https://file.maiyatown.com/images/redEnvelopes/guang.png' catchtouchmove="{{true}}"></image>
+  <view class='help_red_box' wx:if="{{helpRedShow}}" catchtouchmove="{{true}}">
+    <image class='help_red_close' src='https://file.maiyatown.com/images/utils/icon_closed.png' bindtap='helpRedClose'></image>
+    <view wx:if="{{helpRedOnShow}}">
+      <image class='help_red_back' src='https://file.maiyatown.com/images/utils/red_envelope_on.png'></image>
+      <view class='help_red_main'>   
+        <view wx:if="{{isHelpRed}}" class='font_24 color_333 red_title'>您帮好友拆得</view>
+        <view wx:if="{{!isHelpRed}}" class='font_24 color_333 red_title'>恭喜获得现金红包！</view>
+        <view wx:if="{{!isHelpRed}}" class='red_money'>{{inviteeValue}}<text class='red_money_one'>元</text></view>
+        <view wx:if="{{isHelpRed}}" class='red_money'>{{inviterValue}}<text class='red_money_one'>元</text></view>
+        <view class='red_up'>最高{{redUp}}元</view>
+        <van-button wx:if="{{isHelpRed && !isEnd && !isDismantle && !redTotalOver}}" class='red_get' round size='small' hover-class="red_get_hover" bindtap='goRedPlay'>点击领取{{strDouble}}倍红包</van-button>
+        <van-button wx:if="{{isHelpRed && (isEnd || isDismantle || redTotalOver)}}" class='red_get' round size='small' hover-class="red_get_hover" bindtap='goHome'>去首页逛逛</van-button>
+        <van-button wx:if="{{!isHelpRed}}" class='red_get' round size='small' hover-class="red_get_hover" bindtap='goRedPlay'>领取红包</van-button>
+      </view>
+    </view>
+    <view class='help_red_front_box' wx:else bindtap='openHelpRed'>
+      <image class='help_red_back' src='http://file.shangyingds.com/images/v1.3.1/red_envelope_img.png' ></image>
+      <view class='red_up'>最高{{redUp}}元</view>
+    </view>
+  </view>
+
+<van-dialog id="van-dialog" />

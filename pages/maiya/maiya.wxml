@@ -1,0 +1,278 @@
+<!--pages/vipList/vipList.wxml-->
+<view bindtap='share_hide' wx:if="{{GetImage}}" style='position:absolute;width:100%;height:100%;background:black;opacity:0.3;z-index:1000;' catchtouchmove='{{true}}'>
+</view>
+<view bindtap='' catchtouchmove='{{true}}' wx:if="{{GetImage}}" class="container" style='z-index:1000;position:absolute;margin-top:105px;'>
+<!-- <view class='background'></view> -->
+  <image bindtap='share_hide' catchtouchmove='{{true}}' src="{{shareImage}}" class="share-image"></image>
+  <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage"/>
+
+  <!-- <button >绘制</button>
+  <button>保存到本地</button>  bind:tap="eventDraw"-->
+  <button catchtouchmove='{{true}}'  open-type='share'  class="wechat">
+    <image class="wechatimg" src='https://file.maiyatown.com/images/v1.2/explosion_icon_wechat.png'></image>
+  微信好友</button>
+  <button catchtouchmove='{{true}}'  bind:tap="eventSave"  class="wechat1">
+   <image class="wechatimg"  src='https://file.maiyatown.com/images/v1.2/explosion_icon_Img.png'></image>
+  保存图片</button>
+</view>
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="会员"
+>
+</navigation>
+
+<view class='vip_box' >
+  <view class='clear clear20 back_hui'></view>
+  <view class='vip_top_box'>
+    <view class='vip_user_box'>
+      <image class='vip_bgimg' src='https://file.maiyatown.com/images/v1.4/bg_img_weili.png'>
+      
+      </image>
+      <view class='user_left'>
+        <view class='user_img'>
+          <image src='{{alldata.userInfo.headImageUrl}}'></image>
+        </view>
+        <view class='mar_l_20'>
+          <view class='user_name'>{{alldata.userInfo.nickName}}</view>
+          <view class='user_lv' wx-if="{{alldata.userInfo.userLevelDesc=='普通用户'}}">普通用户</view>
+          <image wx-if="{{alldata.userInfo.userLevelDesc=='麦芽会员'}}" class='vip_icon' src='https://file.maiyatown.com/images/v1.4/maiya.png'></image>
+          <image wx-if="{{alldata.userInfo.userLevelDesc=='麦苗会员'}}" class='vip_icon' src='https://file.maiyatown.com/images/v1.4/maimiao.png'></image>
+          <image wx-if="{{alldata.userInfo.userLevelDesc=='麦穗会员'}}" class='vip_icon' src='https://file.maiyatown.com/images/v1.4/maisui.png'></image>
+        </view>
+      </view>
+      <view class='user_right' wx-if="{{alldata.userInfo.userLevel!=1}}">
+        <view class='user_copy_box' bindtap='copyText' data-text="{{alldata.userInfo.inviteCode}}">
+          <view class='user_copy' >复制</view>
+        </view>
+        <view style="width:107px;height:30rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;" class='user_id'><text>邀请码:</text>{{alldata.userInfo.inviteCode}}</view>
+      </view>
+    </view>
+    <view class="vip_process" wx-if="{{alldata.userInfo.userLevel!=1&&alldata.userInfo.userLevelDesc!='麦穗会员'}}">
+      <view class='vip_maiya' style='font-weight:bold'>
+      <!-- {{alldata.userInfo.userLevelDesc}} -->
+      <text wx-if="{{alldata.userInfo.userLevelDesc=='麦芽会员'}}">麦芽</text>
+      <text wx-if="{{alldata.userInfo.userLevelDesc=='麦苗会员'}}">麦苗</text>
+      <text wx-if="{{alldata.userInfo.userLevelDesc=='麦穗会员'}}">麦穗</text>
+      </view>
+      <view style='width:64%;left:15%;position:relative;'>
+           <view class='vip_processes' style='left:{{tag-1}}%;'>
+            <image src='https://file.maiyatown.com/images/v1.4/member_image_bubble.png'>15</image>
+            <text style='width:100%;height:100%;position:absolute;left:0;font-size:20rpx;'>{{tag}}</text>
+            <image src='https://file.maiyatown.com/images/v1.4/baidian.png'></image>
+            </view>
+      </view>
+     
+      <progress class="vip_shine" border-radius='3' id="progress" percent="{{tag}}" backgroundColor="#444444" color="#FFEFAA" />
+      <!-- {{alldata.userInfo.nextLevelDesc}} -->
+      <view wx-if="{{alldata.userInfo.nextLevelDesc=='麦苗会员'}}" class='vip_maimiao' style='font-weight:bold'><text>麦苗</text></view>
+       <view  wx-if="{{alldata.userInfo.nextLevelDesc=='麦穗会员'}}" class='vip_maimiao' style='font-weight:bold'><text>麦穗</text></view>
+      <view class='vip_group' style="">我的成长值：{{tag}}</view>
+       <view class='vip_leval' style="">升级等级：100</view>
+       <view style='width:80%;margin-left:50rpx;'>
+                   <!-- <van-progress
+                    style='width:100rpx'
+                    pivot-text=" "
+                    color="#FFEFAA"
+                    percentage="25"
+                  /> -->
+          <!-- <view style='margin-left:22%;display:inline-block;font-size:28rpx;'>
+            <image src='https://file.maiyatown.com/images/v1.4/baidian.png'></image>
+          </view> -->
+       </view>
+       
+
+    </view>
+
+    <view class='clear clear10'></view>
+    <view class='money_box'>
+      <view class='money_all'>
+        <text class='color_999'>累计总收益：</text>
+        <text>{{Total_revenue}}元</text>
+      </view>
+      <view class='money_main'>
+        <image src='https://file.maiyatown.com/images/v1.4/huiyuan_img.png'></image>
+        <view class='today_finit' >
+           <view style='font-size:24rpx;margin:40rpx 0 10rpx 0'>今日收益(元)</view>
+           <view style='height:145rpx;line-height:145rpx;'>
+                <view wx-if="{{todayCommission!='****'}}" style='font-size:76rpx;color:#333333;font-weight:600;display:inline-block;vertical-align:middle;'>{{todayCommission}}</view>
+                 <view wx-if="{{todayCommission=='****'}}"  style='font-size:100rpx;color:#333333;font-weight:600;display:inline-block;vertical-align:middle;'>{{todayCommission}}</view>
+
+                    <image bindtap="show_hide" src='https://file.maiyatown.com/images/maiya/find.svg' style='width:50rpx;height:40rpx;position:absolute;margin-top:8%;margin-left:20rpx;'wx-if="{{litteraye}}"></image>
+                    <image bindtap="show_hide" src='https://file.maiyatown.com/images/maiya/yicang.svg' style='width:50rpx;height:40rpx;position:absolute;margin-top:8%;margin-left:20rpx;'wx-if="{{!litteraye}}"></image>
+           </view>
+           <view style='display:flex;justify-content:space-around;color:#333333' bindtap='goDetails'>
+             <view style='width:230rpx;border-right:1rpx solid #333333'>
+                <view style='font-size:32rpx;font-weight:600;'>{{weekCommission}}</view>
+                <view style='font-size:22rpx;'>本周收益(元)</view>
+             </view>
+             <view style='width:230rpx;border-right:1rpx solid #333333'>
+                <view style='font-size:32rpx;font-weight:600;'>{{monthCommission}}</view>
+                <view style='font-size:22rpx;'>本月收益(元)</view>
+             </view>
+             <view style='width:230rpx;'>
+                <view style='font-size:32rpx;font-weight:600;'>{{unPayCommission}}</view>
+                <view style='font-size:22rpx;'>待结算(元)</view>
+             </view>
+           </view>
+        </view>
+      </view>
+    </view>
+    <view>
+       
+    </view>
+    <image wx-if="{{alldata.userInfo.userLevel!=1&&vippackage_isshow==true}}" bindtap='govip' src='https://file.maiyatown.com/images/v1.4/yaoqing.jpg' style='width:100%;height:200rpx;'></image>
+  <view wx-if="{{alldata.userInfo.userLevel!=1}}">
+    
+     <view class='today_title' style='padding-left:30rpx;' wx-if="{{renwu.length!=0}}">
+      <text class='icon_icon'></text>
+      <text style='margin-right:17rpx;font-weight:600;'>任务中心</text>
+      <image src='https://file.maiyatown.com/images/v1.4/member_image_red_bubble.png' style='width:198rpx;height:28rpx;'></image>
+    </view>
+    <view class='vip_zhutui'  wx:for="{{renwu}}"  wx:key="{{index}}">
+       <view class='vip_zhutuiimg' bindtap='renwu_godetails'data-id="{{item.id}}" data-left="{{true}}" data-activityid="{{item.activityId}}">
+          <image style="" src='{{item.goodImg}}'></image>
+       </view>
+       <view bindtap='renwu_godetails' data-id="{{item.id}}" data-left="{{true}}" data-activityid="{{item.activityId}}">
+          <view class='vip_title' >{{item.title}}</view>
+          <view style='font-size:24rpx;color:#FF262C'>{{item.recommended}}</view>
+       </view>
+       <view>
+          <view class='vip_share' bind:tap="eventDraw" data-item="{{item}}">
+             <!-- <text>立即分享</text> -->
+             <button>立即分享</button>
+          </view>
+       </view>
+    </view>
+    <view class='vip_more' bindtap='click_more'wx-if="{{jiazaimore}}" >
+        <text >{{more_text}}</text>
+    </view>
+  </view>
+  </view>
+   <view class='clear clear20 back_hui' wx-if="{{alldata.userInfo.userLevel==1}}"></view>
+   <view style='background:white;padding:30rpx 0 0 0;' wx-if="{{alldata.userInfo.userLevel==1}}">
+      <view style='padding-left:30rpx;'>
+        <view style="font-size:26rpx;color:#333333">我的粉丝(人)</view>
+        <view style="display: flex;align-items: center;justify-content:space-between;margin:30rpx 0 30rpx 0;">
+           <view>{{alldata.userFunAndInviter.funsCount}}</view>
+           <view style='text-align:center;width:280rpx;border-right:1px solid #EEEEEE'>
+             <view style='font-size:26rpx;'>今日</view>
+             <view style='font-size:28rpx;'>{{alldata.userFunAndInviter.todayFuns}}</view>
+           </view>
+            <view>
+           <view style='text-align:center;margin-right:30rpx;'>
+             <view style='font-size:26rpx;'>昨日</view>
+             <view style="font-size:28rpx;">{{alldata.userFunAndInviter.yesterdayFuns}}</view>
+           </view>
+        </view>
+        </view>
+       
+      </view>
+      <view style='font-size:32rpx;color:#333333;height:100rpx;line-height:100rpx;border-top:1px solid #EEEEEE;border-top:1px solid #EEEEEE' bindtap='show_inviter'>
+      <text style="margin-left:30rpx;">我的邀请人</text>
+      <text wx-if="{{alldata.userFunAndInviter.inviterHeadImg==null}}" style="position:absolute;right:100rpx;">无邀请人</text>
+             <image src='https://file.maiyatown.com/images/maiya/after_sale_icon_more.svg' style='width:32rpx;height:32rpx;margin-left:65%;margin-top:20rpx;' wx-if="{{inviter_show}}"></image>
+       <image src='https://file.maiyatown.com/images/maiya/after_sale_icon_spread.svg' style='width:32rpx;height:32rpx;margin-left:65%;margin-top:20rpx;'  wx-if="{{!inviter_show}}"></image>
+      </view>
+    <view wx-if="{{!inviter_show}}" style='margin-top:15rpx; top:-6px;position:relative;margin:0 30rpx 0 30rpx'>
+        <image src='{{alldata.userFunAndInviter.inviterHeadImg}}' style='width:80rpx;height:80rpx;border-radius:50%;margin-top:15rpx'></image>
+        <view style="display:inline-block;height:100rpx;position:absolute;line-height:100rpx;left:15%;width:400rpx; overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+           <text style='font-size:28rpx;'>{{alldata.userFunAndInviter.inviterNickName}}</text>    
+        </view>
+        <view style="display:inline-block;position:absolute;line-height:26rpx;right:40rpx;width:100rpx;font-size:26rpx;height:52rpx;top:25rpx;">
+            <text style="font-size:26rpx;line-height:26rpx;">{{alldata.userFunAndInviter.inviterTime}}</text>
+        </view>
+      </view>
+   </view>
+   <view class='clear clear20 back_hui'  wx-if="{{alldata.userInfo.userLevel!=1}}"></view>
+   <view class='yanjiuyuan' wx-if="{{alldata.userInfo.userLevel!=1}}">
+       <view class='yanjiu' style='padding-left:30rpx;font-weight: 600;'>
+        <text class='icon_icon'></text>
+        <text>研究院</text>
+      </view>
+      <view style='background:white;padding:30rpx;'>
+        <view class='research' data-item="{{item}}" bindtap='research' wx:for="{{alldata.articleCatInfoList}}" wx:key="{{index}}">
+        <!-- ../../images/v1.4/member_image_training.png -->
+          <image style="width:100%;height:100%" src='{{item.showImage}}'></image>
+        </view>
+         <!-- <view class='research_one' bindtap='research_one' >
+          <image src='https://file.maiyatown.com/images/v1.4/member_image_style.png' style="width:100%;height:100%"></image>
+        </view>
+         <view class='research_two' bindtap='research_two' >
+          <image src='https://file.maiyatown.com/images/v1.4/member_image_salon.png' style="width:100%;height:100%"></image>
+        </view>
+         <view class='research_three' style='' bindtap='research_three' >
+          <image src='https://file.maiyatown.com/images/v1.4/member_image_material.png' style="width:100%;height:100%"></image>
+        </view> -->
+      </view>
+   </view>
+  <view class='clear clear20 back_hui' wx-if="{{alldata.userInfo.userLevel!=1}}"></view>
+    <view style="" class='my_tools' wx-if="{{alldata.userInfo.userLevel!=1}}">
+      <view class='my_toolsimg' style='padding-left:30rpx;font-weight: 600;'>
+          <text class='icon_icon'></text>
+          <text>我的工具</text>
+      </view>
+      <view style='display: flex;align-items: center;justify-content:space-around;padding:40rpx 30rpx 40rpx 30rpx;background:white; '>
+        <view style='text-align:center;color:#666666;font-size:28rpx;position:relative;' wx:for="{{my_gongju}}" wx:key="{{index}}" bindtap='Mytools' data-item="{{item}}">
+           <view wx-if="{{index==2&&alldata.commissionInfo.revenueNums!=0 }}" style="{{alldata.commissionInfo.revenueNums<100 ? 'width:36rpx;border-radius:50%;height:36rpx;line-height:36rpx;left:68%;top:-6rpx;' : 'width:64rpx;border-radius:16rpx;top:-6rpx;left:66%;height:36rpx;line-height:36rpx;'}}background:red;position:absolute;">
+               <text style='color:white;font-size:22rpx;display:inline-block;height:36rpx;line-height:36rpx;vertical-align:top;width:100%;text-align:center;'>{{alldata.commissionInfo.revenueNums>99 ? '99+': alldata.commissionInfo.revenueNums}}</text>
+           </view>
+          <image src='{{item.src}}'  style='width:88rpx;height:88rpx'></image>
+          <view>{{item.text}}</view>
+        </view>
+      </view>
+    </view>
+  
+  <view class='clear clear20 back_hui' wx-if="{{alldata.bannerList.length!=null}}"></view>
+  <view class='today_message_box' wx-if="{{alldata.bannerList.length!=null}}">
+    <view class='today_title'>
+      <text class='icon_icon'></text>
+      <text>今日主推</text>
+    </view>
+    <view class='message_main'>
+      <view class='message_item' wx:for="{{alldata.bannerList}}" wx:key="{{index}}" bindtap='today_push' data-item="{{item}}">
+        <image src='{{item.bannerUrl}}'></image>
+          
+      </view>    
+    </view>
+  </view>
+  <view class='clear clear20 back_hui' wx-if="{{guess_list.length>=3}}"></view>
+  <view class="vip_lunbo" wx-if="{{guess_list.length>=3}}">
+  <image style="width:60%;height:30rpx;margin-bottom:30rpx;" src="https://file.maiyatown.com/images/v1.4/xinxin.png"></image>
+        <swiper
+         style='height:200px;'
+          indicator-dots="{{panudanguess.length<=3?false:true}}"
+          autoplay="{{autoplay}}"
+          interval="{{interval}}"
+          duration="{{duration}}"
+          indicator-active-color='#DD232F'
+          current="{{current}}"
+        >
+          <block wx:for="{{guessresultList}}" wx:key="{{index}}">
+            <swiper-item>
+              <!-- <image src="{{item}}" class="slide-image" width="355" height="150" /> -->
+               <view bindtap='vipguess' class='vip_guess' wx:for="{{item.array}}" wx:for-item="value" wx:key="index2"  data-id="{{value.id}}" data-left="{{true}}" data-activityid="{{value.activityId}}">
+               <image style='width:216rpx; height:216rpx;border-radius:8rpx;' src='{{value.goodImg}}'></image>
+                 <view class='guess_title'  >{{value.title}}</view>
+                 <view wx-if="{{value.price}}" class='guess_price' >￥{{value.price}}</view>
+               </view>
+               <!-- <view style="width:216rpx;height:82%;display:inline-block;margin-right:20rpx">
+               <image style='width:216rpx; height:216rpx;' src='https://file.maiyatown.com/images/v1.4/shuju.png'></image>
+                 <view style='font-size:26rpx;color:#101010'>lalala</view>
+                 <view style='font-size:26rpx;color:#FF262C'>￥19.90</view>
+               </view>
+               <view style="width:216rpx;height:82%;display:inline-block;">
+               <image style='width:216rpx; height:216rpx;' src='https://file.maiyatown.com/images/v1.4/shuju.png'></image>
+                 <view style='font-size:26rpx;color:#101010'>lalala</view>
+                 <view style='font-size:26rpx;color:#FF262C'>￥19.90</view>
+               </view> -->
+            </swiper-item>
+          </block>
+        </swiper>
+  </view>
+    <me-nav tabbar="{{tabbar}}"></me-nav>
+    <button class='button_replace' data-mai="mai"   bind:tap="eventDraw" ></button>
+  <view style='height:80px;' class='clear clear20 back_hui'></view>
+  
+</view>
+

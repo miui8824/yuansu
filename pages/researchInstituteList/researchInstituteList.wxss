@@ -1,0 +1,113 @@
+@import "/static/css/common.wxss";
+.container-all{
+width: 100%;
+height: 100%;
+}
+.bg-img{
+width: 100%;
+height: 100%;
+display: block;
+}
+
+page {
+  background: #f2f2f2;
+  min-height: 100%;
+}
+
+.list{
+  padding: 20rpx 30rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+  position: relative;
+}
+
+.list .listItem{
+  height: 220rpx;
+  padding-top:20rpx;
+  box-sizing:border-box;
+}
+
+.list .listItem .mediaBox{
+  height: 180rpx;
+  width: 310rpx;
+  border-radius: 8rpx;
+  display: inline-block;
+}
+
+.list .listItem .mediaBox>image{
+  height: 180rpx;
+  width: 310rpx;
+  border-radius: 8rpx;
+}
+
+.list .listItem .mediaBox>video{
+  height: 180rpx;
+  width: 310rpx;
+  border-radius: 8rpx;
+}
+
+.list .listItem .infoBox{
+  height: 180rpx;
+  width: 335rpx;
+  margin-left: 30rpx;
+  position: relative;
+  display: inline-block;
+}
+
+.list .listItem .infoBox .title{
+  position: absolute;
+  color: #333;
+  font-size: 28rpx;
+  font-weight: 500;
+  width: 336rpx;
+  height:76rpx;
+  text-overflow: ellipsis;
+  word-break:break-all;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+}
+
+.list .listItem .infoBox .date{
+  position: absolute;
+  color: #999;
+  font-size: 26rpx;
+  top: 85rpx;
+}
+
+.list .listItem .infoBox .type{
+  position: absolute;
+  color: #37AB26;
+  font-size: 28rpx;
+  top:130rpx;
+}
+
+.emptyBox{
+  width:100%;
+  height:83vh;
+  text-align:center;
+  background: #f2f2f2;
+}
+
+.emptyBox image{
+  width:360rpx;
+  height:204rpx;
+  margin-top:20%;
+}
+
+.emptyBox view{
+  color:#666666;
+  font-size:32rpx;
+  margin-top:40rpx;
+}
+
+.bottom_line{
+  line-height: 84rpx;
+  height: 84rpx;
+  font-size: 24rpx;
+  color: #999;
+  width: 100%;
+  text-align: center;
+  background: #f2f2f2;
+}

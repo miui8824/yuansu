@@ -1,0 +1,38 @@
+<!--pages/maiyaBalanceDetail/maiyaBalanceDetail.wxml-->
+<navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="明细"
+>
+</navigation>
+
+
+<view class='balance_box'>
+  <van-tabs active="{{ navActive }}" style="font-weight:bold;position:fixed;z-index:999;width:100%;top:{{88+statusBarHeight}}rpx;" bind:change="tabChange">
+    <van-tab title="{{item}}" wx:for="{{navNames}}" wx:key="{{index}}"></van-tab>
+  </van-tabs>
+
+
+  <view class='emptyBox' wx:if="{{list.length==0}}">
+    <image
+          mode="{{mode}}"
+          src="https://file.maiyatown.com/images/afterSale_none/sale_empty.png"
+    ></image>
+    <view>暂无明细~</view>
+  </view>
+
+  <view class='list_box' wx:else>
+    <view class='balanceList' wx:for="{{list}}" wx:key="{{item.id}}">
+      <view class='imgBox'>
+        <image src='https://file.maiyatown.com/images/v1.3/pending_balanceicon_icon_available.png' wx:if="{{item.acctTransType==8}}"></image>
+        <image src='{{item.headImageUrl}}' wx:else></image>
+      </view>
+      <view class='infoBox'>
+        <view class='name' wx:if="{{item.acctTransType==8}}">转入可提现余额</view>
+        <view class='name' wx:else>{{item.nickName}}</view>
+        <view class='time'>{{item.acctDateValue}}</view>
+      </view>
+      <view class='moneyBox' style="color:{{item.dcType=='D' ? '#ff262c':'#333'}}">{{item.acctAmtValue}}</view>
+    </view>
+  </view>
+</view>

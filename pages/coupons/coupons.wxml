@@ -1,0 +1,72 @@
+<!--pages/coupons/coupons.wxml-->
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="券包"
+>
+</navigation>
+<view class='coupons_box back_hui'>
+  <van-tabs active="{{ navActive }}" style="font-weight:bold;position:fixed;z-index:999;width:100%;" bind:change="tabChange">
+    <van-tab title="{{item}}" wx:for="{{navNames}}" wx:key="{{index}}">
+
+    </van-tab>
+  </van-tabs>
+  <view class='no_order_box' wx:if="{{noCouponsArr[navActive]}}">
+    <view>
+      <image class='no_order_logo' src='https://file.maiyatown.com/images/coupons/tu.png' />
+      <view class='no_order_text'>您还没有券哦~</view>
+      <!-- <view class='no_order_button' bindtap='goHome'>去首页逛逛~</view> -->
+    </view>
+  </view>
+  <scroll-view class='scroll_view list_box' scroll-y="true" wx:else scroll-top="{{scrollTop}}" bindscrolltolower="loadMore">
+    <view class='list_box_box'>
+      <view class='coupons_item' wx:for="{{couponsList}}" wx:key="{{index}}">
+
+
+
+        <!-- 电商优惠券 -->
+        <view class='coupons' wx:if="{{item.prizeType!=15}}">
+          <image wx:if="{{navActive==0}}" src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621163227415.png' />
+          <image wx:else src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621163117852.png' />
+          <view class='item_left'>
+            <view class="item_money color_333 {{navActive==0?'':'color_fff'}}">{{item.couponValue}}</view>
+            <view class="item_limit color_333 {{navActive==0?'':'color_fff'}}">{{item.investMoney==0?'':'·满'}}{{item.investMoney==0?'':item.investMoney}}{{item.investMoney==0?'·无门槛使用·':'元可用·'}}</view>
+          </view>
+
+          <view class='item_right'>
+            <view class='item_name color_333 font_28'>{{item.activityName}}</view>
+            <view class='item_type color_999 font_24'>国内商品可用</view>
+            <view class='item_use'>
+              <view class='item_time color_999 font_22'>{{item.activityTimeType==1?'长期有效':item.startTimeValue+'至'+item.endTimeValue}}</view>
+              <van-button round size="small" class='item_button' wx:if="{{navActive==0}}" bind:tap="goHome">去使用</van-button>
+            </view>
+          </view>
+
+        </view>
+        <!-- 实物券 -->
+        <view class='coupons' wx:else>
+
+          <image wx:if="{{navActive==0}}" src='https://file.maiyatown.com/images/coupons/shiwuquan_x.png' />
+          <image wx:else src='https://file.maiyatown.com/images/coupons/shiwuquan_m.png' />
+
+          <view class='item_left'>
+            <view class='clear clear20'></view>
+            <view class="item_money color_333 {{navActive==0?'':'color_fff'}}">奖品</view>
+          </view>
+
+          <view class='item_right'>
+            <view class='item_name color_333 font_28'>{{item.prizeName}}</view>
+            <view class='item_type color_999 font_24'>领券码：{{item.couponNo}}</view>
+            <view class='item_use'>
+              <view class='item_time color_999 font_22'>{{item.activityName}}</view>
+              <van-button round size="small" class='item_button' wx:if="{{navActive==0}}" data-couponid='{{item.id}}' bind:tap="goExchange">去兑换</van-button>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </view>
+    <import src="../../template/baseLine/baseLine.wxml" />
+    <template is="baseLine" wx:if="{{couponsList.length>6}}"></template>
+  </scroll-view>
+</view>

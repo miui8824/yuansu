@@ -1,0 +1,37 @@
+<!--pages/customersManagement/customersManagement.wxml-->
+<navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="{{title}}"
+>
+</navigation>
+<view class='mainBox'>
+  <van-tabs active="{{ navActive }}" style="font-weight:bold;position:fixed;z-index:999;width:100%;top:{{88+statusBarHeight}}rpx;" bind:change="tabChange" line-width="60">
+    <van-tab title="{{item}}" wx:for="{{navNames}}" wx:key="{{index}}"></van-tab>
+  </van-tabs>
+
+  <view class='emptyBox' wx:if="{{list.length==0}}">
+    <image
+          mode="{{mode}}"
+          src="https://file.maiyatown.com/test/images/afterSale_none/sale_empty.png"
+    ></image>
+    <view>暂无客户信息~</view>
+  </view>
+
+  <view class='list_box' wx:else>
+    <view class='customersList' wx:for="{{list}}" wx:key="{{item.id}}">
+      <view class='imgBox'>
+        <image src='{{item.headImageUrl}}'></image>
+      </view>
+      <view class='infoBox'>
+        <view class='name'>{{item.nickName}}</view>
+        <view class='time'>{{item.createTime}}</view>
+      </view>
+      <view class='moneyBox'>贡献 ¥{{item.amt}}</view>
+    </view>
+  </view>
+    <!-- 底线 -->
+  <view wx:if="{{showNomore&&list.length!=0}}" class='bottom_line' id='btLine'>
+    ~~我也是有底线的~~
+  </view>
+</view>

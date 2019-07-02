@@ -1,0 +1,157 @@
+/* pages/myIntegral/myIntegral.wxss */
+@import "/static/css/common.wxss";
+page {
+  width: 100%;
+  /* height: 100vh;
+  overflow: hidden; */
+  background: #f2f2f2;
+}
+.top{
+width:100%;
+position: relative;
+float: left;
+color:#fff;
+}
+.top_img{
+  width:100%;
+  float: left;
+  height: 330rpx;
+}
+.top_num{
+  position: absolute;
+  font-weight: 600;
+  width: 300rpx;
+  font-size: 90rpx;
+  top:70rpx;
+  left:50%;
+  margin-left: -150rpx;
+  text-align: center;
+}
+.top_tip{
+  position: absolute;
+  width: 300rpx;
+  left: 50%;
+  top:200rpx;
+  font-size: 28rpx;
+  margin-left: -150rpx;
+  text-align: center;
+}
+
+.table{
+  float: left;
+  width: 100%;
+  display: table;
+}
+.th,.row{
+  width: calc(100% - 60rpx);
+  float: left;
+  border-bottom: 2rpx solid #eeeeee;
+  display: table-cell;
+  padding: 0 30rpx;
+  background: #fff;
+}
+.th{
+  height: 100rpx;
+  font-weight: bold;
+  font-size: 33rpx;
+    line-height: 100rpx;
+}
+.th .col1{
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.row{
+  font-size: 28rpx;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+.row .col2{
+  font-size: 31rpx;
+}
+
+.col1,.col2,.col3{
+display: table-cell;
+vertical-align:middle;
+float: left;
+}
+.col1{
+  width:33%;
+  text-align: left
+}
+.col2{
+  width:33%;
+  text-align: center;
+   overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.col3{
+  text-align: right;
+  width: 33%;
+  height: calc(100% - 40rpx);
+  /* margin-left: 20px */
+}
+.col2{
+  height: calc(100% - 40rpx);
+}
+.col1{
+  color:#999999;
+  width:230rpx;
+  height: 120rpx;
+  line-height: 40rpx;
+  padding-top:25rpx;
+
+}
+.th .col3,.th .col2,.th .col1{
+  height: 100%;
+  padding:0;
+  color: #333333
+}
+.col3 image{
+  width: 25rpx;
+  float: right;
+  height: 120rpx;
+  margin-left:6rpx;
+  /* margin-top:3rpx; */
+}
+.integ{
+  float: right;
+  text-align: right;
+  color: #ff262c;
+  font-weight: 600;
+  margin-right:4rpx;
+
+}
+.th .col3{
+  text-align: right;
+}
+.none{
+  width: 100%;
+  background: #f2f2f2;
+  float: left;
+  text-align: center
+}
+.none image{
+  width: 359rpx;
+  height: 204rpx;
+  margin-top: 124rpx
+}
+.none text{
+  position:relative;
+  top:28rpx;
+
+}
+page{
+  height: 100%;
+  width: 100%
+}
+.button_tip {
+  font-size: 24rpx;
+  line-height: 24rpx;
+  height: 24rpx;
+  color: #fff;
+  background: #f2f2f2;
+  text-align: center;
+  padding-top: 30rpx;
+  padding-bottom: 50rpx;
+}

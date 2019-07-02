@@ -1,0 +1,138 @@
+/* pages/advancedTraining/advancedTraining.wxss */
+@import "/static/css/common.wxss";
+.container-all{
+width: 100%;
+height: 100%;
+}
+.bg-img{
+width: 100%;
+height: 100%;
+display: block;
+}
+
+page {
+  background: #f2f2f2;
+  min-height: 100%;
+}
+
+.topSwiper{
+  height: 442rpx;
+  margin-top: 20rpx;
+  background-color: #fff;
+}
+
+.topSwiper .swiper_box{
+  height: 100%;
+  padding: 10rpx 30rpx 10rpx 10rpx;
+}
+
+.topSwiper .swiper_box .slide-image{
+  height: 160rpx;
+  width: 334rpx;
+  border-radius: 8rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+}
+
+
+.hotRecommend{
+  background-color: #fff;
+  margin-top: 18rpx;
+}
+
+.hotRecommend .titleBox{
+  height: 88rpx;
+  line-height: 88rpx;
+  border-bottom: 2rpx solid #eee;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.hotRecommend .titleBox .leftBorder{
+  display: inline-block;
+  width: 6rpx;
+  height: 32rpx;
+  background-color: #fed02f;
+  border-radius: 3rpx;
+  margin-top:32rpx;
+}
+
+.hotRecommend .titleBox text{
+  display: inline-block;
+  line-height: 88rpx;
+  color: #333;
+  font-size: 32rpx;
+  font-weight: 500;
+  vertical-align:top;
+  margin-left: 20rpx;
+}
+
+.hotRecommend .list{
+  padding: 20rpx 30rpx;
+}
+
+.hotRecommend .list .listItem{
+  height: 220rpx;
+  padding-top:20rpx;
+  box-sizing:border-box;
+}
+
+.hotRecommend .list .listItem .mediaBox{
+  height: 180rpx;
+  width: 310rpx;
+  border-radius: 8rpx;
+  display: inline-block;
+}
+
+.hotRecommend .list .listItem .mediaBox>image{
+  height: 180rpx;
+  width: 310rpx;
+  border-radius: 8rpx;
+}
+
+.hotRecommend .list .listItem .infoBox{
+  height: 180rpx;
+  width: 335rpx;
+  margin-left: 30rpx;
+  position: relative;
+  display: inline-block;
+}
+
+.hotRecommend .list .listItem .infoBox .title{
+  position: absolute;
+  color: #333;
+  font-size: 28rpx;
+  font-weight: 500;
+  width: 336rpx;
+  height:76rpx;
+  text-overflow: ellipsis;
+  word-break:break-all;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+}
+
+.hotRecommend .list .listItem .infoBox .date{
+  position: absolute;
+  color: #999;
+  font-size: 26rpx;
+  top: 85rpx;
+}
+
+.hotRecommend .list .listItem .infoBox .type{
+  position: absolute;
+  color: #37ab26;
+  font-size: 28rpx;
+  top:130rpx;
+}
+
+.bottom_line{
+  line-height: 84rpx;
+  height: 84rpx;
+  font-size: 24rpx;
+  color: #999;
+  width: 100%;
+  text-align: center;
+  background: #f2f2f2;
+}

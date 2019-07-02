@@ -1,0 +1,9 @@
+{
+  "navigationBarBackgroundColor": "#ff262c",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#ffffff",
+  "usingComponents": {
+    "van-toast": "../../dist/toast/index",
+    "navigation": "/components/navigation/navigation"
+  }
+}

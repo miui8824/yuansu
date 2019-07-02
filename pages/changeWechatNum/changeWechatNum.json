@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "微信修改",
+  "usingComponents": {
+    "navigation": "/components/navigation/navigation"
+
+  }
+}

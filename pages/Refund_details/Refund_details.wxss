@@ -1,0 +1,325 @@
+/* pages/Refund_details/Refund_details.wxss */
+page{
+  height:100%;
+  background-color: rgb(242, 242, 242);
+}
+
+.refundSuccess .refundSuccessNum{
+  border-top: 2rpx solid #eee;
+  margin-top:80rpx;
+  padding-left:30rpx;
+}
+.refundSuccess .refundSuccessNum text{
+  display: inline-block;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.rejectedBanner{
+  height: 200rpx;
+  width: 100%;
+  position: relative;
+}
+
+.rejectedBanner .refundRejected{
+  position: absolute;
+  top:0rpx;
+  font-size: 50rpx;
+  margin:56rpx 0 20rpx 31rpx;
+  font-weight: bold;
+}
+
+.rejectedBanner .refundTime{
+  position: absolute;
+  top: 123rpx;
+  margin-left: 31rpx;
+  font-size: 28rpx;
+}
+
+.rejectedBanner image{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.rejectedTips{
+  height: 100%;
+  line-height: 38rpx;
+  font-size: 32rpx;
+  background-color: #fff;
+  padding: 30rpx 30rpx 30rpx 28rpx;
+  word-break:break-all;
+  white-space:pre-wrap;
+}
+
+.rejectLogistic{
+  color: #666;
+  font-size: 28rpx;
+  background-color: #fff;
+  padding-left: 30rpx;
+  padding-bottom: 40rpx;
+}
+
+.rejectedUrlList{
+  background-color: #fff;
+}
+
+.rejectedUrlList image{
+  width:150rpx;
+  height:150rpx;
+  border-radius:8rpx;
+  margin-left: 30rpx;
+}
+
+.cancelBanner{
+  height: 200rpx;
+  width: 100%;
+  position: relative;
+}
+
+.cancelBanner .refundClose{
+  position: absolute;
+  font-size: 50rpx;
+  margin:56rpx 0 20rpx 31rpx;
+  font-weight: bold;
+}
+
+.cancelBanner .refundTime{
+  position: absolute;
+  top: 123rpx;
+  margin-left: 31rpx;
+  font-size: 28rpx;
+}
+
+.cancelBanner image{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.cancelTips{
+  height: 100rpx;
+  width: 100%;
+  background-color: #fff;
+  padding-left: 30rpx;
+}
+
+.cancelTips text{
+  height: 100%;
+  line-height: 100rpx;
+  font-size: 32rpx
+}
+
+.contact{
+  width: 200rpx;
+  height: 98rpx;
+  position: fixed;
+  bottom: 30rpx;
+  right: 30rpx;
+  float: right;
+}
+
+.contact image{
+  width: 200rpx;
+  height: 98rpx;
+  position: absolute;
+  right: 0rpx;
+  bottom: 0rpx;
+}
+
+.contact .gohome{
+  position: absolute;
+  left: 0;
+  width: 100rpx;
+  height: 98rpx;
+  display: inline-block;
+  opacity: 0;
+}
+
+.contact .service{
+  position: absolute;
+  right: 0;
+  width: 100rpx;
+  height: 98rpx;
+  display: inline-block;
+  opacity: 0;
+}
+
+.refundLogisticInfo{
+  background: #fff;
+  /* width: 100%; */
+  padding:40rpx 50rpx 10rpx 30rpx; 
+  margin-top: 20rpx;
+}
+
+.refundLogisticInfo view{
+  margin-bottom: 30rpx;
+}
+
+.refundLogisticInfo .first{
+  display: block;
+  color: #333;
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+  font-weight: 600;
+}
+.refundLogisticInfo .second{
+  color: #666;
+  font-size: 32rpx;
+  width: 100%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+}
+
+.refundLogisticInfo .second1{
+  color: #666;
+  font-size: 32rpx;
+  width: 100%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+}
+
+
+.prepareRefund .waitText{
+  border-top: 2rpx solid #eee;
+  height: 100rpx;
+  line-height: 100rpx;
+  padding-left: 30rpx;
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.waitText2{
+  border-top: 2rpx solid #eee;
+  height: 100rpx;
+  line-height: 100rpx;
+  padding-left: 30rpx;
+  font-size: 32rpx;
+  color: #333;
+  margin-top: 50rpx;
+}
+
+.prepareRefund .prepareRefundBox{
+  height: 166rpx;
+  background-color: #fafafa;
+  text-align: center;
+  padding-top: 33rpx;
+  margin-top:50rpx;
+}
+
+.prepareRefund .prepareRefundBox .prepareText{
+  color: #333;
+  font-size: 32rpx;
+}
+
+.prepareRefund .prepareRefundBox .leftRefundTime{
+  margin-top: 36rpx;
+  font-size: 24rpx;
+  color: #333;
+}
+.prepareRefund .prepareRefundBox .leftRefundTime text{
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  border-radius: 4rpx;
+  color: #fff;
+  font-size: 24rpx;
+  background-color: #ff262c;
+  margin: 0 10rpx;
+}
+
+.prepareRefund .fillLogistic{
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.prepareRefund .fillLogistic view{
+  width:220rpx;
+  height:68rpx;
+  border:2rpx solid rgba(51,51,51,1);
+  border-radius:34rpx;
+  font-size: 28rpx;
+  color: #333;
+  margin:30rpx auto 0;
+  line-height:68rpx;
+  text-align:center;
+}
+
+.completeRefund .refundSuccessNum{
+  height: 166rpx;
+  padding: 30rpx;
+  box-sizing:border-box;
+  border-top: 2rpx solid #eee;
+}
+
+.completeRefund .refundSuccessNum .title{
+  color: #333;
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
+  font-weight: 500;
+}
+
+.refundGoodsLists{
+  background:#fafafa;
+}
+
+.refundGoodsLists>view{
+  border-bottom: 2rpx solid #eee;
+}
+
+.refundGoodsLists:nth-last-child(5)>view{
+  border-bottom: none;
+}
+
+.refundGoodsLists:nth-child(2){
+  margin-top: 30rpx;
+}
+
+.stepBox{
+  padding-left:40rpx;
+  height:60rpx;
+  position: relative;
+}
+
+.stepBox .circle{
+  width:60rpx;
+  height:60rpx;
+  line-height:60rpx;
+  background:rgba(242,242,242,1);
+  border-radius:50%;
+  text-align:center;
+  display:inline-block;
+  position:absolute;
+}
+
+.stepBox .circle text{
+  font-weight:bold;
+  font-size:32rpx;
+}
+
+.refundGoodsLists .tip{
+  position:absolute;
+  bottom:30rpx;
+  width:140rpx;
+  height:32rpx;
+  line-height:32rpx;
+  font-size:24rpx;
+  color:#fff;
+  background-color:#FF262C;
+  opacity:0.9;
+  border-radius:0 0 8rpx 8rpx;
+  text-align:center;
+  font-weight:500;
+}

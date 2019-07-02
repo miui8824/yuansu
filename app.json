@@ -1,0 +1,120 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/momentsMaterial/momentMaterial",
+    "pages/businessBooks/businessBooks",
+    "pages/bindInviteCode/bindInviteCode",
+    "pages/advancedTraining/advancedTraining",
+    "pages/customersManagement/customersManagement",
+    "pages/articleDetails/articleDetails",
+    "pages/researchInstituteList/researchInstituteList",
+    "pages/myRegimentDetails1/myRegimentDetails1",
+    "pages/refundLogistics/refundLogistics",
+    "pages/maiyaBalanceDetail/maiyaBalanceDetail",
+    "pages/invoice_details_zi/invoice_details_zi",
+    "pages/myRegimentDetails/myRegimentDetails",
+    "pages/myRegiment/myRegiment",
+    "pages/invoice_details/invoice_details",
+    "pages/rookieExclusive/rookieExclusive",
+    "pages/aftersaleRuleDetail/aftersaleRuleDetail",
+    "pages/bannerSpecial/bannerSpecial",
+    "pages/helpRed/helpRed",
+    "pages/maiya/maiya",
+    "pages/maiya2/maiya2",
+    "pages/bindPhone/bindPhone",
+    "pages/afterSale_list/afterSale_list",
+    "pages/addressManagement/addressManagement",
+    "pages/myFans/myFans",
+    "pages/coupons/coupons",
+    "pages/myOrder/myOrder",
+    "pages/mySelf/mySelf",
+    "pages/balanceDetail/balanceDetail",
+    "pages/preBalanceDetail/preBalanceDetail",
+    "pages/bindWechat/bindWechat",
+    "pages/addAddress/addAddress",
+    "pages/extractCash/extractCash",
+    "pages/myIntegral/myIntegral",
+    "pages/Refund_details/Refund_details",
+    "pages/confirmOrder/confirmOrder",
+    "pages/afterSale_listEnter/afterSale_listEnter",
+    "pages/orderDraw/orderDraw",
+    "pages/orderAbout/orderAbout",
+    "pages/logisticsDetail/logisticsDetail",
+    "pages/logistics/logistics",
+    "pages/changeWechatNum/changeWechatNum",
+    "pages/shopCar/shopCar",
+    "pages/Upload_credenti/logs",
+    "pages/goodsDetails/goodsDetails",
+    "pages/goodsDetails1/goodsDetails1",
+    "template/baseLine/baseLine",
+    "pages/orderPayment/orderPayment",
+    "template/extractCashExplain/extractCashExplain",
+    "pages/init/init",
+    "pages/orderLogistics/orderLogistics",
+    "pages/signin/signin",
+    "pages/balanceExtract/balanceExtract",
+    "pages/groupDetails/groupDetails",
+    "pages/groupHome/groupHome",
+    "pages/groupList/groupList",
+    "pages/addId/addId",
+    "pages/bagDetails/bagDetails",
+    "pages/bagsList/bagsList",
+    "pages/bagList/bagList",
+    "pages/bagShopCar/bagShopCar"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "MAIYA TOWN",
+    "navigationBarTextStyle": "black",
+    "pageOrientation": "portrait",
+    "backgroundColor": "#f2f2f2"
+  },
+  "tabBar": {
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "color": "#FF3E3F",
+    "selectedColor": "#FF3E3F",
+    "list": [{
+        "pagePath": "pages/home/home",
+        "iconPath": "/static/home.jpg",
+        "selectedIconPath": "/static/homes.jpg",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/shopCar/shopCar",
+        "iconPath": "/static/cars.jpg",
+        "selectedIconPath": "/static/car.jpg",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/maiya2/maiya2",
+        "iconPath": "/static/chen.jpg",
+        "selectedIconPath": "/static/chengs.jpg",
+        "text": "城堡"
+      },
+      {
+        "pagePath": "pages/mySelf/mySelf",
+        "iconPath": "/static/my.jpg",
+        "selectedIconPath": "/static/mys.jpg",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 60000,
+    "downloadFile": 60000
+  },
+  "debug": true,
+  "navigateToMiniProgramAppIdList": [
+    "wxf964790ef2cc3120"
+  ],
+  "plugins": {
+    "tencentvideo": {
+      "version": "1.2.8",
+      "provider": "wxa75efa648b60994b"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

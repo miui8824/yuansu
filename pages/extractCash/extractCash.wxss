@@ -1,0 +1,122 @@
+/* pages/extractCash/extractCash.wxss */
+@import "/static/css/common.wxss";
+@import "/template/extractCashExplain/extractCashExplain.wxss";
+.con {
+  width: calc(100% - 52rpx);
+  padding-left: 26rpx;
+  padding-right: 26rpx;
+}
+.com{
+   width: calc(100% - 52rpx);
+  margin-left: 26rpx;
+}
+.font-size{
+  font-size: 28rpx;
+}
+.top{
+  float: left;
+  position: relative;
+}
+.top image{
+width: 100%;
+height: 230rpx;
+float: left;
+}
+.top_text-1{
+  top:36rpx;
+  left:62rpx;
+  position: absolute;
+}
+.top_text-2{
+  top:80rpx;
+  left:52rpx;
+  font-size: 72rpx;
+  font-weight: bold;
+  position: absolute
+}
+.middle-t{
+  float: left;
+  font-size: 36rpx;
+  margin-top:50rpx;
+  font-weight: bold
+}
+.middle-i{
+  float: left;
+border-bottom: 2rpx solid #ccc;
+margin-top:20rpx;
+padding-bottom: 17rpx;
+position: relative
+}
+.mi-left{
+  font-size: 36rpx;
+  font-weight: bold;
+  float: left;
+  width: 55rpx;
+  line-height: 60rpx; 
+  position: absolute;
+}
+.mi-input{
+  float: left;
+  font-size: 36rpx;
+  position: absolute;
+  left: 60rpx;
+  top: 10rpx;
+  font-weight:600;
+}
+
+.mi-button{
+  float: right;
+  width: 120rpx;
+  height: 60rpx;
+  background: #DD232F;
+  border-radius:30rpx;
+  line-height: 60rpx;
+  font-weight:600;
+}
+.bottom{
+  position: fixed;
+  bottom: 26rpx;
+  left: 0rpx;
+  height: 98rpx;
+  border-radius:49rpx; 
+  font-weight: bold;
+}
+.tip{
+  float: left;
+  color:#666;
+  padding-top:20rpx;
+}
+.tip text{
+  color:red
+}
+.explainTitle{
+  font-weight: bold;
+  float: left;
+  margin-top:100rpx;
+}
+.explainTip{
+  margin-top:10rpx;
+  float: left;
+  line-height: 48rpx;
+  color: #666;
+  padding-bottom: 25%
+}
+.explainTip text{
+  width: 100%;
+  float: left;
+  font-size: 28rpx;
+}
+.botGray{
+   background:#CECECE;
+    color:#fff;
+}
+.botYellow{
+  background: #DD232F;
+  color:#000;
+  font-weight: bold;
+}
+.explainTitle{
+  margin-top:55rpx;
+  font-weight: bold;
+  float: left;
+}

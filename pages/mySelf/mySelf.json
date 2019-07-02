@@ -1,0 +1,12 @@
+{ 
+  "navigationBarBackgroundColor":"#DD232F",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "canvasdrawer": "/components/canvasdrawer/canvasdrawer",
+    "navigation": "/components/navigation/navigation",
+    "van-toast": "../../dist/toast/index",
+    "me-nav": "/components/Nav/nav",
+    "appointment-tip": "../../components/appointmentTip/appointmentTip",
+    "group-tip": "../../components/groupTip/groupTip"
+  }
+}

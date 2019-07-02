@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "售后规则详情",
+  "usingComponents": {
+    "navigation": "/components/navigation/navigation"
+  }
+}

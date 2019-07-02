@@ -1,0 +1,106 @@
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="{{activityName}}"
+>
+</navigation>
+<view class="banner_box" wx:if="{{hasBannerActivity}}">
+  <form bindsubmit="postFormId" report-submit='true' >
+  <view class='mainPic' wx:if="{{topBannerUrl!='' && topBannerUrl!=null}}">
+    <image src='{{topBannerUrl}}'></image>
+  </view>
+
+  <view class='bannerMain'>
+    <view class='bannerListItemBox'>
+        <view class='banner_item_box'>
+
+          <view class='banner_item' wx:for="{{bannerSpecialList}}" wx:key="{{item.id}}" bindtap='goShopDetail' data-id="{{item.id}}" data-left="{{true}}" data-activityid="{{item.activityId}}">
+
+              <view class='content_image'>
+                <image src='{{item.goodImg}}' />
+              </view>
+
+              <view class='content_right'>
+                <view class='content_title'>{{item.title}}</view>
+                <view class='content_tip'>{{item.subTitle}}</view>
+                <view class='content_data'>
+                  <!-- <text>下单立减<text style='color:#ff262c;'>{{item.reducePrice}}</text>元</text> -->
+                </view>
+                <view class='content_money'>
+                  <view>
+                    <view class='money_number'>
+                      <view class='money_nownumber'>￥{{item.price}}</view>
+                    </view>
+                    <view class='money_oldnumber'>{{item.retailPrice}}</view>
+                  </view>
+                  <view class='addShopcar' catchtap='addShopCar' hover-stop-propagation='true' data-id="{{item.id}}" data-price="{{item.price}}" data-dummyStock="{{item.dummyStock}}" data-dummySales="{{item.dummySales}}" data-activityId="{{item.activityId}}" data-specList="{{item.specList}}" data-valueSkuMap="{{item.valueSkuMap}}" data-goodImg="{{item.goodImg}}">
+                    <image src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621152406434.png'></image>
+                  </view>
+                </view>
+              </view>
+
+          </view>
+        </view>  
+    </view>
+
+    <view class='banner_more' wx:if="{{bottomBannerUrl!='' && bottomBannerUrl!=null}}">
+      <image src='{{bottomBannerUrl}}' />
+    </view>
+    <view class='banner_more_text' wx:if="{{showNomore&&bannerSpecialList.length!=0}}" id='btLine'>
+      ~~我也是有底线的~~
+    </view>
+  </view>
+  <me-nav tabbar="{{tabbar}}"></me-nav>
+  <button class='button_replace' open-type='share'></button>
+  </form>
+</view>
+<view class='helpred_box_over' wx:else>
+  <view class='clear clear_146'></view>
+  <view class='over_logo'>
+    <image src='https://file.maiyatown.com/images/utils/common_img_activity_ends@2x.png'></image>
+  </view>
+  <view class='font_32 color_666'>活动已经结束了哦~</view>
+</view>
+<van-action-sheet class='action_sheet_me' show="{{ actionSheetShow }}" z-index="1000" catchtouchmove="stopPageScroll" >
+    <view class='action_sheet_box'>
+      <view class='shop_info mar_b_30'>
+        <view class='shop_img'>
+          <image src='{{gdInfo.goodimg}}'></image>
+        </view>
+        <view class='shop_size_color'>
+          <view class='shop_close mar_b_30'>
+            <view class='shop_money color_red font_36' style='font-weight: 600;'>¥{{activeSkuItem.price||gdInfo.price}}</view>
+            <view class='close_icon' bindtap='onClose'>
+              <image src='https://file.maiyatown.com/images/goodsDetails/explosion_icon_tclosed.svg'></image>
+            </view>
+          </view>
+          <view class='color_999 font_28 mar_b_20'>库存{{activeSkuItem.dummyStock||gdInfo.dummystock}}件</view>
+          <view class='color_999 font_28'>选择商品规格</view>
+        </view>
+      </view>
+      <scroll-view scroll-y="true" scroll-with-animation="true" class='shop_info_size'>
+        <view wx:for="{{specList}}" wx:key="index"  wx:for-item="item" wx:for-index="index">
+          <view class='font_28 color_666 mar_b_20 shop_info_name'>{{item.name}}</view>
+          <view >
+            <!--{{citem.notClick?"button_off":""}}  {{citem.isActiveC?"button_on":""}} -->
+            <van-button class='shop_color_type {{citem.notClick?"button_off":""}}  {{citem.isActiveC?"button_on":""}}' 
+            wx:for="{{item.value}}" wx:for-index="cindex" wx:for-item='citem' wx:key="cindex" 
+            data-index='{{index}}' data-cindex='{{cindex}}' data-cid='{{citem.id}}' data-isactivec='{{citem.isActiveC}}'
+            bind:tap='tabInfoChange' data-citemnoclick='{{citem.notClick}}'
+            >
+            {{citem.cname}}
+            </van-button>
+          </view>
+        </view>
+        <view class='shop_stepper'>
+          <view class='font_28 color_666'>购买数量</view>
+          <van-stepper class='stepper_main' max="{{gdInfo.dummystock}}" value="{{ goodsNumber }}" bind:change="onChange" disable-input/>
+        </view>
+      </scroll-view>
+      
+      <view class='linetop'></view>
+      <view class='success_box'>
+        <van-button class='success_button' round size='small' bindtap='selectSizeSuccess'>确定</van-button>
+      </view>
+    </view>
+  </van-action-sheet>

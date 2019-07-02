@@ -1,0 +1,16 @@
+/* template/extractCashExplain/extractCashExplain.wxss */
+.explainTitle{
+  margin-top:55rpx;
+  font-weight: bold;
+float: left;
+}
+.explainTip{
+  margin-top:10rpx;
+  float: left;
+  line-height: 48rpx;
+  color: #666
+}
+.explainTip text{
+  width: 100%;
+  float: left;
+}

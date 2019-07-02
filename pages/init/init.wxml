@@ -1,0 +1,35 @@
+<!--pages/init/init.wxml-->
+
+<view class='init_box' wx-if="{{inverter}}">
+  <van-notify id="custom-selector" />
+  <view class='init_logo'>
+    <image src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621144920140.png'/>
+  </view>
+  <view class='init_button'>
+    <van-button class='get_info' round type="yellow" size='small' 
+    open-type="getUserInfo" bind:getuserinfo="getUserInfo">
+      点击授权
+    </van-button>
+    <view class='clear clear40'></view>
+    <view class='color_999 font_24'>提示：小程序需要使用你的微信昵称和头像</view>
+  </view>
+</view>
+<view  style='padding-top:50rpx;'  wx-if="{{!inverter}}">
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="输入邀请码"
+>
+</navigation>
+  <view bindtap='skip'  style='width:140rpx;height:60rpx;border-radius:30rpx;background:grey;text-align:center;line-height:60rpx;position:absolute;right:30rpx;'>
+    <text style='color:white;font-size:28rpx;'>跳过</text>
+  </view>
+  <view style='position:absolute;width:640rpx;padding:47rpx;font-size:32rpx;margin-top:80rpx;color:#CCCCCC'>
+    <input bindinput="userInputnum" name="{{userInputnum}}" style='color:rgba(204,204,204,1);font-weight:400' placeholder='请输入邀请码'></input>
+    <view style='margin-top:15rpx;border-bottom:1px solid rgba(204,204,204,1);'></view>
+  </view>
+  <view  bindtap='inviter_true' style='width:640rpx;height:98rpx;border-radius:50rpx;background:#DD232F;text-align:center;line-height:98rpx;margin-left:47rpx;margin-top:300rpx;'>
+    <text>确定</text>
+  </view>
+</view>
+<van-toast id="van-toast" />

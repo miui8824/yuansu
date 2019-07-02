@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "余额提现",
+  "usingComponents": {
+    "navigation": "/components/navigation/navigation"
+  }
+}

@@ -1,0 +1,10 @@
+<!--pages/orderLogistics/orderLogistics.wxml-->
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="物流信息"
+>
+</navigation>
+<view bindtap='clickDdata'>
+  查看物流信息
+</view>

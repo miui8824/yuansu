@@ -1,0 +1,250 @@
+/* pages/rookieExclusive/rookieExclusive.wxss */
+
+.container-all {
+  width: 100%;
+  height: 100%;
+}
+
+.bg-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+page {
+  min-height: 100%;
+  position: relative;
+  background: linear-gradient(90deg, rgba(254, 38, 77, 1) 0%, rgba(254, 124, 0, 1) 100%);
+  box-shadow: 0px -4px 8px 0px rgba(6, 0, 1, 0.15);
+}
+
+.rookieExclusiveBox {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(254, 38, 77, 1) 0%, rgba(254, 124, 0, 1) 100%);
+  box-shadow: 0px -4px 8px 0px rgba(6, 0, 1, 0.15);
+  padding-bottom: 84rpx;
+}
+
+.rookieExclusiveBox .banner {
+  height: 500rpx;
+  width: 100%;
+}
+
+.rookieExclusiveBox .banner image {
+  width: 100%;
+  height: 100%;
+}
+
+.rookieExclusiveBox .goodsList {
+  width: 100%;
+}
+
+.rookieExclusiveBox .goodsList .goodsItem {
+  width: 690rpx;
+  height: 360rpx;
+  margin: 20rpx auto 0;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0rpx 10rpx 10rpx 0rpx rgba(226, 44, 5, 0.57);
+  border-radius: 20rpx;
+}
+
+.rookieExclusiveBox .goodsList .goodsItem .itemTop {
+  height: 260rpx;
+  width: 100%;
+  background: linear-gradient(135deg, rgba(254, 229, 177, 1) 0%, rgba(222, 191, 125, 1) 100%);
+  border-radius: 20rpx;
+}
+
+.rookieExclusiveBox .goodsList .goodsItem .itemTop image {
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+
+.rookieExclusiveBox .goodsList .goodsItem .itemInfo {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rookieExclusiveBox .goodsList .goodsItem .itemInfo .itemPrice {
+  padding-left: 20rpx;
+  width: 482rpx;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+}
+
+.rookieExclusiveBox .goodsList .goodsItem .itemInfo .itemPrice .mainPrice {
+  color: #dd232f;
+  display: inline-block;
+  margin-left: 30rpx;
+  font-size: 26rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  vertical-align: top;
+  font-style: italic;
+}
+
+.rookieExclusiveBox .goodsList .goodsItem .itemInfo .itemPrice .mainPrice .first {
+  font-weight: 600;
+  font-size: 56rpx;
+}
+
+.rookieExclusiveBox .goodsList .goodsItem .itemInfo .itemPrice .mainPrice .second {
+  font-weight: 600;
+  font-size: 46rpx;
+}
+
+.rookieExclusiveBox .goodsList .goodsItem .itemInfo .itemPrice .oldPriceBox {
+  display: inline-block;
+  margin-left: 20rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  position: relative;
+  width: 200rpx;
+}
+
+.rookieExclusiveBox .goodsList .goodsItem .itemPrice  .rookiePriceText {
+  width: 80rpx;
+  height: 32rpx;
+  background: #dd232f;
+  border-radius: 4rpx;
+  color: #fff;
+  font-size: 22rpx;
+  text-align: center;
+}
+
+.rookieExclusiveBox .goodsList .goodsItem .itemInfo .itemPrice  .oldPrice {
+  color: #333;
+  top: 60rpx;
+  margin: 0 20rpx;
+  font-size: 24rpx;
+  text-decoration: line-through;
+  height: 24rpx;
+}
+
+.rookieExclusiveBox .goodsList .goodsItem .itemInfo button {
+  width: 200rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #dd232f;
+  font-size: 28rpx;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 30rpx;
+}
+
+.bottom_line {
+  line-height: 84rpx;
+  height: 84rpx;
+  font-size: 24rpx;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  background: #fb633d;
+}
+
+.overBox {
+  width: 100%;
+  height: 100vh;
+  background: #f2f2f2;
+  text-align: center;
+}
+
+.overBox .clear_146 {
+  height: 146rpx;
+}
+
+.overBox .over_logo {
+  margin: 0 auto;
+  width: 360rpx;
+  height: 204rpx;
+}
+
+.overBox .over_logo>image {
+  width: 360rpx;
+  height: 204rpx;
+}
+
+.overBox .font_32.color_666 {
+  margin-top: 50rpx;
+  color: #666;
+  font-size: 32rpx;
+}
+
+.overBox button {
+  width: 240rpx;
+  height: 78rpx;
+  line-height: 78rpx;
+  border-radius: 39rpx;
+  background-color: #dd232f;
+  font-size: 32rpx;
+  margin-top: 60rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+/* 画图的css */
+
+.share-image {
+  width: 660rpx;
+  height: 975rpx;
+  margin: 0 45rpx;
+  /* border: 1px solid black; */
+  z-index: 1;
+  /* position:absolute; */
+}
+
+.background {
+  width: 600rpx;
+  height: 888rpx;
+  background: #000;
+  opacity: 0.2;
+  position: absolute;
+  left: 78rpx;
+}
+
+button {
+  margin-top: 20rpx;
+}
+
+.wechat {
+  width: 305rpx;
+  height: 98rpx;
+  background: rgba(71, 186, 68, 1);
+  border-radius: 49px;
+  margin: 30rpx;
+  line-height: 98rpx;
+  text-align: center;
+  color: white;
+  display: inline-block;
+}
+
+.wechat1 {
+  width: 305rpx;
+  height: 98rpx;
+  background: #ff911b;
+  border-radius: 49px;
+  margin: 30rpx;
+  line-height: 98rpx;
+  text-align: center;
+  color: white;
+  display: inline-block;
+}
+
+.wechatimg {
+  width: 40rpx;
+  height: 40rpx;
+  top: 5px;
+  position: relative;
+}
+
+/* 画图的css */

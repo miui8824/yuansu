@@ -1,0 +1,337 @@
+<!--pages/confirmOrder/confirmOrder.wxml-->
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="{{title}}"
+>
+</navigation>
+<view class='confirm_order'>
+  <view class='clear clear20'></view>
+  <view class='add_box' wx:if="{{noAdd}}">
+    <view class='add_main'  bindtap='selectAdd'>
+      <image src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190702222543385.png' class='icon_add'></image>
+      <view class='add_text font_32 color_666'>添加收货地址</view>
+      <image src='https://file.maiyatown.com/images/confirmOrder/confirm_order_icon_next_step.svg' class='icon_more'></image>
+    </view>
+  </view>
+  <view class='add_box' wx:else >
+    <view class='add_main' bindtap='selectAdd'>
+      <view>
+        <image src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190702222543385.png' class='icon_add'></image>
+      </view>
+      <view class='add_text font_32 color_666'>
+        <view class='add_info_box'>
+          <text class='add_name font_32 color_333'>
+            <text class='add_name_title'>收货姓名</text>
+            <text class='add_name_value'>{{userAddresses.consigneeName}}</text>
+            <text class='add_name_tip' wx:if="{{idCardTipOk}}">已上传身份证</text>
+          </text>
+        </view>
+        <view class='add_info_box'>
+          <text class='add_name font_32 color_333'>
+            <text class='add_name_title'>联系方式</text>
+            <text class='add_name_value'>{{userAddresses.phoneNum}}</text>
+          </text>
+        </view>
+        <view class='add_info_text color_666 mar_r_10'>{{userAddresses.province}}{{userAddresses.city}}
+        {{userAddresses.location}}{{userAddresses.detailAddress}}</view>
+      </view>
+      <view>
+        <image src='https://file.maiyatown.com/images/confirmOrder/confirm_order_icon_next_step.svg' class='icon_more'></image>
+      </view>
+    </view>
+    <view  class='mar_t_40' wx:if="{{idCardButton}}">
+      <van-button class='id_card' round size='small' bind:tap='updateAdd'>去上传身份证实名认证</van-button>
+    </view>
+  </view>
+  <view class='add_border'>
+    <image src='https://file.maiyatown.com/images/confirmOrder/confirm_order_image_color_bar.png'></image>
+  </view>
+  <view class='order_list_box'>
+    <view class='order_list mar_t_20 back_fff' wx:for="{{orderList}}" wx:key="{{index}}">
+      <!-- <view class='list_info_top' wx:if="{{item.subList.length>1}}">
+        <view class='info_top_main'  wx:for="{{item.subList}}" wx:key="{{index}}">
+          <view class='list_img'>
+            <image src='/images/confirmOrder/confirm_order_image_color_bar.png'></image>
+          </view>
+          <view class='list_name_box'>
+            <view class='item_name'>{{item.name}}</view>
+            <view class='item_info mar_t_30 font_24 color_999'>纯色；95/S； 简约高领；中腰</view>
+            <view class='item_money_number'>
+              <view class='font_32 color_red'>¥{{item.money}}</view>
+              <view class='font_28 color_333'>x{{item.money}}</view>
+            </view>
+          </view>
+        </view>
+      </view> -->
+      <view class='list_info_top'>
+        <view class='info_top_main'>
+          <view class='list_img'>
+            <image src="{{item.visitFileUrl}}"></image>
+            <view class='img_tip' wx:if="{{orderList[0].activityType==5}}">·   拼团   ·</view>
+          </view>
+          <view class='list_name_box'>
+            <view class='item_name'>{{item.title}}</view>
+            <view class='item_info font_24 color_999'>{{item.specValueDesc}}</view>
+            <view class='item_money_number'>
+              <view class='font_32 color_red'>¥{{item.price}}<text class='color_666 font_22'>/件</text></view>
+              <view class='font_28 color_333'>x{{item.goodNumber}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='list_money_box border_botton'>
+        <view wx:if='{{item.totalAmt&&item.activityType!=5}}'>
+          <text class='font_28 color_666'>共{{item.goodNumber}}件商品</text>
+          <text class='font_28 color_red'>小计：￥{{item.totalAmt}}</text>
+        </view>
+        <view wx:if='{{item.totalAmt&&item.activityType==5}}'>
+          <text class='font_28 color_666'>拼团价</text>
+          <text class='font_28 color_red'>¥{{item.totalAmt}}</text>
+        </view>
+        <view class='mar_t_30'>
+          <text class='font_28 color_666'>运费</text>
+          <text class='font_28 color_333'>¥{{item.freight}}</text>
+        </view>
+        <view class='mar_t_30' wx:if='{{item.groupDisAmt>0&&item.activityType==5}}'>
+          <text class='font_28 color_666'>团长优惠</text>
+          <text class='font_28 color_red'>- ¥{{item.groupDisAmt}}</text>
+        </view>
+        <view class='mar_t_30' wx:if="{{isCrossBorder}}">
+          <text class='font_28 color_666'>税费</text>
+          <text class='font_28 color_333'>¥{{item.taxation}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='list_visitors mar_t_20'>
+    <text class='font_28 color_666'>备注留言：</text>
+    <input maxlength="50" placeholder="选填给商家留言(50字以内)" bindblur='remarkInput' placeholder-style="color:#ccc"/>
+  </view>
+  <view class='order_pay_box common_plank'>
+    <view class='border_botton' bindtap='onSelectCoupons' wx:if="{{!(isCrossBorder || groupOrder==1 || isRookieExclusive|| orderList[0].activityType==6 || orderList[0].activityType==7)}}">
+      <view class='font_28 color_666'>可用优惠券</view>
+      <view class='plank_middle plank_middle1 font_28 color_333'>
+        <view class='coupons_number'>{{couponsList.length>0?''+couponsList.length+'张可用':'无可用优惠券'}}</view>
+        <view class='font_28 color_333'>{{couponValue?'优惠'+couponValue+'元':'未使用'}}</view>
+      </view>
+      <view class='load_more'>
+        <image src='https://file.maiyatown.com/images/confirmOrder/confirm_order_icon_next_step.svg'></image>
+      </view>
+    </view>
+    <view class='border_botton'>
+      <view class='font_28 color_666'>余额抵扣</view>
+      <view class='plank_middle plank_middle2 font_28 color_red font_bold500'>¥{{balance}}</view>
+      <van-switch style='height:60rpx;' checked="{{ checked }}" bind:change="onChange" />
+    </view>
+    <view class='border_botton' wx:if="{{orderInfo.totalReducePrice!=0}}">
+      <view class='font_28 color_666'>下单立减</view>
+      <view class='plank_middle font_28 color_red font_bold500'>¥{{orderInfo.totalReducePrice}}</view>
+    </view>
+    <view class='border_botton' wx-if="{{shareKnock!=0}}">
+      <view class='font_28 color_666'>分享立减</view>
+      <view class='plank_middle font_28 color_red font_bold500'>¥{{shareKnock}}</view>
+    </view>
+    <view class='border_botton'>
+      <view class='font_28 color_666'>支付方式</view>
+      <view class='plank_middle font_28 color_333'>微信支付</view>
+    </view>
+
+    <view class='border_botton'  wx:if="{{isCrossBorder}}">
+      <view class='font_28 color_666'>发票</view>
+      <view class='plank_middle font_28 color_333'>不开发票</view>
+    </view>
+    <view class='border_botton' wx:else bindtap='onOpen'>
+      <view class='font_28 color_666'>发票</view>
+      <view class='plank_middle font_28 color_333'>{{invoiceReq.invoiceTitle.length>0?invoiceReqActive:'不开发票'}}</view>
+      <view  class='load_more'>
+        <image src='https://file.maiyatown.com/images/confirmOrder/confirm_order_icon_next_step.svg'></image>
+      </view>
+    </view>
+
+  </view>
+  <view class='clear clear160'></view>
+  <view class='order_pay_button'>
+    <view>
+      <text class='font_34 mar_l_30'>总计：</text>
+      <text class='color_main font_36 font_bold'>¥{{endMoney}}</text>
+    </view>
+    <van-button class='pay_button' round size='small' bind:tap='goPay'>去付款</van-button>
+  </view>
+
+  <van-toast id="van-toast" />
+
+  <!-- <van-action-sheet show="{{ showInvoice }}" title="发票" style="text-align:left;padding-left:20rpx;" bind:close="onClose" safe-area-inset-bottom>
+  <view class='action_sheet_box' catchtouchmove="ture">
+    <scroll-view scroll-y="true" scroll-top="{{scrollTop}}" bindscroll="scroll"  scroll-with-animation="true">
+      <view class='font_28 color_10 mar_b_30'>发票类型</view>
+      <view class='mar_b_40'>
+        <van-button class='invoice_type button_on' round size='small'>电子发票</van-button>
+      </view>
+      <view class='font_28 color_10 mar_b_30'>发票抬头</view>
+      <view class='mar_b_40'>
+        <van-button class='invoice_type {{invoiceReq.invoiceTitleType==1?"button_on":""}}' 
+        data-index="1" bind:tap="invoiceTitleChange" round size='small'>个人</van-button>
+        <van-button class='invoice_type {{invoiceReq.invoiceTitleType==2?"button_on":""}}' 
+        data-index="2" bind:tap="invoiceTitleChange" round size='small'>单位</van-button>
+      </view>
+      <view class='mar_b_30' wx:if="{{invoiceReq.invoiceTitleType==1}}">
+        <input maxlength="100" placeholder="请填写个人姓名" bindblur='invoiceTitleInput' class='invoice_name'></input>
+      </view>
+      <view class='mar_b_30' wx:if="{{invoiceReq.invoiceTitleType==2}}">
+        <input maxlength="100" placeholder="请填写单位名称" bindblur='invoiceTitleInput' class='invoice_name'></input>
+      </view>
+      <view class='mar_b_30' wx:if="{{invoiceReq.invoiceTitleType==2}}">
+        <input maxlength="100" placeholder="请填写纳税人识别码"  bindblur='taxNumInput' class='invoice_name'></input>
+      </view>
+      <view class='mar_b_40'>
+        <input maxlength="100" placeholder="请填写邮箱地址" bindblur='emailInput' class='invoice_add'></input>
+      </view>
+      <view class='font_28 color_10 mar_b_30'>发票内容</view>
+      <view class='mar_b_30'>
+        <van-button class='invoice_type button_on' round size='small'>商品明细</van-button>
+      </view>
+      <view class='mar_b_40 font_24 color_999'>发票内容将显示详细商品名称与价格信息</view>
+      <view class='success_box'>
+        <van-button class='success_button' round size='small' bind:tap="onClose">确定 </van-button>
+      </view>
+    </scroll-view>
+  </view>
+  </van-action-sheet> -->
+  <view class='action_mask' hidden="{{ !showInvoice }}"></view>
+  <view class='action_box_box' hidden="{{ !showInvoice }}" catchtouchmove="ture">
+    <view class='action_top'>
+      <view class='action_top_left'>发票</view>
+      <view class='action_top_right' bindtap='onClose'>
+        <image src='https://file.maiyatown.com/images/goodsDetails/explosion_icon_tclosed.svg'></image>
+      </view>
+    </view>
+    <view class='action_sheet_box'>
+      <scroll-view class='scrollBox' scroll-y="true" scroll-top="{{scrollTop}}" bindscroll="scroll"  scroll-with-animation="true">
+        <view class='font_28 color_10 mar_b_30'>发票类型</view>
+        <view class='mar_b_40'>
+          <van-button class='invoice_type button_on' round size='small'>电子发票</van-button>
+        </view>
+        <view class='font_28 color_10 mar_b_30'>发票抬头</view>
+        <view class='mar_b_40'>
+          <van-button class='invoice_type {{invoiceReq.invoiceTitleType==1?"button_on":""}}' 
+          data-index="1" bind:tap="invoiceTitleChange" round size='small'>个人</van-button>
+          <van-button class='invoice_type {{invoiceReq.invoiceTitleType==2?"button_on":""}}' 
+          data-index="2" bind:tap="invoiceTitleChange" round size='small'>单位</van-button>
+        </view>
+        <view class='mar_b_30' wx:if="{{invoiceReq.invoiceTitleType==1}}">
+          <input maxlength="100" placeholder="请填写个人姓名" bindblur='invoiceTitleInput' class='invoice_name'></input>
+        </view>
+        <view class='mar_b_30' wx:if="{{invoiceReq.invoiceTitleType==2}}">
+          <input maxlength="100" placeholder="请填写单位名称" bindblur='invoiceTitleInput' class='invoice_name'></input>
+        </view>
+        <view class='mar_b_30' wx:if="{{invoiceReq.invoiceTitleType==2}}">
+          <input maxlength="100" placeholder="请填写纳税人识别码"  bindblur='taxNumInput' class='invoice_name'></input>
+        </view>
+        <view class='mar_b_40'>
+          <input maxlength="100" placeholder="请填写邮箱地址" bindblur='emailInput' class='invoice_add'></input>
+        </view>
+        <view class='font_28 color_10 mar_b_30'>发票内容</view>
+        <view class='mar_b_30'>
+          <van-button class='invoice_type button_on' round size='small'>商品明细</van-button>
+        </view>
+        <view class='mar_b_40 font_24 color_999'>发票内容将显示详细商品名称与价格信息</view>
+      </scroll-view>
+      <view class='success_box'>
+        <van-button class='success_button' round size='small' bind:tap="onClose">确定 </van-button>
+      </view>
+    </view>
+  </view>
+
+  <van-action-sheet show="{{ showSelectCoupons }}" title="可用优惠券" bind:close="onClose1" safe-area-inset-bottom>
+    <scroll-view class='select_coupons_box' scroll-y="true" catchtouchmove="ture">
+      <view class='select_coupons_item'>
+        <view class='coupons_item' wx:for="{{couponsList}}" wx:key="{{index}}">
+          <image src='https://file.maiyatown.com/images/coupons/youhuiquan_x.png'/>
+          <view class='item_left'>
+            <view class="item_money color_333">{{item.couponValue}}</view>
+            <view class="item_limit color_333">{{item.investMoney==0?'':'·满'}}{{item.investMoney==0?'':item.investMoney}}{{item.investMoney==0?'·无门槛使用·':'元可用·'}}</view>
+          </view>
+          <view class='item_right' bind:tap='selectCoupons' data-couponsid='{{item.id}}'  data-index='{{index}}'>
+            <view class='item_name color_333 font_28'>{{item.activityName}}</view>
+            <view class='item_type color_999 font_24'>国内商品可用</view>
+            <view class='item_use'>
+              <view class='item_time color_999 font_22'>{{item.activityTimeType==1?'长期有效':item.startTimeValue+'至'+item.endTimeValue}}</view>
+              <!-- <view class='item_time color_999 font_22' wx:else>长期有效</view> -->
+              <van-button round size="small" class='item_button' wx:if="{{navActive==0}}">立即使用</van-button>
+            </view>
+          </view>
+          <view class='item_select_box'>
+            <image wx:if="{{couponsListArr[index]}}" src='https://file.maiyatown.com/images/utils/select_on.png'></image>
+            <image wx:else src='https://file.maiyatown.com/images/utils/select_off.png'></image>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class='add_add_button' bind:tap="onClose1">
+      <van-button class='success_button' round size='small' bindtap='selectSizeSuccess' style='font-weight: 600;'>确定</van-button>
+    </view>
+  </van-action-sheet>
+</view>
+<block wx:if="{{isShade}}">
+  <view class='shade'  catchtouchmove="{}"></view>
+  <view class='bg-light-contain' wx:if="{{drawState==2||drawState==3}}"  catchtouchmove="{}">
+    <image class='bg-light' src='https://file.maiyatown.com/images/redEnvelopes/guang.png' />
+  </view>
+  <image src='https://file.maiyatown.com/images/draw/drawbg.png' class='draw-bg'  catchtouchmove="{}"/>
+  <view class='draw-num draw-num-1'  catchtouchmove="{}">
+    <text class='{{translatey_1}}'>{{drawNum1}}</text>
+    <image class='draw-num-shade' src='https://file.maiyatown.com/images/draw/numshade.png' />
+  </view>
+  <view class='draw-num draw-num-2'  catchtouchmove="{}">
+    <text class=' {{translatey_2}}'>{{drawNum2}}</text>
+    <image class='draw-num-shade' src='https://file.maiyatown.com/images/draw/numshade.png' />
+  </view>
+  <view class='draw-num draw-num-3'  catchtouchmove="{}">
+    <text class=' {{translatey_3}}'>{{drawNum3}}</text>
+    <image class='draw-num-shade' src='https://file.maiyatown.com/images/draw/numshade.png' />
+  </view>
+  <view class='draw-num draw-num-4'  catchtouchmove="{}">
+    <text class=' {{translatey_4}}'>{{drawNum4}}</text>
+    <image class='draw-num-shade' src='https://file.maiyatown.com/images/draw/numshade.png' />
+  </view>
+  <view class='but-big' bindtap="{{drawState==3?'useDraw':(sd==1?'startDraw':'')}}" wx:if="{{drawState==1||drawState==3}}"  catchtouchmove="{}">
+    <image src='https://file.maiyatown.com/images/draw/butbig.png' />
+    <text>{{drawState==3?'立即使用':'开始摇奖'}}</text>
+  </view>
+  <view class='but-small' wx:if="{{drawState==2}}"  catchtouchmove="{}">
+    <view class='but-samll-1'  bindtap='useDraw'>
+      <image src='https://file.maiyatown.com/images/draw/butbai.png' />
+      <text style='font-size:40rpx;'>直接使用</text>
+    </view>
+    <view class='but-samll-2' >
+      <image src='https://file.maiyatown.com/images/draw/buthuang.png' />
+      <button open-type='share' style='color:#FF3C17;font-size:40rpx;'>分享再玩</button>
+    </view>
+  </view>
+  <text class="lj-cash"  catchtouchmove="{}">订单立减金额(元)</text>
+  <text class='chance chance-1'  catchtouchmove="{}" wx:if="{{drawState==1&&chanceNum==1&&chanceNum<3}}">恭喜您获得<text>{{chanceNum}}</text>次抽奖机会, 
+  {{chanceNum==1?'祝您好运':''}}{{chanceNum==2?'继续加油哦':''}}！
+  </text>
+  <text class='chance chance-1'  catchtouchmove="{}" wx:if="{{drawState==1&&chanceNum<3&&chanceNum!=1}}">恭喜您获得第<text>{{chanceNum}}</text>次抽奖机会, 
+  {{chanceNum==1?'祝您好运':''}}{{chanceNum==2?'继续加油哦':''}}！
+  </text>
+  <text class='chance chance-n'  catchtouchmove="{}" wx:if="{{drawState==1&&chanceNum>2}}">请进行第<text>{{chanceNum}}</text>次抽奖！</text>
+  <text class='chance chance-2'  catchtouchmove="{}" wx:if="{{drawState==2||drawState==3}}"><text>恭喜您！</text> 
+  第<text class='chance-2-2'>{{chanceNum}}</text>次摇奖订单{{chanceNum>1?'累计':''}}立减</text>
+  <block wx:if="{{isOneDrawShow}}">
+  <image src='https://file.maiyatown.com/images/redEnvelopes/close.png' mode='widthFix' class='close-btn' bindtap='closeShade' catchtouchmove="{}"/>
+  </block>
+</block>
+ <van-dialog 
+  show="{{isShowDraw}}" 
+  id="van-dialog-draw"
+  bind:confirm='onGoDraw'
+  bind:cancel='onGoOrder'
+/>
+<!-- 分享无效或可摇奖次数为0 -->
+ <van-dialog
+  show="{{ isInvalid }}"
+  id="van-dialog"
+  bind:confirm='invalidConfirm'
+/>

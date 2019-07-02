@@ -1,0 +1,55 @@
+/* pages/balanceExtract/balanceExtract.wxss */
+@import "/static/css/common.wxss";
+@import "/template/extractCashExplain/extractCashExplain.wxss";
+.fz,.font-size{
+  font-size: 28rpx;
+}
+.con{
+   width: calc(100% - 52rpx);
+  padding-left: 26rpx;
+  padding-right: 26rpx;
+}
+.com{
+   width: calc(100% - 52rpx);
+  margin-left: 30rpx;
+}
+.top-img{
+  width: 100%;
+  float: left;
+}
+.top{
+  margin-top: -130rpx;
+  float: left;
+  font-size: 50rpx;
+  font-weight: bold;
+}
+.top-2{
+  float: left;
+  margin-top:-70rpx;
+}
+.mid-t{
+  float: left;
+  font-size: 50rpx;
+  margin-top:90rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx solid #ddd; 
+}
+.mid-t text:nth-child(1){
+  float: left;
+  width: 50%;
+}
+.mid-t text:nth-child(2){
+  float: right;
+  width: 50%;
+  text-align: right;
+  font-weight: bold;
+  color: red
+}
+.mid-2{
+  float: left;
+  margin-top: 30rpx;
+  color:#666
+}
+.mid-2 text{
+  color: red;
+}

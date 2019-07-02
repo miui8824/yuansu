@@ -1,0 +1,103 @@
+<!--pages/shopCar/shopCar.wxml-->
+<navigation id='Navigation' show-icon='{{showIcon}}' title="商品清单">
+</navigation>
+<view class='shop_car'>
+  <view class='order_list_box' wx:if="{{!noShopCar}}">
+    <view class='scroll_view shop_list_box' scroll-y>
+      <view class='clear clear20'></view>
+      <view class='shop_list_item' wx:if="{{eidtButtonClick}}" wx:for="{{shopCarList}}" wx:key="{{index}}" data-index="{{index}}">
+        <view>
+          <view class='shop_list_main'>
+            <view class='select_buttons' data-index="{{index}}" bindtap='itemOnChange'>
+              <image wx:if="{{switchList[index]}}" src='https://file.maiyatown.com/images/shopCar/shopping_cart_selected_check.svg'></image>
+              <image wx:else src='https://file.maiyatown.com/images/shopCar/shopping_cart_selected_default.svg'></image>
+            </view>
+            <view class='main_img' data-goodsid="{{item.goodsId}}" data-activityid="{{item.activityId}}" data-left="{{true}}">
+              <image src='{{item.goodImg}}'></image>
+            </view>
+            <view class='main_shop_text'>
+              <view class='shop_name'>
+                <view class='shop_name_text' data-goodsid="{{item.goodsId}}" data-activityid="{{item.activityId}}" data-left="{{true}}">{{item.title}}</view>
+                <view class='close_button' data-index="{{index}}" bindtap='clearShopItem'>
+                  <image src='https://file.maiyatown.com/images/shopCar/shopping_cart_icon_close.svg'></image>
+                </view>
+              </view>
+              <view class='shop_introduce'>{{item.specValueDesc}}</view>
+              <view class='shop_money_box'>
+                <view class='color_red font_34'>¥{{item.price}}</view>
+                <!-- max="{{ item.dummyStock }}" -->
+                <van-stepper data-index="{{index}}" bind:change="onChange" disable-input value="{{ item.goodsNumber }}" />
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='shop_list_item' wx:for="{{offShopList}}" wx:key="{{index}}" data-index="{{index}}">
+        <view>
+          <view class='shop_list_main'>
+            <view class='select_buttons'>
+            </view>
+            <view class='main_img'>
+              <image src='{{item.goodImg}}'></image>
+            </view>
+            <view class='main_shop_text'>
+              <view class='shop_name'>
+                <view class='shop_name_text color_hui'>{{item.title}}</view>
+                <view class='close_button' data-index="{{index}}" bindtap='clearShopItem1'>
+                  <image src='https://file.maiyatown.com/images/shopCar/shopping_cart_icon_close.svg'></image>
+                </view>
+              </view>
+              <view class='shop_introduce color_hui'>{{item.specValue}}</view>
+              <view class='shop_money_box'>
+                <view class='color_hui font_34'>¥{{item.price}}</view>
+                <van-stepper disabled data-index="{{index}}" bind:change="onChange" value="{{ item.goodsNumber }}" />
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='clear clear70'></view>
+    <view class='clear clear70'></view>
+    <view class='clear clear70'></view>
+
+    <view class='shop_car_all'>
+      <view class='all_select' bindtap='allchoice'>
+        <image wx:if="{{allSelect}}" src='https://file.maiyatown.com/images/shopCar/shopping_cart_selected_check.svg' />
+        <image wx:else src='https://file.maiyatown.com/images/shopCar/shopping_cart_selected_default.svg' />
+        <text>全选</text>
+      </view>
+      <view class='all_money'>
+        <view class='money_number_box'>
+          <view>
+            <view class='money_number'>
+              <text class='color_333 font_28'>合计：</text>
+              <text class='color_red font_32'>¥{{allSumNumber}}</text>
+            </view>
+            <!-- 会员 -->
+            <view class='money_said color_999 font_22' wx:if="{{isCustomer==1&&disAmtShow}}">已优惠：¥{{disAmt}}</view>
+            <view class='money_said color_999 font_22' wx:if="{{isCustomer==1&&!disAmtShow}}">再买¥{{residueBagsPrice}}元可享受优惠</view>
+            <!-- 非会员 -->
+            <view class='money_said color_999 font_22' wx:if="{{isCustomer!=1&&!disAmtShow}}">再买¥{{residueBagsPrice}}元可成为会员</view>
+          </view>
+        </view>
+        <view class='all_button_box'>
+          <van-button class='all_button' round size='small' bind:tap="goPay" style='font-weight:600;' wx:if="{{disAmtShow}}">
+            {{allNumberText||'结算'}}
+          </van-button>
+          <van-button class='all_button no' round size='small' style='font-weight:600;' wx:else>
+            {{allNumberText||'结算'}}
+          </van-button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='no_order_box' wx:else>
+    <view>
+      <image class='no_order_logo' src='https://file.maiyatown.com/images/shopCar/shopping_cart_image_empty_state.png' />
+      <view class='no_order_text'>暂无商品清单~</view>
+      <view class='no_order_button' bindtap='goHome'>去挑选好货</view>
+    </view>
+  </view>
+  <van-dialog id="van-dialog" />
+</view>

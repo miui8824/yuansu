@@ -1,0 +1,14 @@
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="微信修改"
+>
+</navigation>
+<view class='yibang' >
+  <view class='yibang_wechat1'>您已绑定微信号</view>
+  <view class='yibang_wechat' style='display:inline-block;'>{{wechat_num}}</view>
+</view>
+
+<view  class='bangding'  bindtap='change'>
+  <text class='bangding_down'>修改</text>
+</view>

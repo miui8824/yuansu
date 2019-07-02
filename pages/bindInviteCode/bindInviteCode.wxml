@@ -1,0 +1,24 @@
+<!--pages/bindInviteCode/bindInviteCode.wxml-->
+<navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="{{title}}"
+>
+</navigation>
+<view class='mainBox'>
+  <view class='inputBox' wx-if="{{isbdinviter!=1}}">
+    <input bindinput="userInputnum" name="{{userInputnum}}" placeholder='请输入邀请码' placeholder-style="color:#ccc"></input>
+  </view>
+    <view class='inputBox' wx-if="{{isbdinviter==1}}">
+    <!-- <input   disabled="disabled" bindinput="userInputnum" name="{{bdInviterCode}}" placeholder='' placeholder-style="color:#ccc"></input> -->
+    <view>{{bdInviterCode}}</view>
+  </view>
+
+  <view class='buttonBox' bindtap='buttonBox_bind'  wx-if="{{isbdinviter!=1}}">
+    <button hover-class="none">确定</button>
+  </view>
+    <view class='buttonBox'  wx-if="{{isbdinviter==1}}">
+    <button hover-class="none">已绑定</button>
+  </view>
+</view>
+<van-toast id="van-toast" />

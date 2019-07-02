@@ -1,0 +1,59 @@
+<!--pages/orderPayment/orderPayment.wxml-->
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="明细详情"
+>
+</navigation>
+<image class='top-img' mode='widthFix' src='https://file.maiyatown.com/images/extractCash/balance_withdrawal_successful_application.png'></image>
+<view class='top com'>
+  <text wx:if="{{orderState==1}}">订单已支付</text>
+  <text wx:if="{{orderState==2}}">订单已退款</text>
+</view>
+<view class='mid-p con'>
+  <image class='mp-d' src='https://file.maiyatown.com/images/orderPayment/dingwei.png'/>
+  <view class='mp-body'>
+    <view class='mpb-t'>
+      <view class='mpbt-p'>收货人：{{receivePerson}}</view>
+      <view class='mpbt-n'>{{receivePhone}}</view>
+    </view>
+    <view class='mpb-a fz'>{{receiveAddress}}</view>
+  </view>
+</view>
+<view class='product con'>
+  <image  class='pro-img' src='https://file.maiyatown.com/images/orderPayment/po.jpg'/>
+  <view class='pro-mes'>
+    <view class='prom-t fz'>{{productDescribe}}</view>
+    <view class='prom-a fz'>
+      <block wx:for='{{productAttr}}' wx:for-item='attr'>{{attr}}; </block>
+    </view>
+    <view class='prom-p'>￥{{productPrice}}</view>
+    <view class='prom-n'>X{{productNum}}</view>
+  </view>
+</view>
+<view class='bottom con fz'>
+  <view class='bot-1'>
+    <view class='bot-con'>
+      <text class='bc-left'>商品总价</text>
+      <text class='bc-price'>￥{{totalPrice}}</text>
+    </view>
+    <view class='bot-con' wx:if='{{balancePayment}}'>
+      <text class='bc-left'>余额支付</text>
+      <text class='bc-balance'>￥{{balancePayment}}</text>
+    </view>
+    <view class='bot-con'  wx:if='{{weChatPayment}}'>
+      <text class='bc-left'>微信支付</text>
+      <text class='bc-wechat'>￥{{weChatPayment}}</text>
+    </view>
+  </view>
+  <view class='bot-2'>
+    <view class='bot-con'>
+      <text class='bc-left'>订单号</text>
+      <text>{{orderNum}}</text>
+    </view>
+    <view class='bot-con'>
+      <text class='bc-left'>微信支付</text>
+      <text >{{paymentTime}}</text>
+    </view>
+  </view>
+</view>

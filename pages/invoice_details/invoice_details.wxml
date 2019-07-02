@@ -1,0 +1,12 @@
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="发票详情"
+>
+</navigation>
+<view class="container">
+	<view wx:for="{{imgArr}}" wx:for-item="image" class="previewimg">
+		<image src="{{image.fileUrl}}" data-src="{{image.fileUrl}}" bindtap="previewImage"></image>
+	</view>
+</view>
+

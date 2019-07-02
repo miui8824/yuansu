@@ -1,0 +1,42 @@
+<!--pages/advancedTraining/advancedTraining.wxml-->
+<navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="{{title}}"
+>
+</navigation>
+<view class='mainBox'>
+  <view class='topSwiper'>
+    <swiper class='swiper_box' autoplay="true" interval="5000" duration="1000" wx:if="{{swiperData.length>0}}" circular="true" indicator-dots="true" indicator-color="#ccc" indicator-active-color="#fed02f">
+      <swiper-item wx:for="{{swiperData}}" wx:key="{{index}}">
+          <image wx:for="{{item}}" wx:key="{{idx}}" wx:for-index="idx" class="slide-image" src='{{item.showImage}}' data-catName="{{item.catName}}" data-id="{{item.id}}" data-parentId="{{item.parentId}}" bindtap='swiperJump'/>
+      </swiper-item>
+    </swiper>
+
+  </view>
+
+  <view class='hotRecommend'>
+    <view class='titleBox'>
+      <view class='leftBorder'></view>
+      <text>热门推荐</text>
+    </view>
+    <view class='list'>
+      <view class='listItem' wx:for="{{list}}" wx:key="{{item.index}}" data-catName="{{item.catName}}" data-id="{{item.id}}" data-catId="{{item.catId}}" bindtap='goDetail'>
+        <view class='mediaBox'>
+          <image src='{{item.imgUrl}}'></image>
+        </view>
+
+        <view class='infoBox'>
+          <view class='title'>{{item.title}}</view>
+          <view class='date'>{{item.createTime}}</view>
+          <view class='type'>{{item.catName}}</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+    <!-- 底线 -->
+  <view class='bottom_line' wx:if="{{showNomore&&list.length!=0}}" id='btLine'>
+    ~~我也是有底线的~~
+  </view>
+</view>

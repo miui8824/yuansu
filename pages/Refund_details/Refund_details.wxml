@@ -1,0 +1,309 @@
+<!--pages/Refund_details/Refund_details.wxml-->
+<navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="{{title}}"
+>
+</navigation>
+<view style='width: 100%;overflow-x: hidden;'>
+
+<view  wx:if='{{cancelSuccess}}'>
+  <view class='cancelBanner'>
+    <image src='https://file.maiyatown.com/images/v1.2/payment_image_refund_closed.png'></image>
+    <view class='refundClose'>维权关闭</view>
+    <view class='refundTime'>{{refundEndTime}}</view>
+  </view>
+  <view class='cancelTips'>
+    <text>您已经撤销本次申请~</text>
+  </view>
+</view>
+
+<view wx:if="{{rejected}}">
+  <view class='rejectedBanner'>
+    <image src='https://file.maiyatown.com/images/v1.2/payment_image_refund_reject.png'></image>
+    <view class='refundRejected' wx:if='{{refundType==1}}'>退款驳回</view>
+    <view class='refundRejected' wx:if='{{refundType==2}}'>维权驳回</view>
+    <view class='refundTime'>{{auditTime}}</view>
+  </view>
+
+  <view class='rejectedTips'>原因：{{rejectReason}}</view>
+  <view class='rejectLogistic' wx:if="{{refundType==2 && data_refond.refundStatus==18 && expressNum != ''}}">仓库退货物流：{{expressCompany}}、{{expressNum}}</view>
+  <view class='rejectedUrlList' wx:if="{{refundType==2 && data_refond.refundStatus==18 && proofUrlList.length!=0}}">
+    <image wx:for="{{rejectedUrlList}}" class='rejectedImages' src='{{item}}' wx:key="index"></image>
+  </view>
+</view>
+
+<view wx:if="{{ !cancelSuccess && !rejected && state1 && !state2 && !state3 && !state4 && !state5 && refundType==1 }}" style='width:100%;background:#FFFFFF;padding:60rpx 0'>
+    <view class='stepBox'>
+        <view class='circle' style='margin-left:40rpx;background:#DD232F;left:54rpx;'>
+          <text>1</text>
+        </view>
+        <progress style="width:200rpx;display:inline-block;top:50%;transform:translateY(-50%);position:absolute;display:inline-block;left:150rpx;" percent="50" activeColor="#DD232F" active />
+        <view class='circle' style="left:350rpx;">
+          <text>2</text>
+        </view>
+        <progress style="width:200rpx;display:inline-block;top:50%;transform:translateY(-50%);position:absolute;display:inline-block;left:410rpx;" percent="0" activeColor='#DD232F' active />
+        <view class='circle' style="left:610rpx;">
+          <text>3</text>
+        </view>
+    </view>
+    <view style='padding-left:40rpx;margin-top:30rpx;'>
+      <text style='font-size:28rpx;margin-right:140rpx;margin-left:8px;'>发起申请</text>
+      <text style='font-size:28rpx;margin-right:140rpx;margin-left:8px;color:#999999'>平台审核</text>
+      <text style='font-size:28rpx;color:#999999'>退款完成</text>
+    </view>
+    <view style='text-align:center;width:80%;margin:60rpx auto 0rpx;height:68rpx;'>
+      <view style="border:2rpx solid #666666 ; border-radius:34rpx;display:inline-block;width:160rpx;height:68rpx;text-align:center;">
+        <text  bindtap='showDialog' style='display:inline-block;font-size:28rpx;color:##CECECE;font-weight:600;height:68rpx;line-height:68rpx;'>撤销申请</text>
+      </view>
+    <van-dialog id="van-dialog"/>
+    </view>
+</view>
+
+<view wx:if="{{ !cancelSuccess && !rejected && state1 && state2 && !state3 && !state4 && !state5 && refundType==1 }}" style='width:100%;background:#FFFFFF;padding:60rpx 0 0'>
+    <view class='stepBox'>
+        <view class='circle' style='margin-left:40rpx;background:#DD232F;left:54rpx;'>
+          <text>1</text>
+        </view>
+        <progress style="width:200rpx;display:inline-block;top:50%;transform:translateY(-50%);position:absolute;display:inline-block;left:150rpx;" percent="100" activeColor="#DD232F" />
+        <view class='circle' style="left:350rpx; background:#DD232F">
+          <text>2</text>
+        </view>
+        <progress style="width:200rpx;display:inline-block;top:50%;transform:translateY(-50%);position:absolute;display:inline-block;left:410rpx;" percent="50" activeColor='#DD232F' active />
+        <view class='circle' style="left:610rpx;">
+          <text>3</text>
+        </view>
+    </view>
+    <view style='padding-left:40rpx;margin-top:30rpx;'>
+      <text style='font-size:28rpx;margin-right:140rpx;margin-left:8px;'>发起申请</text>
+      <text style='font-size:28rpx;margin-right:140rpx;margin-left:8px;'>平台审核</text>
+      <text style='font-size:28rpx;color:#999999'>退款完成</text>
+    </view>
+    <view class='waitText2'>
+      <text style='color:#333;font-size:32rpx;height:100rpx;line-height:100rpx;font-weight:500;'>平台正在审核中，请您耐心等待结果</text>
+    </view>
+</view>
+
+
+<view wx:if="{{ !cancelSuccess && !rejected && state1 && !state2 && !state3 && !state4 && !state5 && refundType==2 }}" style='width:100%;background:#FFFFFF;padding:60rpx 0'>
+    <view class='stepBox'>
+        <view class='circle' style='margin-left:40rpx;background:#DD232F;left:54rpx;'>
+          <text>1</text>
+        </view>
+        <progress style="width:200rpx;display:inline-block;top:50%;transform:translateY(-50%);position:absolute;display:inline-block;left:150rpx;" percent="50" activeColor="#DD232F" active />
+        <view class='circle' style="left:350rpx;">
+          <text>2</text>
+        </view>
+        <progress style="width:200rpx;display:inline-block;top:50%;transform:translateY(-50%);position:absolute;display:inline-block;left:410rpx;" percent="0" activeColor='#DD232F' active />
+        <view class='circle' style="left:610rpx;">
+          <text>3</text>
+        </view>
+    </view>
+    <view style='padding-left:40rpx;margin-top:30rpx;'>
+      <text style='font-size:28rpx;margin-right:140rpx;margin-left:8px;'>发起申请</text>
+      <text style='font-size:28rpx;margin-right:140rpx;margin-left:8px;color:#999999'>平台审核</text>
+      <text style='font-size:28rpx;color:#999999'>买家退货</text>
+    </view>
+    <view style='text-align:center;width:80%;margin:60rpx auto 0rpx;height:68rpx;'>
+      <view style="border:2rpx solid #666666 ; border-radius:34rpx;display:inline-block;width:160rpx;height:68rpx;text-align:center;">
+        <text  bindtap='showDialog' style='display:inline-block;font-size:28rpx;color:##CECECE;font-weight:600;height:68rpx;line-height:68rpx;'>撤销申请</text>
+      </view>
+    <van-dialog id="van-dialog"/>
+    </view>
+</view>
+
+<view wx:if="{{ !cancelSuccess && !rejected && state1 && state2 && !state3 && !state4 && !state5 && refundType==2 }}" style='width:100%;background:#FFFFFF;padding:60rpx 0 0'>
+  <view class='stepBox'>
+        <view class='circle' style='margin-left:40rpx;background:#DD232F;left:54rpx;'>
+          <text>1</text>
+        </view>
+        <progress style="width:200rpx;display:inline-block;top:50%;transform:translateY(-50%);position:absolute;display:inline-block;left:150rpx;" percent="100" activeColor="#DD232F"/>
+        <view class='circle' style="left:350rpx;background:#DD232F">
+          <text>2</text>
+        </view>
+        <progress style="width:200rpx;display:inline-block;top:50%;transform:translateY(-50%);position:absolute;display:inline-block;left:410rpx;" percent="50" activeColor='#DD232F' active />
+        <view class='circle' style="left:610rpx;">
+          <text>3</text>
+        </view>
+    </view>
+    <view style='padding-left:40rpx;margin-top:30rpx;'>
+      <text style='font-size:28rpx;margin-right:140rpx;margin-left:8px;'>发起申请</text>
+      <text style='font-size:28rpx;margin-right:140rpx;margin-left:8px;'>平台审核</text>
+      <text style='font-size:28rpx;color:#999999'>买家退货</text>
+    </view>
+    <view class='waitText2'>
+      <text style='color:#333;font-size:32rpx;height:100rpx;line-height:100rpx;font-weight:500;'>平台正在审核中，请您耐心等待结果</text>
+    </view>
+</view>
+
+<view class='refundSuccess' wx:if="{{ !cancelSuccess && !rejected && state1 && state2 && state3 && !state4 && !state5 && refundType==1}}" style='width:100%;background:#FFFFFF;padding:60rpx 0 0'>
+    <view class='stepBox'>
+        <view class='circle' style='margin-left:40rpx;background:#DD232F;left:54rpx;'>
+          <text>1</text>
+        </view>
+        <progress style="width:200rpx;display:inline-block;top:50%;transform:translateY(-50%);position:absolute;display:inline-block;left:150rpx;" percent="100" activeColor="#DD232F" />
+        <view class='circle' style="left:350rpx; background:#DD232F">
+          <text>2</text>
+        </view>
+        <progress style="width:200rpx;display:inline-block;top:50%;transform:translateY(-50%);position:absolute;display:inline-block;left:410rpx;" percent="100" activeColor='#DD232F'/>
+        <view class='circle' style="left:610rpx;background:#DD232F">
+          <text>3</text>
+        </view>
+    </view>
+    <view style='padding-left:40rpx;margin-top:30rpx;'>
+      <text style='font-size:28rpx;margin-right:140rpx;margin-left:8px;'>发起申请</text>
+      <text style='font-size:28rpx;margin-right:140rpx;margin-left:8px;'>平台审核</text>
+      <text style='font-size:28rpx;'>退款完成</text>
+    </view>
+    <view class='refundSuccessNum'>
+      <text style='color:#666;font-size:36rpx;font-weight:500;'>实际退款：</text>
+      <text style='color:#ff262c;font-size:36rpx;font-weight:600;'>¥{{refundSuccessNum}}</text>
+    </view>
+</view>
+
+
+<!-- 2-3-4(2-3) -->
+<view class='prepareRefund' wx:if="{{ !cancelSuccess && !rejected && state1 && state2 && state3 && !state4 && !state5 && refundType==2}}" style='width:100%;background:#FFFFFF;padding:60rpx 0 0'>
+    <view class='stepBox'>
+        <view class='circle' style='margin-left:40rpx;background:#DD232F;left:54rpx;'>
+          <text>2</text>
+        </view>
+        <progress style="width:200rpx;display:inline-block;top:50%;transform:translateY(-50%);position:absolute;display:inline-block;left:150rpx;" percent="100" activeColor="#DD232F"/>
+        <view class='circle' style="left:350rpx; background:#DD232F">
+          <text>3</text>
+        </view>
+        <progress style="width:200rpx;display:inline-block;top:50%;transform:translateY(-50%);position:absolute;display:inline-block;left:410rpx;" percent="50" activeColor='#DD232F' active />
+        <view class='circle' style="left:610rpx;">
+          <text>4</text>
+        </view>
+    </view>
+    <view style='padding-left:40rpx;margin-top:30rpx;margin-bottom:50rpx;'>
+      <text style='font-size:28rpx;margin-right:140rpx;margin-left:8px;'>平台审核</text>
+      <text style='font-size:28rpx;margin-right:140rpx;margin-left:8px;'>买家退货</text>
+      <text style='font-size:28rpx;'>仓库收货</text>
+    </view>
+
+    <view class='waitText' wx:if="{{data_refond.refundStatus==16}}">
+      <text>等待商家仓库确认收货</text>
+    </view>
+    <view class='prepareRefundBox' wx:if="{{data_refond.refundStatus==15}}">
+      <view class='prepareText'>平台已通过审核，请您准备退货！</view>
+      <view class='leftRefundTime'>剩余<text>{{ day }}</text>天<text>{{ hour }}</text>时<text>{{ minute }}</text>分</view>
+    </view>
+    <view class='fillLogistic' wx:if="{{data_refond.refundStatus==15}}">
+      <view bindtap='goRefundLogistic'>填写退货物流</view>
+    </view>
+</view>
+
+<!-- 3-4-5(3-4) -->
+<view class='prepareRefund' wx:if="{{ !cancelSuccess && !rejected && state1 && state2 && state3 && state4 && !state5 && refundType==2}}" style='width:100%;background:#FFFFFF;padding:60rpx 0 0'>
+    <view class='stepBox'>
+        <view class='circle' style='margin-left:40rpx;background:#DD232F;left:54rpx;'>
+          <text>3</text>
+        </view>
+        <progress style="width:200rpx;display:inline-block;top:50%;transform:translateY(-50%);position:absolute;display:inline-block;left:150rpx;" percent="100" activeColor="#DD232F"/>
+        <view class='circle' style="left:350rpx;background:#DD232F">
+          <text>4</text>
+        </view>
+        <progress style="width:200rpx;display:inline-block;top:50%;transform:translateY(-50%);position:absolute;display:inline-block;left:410rpx;" percent="50" activeColor='#DD232F' active />
+        <view class='circle' style="left:610rpx;">
+          <text>5</text>
+        </view>
+    </view>
+    <view style='padding-left:40rpx;margin-top:30rpx;margin-bottom:100rpx;'>
+      <text style='font-size:28rpx;margin-right:140rpx;margin-left:8px;'>买家退货</text>
+      <text style='font-size:28rpx;margin-right:140rpx;margin-left:8px;'>仓库收货</text>
+      <text style='font-size:28rpx;'>售后完成</text>
+    </view>
+    <view class='waitText'>
+      <text style='color:#333;font-size:32rpx;height:100rpx;line-height:100rpx;'>仓库已确认收货，正在审核中</text>
+    </view>
+</view>
+
+<!-- 3-4-5(3-4-5) -->
+<view class='completeRefund' wx:if="{{ !cancelSuccess && !rejected && state1 && state2 && state3 && state4 && state5 }}" style='width:100%;background:#FFFFFF;padding:60rpx 0 0'>
+    <view class='stepBox'>
+        <view class='circle' style='margin-left:40rpx;background:#DD232F;left:54rpx;'>
+          <text>3</text>
+        </view>
+        <progress style="width:200rpx;display:inline-block;top:50%;transform:translateY(-50%);position:absolute;display:inline-block;left:150rpx;" percent="100" activeColor="#DD232F"/>
+        <view class='circle' style="left:350rpx;background:#DD232F">
+          <text>4</text>
+        </view>
+        <progress style="width:200rpx;display:inline-block;top:50%;transform:translateY(-50%);position:absolute;display:inline-block;left:410rpx;" percent="100" activeColor='#DD232F'/>
+        <view class='circle' style="left:610rpx;background:#DD232F">
+          <text>5</text>
+        </view>
+    </view>
+    <view style='padding-left:40rpx;margin-top:30rpx;margin-bottom:100rpx;'>
+      <text style='font-size:28rpx;margin-right:140rpx;margin-left:8px;'>买家退货</text>
+      <text style='font-size:28rpx;margin-right:140rpx;margin-left:8px;'>仓库收货</text>
+      <text style='font-size:28rpx;'>售后完成</text>
+    </view>
+    <view class='refundSuccessNum'>
+      <view class='title'>退货成功，维权完成</view>
+      <view class='number'>
+        <text style='color:#666;font-size:36rpx;font-weight: 500;'>实际退款：</text>
+        <text style='color:#ff262c;font-size:44rpx;font-weight:600;'>¥{{refundSuccessNum}}</text>
+      </view> 
+    </view>
+</view>
+
+
+
+<!-- 退货物流信息 -->
+<view class='refundLogisticInfo' wx:if="{{ !cancelSuccess && !rejected && state1 && state2 && state3 && !state4 && !state5 && refundType==2}}">
+  <view class='logisticCompany' wx:if="{{data_refond.refundStatus==16}}">
+    <text class='first'>退货物流公司：</text>
+    <text class='second'>{{userExpressCompany}}</text>
+  </view>
+  <view class='logisticNum' wx:if="{{data_refond.refundStatus==16}}">
+    <text class='first'>退货物流单号：</text>
+    <text class='second'>{{userExpressNum}}</text>
+  </view>
+  <view class='refundAddress'>
+    <text class='first'>退货地址：</text>
+    <text class='second1'>{{deliverAddress}} {{deliverName}} {{deliverPhone}}</text>
+  </view>
+</view>
+
+<view style='width:100%;background:#FFFFFF;padding:30rpx 0;margin-top:20rpx;'>
+    <text style="font-size:32rpx;font-weight:bold;margin-left:30rpx;">{{refundType==1?"退款信息":"退货退款信息"}}</text>
+    <view class='refundGoodsLists' wx:for="{{data_refond.orderGoodList}}" wx:key="id">
+
+       <view style='padding:30rpx 30rpx 30rpx 0;position:relative;margin-left:30rpx;'>
+            <image style="width: 140rpx; height: 140rpx;background-color: #eeeeee;margin-right:20rpx;border-radius:8rpx;"src="{{item.goodImg}}"></image>
+            <view class='tip' wx:if="{{activityType==6||activityType==7}}">· 会员礼包 ·</view>
+
+              <text class='afterSale_title' style='display:inline-block;width:380rpx;position:absolute;color:#101010;font-size:28rpx;font-weight:500;overflow : hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;top:30rpx;left:160rpx;'>{{item.goodName}}</text>
+              <text class='afterSale_title' style='display:inline-block;position:absolute;color:#101010;font-size:28rpx;right:30rpx;top:30rpx;font-weight:500;'>¥{{item.actGoodPrice}}</text>
+              <text class='afterSale_title1' style='color:#999999;font-size:24rpx;position:absolute;top:120rpx;height: 64rpx; width: 450rpx;overflow : hidden;text-overflow: ellipsis;display: -webkit-inline-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;'>{{item.goodAttrDesc}}</text> 
+              <text class='afterSale_title2' style='color:#999999;font-size:24rpx; float:right;margin-top:50rpx;'>×{{item.residualQuantity}}</text>  
+              <!-- <text class='afterSale_title3'>sss</text> -->
+          </view>
+    </view>
+    <view style='font-size:28rpx;color:#666666;padding:30rpx 30rpx 0;'>
+      <text style='margin-right:40rpx;'>退款原因:</text>
+      <text>{{data_refond.refundReason}}</text>
+    </view>
+    <view style='font-size:28rpx;color:#666666;padding:12rpx 30rpx 0;'>
+      <text style='margin-right:40rpx;'>退款金额:</text>
+      <text>¥{{data_refond.expRefundAmt}}</text>
+    </view>
+    <view style='font-size:28rpx;color:#666666;padding:12rpx 30rpx 0;'>
+      <text style='margin-right:40rpx;'>申请时间:</text>
+      <text>{{data_refond.refundApplyTimeValue}}</text>
+    </view>
+    <view style='font-size:28rpx;color:#666666;padding:12rpx 30rpx 0;'>
+      <text style='margin-right:40rpx;'>订单编号:</text>
+      <text>{{data_refond.orderNum}}</text>
+    </view>
+     
+</view>
+
+<view class='contact'>
+  <image src='https://file.maiyatown.com/images/Refund_details/explosion_home_or_customer.svg'></image>
+  <view class='gohome' bindtap='goHome'></view>
+  <button class='service' open-type='contact'></button>
+</view>
+</view>

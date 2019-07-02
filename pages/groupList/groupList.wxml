@@ -1,0 +1,38 @@
+<!--pages/groupList/groupList.wxml-->
+<view class='group_list'>
+  <navigation
+  id='Navigation'
+  show-icon='{{showIcon}}'
+  title="全部参团"
+  >
+  </navigation>
+  <view class='group_list_box'>
+    <view class='clear clear20'></view>
+    <view class='list_top'>
+      <view class='list_img_box'>
+        <image src='{{goodImg}}'></image>
+        <view class='img_tip'>·   拼团   ·</view>
+      </view>
+      <view>
+        <view class='list_title'>{{goodTitle}}</view>
+        <view class='list_money'>¥{{price}}<text>   /件</text></view>
+      </view>
+    </view>
+    <view class='clear clear20'></view>
+    <view class='list_lists'>
+      <view class='lists_title' wx:if="{{groupList.length>0}}">以下小伙伴正在发起拼团，您可以直接参加</view>
+      <view class='plays_main'>
+        <view class='plays_main_item' wx:for="{{groupList}}" wx:key="{{index}}">
+          <image src='{{item.headImageUrl}}'></image>
+          <text class='font_28 color_333 plays_name'>{{item.nickName}}</text>
+          <view>
+            <view class='color_333 font_26'>还差<text class='color_red'>{{item.remainderPart}}人</text>拼成</view>
+            <view class='color_666 font_26 mar_t_10'>剩余 <text class='time_tip'>{{item.remainderTimeData}}</text></view>
+          </view>
+          <van-button class='go_group' round size='small' data-groupId='{{item.groupId}}' data-activityId='{{item.activityId}}' 
+          data-goodsId='{{item.goodsId}}' bindtap='goToSpell'>去参团</van-button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

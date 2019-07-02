@@ -1,0 +1,32 @@
+<!--pages/extractCash/extractCash.wxml-->
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="余额提现"
+>
+</navigation>
+<view class='top con'>
+  <image src='https://file.maiyatown.com/images/extractCash/balance_withdrawal_image_bg.png'></image>
+  <view class='top_text-1 font-size'>当前余额(元)</view>
+  <view class='top_text-2'>￥{{balance}}</view>
+</view>
+<view class='middle-t con'>提现金额</view>
+<view class='middle-i com'>
+  <view class='mi-left'>￥</view>
+  <input value='{{tixian}}' name="userName" class='mi-input' bindinput='inputCash' placeholder='请输入提现金额' value='{{tixianValue}}' placeholder-style="color:#ccc;font-weight:400;" type='digit'/>
+  <button class='mi-button font-size' bindtap='all_money'>全部</button>
+</view>
+<view class='tip con font-size'>当月还可提现 <text>{{all_data.residueDegree}}</text> 次；手续费:<text>￥{{ServiceCharge}}元</text></view>
+<!-- <import src="../../template/extractCashExplain/extractCashExplain.wxml" /> -->
+<!-- <template is="extractCashExplain"></template> -->
+  <view class='explainTitle con font-size' style='margin-top:100rpx'>提现说明</view>
+  <text class='explainTip con font-size'>
+   <text>{{rule_text}}</text>
+  <!-- <text>2、获得VIP用户头衔方可提现；</text>
+  <text>3、每月可以提现2次；</text>
+  <text>4、操作提现暂不收取手续费（以后根据政策调整);</text>
+  <text>5、提现需要绑定手机号；</text>
+  <text>6、提现将会通过微信的【通知服务】进行通知，打款到微信零钱，请注意查收。</text> -->
+  </text>
+<button class='bottom com {{botClass}}' bindtap='extract_cash1'>提现</button>
+  <van-toast id="van-toast" />

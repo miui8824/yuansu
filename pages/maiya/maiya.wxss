@@ -1,0 +1,427 @@
+/* pages/vipList/vipList.wxss */
+@import "/static/css/common.wxss";
+::-webkit-scrollbar
+{
+width: 0;
+height: 0;
+color: transparent;
+}
+
+.vip_box {
+  width: 100%;
+  height: 100vh;
+  background: #f2f2f2;
+}
+.vip_box .vip_top_box {
+  width: 100%;
+  background: #fff;
+}
+.vip_box .vip_user_box {
+  padding: 30rpx;
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.vip_box .vip_user_box .user_left {
+  display: flex;
+  align-items: center;
+}
+.vip_box .vip_user_box .user_img {
+  position: relative;
+  width: 120rpx;
+  height: 120rpx;
+  background: #F5DAAC;
+  border-radius: 50%;
+}
+.vip_box .vip_user_box .user_img>image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+}
+.vip_box .vip_user_box .user_name {
+  font-size: 36rpx;
+  color: #333;
+  width:150px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.vip_box .vip_user_box .user_lv {
+  margin-top: 20rpx;
+  padding: 0 10rpx;
+  display: inline-block;
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 20rpx;
+  color: #333;
+  background: #f2df88;
+  border-radius: 15rpx;
+}
+.vip_box .vip_user_box .user_right {
+  text-align: right;
+  z-index: 100
+}
+.vip_box .vip_user_box .user_copy {
+  float: right;
+  width: 90rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #333;
+  border: 1rpx solid #333;
+  border-radius: 21rpx;
+  z-index:100
+}
+.vip_box .vip_user_box .user_copy_box {
+  display: flex;
+  justify-content: flex-end;
+  z-index: 100;
+  float: right;
+  height:50rpx;
+}
+.vip_box .vip_user_box .user_id {
+  margin-top: 20rpx;
+  line-height: 24rpx;
+  font-size: 24rpx;
+  color: #666666;
+  float: right
+}
+.vip_box .vip_top_box .money_box {
+  position: relative;
+  margin: 0 30rpx;
+}
+.vip_box .vip_top_box .money_all {
+  margin: 0 20rpx;
+  padding: 0 30rpx;
+  height: 94rpx;
+  color: #fff;
+  line-height: 64rpx;
+  background:linear-gradient(-68deg,rgba(68,68,68,1) 0%,rgba(76,76,76,1) 100%);
+  border-radius:20rpx;
+  vertical-align: top;
+}
+.vip_box .vip_top_box .money_all>text {
+  font-size: 28rpx;
+  line-height: 64rpx;
+}
+.vip_box .vip_top_box .money_main {
+  position: relative;
+  top: -30rpx;
+  height:340rpx;
+  background:linear-gradient(-35deg,rgba(239,219,127,1) 0%,rgba(255,240,170,1) 100%);
+  border-radius:20rpx;
+  overflow: hidden;
+}
+.vip_box .vip_top_box .money_main>image{
+  height:100%;
+  width:100%;
+}
+.vip_box .today_message_box {
+  padding: 0 30rpx;
+  background: #fff;
+}
+ .today_title {
+  display: flex;
+  align-items: center;
+  height: 88rpx;
+  color: #333;
+  font-size: 32rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+  font-weight: 600;
+}
+.icon_icon {
+  margin-right: 20rpx;
+  display: inline-block;
+  width:6rpx;
+  height:32rpx;
+  background:rgba(255,209,0,1);
+  border-radius:r3px;
+}
+.vip_box .today_message_box .message_main {
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+.vip_box .today_message_box .message_item {
+  margin-bottom: 20rpx;
+  width: 100%;
+  height: 180rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+.vip_box .today_message_box .message_item>image {
+  width: 100%;
+  height: 180rpx;
+}
+.vip_process{
+  height: 130rpx;
+  margin:0 0 40px 0;
+
+}
+.vip_shine{
+  width:70%;
+  left:15.4%;
+  position:relative;
+
+}
+.vip_maiya{
+  position:relative;
+  top:79rpx;
+  width:70rpx;
+  height:40rpx;
+  background:rgba(68,68,68,1);
+  border-radius:20px;
+  font-size:22rpx;
+  left:6%;
+  text-align:center;
+  color:#F2DF88;
+  line-height:20px;
+}
+.vip_processes{
+    position:relative;
+  top:-26rpx;
+  width:48rpx;
+  height:50rpx;
+  /* background:rgba(68,68,68,1); */
+  border-radius:50%;
+  font-size:22rpx;
+  
+  text-align:center;
+  color:#F2DF88;
+  line-height:20px;
+  z-index:1;
+
+}
+.vip_processes >image{
+  width:100%;
+  height: 92%;
+  position: relative;
+  left: 0;
+}
+.vip_maimiao{
+  /* float:right; */
+  margin-top:-14px;
+  width:70rpx;
+  height:40rpx;
+  background:#F2DF88;
+  border-radius:20px;
+  font-size:22rpx;
+  text-align:center;
+  color:#333333;
+  line-height:20px;
+  /* margin-right:23px; */
+  z-index:101;
+  position:absolute;
+  right:25px;
+
+}
+.vip_group{
+  font-size:24rpx;
+  display:inline-block;
+  margin-left:5.6%;
+  margin-top:28rpx;
+}
+.vip_leval{
+  font-size:24rpx;
+  display:inline-block;
+  margin-left:46%;
+  position:absolute;
+  margin-top:25rpx;
+  right: 21px
+}
+.vip_zhutui{
+  padding:30rpx;
+  display:flex;
+  justify-content:space-between;
+  border-bottom:2rpx solid #EEEEEE;
+}
+.vip_zhutuiimg >image{
+  width:140rpx;
+  height:140rpx;
+  border-radius: 8rpx;
+}
+.vip_title{
+  font-size:28rpx;
+  color:#333333;
+  width:320rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin:20rpx 0 20rpx 0;
+  font-weight: 600;
+}
+.vip_share button{
+  width:150rpx;
+  height:60rpx;
+  background:rgba(255,209,0,1);
+  border-radius:30px;
+  font-size:28rpx;
+  color:#333333;
+  line-height:60rpx;
+  text-align:center;
+  margin-top:40rpx;
+  padding:0;
+  font-weight: 600;
+}
+.vip_more{
+  text-align:center;
+  width:100%;
+  height:98rpx;
+  line-height:98rpx;
+}
+.vip_more>text{
+  font-size:24rpx;
+  color:#999999
+}
+.today_finit{
+  width:100%;
+  height:100%;
+   position:absolute;
+   top:0;
+   text-align: center;
+} 
+.yanjiuyuan,.my_tools,{
+  background: white
+}
+.vip_lunbo{
+  background: white;
+  padding:30rpx;
+  text-align: center
+}
+.yanjiu ,.my_toolsimg{
+    display: flex;
+  align-items: center;
+  height: 88rpx;
+  color: #333;
+  font-size: 32rpx;
+  border-bottom: 1rpx solid #f2f2f2; 
+  background: white
+}
+.research{
+  width:335rpx;
+  height:180rpx;
+  overflow:hidden;
+  display:inline-block;
+  border-radius: 8rpx;
+}
+
+.research:nth-child(odd){
+  margin:0 20rpx 0 0
+}
+
+.research:nth-child(3){
+  margin:10rpx 20rpx 0 0
+}
+
+.research:nth-child(4){
+  margin:10rpx 0 0 0
+}
+
+.vip_bgimg{
+  position:absolute;
+  width:447rpx;
+  height:628rpx;
+  top:225rpx;
+  right:0;
+}
+
+.guess_price{
+  font-size:26rpx;
+  color:#FF262C;
+  height:40rpx;
+  width:100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align:left;
+  font-weight: 600;
+}
+.guess_title{
+  font-size:26rpx;
+  color:#101010;
+  height:40rpx;
+  width:100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align:left;
+  font-weight: 600;
+}
+.vip_guess{
+  width:216rpx;
+  height:67%;
+  display:inline-block;
+  margin-right:15rpx
+}
+.vip_icon{
+  width:134rpx;
+  height:40rpx;
+  position:relative;
+  top:15rpx;
+}
+/* 画图的css */
+.share-image {
+  width: 660rpx;
+  height: 955rpx;
+  margin: 0 45rpx;
+  /* border: 1px solid black; */
+  z-index: 1;
+  /* position:absolute; */
+}
+.background{
+  width: 600rpx;
+  height: 888rpx;
+  background: #000000;
+  opacity: 0.2;
+  position:absolute;
+  left: 78rpx;
+}
+
+/* button {
+  margin-top: 20rpx;
+} */
+.wechat{
+  width:305rpx;
+  height:98rpx;
+  background:rgba(71,186,68,1);
+  border-radius:49px;
+  margin: 30rpx;
+  line-height: 98rpx;
+  text-align: center;
+  color: white;
+  display: inline-block
+}
+.wechat1{
+  width:305rpx;
+  height:98rpx;
+  background:#FF911B;
+  border-radius:49px;
+  margin: 30rpx;
+  line-height: 98rpx;
+  text-align: center;
+  color: white;
+   display: inline-block
+}
+.wechatimg{
+  width:40rpx;
+  height:40rpx;
+  top:5px;
+  position:relative;
+
+}
+
+/* 画图的css */
+.button_replace {
+  position: fixed;
+  bottom:40rpx;
+  right: 30rpx;
+  width: 100rpx;
+  height: 80rpx;
+  background: transparent;
+  z-index: 99;
+}

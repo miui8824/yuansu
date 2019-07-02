@@ -1,0 +1,11 @@
+<!--pages/aftersaleRuleDetail/aftersaleRuleDetail.wxml-->
+<import src="/wxParse/wxParse.wxml"/>
+<navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="售后政策"
+>
+</navigation>
+<view class='ruleBox'>
+<template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>

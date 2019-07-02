@@ -1,0 +1,61 @@
+<!--pages/afterSale_list/afterSale_list.wxml-->
+<navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="售后列表"
+>
+</navigation>
+<view class='afterSale_list'>
+  <!-- t退款申请 -->
+  <scroll-view class='list_one' wx-if="{{ !aftersalenone }}">
+    <view class='list_oneblock' wx:for="{{resultList}}" wx:key='id'>
+    
+          <view wx:for="{{item.orderGoodList}}" wx:key="*this" wx:for-item="it" wx:for-index="i" >
+              <view style='display:inline-block;border-radius:10rpx;border-radius:8px;overflow:hidden;border-radius:8rpx;margin:20rpx 20rpx 0 0;position:relative;'>
+                  <image
+                      style="width: 200rpx; height: 200rpx;background-color: #eeeeee;"
+                      mode="{{mode}}"
+                      src="{{it.goodImg}}"
+                      class='list_onepic'
+                    ></image>
+                    <view class='tip' wx:if="{{item.activityType==6||item.activityType==7}}">· 会员礼包 ·</view>
+              </view>
+              
+              <text class='afterSale_title'>{{it.goodName}}</text>
+              <text class='afterSale_title1'>{{it.goodAttrDesc}}</text>  
+              <text class='afterSale_title2'>¥{{it.actGoodPrice}}</text>  
+              <text class='afterSale_title3'>×{{it.residualQuantity}}</text>
+          </view>
+         
+          <!-- <text class='underline'></text> -->
+          <view style='width:100%;border-top:2rpx solid #e5e5e5;line-height:90rpx;height:90rpx;'>
+              <text class='status' wx:if="{{item.refundStatus==11 || item.refundStatus==17}}">等待退款</text>
+              <text class='status' wx:if="{{item.refundStatus==15}}">等待退货</text>
+              <text class='status' wx:if="{{item.refundStatus==16}}">退货中</text>
+              <text class='status' wx:if="{{item.refundStatus==10 && item.refundType==1}}">退款待审核</text>
+              <text class='status' wx:if="{{item.refundStatus==10 && item.refundType==2}}">退货待审核</text>
+              <text class='status' wx:if="{{item.refundStatus==12}}">已退款</text>
+              <text class='status' wx:if="{{item.refundStatus==13||item.refundStatus==18||item.refundStatus==19}}">已驳回</text>
+
+              <view class='status_button' bindtap='afterSaleDetail' data-afterid="{{item.id}}">
+                  <text class='status_button2'>售后详情</text>
+              </view>
+              
+          </view>
+    </view>
+    <view style="background:#f2f2f2;height:85rpx;line-height:85rpx;text-align:center" class='font_24 color_999' wx:if="{{!hasMore && ipage>1}}">~~我也是有底线的~~</view>
+  </scroll-view>
+  
+
+  <view style='width:100%;height:83vh;text-align:center;background: #f2f2f2;' wx-if="{{aftersalenone}}">
+    <image
+          style="width:360rpx;height:204rpx;margin-top:50%;"
+          mode="{{mode}}"
+          src="https://file.maiyatown.com/images/afterSale_none/sale_empty.png"
+    ></image>
+       <view style='color:#666666;font-size:32rpx;margin-top:44rpx;'>暂无售后订单～</view>
+  </view>
+</view>
+<view bindtap='goAftersaleService' class='rules'>
+查看规则
+</view>

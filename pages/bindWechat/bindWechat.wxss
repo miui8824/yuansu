@@ -1,0 +1,47 @@
+/* pages/bindPhone/bindPhone.wxss */
+@import "/static/css/common.wxss";
+::-webkit-scrollbar{
+  width: 0;
+  height: 100vh;
+  color: transparent;
+}
+.bind_phone {
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  background: #f2f2f2;
+  padding-top: 20rpx;
+}
+.bind_phone .bind_code {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+}
+.bind_phone .get_code>button {
+  margin-right: 30rpx;
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 30rpx;
+  overflow: hidden;
+  font-size: 24rpx;
+  color: #333333;
+  background: #DD232F;
+  /* border:1rpx solid #333333; */
+}
+.bind_phone .bind_button>button {
+  margin-top: 210rpx;
+  display: block;
+  width: 690rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  border-radius: 50rpx;
+  overflow: hidden;
+  font-size: 36rpx;
+  color: #333333;
+  background: #DD232F;
+  font-weight: 600;
+}

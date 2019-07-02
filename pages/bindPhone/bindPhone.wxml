@@ -1,0 +1,35 @@
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="绑定手机"
+>
+</navigation>
+<view class='bind_phone'>  
+  <van-cell-group>
+    <van-field
+    maxlength="11"
+    value="{{ phone }}"
+    label="手机号"
+    placeholder="请输入手机号"
+    placeholder-style="color:#ccc"
+    error="{{false}}"
+    bind:change="changePhone"
+    bind:blur="testPhone"
+    bind:click-icon="onClickIcon"/>
+
+    <van-field
+    value="{{ code }}"
+    label="验证码"
+    placeholder="请输入验证码"
+    placeholder-style="color:#ccc"
+    use-button-slot
+    bind:change="changeCode"
+    border="{{ false }}">
+      <van-button slot="button" class='get_code' bind:tap="testCode" disabled='{{codeOff}}' round size='small'>
+        {{codeText}}
+      </van-button>
+    </van-field>
+  </van-cell-group>
+  <van-button class='bind_button' bind:tap="bindPhone" round size='small'>绑定</van-button>
+  <van-toast id="van-toast" />
+</view>

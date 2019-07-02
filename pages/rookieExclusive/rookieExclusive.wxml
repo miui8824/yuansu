@@ -1,0 +1,74 @@
+<!--pages/rookieExclusive/rookieExclusive.wxml-->
+
+<view bindtap='share_hide' wx:if="{{GetImage}}" style='position:absolute;width:100%;height:100%;background:black;opacity:0.3;z-index:1;' catchtouchmove='{{true}}'>
+</view>
+<view bindtap='' catchtouchmove='{{true}}' wx:if="{{GetImage}}" class="container" style='z-index:100;position:absolute;margin-top:25%;'>
+<!-- <view class='background'></view> -->
+  <image bindtap='share_hide' catchtouchmove='{{true}}' src="{{shareImage}}" class="share-image"></image>
+  <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage"/>
+  <!-- <button >绘制</button>
+  <button>保存到本地</button>  bind:tap="eventDraw"-->
+  <button catchtouchmove='{{true}}'  bindtap='eventDraw'  class="wechat">
+    <image class="wechatimg" src='https://file.maiyatown.com/images/v1.2/explosion_icon_wechat.png'></image>
+  微信好友</button>
+  <button catchtouchmove='{{true}}'  bind:tap="eventSave"  class="wechat1">
+   <image class="wechatimg"  src='https://file.maiyatown.com/images/v1.2/explosion_icon_Img.png'></image>
+  保存图片</button>
+</view>
+
+
+<navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="{{title}}"
+>
+</navigation>
+
+<!-- 活动结束 -->
+<view wx:if="{{isOver}}" class='overBox'>
+  <view class='clear clear_146'></view>
+  <view class='over_logo'>
+    <image src='https://file.maiyatown.com/images/utils/common_img_activity_ends@2x.png'></image>
+  </view>
+  <view class='font_32 color_666'>活动已经结束了哦~</view>
+  <button bindtap='goBackIndex'>去首页逛逛</button>
+</view>
+
+
+
+
+
+<view class='rookieExclusiveBox' wx:if="{{!isOver}}">
+  <!-- banner图 -->
+  <view class='banner' wx:if="{{bannerUrl!=''}}">
+    <image src='{{ bannerUrl }}'></image>
+  </view>
+  <!-- 商品列表 -->
+  <view class='goodsList'>
+    <view class='goodsItem' wx:for="{{goodsList}}" wx:key="index" data-id="{{item.id}}" data-left="{{true}}"  bindtap='goShopDetail'>
+      <view class='itemTop'>
+        <image src="{{item.activityImg}}"></image>
+      </view>
+      <view class='itemInfo'>
+        <view class='itemPrice'>
+          <view class='rookiePriceText'>新人价</view>
+          <view class='mainPrice'>¥<text class='first'>{{item.disCountPriceMain}}</text><text class='second'>.{{item.disCountPriceFloat}}</text></view>
+          <view class='oldPrice'>¥{{item.price}}元</view>
+          <!-- <view class='oldPriceBox'>
+            <view class='rookiePriceText'>新人价</view>
+            <view class='oldPrice'>售价 ¥{{item.price}}元</view>
+          </view> -->
+        </view>
+        <button>立即抢购 ></button>
+      </view>
+    </view>
+  </view>
+
+
+<van-dialog id="van-dialog" message-align="left"/>
+
+</view>
+<!-- 底线 -->
+<view class='bottom_line' wx:if="{{showNomore && goodsList.length!=0}}" id='btLine'>
+  ~~我也是有底线的~~
+</view>

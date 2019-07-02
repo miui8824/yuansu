@@ -1,0 +1,323 @@
+/* pages/myRegimentDetails/myRegimentDetails.wxss */
+/* pages/myRegiment/myRegiment.wxss */
+.order_box{
+  background: #f2f2f2;
+  width: 100%;
+  /* height:100%; */
+  /* overflow: auto; */
+  /* position:fixed; */
+
+}
+.my_pt{
+  width:100%;
+  height:100%;
+  background:rgba(242,242,242,1);
+}
+.order_list {
+  /* position:fixed; */
+  position: relative;
+  background: #ffffff;
+  /* margin-bottom: 10rpx; */
+}
+.list_title{
+  padding:30rpx 30rpx 30rpx 30rpx;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:36rpx;
+  font-size:24rpx;
+  line-height:36rpx;
+  vertical-align:bottom;
+  color:#999;
+  border-bottom:1rpx solid #eee;
+
+}
+.title_number{
+  font-size: 32rpx;
+  line-height: 24rpx;
+  color: #333333;
+  font-weight:bold;
+}
+.list_status{
+  height:36rpx;
+  line-height:36rpx;
+  font-size:28rpx;
+  color:#999999;
+  font-weight:500;
+  display:inline-block;
+
+}
+.pintuaning{
+  height:36rpx;
+  line-height:36rpx;
+  font-size:28rpx;
+  color:#FF262C;
+  font-weight:500;
+  display:inline-block;
+
+}
+.list_main{
+  padding:30rpx 40rpx 0 30rpx;
+  display:flex;
+  justify-content:space-between;
+  height:240rpx;
+  border-bottom:2rpx solid #eee;
+
+}
+.list_img{
+  height:200rpx;
+  width:200rpx;
+  border-radius:10rpx;
+  overflow:hidden;
+  margin:0 30rpx 0 0;
+  display:inline-block;
+
+}
+.list_text{
+  width:470rpx;
+
+}
+.list_name{
+  font-size:32rpx;
+  line-height:38rpx;
+  font-weight:500;
+  color:#333333;
+  overflow: hidden;
+  display:-webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  height:76rpx;
+  width: 400rpx;
+}
+.list_size{
+margin-top:65rpx;
+font-size:36rpx;
+/* line-height:25rpx; */
+/* height:50rpx; */
+color:#FF262C;
+text-overflow:ellipsis;
+display:-webkit-box;
+-webkit-line-clamp:2;
+-webkit-box-orient:vertical;
+overflow:hidden;
+}
+.list_size1{
+  /* margin-top:20rpx; */
+font-size:22rpx;
+/* line-height:25rpx; */
+/* height:50rpx; */
+color:#666666;
+text-overflow:ellipsis;
+display:-webkit-box;
+-webkit-line-clamp:2;
+-webkit-box-orient:vertical;
+overflow:hidden;
+text-decoration:line-through;
+}
+.list_mon{
+  min-width:100rpx;
+text-align:right;
+padding-top:6rpx;
+
+}
+.list_money{
+  font-size:26rpx;
+  line-height:26rpx;
+  color:#333333;
+  font-weight:600;
+  border-bottom:1rpx solid #eee;
+
+}
+.list_number{
+  margin-top:13rpx;
+  font-size:26rpx;
+  line-height:26rpx;
+  color:#999999;
+
+}
+.list_moneys{
+  padding:28rpx 42rpx 28rpx 0;
+  text-align:right;
+  height:36rpx;
+  line-height:32rpx;
+  border-top:1rpx solid #eee;
+  border-bottom:1rpx solid #eee;
+
+}
+.moneys_number{
+  font-size:26rpx;
+  color:#333333;
+  line-height:32rpx;
+
+}
+.moneys_money{
+  font-size:32rpx;
+  color:#ff262c;
+  line-height:32rpx;
+  font-weight:600;
+
+}
+.list_buttons{
+  padding:15rpx 30rpx 15rpx;
+  display:flex;
+  justify-content:flex-end;
+
+}
+ .buy_out>button{
+   margin-left:10rpx;
+    width:150rpx;
+    height:60rpx;
+    line-height:60rpx;
+    text-align:center;
+    border-radius:30rpx;
+    overflow:hidden;
+    font-size:25rpx;
+    color:#333333;
+    background:#ffffff;
+    border:1rpx solid #333333;
+    font-weight:600;
+ }  
+.back_hui{
+  background:#f2f2f2;
+  height:15rpx;
+}
+
+.pintuan_infor{
+    padding:30rpx 30rpx 30rpx 30rpx;
+    /* display:flex;
+    align-items:center;
+    justify-content:space-between; */
+    height:225rpx;  
+    font-size:24rpx;
+    line-height:36rpx;
+    vertical-align:bottom;
+    color:#999;
+    border-bottom:1rpx solid #eee;
+}
+.inviter_item{
+   padding: 15rpx 30rpx;
+    height: 80rpx;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    color: #333;
+    border-bottom: 1rpx solid #f2f2f2;
+} 
+
+ .inviter_item>image {
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 40rpx;
+  margin-right:20rpx;
+
+}
+.inviter_item:first-child {
+  border-top: 1rpx solid #f2f2f2;
+}
+.inviter_time {
+  flex-grow: 2;
+  text-align: right;
+  width: 180rpx;
+  font-size:26rpx;
+  line-height:26rpx;
+}
+.zhezhao{
+  width:100%;
+  height:22px;
+  background:#FF262C;
+  position:absolute;
+  bottom:0rpx;
+  opacity: 0.9
+}
+.zhezhao_wenzi{
+    width:100%;
+    height:40rpx;
+    /* background:red; */
+    position:absolute;
+    bottom:0rpx;
+    /* opacity: 0.5 */
+    font-size:24rpx;
+    text-align: center;
+    color: white;
+    line-height:40rpx;
+
+}
+.go_home {
+  position: fixed;
+  right: 30rpx;
+  bottom: 130rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+ .go_home>image {
+  width: 100rpx;
+  height: 100rpx;
+}
+.guize{
+  overflow:hidden;
+  font-size:28rpx;
+  color:#666666;
+  font-weight:500;
+  padding:0 30rpx 30rpx 30rpx;
+}
+.mar_l_20{
+  width: 250rpx;
+   overflow:hidden;
+   text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+}
+
+/* 画图的css */
+.share-image {
+  width: 660rpx;
+  height: 975rpx;
+  margin: 0 45rpx;
+  /* border: 1px solid black; */
+  z-index: 1;
+  /* position:absolute; */
+}
+.background{
+  width: 600rpx;
+  height: 888rpx;
+  background: #000000;
+  opacity: 0.2;
+  position:absolute;
+  left: 78rpx;
+}
+
+button {
+  margin-top: 20rpx;
+}
+.wechat{
+  width:305rpx;
+  height:98rpx;
+  background:rgba(71,186,68,1);
+  border-radius:49px;
+  margin: 30rpx;
+  line-height: 98rpx;
+  text-align: center;
+  color: white;
+  display: inline-block
+}
+.wechat1{
+  width:305rpx;
+  height:98rpx;
+  background:#FF911B;
+  border-radius:49px;
+  margin: 30rpx;
+  line-height: 98rpx;
+  text-align: center;
+  color: white;
+   display: inline-block
+}
+.wechatimg{
+  width:40rpx;
+  height:40rpx;
+  top:5px;
+  position:relative;
+
+}
+/* 画图的css */

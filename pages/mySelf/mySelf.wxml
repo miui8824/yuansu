@@ -1,0 +1,168 @@
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="我的"
+>
+</navigation>
+
+<view bindtap='share_hide' wx:if="{{GetImage}}" style='position:absolute;width:100%;height:100%;background:black;opacity:0.3;z-index:1;' catchtouchmove='{{true}}'>
+</view>
+<view bindtap='' catchtouchmove='{{true}}' wx:if="{{GetImage}}" class="container" style='z-index:100;position:absolute;margin-top:10%;'>
+<!-- <view class='background'></view> -->
+  <image bindtap='share_hide' catchtouchmove='{{true}}' src="{{shareImage}}" class="share-image"></image>
+  <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage"/>
+
+  <!-- <button >绘制</button>
+  <button>保存到本地</button>  bind:tap="eventDraw"-->
+  <button catchtouchmove='{{true}}'  open-type='share'  class="wechat">
+    <image class="wechatimg" src='https://file.maiyatown.com/images/v1.2/explosion_icon_wechat.png'></image>
+  微信好友</button>
+  <button catchtouchmove='{{true}}'  bind:tap="eventSave"  class="wechat1">
+   <image class="wechatimg"  src='https://file.maiyatown.com/images/v1.2/explosion_icon_Img.png'></image>
+  保存图片</button>
+</view>
+<view class='my_self'>
+
+
+
+  <view class='self_top'>
+    <view class='self_info_box'>
+      <view class='self_info'>
+        <view class='self_user_img'>
+          <image src='{{headImageUrl}}'/>
+        </view>
+        <view class='user_info'>
+          <view class='user_name color_333'>{{nickName}}</view>
+          <view class='user_type' wx-if="{{userLevel==1}}">普通用户</view>
+          <view class='user_type' wx-if="{{userLevel==2}}">麦芽会员</view>
+          <view class='user_type' wx-if="{{userLevel==3}}">麦苗会员</view>
+          <view class='user_type' wx-if="{{userLevel==4}}">麦穗会员</view>
+        </view>
+      </view>
+      <view class='self_bind'>
+         <view class='bind_wechat'data-bdInviterCode="{{bdInviterCode}}" data-isBdInviter="{{isBdInviter}}" bindtap='bindwechat' wx-if='{{userLevel==1}}'>
+          <view class='bind_icon'>
+            <image src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621160253637.png'/>
+          </view>
+          <view wx-if="{{isBdInviter==1}}" style='color:#fff;'>已绑定</view>
+          <view wx:else style='color:#fff;'>绑定邀请码</view>
+        </view>
+        <view class='bind_phone' bindtap='bindphone' data-page="{{isbaBdPhone}}">
+          <view class='bind_icon'>
+            <image src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621160232265.png'/>
+          </view>
+          <view wx-if="{{isBdPhone==1}}" style='color:#fff;'>已绑定</view>
+          <view wx:else style='color:#fff;'>绑定手机</view>
+        </view>
+
+      </view>
+    </view>
+    <view class='self_money_box'>
+      <view class='balance' bindtap='preBalance'>
+        <view class='balance_number'>{{frtCommission}}</view>
+        <view class='balance_name'>待结余额(元)</view>
+      </view>
+      <view class='selft_border'></view>
+      <view class='balance' bindtap='integral'>
+        <view class='balance_number'>{{integral}}</view>
+        <view class='balance_name'>积分</view>
+      </view>
+      <view class='selft_border'></view>
+      <view class='balance 'bindtap='coupons'>
+        <view class='balance_number'>{{couponSum}}</view>
+        <view class='balance_name'>券包</view>
+      </view>
+    </view>
+  </view>
+  <view class='user_balance_box'>
+    <view class='user_balance'>
+      <view>账户余额</view>
+      <text>{{avlBal}}</text>
+    </view>
+    <view class='user_button'>
+      <view class='balance_detail' hover-class='button_hover' bindtap='Detailed'>明细</view>
+      <!-- <view class='balance_reflect' hover-class='button_hover' bindtap='Cash_withdrawal'>提现</view> -->
+    </view>
+  </view>
+  <view class='clear clear20'></view>
+  <view class='my_order_box'>
+    <view class='my_order_title' bindtap='goToMyOrder'>
+      <view class='font_32 color_333 font_bold500'>我的订单</view>
+      <view class='font_28 color_666' style='color:#999;line-height:26prx;'>全部订单 <image src='https://file.maiyatown.com/images/mySelf/kuozhan.svg'/></view>
+    </view>
+    <!-- 0 - 待支付 1 - 待收货 3 - 已完成 4 - 已取消 -->
+    <!-- 注意可能出现 直接代付款的时候 牵扯到第一次加载数据的问题 -->
+    <view class='order_item_box'>
+      <view class='order_item' data-index="0" bindtap='orderJump'>
+        <view class='item_img' style=';'>
+        <view class='order_one' style='' wx:if='{{daifk_num!=0}}'>{{daifk_num}}</view>
+          <image src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/201906211558088.png'/>
+        </view>
+        <view>待付款</view>
+      </view>
+      <view class='order_item' data-index="1" bindtap='orderJump'>
+        <view class='item_img'>
+        <view class='order_one' style='' wx:if='{{daish_num!=0}}'>{{daish_num}}</view>
+          <image src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621155909916.png'/>
+        </view>
+        <view>待收货</view>
+      </view>
+      <view class='order_item' data-index="2" bindtap='orderJump'>
+        <view class='item_img'>
+          <image src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621160023860.png'/>
+        </view>
+        <view>待评价</view>
+      </view>
+      <view class='order_item' data-index="3" bindtap='order_sale'>
+        <view class='item_img'>
+          <image src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621155954859.png'/>
+        </view>
+        <view>退换/售后</view>
+      </view>
+    </view>
+  </view>
+  <view class='clear clear20'></view>
+
+  <view class='my_add_box back_fff'>
+    <view class='pad_30 fans_invitation' bindtap='my_Regiment'>
+      <view class='font_32 color_333' >
+        <image class='add_icon1' src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621160322324.png'/>
+        <view class='add_name font_bold500'>我的拼团</view>
+      </view>
+      <image src='{{icon_down}}'/>
+      <!-- <image  src='/images/mySelf/down.svg'/> -->
+    </view>
+    <view style='width:100%;height:1rpx; border-bottom: 1rpx solid #eee;'></view>
+    <view class='pad_30 fans_invitation' bindtap='show_Inviter'>
+      <view class='font_32 color_333' >
+        <image class='add_icon1' src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621160348570.png'/>
+        <view class='add_name font_bold500'>地址管理</view>
+      </view>
+      <image src='{{icon_down}}'/>
+      <!-- <image  src='/images/mySelf/down.svg'/> -->
+    </view>
+    <view class='pad_30 fans_invitation' wx-if="{{my_Inviter}}">
+      <view class='font_32 color_333'>
+        <image class='add_icon' src='{{inviterHeadImg}}'/>
+        <view class='add_name'>{{inviterNickName}}</view>
+      </view>
+      <!-- <image src='/images/mySelf/kuozhan.svg'/> -->
+      <text style='color:#999999;font-size:28rpx'>{{inviterTime}}</text>
+    </view>
+    <view style='width:100%;height:1rpx; border-bottom: 1rpx solid #eee;'></view>
+    <view class='pad_30 fans_invitation'>
+      <view class='font_32 color_333'>
+        <image class='add_icon2' src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/201906211604015.png'/>
+        <button open-type='contact' class='add_name color_333 font_bold500' bindtap='mdClick' style='position:absolute;width:100%;left:75rpx;margin-top:0;'>客服中心</button>
+      </view>
+      <image src='https://file.maiyatown.com/images/mySelf/kuozhan.svg' style='position:relative;'/>
+    </view>
+  </view>
+  <view class='clear clear70'></view>
+  <view class='clear clear30'></view>
+  <view class='clear clear70'></view>
+  <!-- open-type='share'   原来的分享 -->
+  <button class='button_replace' bind:tap="eventDraw"></button>
+
+  <van-toast id="van-toast" />
+</view>

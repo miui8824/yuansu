@@ -1,0 +1,136 @@
+/* pages/addressManagement/addressManagement.wxss */
+@import "/static/css/common.wxss";
+page{
+  height: 100%;
+}
+.add_box {
+  width: 100%;
+  height: 100%;
+  background: #f2f2f2;
+}
+.add_box .no_order_box {
+  padding-top: 292rpx;
+  width: 100%;
+  /* height: 100vh; */
+  text-align: center;
+}
+.add_box .no_order_box .no_order_logo {
+  margin-bottom: 48rpx;
+  width: 360rpx;
+  height: 204rpx;
+}
+.add_box .no_order_box .no_order_text {
+  font-size: 32rpx;
+  line-height: 32rpx;
+  color: #666666;
+}
+.add_box .no_order_box .no_order_button {
+  margin: 0 auto;
+  margin-top: 60rpx;
+  width: 240rpx;
+  height: 78rpx;
+  line-height: 78rpx;
+  border-radius: 39rpx;
+  background: #E23E53;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+.add_box .add_list {
+  background: #fff;
+}
+.add_box .add_text_box {
+  padding: 40rpx 30rpx;
+}
+.add_box .add_text_box:active {
+  background: #fafafa;
+}
+.add_box .add_name_box {
+  display: flex;
+  align-items: center;
+}
+.add_box .add_name_box view{
+  font-weight: 500;
+}
+.add_box .add_add {
+  font-size: 28rpx;
+  line-height: 36rpx;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.add_box .add_button_box {
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1rpx solid #f2f2f2;
+}
+.add_box .add_button_box>view {
+  display: flex;
+  align-items: center;
+}
+.add_box .add_name_box .id_card_ok {
+  display: inline-block;
+  height: 32rpx;
+  flex-grow: 2;
+  text-align: right;
+  line-height: 32rpx;
+}
+.add_box .add_name_box .id_card_ok>text {
+  padding: 0 8rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  color: #fff;
+  border-radius: 8rpx;
+  background: #FF262C;
+}
+.add_box .add_button_box .select_on,
+.add_box .add_button_box .add_change,
+.add_box .add_button_box .add_delete {
+  width: 40rpx;
+  height: 40rpx;
+}
+.add_box .add_button_box .add_change>image,
+.add_box .add_button_box .add_delete>image {
+  width: 36rpx;
+  height: 36rpx;
+}
+.add_box .add_button_box .select_on>image {
+  width: 40rpx;
+  height: 40rpx;
+}
+.add_box .add_button_box .add_delete {
+  margin-left: 60rpx;
+}
+
+.add_box .add_button_box .font_28.color_333 {
+  margin-left: 20rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+.add_box .add_add_button {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30rpx;
+  height: 100rpx;
+  background: #fff;
+  border-top: 1rpx solid #eee;
+}
+.add_box .add_add_button .success_button>button {
+  display: block;
+  height: 100rpx;
+  font-weight: 600;
+  line-height: 100rpx;
+  text-align: center;
+  border-radius: 50rpx;
+  overflow: hidden;
+  font-size: 36rpx;
+  color: #fff;
+  background: #D73851;
+  border:1rpx solid #D73851;
+}

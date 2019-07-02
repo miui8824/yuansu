@@ -1,0 +1,39 @@
+<!--pages/groupHome/groupHome.wxml-->
+<view class='group_box'>
+  <navigation id='Navigation' show-icon='{{showIcon}}' title="拼团">
+  </navigation>
+  <view class='group_tap'>
+    <view class="tap_item {{navType==2?'tap_item_on':''}}" data-types="2" bindtap='navClick'>正在疯抢</view>
+    <view class="tap_item {{navType==1?'tap_item_on':''}}" data-types="1" bindtap='navClick'>即将开抢</view>
+  </view>
+  <scroll-view scroll-y="true" bindscrolltolower="getGroupList" scroll-with-animation="true" class='group_home_scroll' lazy-load wx:if="{{groupList.length>0}}">
+    <view class='clear clear108'></view>
+    <view class='group_main'>
+      <view class='group_main_item' wx:for="{{groupList}}" wx:key="{{index}}" data-goodsId='{{item.id}}' data-activityId='{{item.activityId}}' bindtap='goGroup'>
+        <image src='{{item.goodImg}}'></image>
+        <view class='good_text_box'>
+          <view class='text_title'>{{item.title}}</view>
+          <view class='text_icon_box mar_t_10'>
+            <view class='text_icon' wx:if="{{item.groupType==2}}">{{item.categoryName}}</view>
+            <view class='text_icon'>{{item.groupPeopleLimit}}人团</view>
+          </view>
+          <view class='text_button_box'>
+            <text>¥{{item.price}}</text>
+            <van-button class='buy_now' wx:if="{{navType==2}}" round size='small'>马上抢</van-button>
+            <van-button class='buy_now' wx:if="{{navType==1}}" round size='small'>即将开抢</van-button>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='group_footer' wx:if="{{!isLoadMore}}">~~我也是有底线的~~</view>
+    <view class='clear clear70'></view>
+    <view class='clear clear70'></view>
+  </scroll-view>
+  <view class='no_order_box' wx:else>
+    <view>
+      <image class='no_order_logo' src='https://file.maiyatown.com/images/utils/common_img_activity_ends@2x.png' />
+      <view class='no_order_text'>暂无活动哦~</view>
+      <view class='no_order_button' bindtap='goHome'>去首页逛逛</view>
+    </view>
+  </view>
+</view>

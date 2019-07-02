@@ -1,0 +1,22 @@
+<!--components/Nav/nav.wxml-->
+<view class='me_nav'>
+  <view class='me_nav_left'> 
+    <!-- //使用默认导航的核心是 我们自定义处理样式 用的 navigator open-type="switchTab" -->
+    <!-- //还有当前的功能data要放到全局处理-->
+    <navigator class='nav_item {{navOn==0?"nav_on":""}}' hover-class="none" wx:for="{{tabbar.list}}" wx:key="index" data-numbers="0"  open-type="switchTab" url="{{item.pagePath}}">
+      <view class='nav_img_box'>
+        <image src="{{item.selected ? item.selectedIconPath : item.iconPath}}" class='nav_img'></image>
+      </view>
+      <view class='nav_name {{item.selected?"nav_on":""}}'>{{item.text}}</view>
+    </navigator>
+  </view>
+  <view class='me_nav_right'>
+    <view class='me_nav_logo_box'>
+      <image class='me_nav_logo' src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/2019062115192550.png'/>
+    </view>
+    <view class='me_nav_text_box'>
+      <view class='me_nav_text'>分</view>
+      <view class='me_nav_text'>享</view>
+    </view>
+  </view>
+</view>

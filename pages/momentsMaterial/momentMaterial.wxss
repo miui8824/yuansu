@@ -1,0 +1,176 @@
+/* pages/momentsMaterial/momentMaterial.wxss */
+@import "/static/css/common.wxss";
+.container-all{
+width: 100%;
+height: 100%;
+}
+.bg-img{
+width: 100%;
+height: 100%;
+display: block;
+}
+
+page {
+  background: #f2f2f2;
+  min-height: 100%;
+}
+.mainBox{
+  min-height: 100%;
+}
+
+.mainBox .van-tab{
+  box-sizing: content-box;
+}
+
+.list_box{
+  margin-top:108rpx; 
+  background-color: #f2f2f2;
+}
+
+.list_box .listItem{
+  height: 1100rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+
+.list_box .listItem .infoBox{
+  height: 1012rpx;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #eee;
+  padding: 30rpx;
+}
+
+.list_box .listItem .infoBox .infoText{
+  color: #333;
+  max-height: 200rpx;
+  word-break:break-all;
+  line-height: 40rpx;
+  font-size: 32rpx;
+  margin-top: 10rpx;
+}
+
+.list_box .listItem .infoBox .copyText{
+  height: 44rpx;
+  line-height: 44rpx;
+  text-align: center;
+  width: 120rpx;
+  background-color: #fff8de;
+  color: #e8941d;
+  border-radius: 22rpx;
+  font-size: 24rpx;
+  margin-top: 30rpx;
+}
+
+.list_box .listItem .infoBox .infoImg{
+  margin-top: 30rpx;
+  width: 360rpx;
+  height: 640rpx;
+}
+
+.list_box .listItem .infoBox .infoImg>image{
+  width: 360rpx;
+  height: 640rpx;
+}
+
+.list_box .listItem .bottomBox{
+  height: 88rpx;
+  position: relative;
+}
+
+.list_box .listItem .bottomBox .left{
+  height: 88rpx;
+  width: 49%;
+  position: absolute;
+  left: 0;
+  text-align: center;
+}
+
+.list_box .listItem .bottomBox .left image{
+  height: 44rpx;
+  width: 44rpx;
+  margin-top: 22rpx;
+}
+
+.list_box .listItem .bottomBox .left text{
+  color: #666;
+  font-size: 26rpx;
+  display: inline-block;
+  height: 88rpx;
+  line-height: 88rpx;
+  vertical-align: top;
+}
+
+.list_box .listItem .bottomBox .line{
+  height: 30rpx;
+  width: 2rpx;
+  background-color: #eee;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.list_box .listItem .bottomBox .right{
+  height: 88rpx;
+  width: 49%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+}
+
+.list_box .listItem .bottomBox .right image{
+  height: 44rpx;
+  width: 44rpx;
+  margin-top: 22rpx;
+}
+
+.list_box .listItem .bottomBox .right text{
+  color: #666;
+  font-size: 26rpx;
+  display: inline-block;
+  height: 88rpx;
+  line-height: 88rpx;
+  vertical-align: top;
+}
+
+.emptyBox{
+  width:100%;
+  height:83vh;
+  text-align:center;
+  background: #f2f2f2;
+}
+
+.emptyBox image{
+  width:360rpx;
+  height:204rpx;
+  margin-top:50%;
+}
+
+.emptyBox view{
+  color:#666666;
+  font-size:32rpx;
+  margin-top:40rpx;
+}
+
+.bottom_line{
+  line-height: 84rpx;
+  height: 84rpx;
+  font-size: 24rpx;
+  color: #999;
+  width: 100%;
+  text-align: center;
+  background: #f2f2f2;
+}
+
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.mainBox scroll-view .van-tab{
+  -webkit-flex:0 1 auto;
+  flex: 0 1 auto;
+  min-width:187.5rpx;
+  box-sizing: border-box;
+}

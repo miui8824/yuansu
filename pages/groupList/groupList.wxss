@@ -1,0 +1,114 @@
+/* pages/groupList/groupList.wxss */
+@import "/static/css/common.wxss";
+.group_list {
+  background: #f2f2f2;
+}
+.group_list_box .list_top {
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  height: 200rpx;
+  background: #fff;
+}
+.group_list_box .list_img_box {
+  position: relative;
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+.group_list_box .list_img_box>image {
+  width: 200rpx;
+  height: 200rpx;
+}
+.group_list_box .list_img_box .img_tip {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 200rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  font-size: 26rpx;
+  color: #fff;
+  background: #ff262c;
+  text-align: center;
+  opacity:0.9;
+}
+.group_list_box .list_top .list_title {
+  width: 450rpx;
+  height: 71rpx;
+  color: #333;
+  font-size: 32rpx;
+  line-height: 36rpx;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.group_list_box .list_top .list_money {
+  margin-top: 90rpx;
+  height: 32rpx;
+  line-height: 34rpx;
+  font-size: 34rpx;
+  color: #ff262c;
+  font-weight: 600;
+}
+.group_list_box .list_top .list_money>text {
+  font-size: 22rpx;
+  line-height: 24rpx;
+  color: #666;
+  vertical-align: bottom;
+}
+.group_list_box .list_lists {
+  background: #fff;
+}
+.group_list_box .list_lists {
+  padding: 0 30rpx;
+}
+.group_list_box .list_lists .lists_title {
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+
+.group_list_box .plays_main_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 120rpx;
+  border-top: 1rpx solid #eee;
+}
+.group_list_box .plays_main_item .time_tip {
+  display: inline-block;
+  width: 110rpx;
+}
+.group_list_box .plays_main_item>image {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+}
+.group_list_box .plays_main_item .go_group>button {
+  width: 130rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #DD232F;
+  font-weight: 600;
+  font-size: 28rpx;
+  color: #333;
+}
+.group_list_box .plays_main_item .plays_name {
+  width: 200rpx;
+  overflow: hidden;
+  /* 超出显示省略号 */
+  text-overflow: ellipsis;
+  /* 不换行 */
+  white-space: nowrap;
+  /* 居中对齐 */
+  vertical-align:middle;
+  height:36rpx;
+  line-height: 34rpx;
+}

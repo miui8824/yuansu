@@ -1,0 +1,69 @@
+.loading-gif {
+  width: 46rpx;
+  height: 8rpx;
+}
+.loading-wrap {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20rpx;
+  }
+.loading-wrap image {
+  background-color: transparent;
+}
+.header {
+  display: flex;
+  align-items: center;
+  top: 0;
+  position: fixed;
+  width: 100%;
+  background-color: #FFF;
+  z-index: 99999;
+}
+.header .line {
+  border-left: 1rpx solid #D7D7D7;
+  height: 36rpx;
+}
+.header .back, .header .home {
+  height: 32rpx;
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header .title-bar {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around;   让框里的图标排列*/
+  width: 138rpx;
+  height: 56rpx;
+  /* border: 1rpx solid #F1F1F1;     外面的线框 里面包含多个*/
+  border-radius: 32rpx;
+  margin-left: 14rpx;
+  padding: 0 14rpx;
+}
+.header .title-bar  image {
+  width: 32rpx;
+  height: 32rpx;
+  background: transparent;
+  vertical-align: top;
+}
+
+.header .header-title {
+  position: absolute;
+  left: 50%;
+  width:300rpx;
+  text-align: center;
+  font-size: 36rpx;
+  transform: translateX(-50%);
+  font-weight:600;
+  color:rgba(16,16,16,1);
+  font-family:PingFang-SC-Bold;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+}

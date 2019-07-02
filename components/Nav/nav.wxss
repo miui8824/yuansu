@@ -1,0 +1,90 @@
+/* components/Nav/nav.wxss */
+.me_nav {
+  position: fixed;
+  left:0rpx;
+  bottom: 30rpx;
+  height: 100rpx;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  padding:0 30rpx;
+  z-index: 99;
+}
+.me_nav .me_nav_left {
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  width: 550rpx;
+  height: 100rpx;
+  z-index: 800;
+  background: #000000;
+  color: #ffffff;
+  opacity: 0.8;
+  border-radius: 50rpx;
+}
+.me_nav .me_nav_right {
+  display: flex;
+  align-content: center;
+  width: 130rpx;
+  height: 100rpx;
+  z-index: 800;
+  background: #000000;
+  color: #ffffff;
+  opacity: 0.8;
+  border-radius: 50rpx;
+  margin-left: 10rpx;
+}
+.me_nav .me_nav_right .me_nav_logo_box {
+  position: relative;
+  height: 100rpx;
+  margin-left: 20rpx;
+}
+.me_nav .me_nav_right .me_nav_logo_box>button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 80rpx;
+  height: 100rpx;
+  background: transparent;
+} 
+.me_nav .me_nav_right .me_nav_logo {
+  height: 47rpx;
+  width: 47rpx;
+  margin:26rpx 0 ;
+}
+.me_nav .me_nav_right .me_nav_text_box {
+  padding-top: 24rpx;
+  margin-left: 12rpx;
+  height: 52rpx;
+}
+.me_nav .me_nav_right .me_nav_text {
+  font-size: 22rpx;
+  line-height: 26rpx;
+  color: #DD232F;
+}
+.me_nav .nav_item {
+  padding-top: 15rpx;
+  width: 80rpx;
+  text-align: center;
+}
+.me_nav .nav_item .nav_img_box {
+  margin: 0 auto;
+  width: 40rpx;
+  height: 40rpx;
+  font-size: 32rpx;
+  line-height: 32rpx;
+}
+.me_nav .nav_item.nav_on .nav_img_box { 
+  color: #DD232F;
+}
+.me_nav .nav_item .nav_img_box>image {
+  width: 40rpx;
+  height: 40rpx;
+}
+.me_nav .nav_item .nav_name {
+  font-size: 22rpx;
+  color: #dddddd;
+}
+.me_nav .nav_item .nav_name.nav_on {
+  color: #DD232F;
+}

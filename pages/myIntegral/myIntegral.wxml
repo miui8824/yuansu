@@ -1,0 +1,38 @@
+<!--pages/myIntegral/myIntegral.wxml-->
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="积分明细"
+>
+</navigation>
+<view class='top'>
+  <image src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621160450402.png' class='top_img' />
+  <view class='top_num'>{{_num}}</view>
+  <view class='top_tip'>我的积分</view>
+</view>
+<view class='th'>
+  <view class='col1'>时间</view>
+  <view class='col2'>场景</view>
+  <view class='col3'>积分</view>
+</view>
+<view class='table'>
+  <view wx:if="{{!orderList||orderList.length==0}}" class='none' style='height:{{noneHeight}}px'>
+    <image src='https://file.maiyatown.com/images/myIntegral/none.png'/>
+    <text style='font-size:16px;color:#666666'>\n您还没有积分记录哦~</text>
+  </view>
+  <scroll-view class='scrollview' style="height:{{height?height+'px':'auto'}}" scroll-y="true" bindscrolltolower="loadMore" wx:else>
+    <view wx:if="{{orderList&&orderList.length>0}}" wx:for='{{orderList}}' wx:for-item="jf" class='row' wx:key="{{index}}" >
+    <view class='col1'>{{jf.createTimeValue}}</view>
+    <view class='col2'>{{jf.activityName}}</view>
+    <view class='col3'>
+      <image src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621160509320.png' mode='aspectFit' />
+      <view class='integ'>＋{{jf.couponValue}} </view>
+      </view>
+    </view>
+    
+  <import src="../../template/baseLine/baseLine.wxml" />
+  <template is="baseLine" wx:if="{{!loadMoreType}}"></template>
+  </scroll-view>
+  
+  
+</view>

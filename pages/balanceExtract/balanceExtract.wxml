@@ -1,0 +1,24 @@
+<!--pages/balanceExtract/balanceExtract.wxml-->
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="余额提现"
+>
+</navigation>
+<image class='top-img' mode='widthFix' wx:if='{{alldata.withdrawalStatusValue=="申请成功!"}}' src='https://file.maiyatown.com/images/v1.4/balance_withdrawal_successful_application.png'></image>
+<block >
+  <view class='top com'>{{alldata.withdrawalStatusValue=='申请成功!'?'提现申请已提交':"申请失败"}}</view>
+  <!-- <view class='top-2 com fz'>{{alldata.remark}}</view> -->
+</block>
+
+<view class="mid-t com">
+  <text style='font-size:46rpx;font-weight:600;'>本次提现金额</text>
+  <text>￥{{withdrawalMoney}}</text>
+</view>
+<view class='mid-2 com fz'>到账金额：<text>￥{{amountReceived}}</text></view>
+<view style='float:left;padding:30rpx;margin-top:100rpx;'>
+  <view style='font-size:32rpx;color:#333333;font-weight:600;'>提现说明</view>
+  <text style='font-size:28rpx;color:#666;'>{{rule_text}}</text>
+</view>
+<!-- <import src="../../template/extractCashExplain/extractCashExplain.wxml" />
+<template is="extractCashExplain"></template> -->

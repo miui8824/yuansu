@@ -1,0 +1,26 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light",
+  "navigationBarTitleText": "红包拆拆拆",
+  "usingComponents": {
+    "navigation": "/components/navigation/navigation",
+    "me-nav": "/components/Nav/nav",
+    "van-button": "../../dist/button/index",
+    "van-tab": "../../dist/tab/index",
+    "van-tabs": "../../dist/tabs/index",
+    "van-badge": "../../dist/badge/index",
+    "van-badge-group": "../../dist/badge-group/index",
+    "van-tabbar": "../../dist/tabbar/index",
+    "van-tabbar-item": "../../dist/tabbar-item/index",
+    "van-notice-bar": "../../dist/notice-bar/index",
+    "van-panel": "../../dist/panel/index",
+    "van-cell": "../../dist/cell/index",
+    "van-cell-group": "../../dist/cell-group/index",
+    "van-dialog": "../../dist/dialog/index",
+    "van-icon": "../../dist/icon/index",
+    "van-progress": "../../dist/progress/index",
+    "van-toast": "../../dist/toast/index"
+  }
+}

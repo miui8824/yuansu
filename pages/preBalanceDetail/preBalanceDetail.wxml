@@ -1,0 +1,30 @@
+<!--pages/preBalanceDetail/preBalanceDetail.wxml-->
+<navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="待结余额明细"
+>
+</navigation>
+
+<view class='emptyBox' wx:if="{{pendCommissionList.length==0}}">
+  <image
+        mode="{{mode}}"
+        src="https://file.maiyatown.com/images/afterSale_none/sale_empty.png"
+  ></image>
+  <view>暂无明细~</view>
+</view>
+
+<view class='balanceBox' wx:else>
+  <view class='balanceList' wx:for="{{pendCommissionList}}" wx:key="{{item.id}}">
+    <view class='imgBox'>
+      <image src='https://file.maiyatown.com/images/v1.3/pending_balanceicon_icon_available.png' wx:if="{{item.acctTransType==8}}"></image>
+      <image src='{{item.headImageUrl}}' wx:else></image>
+    </view>
+    <view class='infoBox'>
+      <view class='name' wx:if="{{item.acctTransType==8}}">转入可提现余额</view>
+      <view class='name' wx:else>{{item.nickName}}</view>
+      <view class='time'>{{item.acctDateValue}}</view>
+    </view>
+    <view class='moneyBox' style="color:{{item.dcType=='D' ? '#ff262c':'#333'}}">{{item.acctAmtValue}}</view>
+  </view>
+</view>

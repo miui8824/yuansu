@@ -1,0 +1,46 @@
+<!--pages/balanceDetail/balanceDetail.wxml-->
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="余额明细"
+>
+</navigation>
+<view class='body'wx:if="{{money_more}}">
+  <block wx:for="{{balanceDetail}}"   wx:key="index">
+    <view class='item' bindtap="goto_detail" data-item="{{item}}">
+      <view class='item-top'>
+        <view class='item-sub' wx:if="{{item.transTypeDesc=='余额提现'&&item.status==1}}">{{item.transTypeDesc}}-审核中</view>
+        <view class='item-sub' wx:if="{{item.transTypeDesc=='余额提现'&&item.status==2}}">{{item.transTypeDesc}} </view>
+        <view class='item-sub' wx:if="{{item.transTypeDesc=='余额提现'&&item.status==3}}">{{item.transTypeDesc}}-未通过</view>
+        <view class='item-sub' wx-if="{{item.type!=3}}" wx:if="{{item.transTypeDesc!='余额提现'}}">{{item.transTypeDesc}}</view>
+        <view class='item-cash'wx-if="{{item.type!=3}}" style='color:{{item.type==1||item.type==4||item.type==5?"red":"#333"}}'>
+          {{item.flage=="C"?'-￥':'+￥'}}{{item.amt}}
+        </view>
+        <view class='item-cash' wx-if="{{item.type==3&&item.status==1}}" style='color:#333'>
+          {{item.flage=="C"?'￥':'￥'}}{{item.amt}}
+        </view>
+        <view class='item-cash' wx-if="{{item.type==3&&item.status==2}}" style='color:#333'>
+          {{item.flage=="C"?'-￥':'+￥'}}{{item.amt}}
+        </view>
+                <view class='item-cash' wx-if="{{item.type==3&&item.status==3}}" style='color:#333'>
+          {{item.flage=="C"?'￥':'￥'}}{{item.amt}}
+        </view>
+      </view>
+      <!-- <view class='item-mes fz' >{{item.transTypeDesc}}</view> -->
+      <view class='item-time fz'>{{item.time}}</view>
+    </view>
+  </block>
+  <view style="background:#f2f2f2;height:85rpx;line-height:85rpx;text-align:center;position:absolute;left:50%;transform:translate(-50%);padding-bottom:30rpx;" class='font_24 color_999' wx:if="{{hasMore}}">~~正在加载中~~</view>
+  <view style="background:#f2f2f2;height:85rpx;line-height:85rpx;text-align:center;position:absolute;left:50%;transform:translate(-50%);padding-bottom:30rpx;" class='font_24 color_999' wx:if="{{!hasMore && iPage>1}}">~~我也是有底线的~~</view>
+</view>
+
+<view style='width:100%;height:100%;text-align:center;margin-top:292rpx;' wx:else>
+    <image
+          style="width:360rpx;height:240rpx"
+          mode="aspectFit"
+          src="{{src}}"
+    > </image>
+       <view style='color:#666666;font-size:32rpx;text-align:center;margin-top:10rpx;'> 暂无余额明细～</view>
+</view>
+<!-- <import src="../../template/baseLine/baseLine.wxml" />
+<template is="baseLine"></template> -->

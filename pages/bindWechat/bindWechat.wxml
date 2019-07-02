@@ -1,0 +1,22 @@
+<!-- <view class='clear clear20'></view> -->
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="绑定微信"
+>
+</navigation>
+<view class='bind_phone'>  
+  <van-cell-group>
+    <van-field
+    value="{{wechat}}"
+    label="微信号"
+    placeholder="微信号"
+    error="{{false}}"
+    bind:change="changePhone"
+    bind:blur="testPhone"
+    bind:click-icon="onClickIcon"/>
+    
+  </van-cell-group>
+  <van-button class='bind_button' bind:tap="bindWechat" round size='small'>绑定</van-button>
+  <van-toast id="van-toast" />
+</view>

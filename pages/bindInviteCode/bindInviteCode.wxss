@@ -1,0 +1,33 @@
+/* pages/bindInviteCode/bindInviteCode.wxss */
+.mainBox{
+  width: 100%;
+}
+
+.mainBox .inputBox{
+  margin: 168rpx 60rpx 100rpx 50rpx;
+  border-bottom: 2rpx solid #e5e5e5; 
+  padding-bottom: 30rpx;
+}
+
+.mainBox .inputBox input{
+  color: #333;
+  font-size: 32rpx;
+}
+
+.mainBox .buttonBox{
+  width: 640rpx;
+  margin:0 auto;
+  height: 98rpx;
+  background-color: #D73851;
+  border-radius: 49rpx;
+}
+
+.mainBox .buttonBox button{
+  width: 640rpx;
+  height: 98rpx;
+  background-color: #D73851;
+  border-radius: 49rpx;
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: 600;
+}

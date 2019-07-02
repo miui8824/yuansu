@@ -1,0 +1,100 @@
+<!--pages/afterSale_listEnter/afterSale_listEnter.wxml-->
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="申请售后"
+>
+</navigation>
+<view class='shop_car'>
+    <view class='shop_list_box'>
+        <view class='clear clear20'></view>
+        <!-- 售后商品 -->
+        <view class='shop_list_item' wx:for="{{orderList}}" wx:key="{{index}}">
+          <view class='shop_list_main'>
+            <view wx:if="{{ (orderStatus == 1 && isSubOrder == 1)||orderType==6||orderType==7 }}">
+            </view>
+            <view class='select_buttons' wx:else data-index='{{index}}' bindtap='onSelect'>
+              <image wx:if="{{switchArr[index]}}" src='https://file.maiyatown.com/images/afterSale_listEnter/shopping_cart_selected_check.svg'></image>
+              <image wx:else src='https://file.maiyatown.com/images/afterSale_listEnter/shopping_cart_selected_default.svg'></image>
+            </view>
+            <view class='main_img'>
+              <image src='{{item.goodImg}}'></image>
+              <view class='tip' wx:if="{{orderType==6||orderType==7}}">· 会员礼包 ·</view>
+            </view>
+            <view class='main_shop_text'>
+              <view class='shop_name'>
+                <view class='shop_name_text'>{{item.goodName}}</view>
+                <!-- <view class='close_button'  bindtap='clearShopItem'>
+                  <image src='https://file.maiyatown.com/images/afterSale_listEnter/shopping_cart_icon_close.svg'></image>
+                </view> -->
+              </view>
+              <view class='shop_introduce'>{{item.goodAttrDesc}}</view>
+              <view class='shop_money_box' wx:if="{{ (orderStatus == 1 && isSubOrder == 1)||orderType==6||orderType==7 }}">
+                <view class='color_red font_32'>¥{{item.actGoodPrice}}</view>
+                <van-stepper
+                data-index="{{index}}"
+                bind:change="onChange"
+                disable-input
+                disabled
+                value="{{ item.refundNum }}"
+                max="{{ item.residualQuantity }}"
+                />
+              </view>
+              <view class='shop_money_box' wx:else>
+                <view class='color_red font_32'>¥{{item.actGoodPrice}}</view>
+                <van-stepper
+                data-index="{{index}}"
+                bind:change="onChange"
+                disable-input
+                value="{{ item.refundNum }}"
+                max="{{ item.residualQuantity }}"
+                />
+              </view>
+            </view>
+          </view>
+        </view>
+
+
+        <!-- 全选 -->
+        <view wx:if="{{ (orderStatus==1 && isSubOrder==1)||orderType==6||orderType==7 }}"></view>
+        <view style='width:100%;height:102rpx;text-align:center;line-height:70rpx'  wx:else>
+              <!-- <text class='status'>退款申请，待审核</text> -->
+              <view class='choose_button' data-index='1' bindtap='allSelect'>
+                  <text class='all_choose'>全选</text>
+              </view>
+              <view class='nochoose_button'>
+                  <text class='all_nochoose' data-index='2' bindtap='allSelect'>取消全选</text>
+              </view>
+        </view>
+
+        <!-- 售后服务 -->
+        <view class='afterSaleService' bindtap='goAftersaleService'>
+          <text class='resale1_service'>选择你需要的售后服务</text>
+          <text class='resale2_service'>查看退换规则</text>
+          <image class='serviceArrow' src='https://file.maiyatown.com/images/v1.2/after_sale_icon_more_red.png' style='pisition:absolute;z-index:999;right:-95rpx;'></image>
+        </view>
+
+        <!-- 退货退款 -->
+        <view wx:if="{{ orderStatus == 1 && isSubOrder==1}}"></view>
+        <view class='returnGoods' bindtap='applyAftersale0'  wx:else>
+          <image class='payment' src='https://file.maiyatown.com/images/afterSale_listEnter/after_sale_icon_payment.svg'></image>
+          <text class='resale1'>退货退款</text>
+          <text class='resale2'>已收到货，不要了，全部退掉</text>
+          <image class='refont' src='https://file.maiyatown.com/images/afterSale_listEnter/after_sale_icon_more.svg' style='pisition:absolute;z-index:999;right:-92rpx;'></image>
+        </view>
+
+        <!-- 仅退款 -->
+        <view class='returnGoods2' bindtap='applyAftersale1'>
+          <image class='payment' src='https://file.maiyatown.com/images/afterSale_list/aftersaleiconmoney.svg'></image>
+          <text class='resale1_sale'>仅退款</text>
+          <text style='font-size: 28rpx;color: #999;margin-left: 54%;position:relative;right:6rpx;top:2rpx;'>想要退款</text>
+          <image class='refont' src='https://file.maiyatown.com/images/afterSale_listEnter/after_sale_icon_more.svg' style='pisition:absolute;'></image>
+        </view>
+
+
+
+        <view style='height:100px;'>
+        
+        </view>
+    </view>
+</view>

@@ -1,0 +1,362 @@
+<view bindtap='share_hide' wx:if="{{GetImage}}" style='position:absolute;width:100%;height:100%;background:black;opacity:0.3;z-index:1000; border:1px solid red;' catchtouchmove='{{true}}' />
+<view bindtap='' catchtouchmove='{{true}}' wx:if="{{GetImage}}" class="container" style='z-index:1000;position:absolute;margin-top:105px;'>
+  <!-- <view class='background'></view> -->
+  <image bindtap='share_hide' catchtouchmove='{{true}}' src="{{shareImage}}" class="share-image" />
+  <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage" />
+
+  <!-- <button >绘制</button>
+  <button>保存到本地</button>  bind:tap="eventDraw"-->
+  <button catchtouchmove='{{true}}' open-type='share' class="wechat">
+    <image class="wechatimg" src='https://file.maiyatown.com/images/v1.2/explosion_icon_wechat.png' /> 微信好友
+  </button>
+  <button catchtouchmove='{{true}}' bind:tap="eventSave" class="wechat1">
+    <image class="wechatimg" src='https://file.maiyatown.com/images/v1.2/explosion_icon_Img.png' /> 保存图片
+  </button>
+</view>
+<!--新版大麦分享-->
+<view bindtap='share_hide' wx:if="{{GetImage}}" style='position:absolute;width:100%;height:100%;background:black;opacity:0.3;z-index:1;' catchtouchmove='{{true}}' />
+<view bindtap='' catchtouchmove='{{true}}' wx:if="{{GetImage}}" class="container" style='z-index:100;position:absolute;margin-top:105px;width:100%;'>
+  <!-- <view class='background'></view> -->
+  <image bindtap='share_hide' catchtouchmove='{{true}}' src="{{shareImage}}" class="share-image" />
+  <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage" />
+
+  <!-- <button >绘制</button>
+  <button>保存到本地</button>  bind:tap="eventDraw"-->
+  <button catchtouchmove='{{true}}' open-type='share' class="wechat">
+    <image class="wechatimg" src='https://file.maiyatown.com/images/v1.2/explosion_icon_wechat.png' /> 微信好友
+  </button>
+  <button catchtouchmove='{{true}}' bind:tap="eventSave" class="wechat1">
+    <image class="wechatimg" src='https://file.maiyatown.com/images/v1.2/explosion_icon_Img.png' /> 保存图片
+  </button>
+</view>
+<view class='scroll_view home_box' scroll-y>
+  <navigation id='Navigation' show-icon='{{showIcon}}' title="元素城堡" />
+  <!-- 预约提醒组件 -->
+  <appointment-tip/>
+  <group-tip/>
+
+  <form bindsubmit="postFormId" report-submit='true'>
+    <view class='home_banner'>
+      <!-- <view class='swiper_tip' wx:if='{{swiperData.length>0}}'>{{swiperActive+1}}/{{swiperData.length}}</view> -->
+      <swiper class='swiper_box' autoplay="{{true}}" circular="true" interval="3000" duration="1000" wx:if="{{swiperData.length>0}}" circular="true">
+        <block wx:for="{{swiperData}}" wx:key="{{item.index}}">
+          <swiper-item data-redirecturl="{{item.redirectUrl}}" bindtap="bannerJump">
+            <view class='swiper-view'>
+              <image src="{{item.bannerUrl}}" class="slide-image" />
+
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <!-- <view class='home_reward'>
+    <image bindtap='isOpenRed' src='/images/home/choujiang.png' />
+  </view> -->
+    <!-- 大转盘页面 -->
+    <view class='start-turntable' bindtap='{{activeState!=4?"openTurntable":""}}' wx:if='{{activeState!=4}}'>
+      <image mode="widthFix" src="https://file.maiyatown.com/images/draw/home_image_activity_entrance.png" />
+      <text wx:if="{{activeState==0||activeState==1}}">{{turntableStart}} -- {{turntableEnd}}</text>
+      <view class='jljs' wx:if="{{activeState==2}}">距离结束
+        <text>{{countDown[1]}}</text> :
+        <text>{{countDown[2]}}</text> :
+        <text>{{countDown[3]}}</text>
+      </view>
+      <text wx:if="{{activeState==3}}">活动已结束</text>
+      <view class="prizeList" wx:if="{{activeState==3&&xsState3==true}}">
+        <view class='pl-bg' />
+        <!-- <swiper class='pl-scroll' 
+         autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}"
+        interval="{{interval}}" duration="{{duration}}" previous-margin="0rpx" next-margin="0rpx">
+        <block wx:for="{{prizeList}}" wx:for-item='p' wx:for-index="i" wx:key="{{i}}">
+          <swiper-item class='plc-v'>恭喜<text>{{p.name}}</text>中奖！获得{{p.pro}}X{{p.num}}</swiper-item>
+        </block>
+      </swiper> -->
+        <image src='https://file.maiyatown.com/images/draw/lb.png' class='volumeo' />
+
+        <van-notice-bar custom-class="van-notice" color='#DD232F' backgroundColor='none' text="{{prizeListStr}}" />
+      </view>
+    </view>
+    <!-- 1.3商品专场 -->
+    <view class='goodsSpecial' wx:if="{{specialList.length>0}}">
+      <view class='itemBox' wx:for="{{specialList}}" wx:key="{{item.id}}" data-redirecturl="{{item.redirectUrl}}" bindtap="bannerJump">
+        <view class='topImg'>
+          <image src='{{item.bannerUrl}}' />
+        </view>
+        <view class='bottomTitle'>{{item.bannerDesc}}</view>
+      </view>
+    </view>
+    <!-- 活动导航 新人有礼 -->
+    <view class='nav_new_play font_36' bindtap='goRookieSpecial' wx:if="{{rookieExclusiveBanner}}">
+      <image src='{{rookieExclusiveBanner}}' />
+    </view>
+    <view class='clear clear30 back_fff' wx:else></view>
+    <view class='pintuan_content'>
+      <text class='title'> 精选优质专区 Select high quality</text>
+      <view class='flex'>
+        <view class="baokuang">
+          <image src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190702214249706.png'></image>
+        </view>
+        <view class='right'>
+          <view bindtap='goGroupPage1'>
+            <image src='{{groupDetailsImgUrl}}' />
+
+          </view>
+          <view bindtap='goGroupPage'>
+            <image src='{{groupHomeImgUrl}}' />
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 拼团专区 -->
+    <!-- <view class='group_title' wx:if="{{groupDetailsImgUrl||groupHomeImgUrl}}">拼团专区</view>
+    <view class='group_box_box' wx:if="{{groupDetailsImgUrl||groupHomeImgUrl}}">
+      <view class='group_box'>
+        <view class='group_item' bindtap='goGroupPage1' hidden='{{!groupDetailsImgUrl}}'>
+          <image src='{{groupDetailsImgUrl}}' />
+        </view>
+        <view class='group_item' bindtap='goGroupPage' hidden='{{!groupHomeImgUrl}}'>
+          <image src='{{groupHomeImgUrl}}' />
+        </view>
+      </view>
+    </view>
+    <view class='home_classification' style='height:88rpx;' wx:if="{{isnav}}">
+      <van-tabs active="{{ active }}" bind:change="onChange_querylist" line-width="64">
+        <van-tab title="{{item.labelName}}" wx:for="{{navNames}}" wx:key="{{index}}" />
+      </van-tabs>
+    </view> -->
+
+    <!-- <view class='home_main'>
+    <view class='home_play'>
+      <view class="play_left {{navLeft?'play_on':''}}" data-types="left" bindtap='navClick'>
+        <image wx:if="{{navLeft}}" src='https://file.maiyatown.com/images/home/jinrizhutui_x.svg' />
+        <image wx:else src='https://file.maiyatown.com/images/home/jinrizhutui_m.svg' />
+        <text>今日主推</text>
+      </view>
+      <view class="play_right {{navLeft?'':'play_on'}}" data-types="right" bindtap='navClick'>
+        <image wx:if="{{!navLeft}}" src='https://file.maiyatown.com/images/home/xiaqiyugao_x.svg' />
+        <image wx:else src='https://file.maiyatown.com/images/home/xiaqiyugao_m.svg' />
+        <text>下期预告</text>
+      </view>
+    </view>
+  </view> -->
+    <view class='home_main2' wx:if="{{hotShopList.length!=0}}">
+      <view class='nav_content_box' wx:for="{{hotShopList}}" wx:key="{{index}}">
+        <view class='nav_content' data-id="{{item.id}}" data-activityid="{{item.activityId}}" data-left="{{true}}" bind:tap='goShopDetail'>
+          <view class='nav_image'>
+            <image src='{{item.goodImg}}' />
+          </view>
+          <view>
+            <view class='content_title'>{{item.title}}</view>
+            <view class='content_tip'>{{item.subTitle}}</view>
+            <view class='content_data'>
+              <text>已售{{item.dummySales}}件</text>
+              <text class='content_middle' wx:if="{{item.reducePrice!=0}}">|</text>
+              <text>{{item.reducePrice==0?'':'下单立减'}}<text style='color:#ff262c;'>{{item.reducePrice==0?'':item.reducePrice}}</text> {{item.reducePrice==0?'':'元'}}
+              </text>
+            </view>
+            <view class='content_money'>
+              <view>
+                <view class='money_number'>
+                  <view class='money_nownumber'>¥{{item.price}}</view>
+                  <view class='money_vip' hidden>
+                    <image src='https://file.maiyatown.com/images/home/home_image_member_price.png' />
+                    <view class='money_vip_icon'>会员价</view>
+                  </view>
+                </view>
+                <view class='money_oldnumber'>¥{{item.retailPrice}}</view>
+              </view>
+              <van-button class='content_buy_off' round size='small' wx:if='{{item.dummyStock<1}}'>已经抢完
+              </van-button>
+              <van-button class='content_buy_on' round size='small' form-type="submit" hover-class="button_hover" wx:else>立即抢购
+              </van-button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='home_main2' wx:else>
+      <view class='nav_content_box' wx:for="{{hotShopList}}" wx:key="{{index}}">
+        <view class='nav_content' data-id="{{item.id}}" data-activityid="{{item.activityId}}" data-left="2" bind:tap='goShopDetail'>
+          <view class='nav_image'>
+            <image src='{{item.goodImg}}' />
+          </view>
+          <view>
+            <view class='content_title'>{{item.title}}</view>
+            <view class='content_tip'>{{item.subTitle}}</view>
+            <view class='content_data'>
+              <text>已售{{item.dummySales}}件</text>
+              <text class='content_middle' wx:if="{{item.reducePrice!=0}}">|</text>
+              <text>{{item.reducePrice==0?'':'下单立减'}}<text style='color:#ff262c;'>{{item.reducePrice==0?'':item.reducePrice}}</text> {{item.reducePrice==0?'':'元'}}
+              </text>
+            </view>
+            <view class='content_money'>
+              <view>
+                <view class='money_number'>
+                  <view class='money_nownumber'>¥{{item.price}}</view>
+                  <view class='money_vip' hidden>
+                    <image src='https://file.maiyatown.com/images/home/home_image_member_price.png' />
+                    <view class='money_vip_icon'>会员价</view>
+                  </view>
+                </view>
+                <view class='money_oldnumber'>¥{{item.retailPrice}}</view>
+              </view>
+              <!-- <van-button class='content_buy_off' round size='small' wx:if='{{item.dummyStock<1}}'>已经抢完</van-button> -->
+              <van-button class='content_buy_on' round size='small'>即将开抢</van-button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{navLeft}}" style='width:100%;height:20rpx;background-color:#f2f2f2;' wx:if="{{hotListData.length!=0}}" />
+    <view class='hot_sale' wx:if="{{hotListData.length!=0  }}">
+      <view class='imgs'>
+        <image src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621160950235.png'></image>
+      </view>
+      <view class='hot_saleist' wx:if="{{navLeft}}">
+
+        <view class='hot_saleGood' wx:for="{{hotListData}}" wx:key="{{item.index}}">
+          <image bindtap='hotGood' data-id='{{item.id}}' data-activityid='{{item.activityId}}' data-left='{{true}}' class='hot_saleimg' src='{{item.goodImg}}' />
+          <view class='hot_saleattribute'>
+            <!-- <view class='hotsale_text1'>{{item.title}}</view>
+						<view class='hotsasinde'>{{item.subTitle}}</view> -->
+
+
+            <text bindtap='hotGood' data-id='{{item.id}}' data-activityid='{{item.activityId}}' data-left='{{true}}' class='hotsale_text1'>{{item.title}}</text>
+            <text bindtap='hotGood' data-id='{{item.id}}' data-activityid='{{item.activityId}}' data-left='{{true}}' class='hotsasinde'>{{item.subTitle}}</text>
+            <view class="souindexs">
+              <view>
+                <text bindtap='hotGood' data-id='{{item.id}}' data-activityid='{{item.activityId}}' data-left='{{true}}' class='hotsale_text2'>￥{{item.price}}</text>
+                <text bindtap='hotGood' data-id='{{item.id}}' data-activityid='{{item.activityId}}' data-left='{{true}}' class='hotsale_text3'>￥{{item.retailPrice}}</text>
+              </view>
+              <image bindtap="addShopCar" class='hotsale_text5' data-alldata='{{item}}' src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621152406434.png' />
+            </view>
+
+            <!-- <text bindtap='hotGood'  data-id='{{item.id}}' data-activityid='{{item.activityId}}' data-left='{{true}}' class='hotsale_text4' >\n已售{{item.dummySales}}件</text> -->
+            <!-- <image
+						 bindtap="addShopCar"
+						 class='hotsale_text5'
+						 data-alldata='{{item}}'
+						 src='https://file.maiyatown.com/images/utils/banner_icon_shopping.svg'
+						/> -->
+          </view>
+
+        </view>
+      </view>
+
+    </view>
+    <view class='home_more'>
+      <image src='https://file.maiyatown.com/images/home/gengduoshangpi.png' />
+    </view>
+    <view class='home_more_title'>
+      ~~更多品牌 敬请期待~~
+    </view>
+    <!-- <me-nav tabbar="{{tabbar}}" /> -->
+    <button class='button_replace' bind:tap="eventDraw" />
+    <!-- open-type='share' -->
+    <!-- 浮动红包 -->
+    <!-- 
+  1.未参加 新用户 总红包没发完
+  2.已参加 用户自己没结束
+  3.未参加 新用户 是帮拆 总红包没发完 用户自己没结束 没帮拆过  （帮拆）
+  4.老用户 已参加 用户自己没结束 未拆完 总红包没发完
+  5.新用户 未参加 不是帮拆 总红包没发完   （自己拆）
+  6.老用户 未参加 白名单 总红包没发完 (无论自己拆还是帮拆)
+   -->
+    <view wx:if="{{(!isTake && newUser && !redTotalOver) || (isTake && !isEnd) || (!isTake && newUser && isHelpRed && !redTotalOver && !isEnd && !isHelp) || (!newUser && isTake && !isEnd && !isDismantle && !redTotalOver) || (!isTake && newUser && !isHelpRed && !redTotalOver) || (!isTake && !newUser && userWhiteList && !redTotalOver)}}"
+      class='float_red' bindtap='goRedPlay'>
+      <image src='https://file.maiyatown.com/images/utils/home_float_red.png' class='float_img' />
+    </view>
+
+    <!-- 帮开红包 -->
+    <view class='help_red_layer' wx:if="{{helpRedShow}}" catchtouchmove="stopPageScroll" />
+    <image class='help_red_guang' wx:if="{{helpRedOnShow}}" src='https://file.maiyatown.com/images/redEnvelopes/guang.png' catchtouchmove="stopPageScroll" />
+    <view class='help_red_box' wx:if="{{helpRedShow}}" catchtouchmove="stopPageScroll">
+      <image class='help_red_close' src='https://file.maiyatown.com/images/utils/icon_closed.png' bindtap='helpRedClose' />
+      <view wx:if="{{helpRedOnShow}}">
+        <image class='help_red_back' src='https://file.maiyatown.com/images/utils/red_envelope_on.png' />
+        <view class='help_red_main'>
+          <view wx:if="{{isHelpRed && !isHelpFirst}}" class='font_24 color_333 red_title'>您帮好友拆得</view>
+          <view wx:else class='font_24 color_333 red_title'>恭喜获得现金红包！</view>
+          <view wx:if="{{isHelpRed && !isHelpFirst}}" class='red_money'>{{inviterValue}}
+            <text class='red_money_one'>元</text>
+          </view>
+          <view wx:else class='red_money'>{{inviteeValue}}
+            <text class='red_money_one'>元</text>
+          </view>
+          <view class='red_up'>最高{{redUp}}元</view>
+          <view wx:if="{{isHelpRed && !isEnd && !isDismantle && !redTotalOver}}" class='red_get' round size='small' hover-class="red_get_hover" bindtap='goRedPlay'>点击领取{{strDouble}}倍红包
+          </view>
+          <view wx:if="{{isHelpRed && (isEnd || isDismantle || redTotalOver)}}" class='red_get' round size='small' hover-class="red_get_hover" bindtap='goHome'>去首页逛逛
+          </view>
+          <view wx:if="{{!isHelpRed}}" class='red_get' round size='small' hover-class="red_get_hover" bindtap='goRedPlay'>领取红包
+          </view>
+        </view>
+      </view>
+      <view class='help_red_front_box' wx:else bindtap='openHelpRed'>
+        <image class='help_red_back' src='https://file.maiyatown.com/images/v1.3.1/red_envelope_img.png' />
+        <view class='red_up'>最高{{redUp}}元</view>
+      </view>
+    </view>
+
+  </form>
+</view>
+
+<view class='shade' wx:if="{{isShade}}" catchtouchmove="stopPageScroll" />
+<view class='bg-light-contain' wx:if="{{isOpened}}" catchtouchmove="stopPageScroll">
+  <image class='bg-light' src='https://file.maiyatown.com/images/redEnvelopes/guang.png' />
+</view>
+<image src='https://file.maiyatown.com/images/redEnvelopes/hongbao_0.png' class='red' wx:if="{{isOpen}}" catchtouchmove="stopPageScroll" />
+<view class='bot' bindtap='openRed' wx:if="{{isOpen}}" catchtouchmove="stopPageScroll" />
+<image src='https://file.maiyatown.com/images/redEnvelopes/hongbao_x.png' class='red-opened' wx:if="{{isOpened}}" catchtouchmove="stopPageScroll" />
+<text class='red-open-num' wx:if="{{isOpened}}" catchtouchmove="stopPageScroll">{{redOpenNum}}<text>元</text>
+</text>
+<view class='bot-view' bindtap='viewRed' wx:if="{{isOpened}}" catchtouchmove="stopPageScroll" />
+<image class='{{close_red}}' bindtap='closeRed' catchtouchmove="stopPageScroll" wx:if="{{isShade}}" src='https://file.maiyatown.com/images/redEnvelopes/close.png' />
+
+<van-action-sheet class='action_sheet_me' show="{{ actionSheetShow }}" z-index="1000" catchtouchmove="stopPageScroll">
+  <view class='action_sheet_box'>
+    <view class='shop_info mar_b_30'>
+      <view class='shop_img'>
+        <image src='{{hot_goodImg}}' />
+      </view>
+      <view class='shop_size_color'>
+        <view class='shop_close mar_b_30'>
+          <view class='shop_money color_red font_36' style='font-weight: 600;'>¥{{hot_price}}</view>
+          <view class='close_icon' bindtap='onClose'>
+            <image src='https://file.maiyatown.com/images/goodsDetails/explosion_icon_tclosed.svg' />
+          </view>
+        </view>
+        <view class='color_999 font_28 mar_b_20'>库存{{activeSkuItem.dummyStock||gdInfo.dummyStock}}件</view>
+        <view class='color_999 font_28'>选择商品规格</view>
+      </view>
+    </view>
+    <scroll-view scroll-y="true" scroll-with-animation="true" class='shop_info_size'>
+      <view wx:for="{{specList}}" wx:key="index" wx:for-item="item" wx:for-index="index">
+        <view class='font_28 color_666 mar_b_20 shop_info_name'>{{item.name}}</view>
+        <view>
+          <!--{{citem.notClick?"button_off":""}}  {{citem.isActiveC?"button_on":""}} -->
+          <van-button class='shop_color_type {{citem.notClick?"button_off":""}}  {{citem.isActiveC?"button_on":""}}' wx:for="{{item.value}}" wx:for-index="cindex" wx:for-item='citem' wx:key="cindex" data-index='{{index}}' data-cindex='{{cindex}}' data-cid='{{citem.id}}'
+            data-isactivec='{{citem.isActiveC}}' bind:tap='tabInfoChange' data-citemnoclick='{{citem.notClick}}'>
+            {{citem.cname}}
+          </van-button>
+          <!-- <van-button class='shop_color_type {{attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex]?(value==attrValueObj.selectedValue?"button_on":""):""}}' round size='small' 
+            bindtap="selectAttrValue" data-status="{{attrValueObj.attrValueStatus[valueIndex]}}"
+            data-value="{{value}}" data-key="{{attrValueObj.attrKey}}" data-code="{{attrCode}}" data-index="{{attrIndex}}"
+            data-selectedvalue="{{attrValueObj.selectedValue}}" wx:for="{{attrValueObj.attrValues}}" wx:for-item="value"
+            wx:for-index="valueIndex" wx:key="{{valueIndex}}" disabled='{{!(attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex])}}'>{{value}}</van-button> -->
+        </view>
+      </view>
+      <view class='shop_stepper'>
+        <view class='font_28 color_666'>购买数量</view>
+        <van-stepper class='stepper_main' value="{{ goodsNumber }}" bind:change="onChange" disable-input />
+      </view>
+    </scroll-view>
+
+    <view class='linetop' />
+    <view class='success_box'>
+      <van-button class='success_button' round size='small' bindtap='selectSizeSuccess'>确定
+      </van-button>
+    </view>
+  </view>
+</van-action-sheet>
+<van-dialog id="van-dialog" />

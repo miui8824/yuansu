@@ -1,0 +1,114 @@
+/* pages/maiyaBalanceDetail/maiyaBalanceDetail.wxss */
+@import "/static/css/common.wxss";
+.container-all{
+width: 100%;
+height: 100%;
+}
+.bg-img{
+width: 100%;
+height: 100%;
+display: block;
+}
+
+page {
+  background: #f2f2f2;
+  min-height: 100%;
+  position: relative;
+}
+
+.balance_box{
+  width: 100%;
+  background: #f2f2f2;
+  position: absolute;
+}
+
+.balance_box .list_box {
+  background: #fff;
+  margin-top:108rpx;
+  padding-left: 30rpx;
+  margin-bottom: 46rpx;
+}
+
+.list_box .balanceList{
+  height: 152rpx;
+  padding: 38rpx 0rpx;
+  border-bottom: 2rpx solid #eee;
+  box-sizing: border-box;
+  position:relative;
+}
+
+.list_box .balanceList .imgBox{
+  width: 74rpx;
+  height: 74rpx;
+  border-radius: 50%;
+  position: absolute;
+  left: 0
+}
+
+.list_box .balanceList .imgBox>image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.list_box .balanceList .infoBox{
+  margin-left: 23rpx;
+  width: 350rpx;
+  position: absolute;
+  left: 74rpx;
+}
+
+.list_box .balanceList .infoBox .name{
+  color: #333;
+  font-size: 32rpx;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+}
+
+.list_box .balanceList .infoBox .time{
+  color: #999;
+  font-size: 24rpx;
+  margin-top: 6rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+}
+
+.list_box .balanceList .moneyBox{
+  position: absolute;
+  right: 30rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  width:230rpx;
+  text-align: right;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp:1;
+  -webkit-box-orient: vertical;
+}
+
+.emptyBox{
+  width:100%;
+  height:83vh;
+  text-align:center;
+  background: #f2f2f2;
+}
+
+.emptyBox image{
+  width:360rpx;
+  height:204rpx;
+  margin-top:50%;
+}
+
+.emptyBox view{
+  color:#666666;
+  font-size:32rpx;
+  margin-top:40rpx;
+}

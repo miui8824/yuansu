@@ -1,0 +1,152 @@
+<!--pages/myRegimentDetails/myRegimentDetails.wxml-->
+
+<!--新版大麦分享-->
+<view bindtap='share_hide' wx:if="{{GetImage}}" style='position:absolute;width:100%;height:100%;background:black;opacity:0.3;z-index:1;' catchtouchmove='{{true}}'>
+</view>
+<view bindtap='' catchtouchmove='{{true}}' wx:if="{{GetImage}}" class="container" style='z-index:100;position:absolute;margin-top:25%;'>
+<!-- <view class='background'></view> -->
+  <image bindtap='share_hide' catchtouchmove='{{true}}' src="{{shareImage}}" class="share-image"></image>
+  <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage"/>
+
+  <!-- <button >绘制</button>
+  <button>保存到本地</button>  bind:tap="eventDraw"-->
+  <button catchtouchmove='{{true}}'  open-type='share'  class="wechat">
+    <image class="wechatimg" src='https://file.maiyatown.com/images/v1.2/explosion_icon_wechat.png'></image>
+  微信好友</button>
+  <button catchtouchmove='{{true}}'  bind:tap="eventSave"  class="wechat1">
+   <image class="wechatimg"  src='https://file.maiyatown.com/images/v1.2/explosion_icon_Img.png'></image>
+  保存图片</button>
+</view>
+
+
+<import src="/wxParse/wxParse.wxml"/>
+  <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="{{title}}"
+>
+</navigation>
+<view class='order_box'>
+ <view style='width:100%;height:100%'>
+   <view class='order_list' wx:for="{{orderGoods}}" wx:for-index="index" wx:key="unique">
+    <view  class='back_hui '></view>
+        <view class='list_main'>
+           <view class='list_img' style='position:relative;'>
+            <view class="zhezhao" style=""></view>
+             <view class="zhezhao_wenzi">· 拼团 ·</view>
+              <image style="width:200rpx;height:200rpx" src='{{item.goodImg}}'></image>
+           </view>
+           <view class='list_text'>
+              <view class='list_name'>{{item.goodName}}</view>
+              <view class='list_size'>￥{{item.goodPrices}}</view>
+           </view>     
+        </view>
+        <view class='list_title' bindtap='Go_shareOrder'>
+           <view  class='title_number' >
+            我的订单状态   
+          </view>
+          <view wx:if="{{all_data.status==2}}" class="list_status" >
+            待分享 
+            <van-icon custom-style="color:#999;vertical-align:middle;" class='font_32 icon' name="arrow"/>
+          </view>
+          <view wx:if="{{all_data.status==3&&(all_data.orderStatus==1||all_data.orderStatus==0)}}" class="list_status" >
+            待发货 
+            <van-icon custom-style="color:#999;vertical-align:middle;" class='font_32 icon' name="arrow"/>
+          </view>
+          <view wx:if="{{all_data.status==3&&all_data.orderStatus==2}}" class="list_status" >
+            待收货
+            <van-icon custom-style="color:#999;vertical-align:middle;" class='font_32 icon' name="arrow"/>
+          </view>
+          <view wx:if="{{all_data.status==4}}" class="list_status" >
+            已取消
+            <van-icon custom-style="color:#999;vertical-align:middle;" class='font_32 icon' name="arrow"/>
+          </view>
+        </view>
+  </view>
+ </view>
+</view>
+ <view  class='back_hui '></view>
+<view class='list_title' bindtap='GO_details'>
+    <view class='title_number' >
+      拼团信息     
+    </view>
+    <view wx:if="{{status==2}}" class="pintuaning" >
+      拼团中
+    </view>
+    <view wx:if="{{status==3}}" class="pintuaning" >
+      拼团成功
+    </view>
+    <view wx:if="{{status==4}}"  class="pintuaning" >
+      拼团失败
+    </view>
+</view>
+<view class='pintuan_infor'>
+    <view style='text-align:center;overflow:hidden;'>
+           <view style='margin-right:36rpx;width:100rpx;height:95rpx;display:inline-block;border-radius:50%;border:4rpx solid #FF262C;position:relative;vertical-align:top;' wx:for="{{items}}" wx:for-index="index" wx:key="unique" wx:if="{{index<4}}">
+           <view  wx:if="{{item.isLeader==1}}" style='position:absolute;width:56rpx;height:28rpx;background:#FF262C;border-radius:13rpx;font-size:20rpx;color:white;bottom:0;left:20rpx;line-height：28rpx'>团长</view>
+              <image src='{{item.headImageUrl}}' style='width:100%;height:100%;border-radius:50%;'></image>   
+           </view>
+           
+           <image   wx:for="{{all_data.userLimit<5?all_data.userLimit-all_data.userCount:5-all_data.userCount-1}}"  wx:key="unique" src='https://file.maiyatown.com/images/v1.2/group_buy_img_empty.png' style='width:50px;height:50px;border-radius:50%;margin-right:36rpx;'></image>
+           <image wx:if="{{(all_data.userLimit>=5)}}" src='https://file.maiyatown.com/images/v1.2/group_buy_img_more.png' style='width:50px;height:50px;border-radius:50%;'></image>
+           
+    </view>
+    <view style='text-align:center;overflow:hidden;'>
+       <view wx:if="{{status==2}}"  style='color:#666666;font-size:26rpx;margin-top:40rpx;margin-bottom:22rpx;'>仅剩<text style='color:#FF262C'>{{usercount}}人</text>，快呼唤小伙伴参加吧！</view> 
+       <view wx:if="{{status==2}}"  style='color:#333333;font-size:26rpx;font-weight:500;margin-bottom:30rpx;'>
+          <text style='color:#DDDDDD'>————  </text>
+          <text style='color:#333333;font-weight:500;font-size:30rpx;'>剩余{{day}}天 </text>
+          <view style='background:pink;color:#ff262c;tex-align:center;display:inline-block;width:32rpx;height:32rpx;line-height:32rpx;font-size:26rpx;'> {{hour}} </view>
+          <text style='tex-align:center'> : </text>
+          <view style='background:pink;color:#ff262c;tex-align:center;display:inline-block;width:32rpx;height:32rpx;line-height:32rpx;font-size:26rpx;'> {{minute<0?0:minute}} </view>
+          <text style='tex-align:center'> : </text>
+          <view style='background:pink;color:#ff262c;tex-align:center;display:inline-block;width:32rpx;height:32rpx;line-height:32rpx;font-size:26rpx;'> {{second<0?0:second}} </view>
+          <text style='color:#333333;font-weight:500;tex-align:center'> 结 束 </text>
+          <text style='color:#DDDDDD'>  ————</text>
+       </view> 
+         <view  wx:if="{{status==3}}"  style='color:#333333;font-size:26rpx;font-weight:500;margin-bottom:30rpx;margin-top:40rpx;'>
+          <text style='color:#DDDDDD'>————  </text>
+          <text style='color:#333333;font-weight:500'>恭喜您，拼团成功！</text>
+          <text style='color:#DDDDDD'>  ————</text>
+       </view> 
+        <view wx:if="{{status==4}}"  style='color:#333333;font-size:26rpx;font-weight:500;margin-bottom:30rpx;margin-top:40rpx;'>
+          <text style='color:#DDDDDD'>————  </text>
+          <text style='color:#333333;font-weight:500'>拼团失败,退款成功</text>
+         
+          <text style='color:#DDDDDD'>  ————</text>
+       </view> 
+    </view>
+    
+</view>
+ <view class='inviter_item'wx:for="{{items}}" wx:for-index="index" wx:key="unique">
+        <!-- <view style='display:inline-block;position:ralative;'> -->
+          <image style='border:4rpx solid red;height:80rpx;width:80rpx;border-radius:40rpx;margin-right:20rpx;' src='{{item.headImageUrl}}'></image>
+          <view  wx:if="{{item.isLeader==1}}" style='position:absolute;width:56rpx;height:28rpx;background:#FF262C;border-radius:13rpx;font-size:20rpx;color:white;text-align:center;margin-top:28rpx;margin-left:15rpx;line-height:28rpx'>团长</view>
+        <!-- </view> -->
+        <text class='mar_l_20'>{{item.nickName}}</text>
+        <text wx:if="{{item.isLeader==1}}" class='inviter_time' style='color:#999999'>{{item.createTime}}开团</text>
+         <text wx:if="{{item.isLeader!=1}}" class='inviter_time' style='color:#999999'>{{item.createTime}}参团</text>
+ </view> 
+ <view style='width:100%;position:relative;margin-bottom:20%;'>
+   <view style='height:30rpx;font-size:32rpx;color:#333333;font-weight:500;padding:30rpx;'>玩法规则</view>
+   <view class='guize' style=''>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+   </view>
+     <view  class='back_hui' style='height:170rpx;'></view>
+ </view>  
+
+  <view style='width:100%;height:150rpx;background:white;position:fixed;bottom:0;'>
+            <view  wx:if="{{status==2}}" bindtap='invite_friend' style='width:690rpx;height:98rpx;background:#DD232F;border-radius:50rpx;text-align:center;line-height:98rpx;color:black;font-size:36rpx;margin:30rpx;display:inline-block;font-weight:600' >
+       转发邀请好友参团
+    </view>
+     <view wx:if="{{status==3}}" bindtap="goElespintuan"  style='width:690rpx;height:98rpx;background:#DD232F;border-radius:50rpx;text-align:center;line-height:98rpx;color:black;font-size:36rpx;margin:30rpx;font-weight:600;'>
+       逛逛其他拼团活动
+    </view>
+    <view wx:if="{{status==4}}" bindtap="goElespintuan" style='width:690rpx;height:98rpx;background:#DD232F;border-radius:50rpx;text-align:center;line-height:98rpx;color:black;font-size:36rpx;margin:30rpx;font-weight:600;'>
+       本团过期，再逛逛
+    </view>
+  </view>
+
+<view class='go_home' bindtap='goHome'>
+    <image src='https://file.maiyatown.com/images/myorder/waiting_icon_home.svg'></image>
+  </view> 

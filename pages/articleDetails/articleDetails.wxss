@@ -1,0 +1,96 @@
+/* pages/articleDetails/articleDetails.wxss */
+@import "/static/css/common.wxss";
+.container-all{
+width: 100%;
+height: 100%;
+}
+.bg-img{
+width: 100%;
+height: 100%;
+display: block;
+}
+
+page {
+  background: #f2f2f2;
+  min-height: 100%;
+}
+
+.mainBox{
+  position: relative;
+}
+
+.mainBox video{
+  width: 100%;
+  height: 420rpx;
+}
+.infoBox{
+  padding: 30rpx;
+  background-color: #fff;
+}
+
+.titleBox{
+  color: #333;
+  font-weight: 500;
+}
+.dateAndType{
+  margin-top: 20rpx;
+}
+
+.dateAndType .date{
+  color: #999;
+  font-size: 28rpx;
+}
+
+.dateAndType .type{
+  color: #38AA26;
+  font-size: 28rpx;
+  margin-left: 30rpx;
+}
+
+.videoTitle{
+  margin-top: 20rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #333;
+  font-size: 32rpx;
+  background-color: #fff;
+  padding-left: 30rpx;
+  font-weight: 500;
+  border-bottom: 2rpx solid #eee;
+}
+
+.richText{
+  background-color: #fff;
+  margin-bottom: 182rpx;
+  padding: 30rpx;
+}
+
+.shareBox{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.shareBox>button{
+  width: 100%;
+  height: 98rpx;
+  background-color: #FED02F;
+  font-weight: 600;
+  color: #333;
+  font-size: 36rpx;
+}
+
+.bottom_line{
+  line-height: 84rpx;
+  height: 84rpx;
+  font-size: 24rpx;
+  color: #999;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  bottom: -84rpx;
+  transform: translateX(-50%);
+  background: #f2f2f2;
+  /* margin-bottom: 98rpx; */
+}

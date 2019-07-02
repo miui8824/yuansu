@@ -1,0 +1,46 @@
+<!--pages/articleDetails/articleDetails.wxml-->
+<import src="/wxParse/wxParse.wxml"/>
+<navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="{{title}}"
+>
+</navigation>
+
+<view class='mainBox'>
+  <txv-video 
+  vid="{{vid}}" 
+  playerid="txv1"
+  autoplay='{{false}}'
+  poster='{{info.imgUrl}}'
+  controls='{{true}}'
+  wx:if="{{!isImg}}"
+  binderror="error"
+  ></txv-video>
+  <view class='infoBox'>
+    <view class='titleBox' style="font-size:{{type==1?36+'rpx':42+'rpx'}}">
+    {{info.title}}
+    </view>
+
+    <view class='dateAndType'>
+      <text class='date'>{{info.createTime}}</text>
+      <text class='type'>{{info.catName}}</text>
+    </view>
+  </view>
+
+  <view class='videoTitle' wx:if="{{!isImg}}">
+    详情简介
+  </view>
+
+  <view class='richText'>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+    <!-- 底线 -->
+  <view class='bottom_line' wx:if="{{showNomore}}" id='btLine'>
+    ~~我也是有底线的~~
+  </view>
+
+  <view  class='shareBox'>
+    <button open-type='share'>分享</button>
+  </view>
+</view>

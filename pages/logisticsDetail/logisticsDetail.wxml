@@ -1,0 +1,49 @@
+<!--pages/logisticsDetail/logisticsDetail.wxml-->
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="物流详情"
+>
+</navigation>
+<view class='logistics_detail'>
+  <view class='logistics_title'>
+    {{orderList.length}}个包裹已发出
+  </view>
+  <view class='logistics_about'>
+    以下商品被拆成{{orderList.length}}个包裹
+  </view>
+  <view class='logistics_detail_item' wx:for="{{orderList}}" wx:key="{{index}}" data-name="{{item.expressName}}" data-com='{{item.expressCode}}' data-num='{{item.courierNum}}'  bindtap='goSelectDetail'>
+    <view class='item_top border_botton'>
+      <view class='item_top_left' wx:if="{{item.courierStatus==0}}">
+        <view class='left_icon'>
+          <image src='https://file.maiyatown.com/images/logistics/baoguo.png'></image>
+        </view>
+        <view class='font_30 color_666 font_bold500'>运输中</view>
+      </view>
+      <view class='item_top_left'  wx:if="{{item.courierStatus==1}}">
+        <view class='left_icon'>
+          <image src='https://file.maiyatown.com/images/logistics/baoguo.png'></image>
+        </view>
+        <view class='font_30 color_666'>{{item.courierStatus==0?'运输中':'已签收'}}</view>
+      </view>
+      <view class='color_666 font_24'>{{item.expressName}}:{{item.courierNum}}</view>
+    </view>
+    <view class='item_main'>
+      <view wx:if="{{item.courierGoodInfo.length>=4}}">
+        <view class='item_imgs' wx:for="{{item.courierGoodInfo}}" wx:key="{{index}}">
+          <image src='{{item.goodImg}}' wx:if="{{index<4}}"></image>
+        </view>
+        <view class='item_dian'>...</view>
+      </view>
+      <view wx:else>
+        <view class='item_imgs' wx:for="{{item.courierGoodInfo}}"  wx:key="{{index}}">
+          <image src='{{item.goodImg}}' wx:if="{{index<3}}"></image>
+        </view>
+      </view>
+    </view>
+    <view class='item_botton'>
+      <view style='text-align:left;'>共{{item.goodNumbers}}件商品</view>
+      <view class='ib-xq'>查看详情</view>
+    </view>
+  </view>
+</view>

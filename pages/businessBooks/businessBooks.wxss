@@ -1,0 +1,249 @@
+/* pages/businessBooks/businessBooks.wxss */
+@import "/static/css/common.wxss";
+.container-all{
+width: 100%;
+height: 100%;
+}
+.bg-img{
+width: 100%;
+height: 100%;
+display: block;
+}
+
+page {
+  background: #f2f2f2;
+  min-height: 100%;
+}
+.mainBox{
+  min-height: 100%;
+  margin-top:90rpx;
+  position: relative;
+}
+
+
+.saleProceedsList{
+  min-height: 100%;
+  padding-top:20rpx;
+}
+
+.saleProceedsList .listBox{
+  min-height: 100%;
+}
+
+.saleProceedsList .listBox .listItem{
+  height: 200rpx;
+  border-bottom: 2rpx solid #eee;
+  background-color: #fff;
+  padding:35rpx 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.saleProceedsList .listBox .listItem .headImg{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+}
+
+.saleProceedsList .listBox .listItem .headImg>image{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+.saleProceedsList .listBox .listItem .infoBox{
+  height: 100%;
+}
+
+.saleProceedsList .listBox .listItem .infoBox .customer{
+  font-size: 26rpx;
+  color: #666;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+  vertical-align:top;
+  word-break:break-all;
+}
+.saleProceedsList .listBox .listItem .infoBox .customer>text{
+  color: #333;
+  font-weight: 500;
+}
+
+.saleProceedsList .listBox .listItem .infoBox .customer .nameText{
+  max-width: 120rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+  vertical-align:top;
+  word-break:break-all;
+}
+
+.saleProceedsList .listBox .listItem .infoBox .acctPay{
+  font-size: 28rpx;
+  color: #666;
+  font-weight: 500;
+  margin-top: 10rpx;
+}
+
+.saleProceedsList .listBox .listItem .infoBox .saleProfit{
+  font-size: 28rpx;
+  color: #666;
+  font-weight: 500;
+  margin-top: 10rpx;
+}
+
+.saleProceedsList .listBox .listItem .infoBox .saleProfit>text{
+  color: #ff262c;
+}
+
+.myMembershipList{
+  min-height: 100%;
+}
+
+.myMembershipList .listBox{
+  min-height: 100%;
+}
+
+.myMembershipList .listBox .myMembershipBanner{
+  position: relative;
+  width: 100%;
+  height: 260rpx;
+}
+
+.myMembershipList .listBox image{
+  position: absolute;
+  width: 100%;
+  height: 260rpx;
+}
+
+.myMembershipList .listBox .num{
+  position: absolute;
+  font-weight: 600;
+  color: #333;
+  top: 60rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 80rpx;
+}
+
+.myMembershipList .listBox .text{
+  position: absolute;
+  color: #333;
+  top: 160rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 28rpx;
+}
+
+.myMembershipList .listBox .infoTitle{
+  height:100rpx;
+  line-height: 100rpx;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #333;
+  background-color: #fff;
+  padding: 0 30rpx;
+  border-bottom: 2rpx solid #eee;
+}
+
+.myMembershipList .listBox .listItem{
+  height: 130rpx;
+  border-bottom: 2rpx solid #eee;
+  background-color: #fff;
+  padding: 30rpx 50rpx 40rpx 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+
+.myMembershipList .listBox .listItem .infoleft{
+  width: 36%;
+  position: relative;
+  /* overflow:hidden; */
+
+}
+
+.myMembershipList .listBox .listItem .infoleft .headImg{
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.myMembershipList .listBox .listItem .infoleft .headImg>image{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.myMembershipList .listBox .listItem .nickname{
+  position: absolute;
+  left: 90rpx;
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #333;
+  font-size: 28rpx;
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+}
+
+.myMembershipList .listBox .listItem .phoneNum{
+  width: 33.3%;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #333;
+  font-size: 28rpx;
+}
+
+.myMembershipList .listBox .listItem .buyingTime{
+  height: 60rpx;
+  line-height: 30rpx;
+  width: 146rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.emptyBox{
+  width:100%;
+  height:83vh;
+  text-align:center;
+  background: #f2f2f2;
+}
+
+.emptyBox image{
+  width:360rpx;
+  height:204rpx;
+  margin-top:50%;
+}
+
+.emptyBox view{
+  color:#666666;
+  font-size:32rpx;
+  margin-top:40rpx;
+}
+
+.bottom_line{
+  line-height: 84rpx;
+  height: 84rpx;
+  font-size: 24rpx;
+  color: #999;
+  width: 100%;
+  text-align: center;
+  background: #f2f2f2;
+}

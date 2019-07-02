@@ -1,0 +1,70 @@
+@import '../common/index.wxss';
+
+.van-dialog {
+    width: 85%;
+    font-size: 16px;
+    overflow: hidden;
+    border-radius: 20rpx;
+    background-color: #fff
+}
+
+.van-dialog__header {
+    font-weight: 500;
+    padding-top: 25px;
+    text-align: center;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.van-dialog__header--isolated {
+    padding: 25px 0
+}
+
+.van-dialog__message {
+    padding: 25px;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.van-dialog__message--has-title {
+    padding-top: 12px;
+    color: #666
+}
+
+.van-dialog__footer {
+    display: -webkit-flex;
+    display: flex
+}
+
+.van-dialog__button {
+    -webkit-flex: 1;
+    flex: 1
+}
+
+.van-dialog__cancel {
+    border-right: 1rpx solid #e2e2e2
+}
+
+.van-dialog__cancel,
+.van-dialog__confirm {
+    border: 0rpx !important;
+    color: #999
+}
+
+.van-dialog__confirm,
+.van-dialog__confirm:active {
+    color: #FF4F60 !important
+}
+
+.van-dialog-bounce-enter {
+    opacity: 0;
+    -webkit-transform: translate3d(-50%, -50%, 0) scale(.7);
+    transform: translate3d(-50%, -50%, 0) scale(.7)
+}
+
+.van-dialog-bounce-leave-active {
+    opacity: 0;
+    -webkit-transform: translate3d(-50%, -50%, 0) scale(.9);
+    transform: translate3d(-50%, -50%, 0) scale(.9)
+}

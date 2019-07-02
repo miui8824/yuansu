@@ -1,0 +1,80 @@
+<!--pages/businessBooks/businessBooks.wxml-->
+<navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="{{title}}"
+>
+</navigation>
+
+<view class='mainBox'>
+  <van-tabs active="{{ navActive }}" style="font-weight:bold;position:fixed;z-index:999;width:100%;top:{{88+statusBarHeight}}rpx;" bind:change="tabChange" line-width="60" id="tabs">
+    <van-tab title="{{item}}" wx:for="{{navNames}}" wx:key="{{index}}"></van-tab>
+  </van-tabs>
+
+<!-- 销售收益 -->
+  <view class='saleProceedsList' wx:if="{{navActive==0}}">
+    <view class='emptyBox' wx:if="{{saleProceedsList.length==0}}">
+      <image
+            mode="{{mode}}"
+            src="https://file.maiyatown.com/test/images/afterSale_none/sale_empty.png"
+      ></image>
+      <view>暂无销售收益信息~</view>
+    </view>
+
+    <view class='listBox' wx:else>
+      <view class='listItem' wx:for="{{saleProceedsList}}" wx:key="{{index}}">
+        <view class='headImg'>
+          <image src='{{item.headImageUrl}}'></image>
+        </view>
+        <view class='infoBox'>
+          <view class='customer'>您的客户 <text class='nameText'>{{item.nickName}}</text> 在<text> {{item.orderTime}} </text>购物</view>
+          <view class='acctPay'>实付金额：¥{{item.realPayAmout}}</view>
+          <view class='saleProfit'>获得销售收益：<text>¥{{item.expCommissionAmt}}</text></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+<!-- 我的会员 -->
+  <view class='myMembershipList' wx:if="{{navActive==1}}">
+    <view class='emptyBox' wx:if="{{myMembershipList.length==0 && totalNum===0}}">
+      <image
+            mode="{{mode}}"
+            src="https://file.maiyatown.com/test/images/afterSale_none/sale_empty.png"
+      ></image>
+      <view>暂无我的会员信息~</view>
+    </view>
+
+    <view class='listBox' wx:else>
+      <view class='myMembershipBanner'>
+        <image src='https://file.maiyatown.com/images/v1.4/business_book_image_bg.png'></image>
+        <view class='num'>{{ totalNum }}</view>
+        <view class='text'>我邀请的会员(人)</view>
+      </view>
+
+      <view class='infoTitle'>
+        <view class='nickName'>微信昵称</view>
+        <view class='phoneNum'>手机号</view>
+        <view class='buyingTime'>购买礼包时间</view>
+      </view>
+
+      <view class='listItem' wx:for="{{myMembershipList}}"  wx:key="{{item.id}}">
+        <view class='infoleft'>
+          <view class='headImg'>
+            <image src='{{item.headImageUrl}}'></image>
+          </view>
+          <view class='nickname'>{{item.nickName}}</view>
+        </view>
+          
+        <view class='phoneNum'>{{item.receivePhone}}</view>
+        <view class='buyingTime'>{{item.orderTime}}</view>
+      </view>
+    </view>
+  </view>
+
+
+  <!-- 底线 -->
+  <view wx:if="{{showNomore}}" class='bottom_line' id='btLine'>
+    ~~我也是有底线的~~
+  </view>
+</view>

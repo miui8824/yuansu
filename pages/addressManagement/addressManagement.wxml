@@ -1,0 +1,58 @@
+<!--pages/addressManagement/addressManagement.wxml-->
+<!-- 地址管理 -->
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="地址管理"
+>
+</navigation>
+<view class='add_box'>
+  <view class='add_main_box' wx:if="{{addShow}}">
+    <view class='clear clear20'></view>
+    <view class='add_list mar_b_20' wx:for="{{addList}}" wx:key="{{index}}">
+      <view class='add_text_box' data-item="{{item}}" data-index="{{index}}" bindtap='isDefaultChange'>   
+        <view class='add_name_box'>
+          <view class='add_name font_36 color_333 mar_r_40'>{{item.consigneeName}}</view>
+          <view class='add_phone font_36 color_333'>{{item.phoneNum}}</view>
+          <view class='font_28 color_333 id_card_ok' wx:if="{{item.isCard==1}}"><text>已上传身份证</text></view>
+        </view>
+        <view class='add_add color_666 mar_t_40'>{{item.province}}-{{item.city}}-{{item.location}}-{{item.detailAddress}}</view>
+      </view>
+      <view class='add_button_box'>
+        <view>
+          <view class='select_on' data-item="{{item}}" data-index="{{index}}" bindtap='isDefaultChange'>
+            <image wx:if="{{item.isDefault==1}}" style='width:44rpx;height:44rpx;' src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621151747987.png'></image>
+            <image style='width:44rpx;height:44rpx;' wx:else src='https://file.maiyatown.com/images/utils/refund_image_default.svg'></image>
+          </view>
+          <view class='font_28 color_333' wx:if="{{item.isDefault==1}}">使用当前地址 (默认)</view>
+          <view class='font_28 color_333' wx:if="{{item.isDefault==2}}">使用当前地址</view>
+        </view>
+        <view>
+          <view class='add_change' data-item="{{item}}" bindtap='editorAdd'>
+            <image src='https://file.maiyatown.com/images/utils/bianji.svg'></image>
+          </view>
+          <view class='add_delete' data-item="{{item}}" bindtap='deleteAdd'>
+            <image src='https://file.maiyatown.com/images/utils/shangchu.svg'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='clear clear70'></view>
+    <view class='clear clear70'></view>
+    <view class='clear clear70'></view>
+  </view>
+  <view class='no_order_box' wx:else>
+    <view>
+      <image class='no_order_logo' src='https://file.maiyatown.com/images/myorder/kong_dizhi.png'/>
+      <view class='no_order_text'>暂无地址，快去添加新地址吧~</view>
+      <view class='no_order_button' bindtap='goAddAdd'>新增地址</view>
+    </view>
+  </view>
+  <view class='add_add_button' wx:if="{{addShow&&!couponid}}" bindtap='goAddAdd'>
+    <van-button class='success_button' round size='small'>新增地址</van-button>
+  </view>
+  <view class='add_add_button' wx:if="{{couponid}}" bindtap='exchangeSuccess'>
+    <van-button class='success_button' round size='small'>确定兑换</van-button>
+  </view>
+</view>
+<van-dialog id="van-dialog" />

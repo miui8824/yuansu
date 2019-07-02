@@ -1,0 +1,33 @@
+<!--pages/logistics/logistics.wxml-->
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="物流详情"
+>
+</navigation>
+<view class='top con font-size'>
+  <text class='top-left'>运单号：{{danhao}}</text>
+  <text class='top-right'>国内承运人：{{orderParty}}</text>
+</view>
+<view wx:if="{{logisticsData.length!=0}}" class='center con font-size'>
+  <!-- orderDetail -->
+  <block wx:for="{{logisticsData.data}}" wx:for-item="m" wx:for-index='i' wx:key="{{index}}">
+    <view class='mes'>
+      <text wx:for="{{m.contextList}}" class='mes-body' bindtap='call' data-isNumber="{{item.isNumber}}" data-phone="{{item.msgText}}" style="color:  {{ item.isNumber==1? '#238eff' :  '#000' }}">{{item.msgText}}</text>
+        <!-- <text wx:if="{{item.isNumber==2}}">{{item.msgText}}</text> -->
+        <!-- <text wx:if="{{item.isNumber==1}}" style='color:#00f;' data-isNumber="{{item.isNumber}}" data-phone="{{item.msgText}}">{{item.msgText}}</text> -->
+      
+      <view class='mes-body'>{{m.ftime}}</view>
+      <view wx:if='{{i==orderDetail.length}}' class='Shelter-bot'></view>
+      <view wx:if='{{i==0}}' class='Shelter-top'></view>
+      <image wx:if='{{m.status=="在途"}}' src='https://file.maiyatown.com/images/logistics/yunshu.png' />
+      <image wx:if='{{m.status=="签收"}}' src='https://file.maiyatown.com/images/logistics/baoguo.png' />
+      <image wx:else src='https://file.maiyatown.com/images/logistics/diandian.png' />
+    </view>
+  </block>
+</view>
+<view wx:else class='logisticNone'>
+  <image src='https://file.maiyatown.com/images/afterSale_none/sale_empty.png'></image>
+  <text>暂无物流信息，请稍后查看~</text>
+  <van-dialog id="van-dialog" />
+</view>

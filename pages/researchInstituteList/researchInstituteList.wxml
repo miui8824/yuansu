@@ -1,0 +1,35 @@
+<navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="{{title}}"
+>
+</navigation>
+
+<view class='emptyBox' wx:if="{{list.length==0}}">
+  <image
+        mode="{{mode}}"
+        src="https://file.maiyatown.com/test/images/afterSale_none/sale_empty.png"
+  ></image>
+  <view>暂无文章，逛逛首页吧~</view>
+</view>
+
+<view class='list' wx:else>
+  <view class='listItem' wx:for="{{list}}" wx:key="{{item.index}}" bindtap='goDetail' data-catName="{{item.catName}}" data-id="{{item.id}}" data-catId="{{item.catId}}" >
+    <view class='mediaBox'>
+      <image src='{{item.imgUrl}}'></image>
+    </view>
+
+    <view class='infoBox'>
+      <view class='title'>{{item.title}}</view>
+      <view class='date'>{{item.createTime}}</view>
+      <view class='type' wx:if="{{parentId==1}}">{{item.catName}}</view>
+      <view class='type' wx:else style="color:{{id==2?'#F7A32C':'#2c90f7'}}">{{item.catName}}</view>
+    </view>
+  </view>
+</view>
+<!-- 底线 -->
+<view class='bottom_line' wx:if="{{showNomore&&list.length!=0}}" id='btLine'>
+  ~~我也是有底线的~~
+</view>
+
+

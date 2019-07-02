@@ -1,0 +1,30 @@
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="我的好友"
+>
+</navigation>
+<scroll-view style='width:100%;height:100vh;text-align:center;background: #f2f2f2;' wx:if="{{fansNum==0}}">
+    <image style="width:360rpx;height:204rpx;margin-top:50%;" mode="{{mode}}" src="https://file.maiyatown.com/images/afterSale_none/sale_empty.png"></image>
+    <view style='color:#666666;font-size:28rpx;margin-top:48rpx;'>您还没有粉丝记录哦~</view>
+</scroll-view>
+
+
+<scroll-view class='out' scroll-y="true" bindscrolltolower="loadMore" wx:else>
+  <view class="top padd">最近活跃度</view>
+  <view wx:for="{{Fans}}" class='fans' wx:for-item='fan'>
+    <view class='fan'>
+      <image class='pic' src='{{fan.uri}}' />
+      <view class='name'>{{fan.userName}}</view>
+      <view class='time'>{{fan.lastTime}}</view>
+    </view>
+  </view>
+  <!-- <import src="../../template/baseLine/baseLine.wxml"/>
+  <template is="baseLine"></template> -->
+  <!-- <import src="../../template/baseLine/baseLine.wxml" />
+  <template is="baseLine"></template> -->
+  <view class='have-bottom' wx:if="{{iPage>1}}" style='background:rgba(242,242,242,1);color:#999;text-align:center;font-size:12px;padding:30rpx 0;'><text>~~我也是有底线的~~</text></view>
+</scroll-view>
+
+
+

@@ -1,0 +1,97 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"checkInvalidKey": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.0",
+	"appid": "wx115d8de9f40e8e8b",
+	"projectname": "%E9%BA%A6%E8%8A%BD%E5%B0%8F%E9%95%871.4",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 6,
+			"list": [
+				{
+					"id": 0,
+					"name": "麦芽",
+					"pathName": "pages/init/init",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "跳转会员礼包详情",
+					"pathName": "pages/bagDetails/bagDetails",
+					"query": "activityId=16&goodId=4",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "跳转组合礼包列表",
+					"pathName": "pages/bagsList/bagsList",
+					"query": "gift_package=true&userId=1235",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "跳转会员礼包列表",
+					"pathName": "pages/bagList/bagList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "组合礼包中间页面",
+					"pathName": "pages/articleDetails/articleDetails",
+					"query": "isArticalShare=true&&id=37",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新人专享",
+					"pathName": "pages/rookieExclusive/rookieExclusive",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "确认订单",
+					"pathName": "pages/confirmOrder/confirmOrder",
+					"scene": null
+				}
+			]
+		}
+	}
+}

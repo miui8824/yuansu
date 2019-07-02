@@ -1,0 +1,140 @@
+/* pages/orderPayment/orderPayment.wxss */
+page{
+  background: #f2f2f2
+}
+.fz{
+  font-size: 28rpx;
+}
+.con{
+     width: calc(100% - 60rpx);
+     padding:0 30rpx;
+}
+.com{
+   width: calc(100% - 60rpx);
+  margin-left: 30rpx;
+}
+.top-img{
+  width: 100%;
+  float: left;
+}
+.top{
+  margin-top: -130rpx;
+  float: left;
+  font-size: 50rpx;
+  font-weight: bold;
+}
+.mid-p{
+  float: left;
+  padding-top:26rpx;
+  padding-bottom: 26rpx;
+  background: #fff;
+}
+.mp-d{
+  float: left;
+  width: 64rpx;
+  height: 64rpx;
+  margin-top: 30rpx;
+}
+.mp-body{
+  float: right;
+  width: calc(100% - 84rpx);
+}
+.mpb-t{
+  width: 100%;
+  float: left;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.mpbt-p{
+  width:50%;
+  float: left;
+}
+.mpbt-n{
+  width: 50%;
+  float: right;
+  text-align: right;
+}
+.mpb-a{
+  color:#666;
+  float: left;
+  width: 100%;
+  margin-top:10rpx;
+}
+.product{
+  padding-top:30rpx;
+  padding-bottom: 30rpx;
+  float: left;
+  margin-top:20rpx; 
+  background: #fff;
+  border-bottom: 2rpx solid #eee;
+}
+.pro-img{
+  width: 200rpx;
+  height: 200rpx;
+  float: left;
+}
+.pro-mes{
+  width: calc(100% - 230rpx);
+  float: right;
+}
+.prom-t{
+  word-break: break-all;/*允许在单词内换行*/
+text-overflow: -o-ellipsis-lastline;/*css3中webkit内核提供的一个方法类似ellipsis*/
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;/*自适应盒子*/
+-webkit-line-clamp: 2;/*此处为1行,如果是两行就改成2*/
+-webkit-box-orient: vertical;
+line-height: 45rpx;
+width: 100%;
+float: left;
+}
+.prom-a{
+  color:#999;
+  float: left;
+  width: 100%;
+  margin-top:15rpx;
+}
+.prom-p{
+  width: 50%;
+  float: left;
+  color:red;
+  font-size: 32rpx;
+  margin-top:20rpx;
+}
+.prom-n{
+  width:50%;
+  float:right;
+  text-align: right;
+   margin-top:20rpx;
+  font-size: 32rpx;
+}
+.bottom{
+  float: left;
+  background: #fff;
+}
+.bot-1,.bot-2{
+  width: 100%;
+  float: left;
+  padding:20rpx 0;
+  line-height: 56rpx;
+}
+.bot-2{
+  border-top:2rpx solid #eee;
+}
+.bc-left{
+  width: 50%;
+  float: left;
+  color:#666;
+}
+.bot-1 text:nth-child(2),.bot-2 text:nth-child(2){
+  width: 50%;
+  float:left;
+    text-align: right;
+}
+.bc-price{
+  color:red;
+}
+.bc-balance{
+  color:#ff8400;
+}

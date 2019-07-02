@@ -1,0 +1,319 @@
+<view bindtap='share_hide' wx:if="{{GetImage}}" style='position:absolute;width:100%;height:100%;background:black;opacity:0.3;z-index:1000;' catchtouchmove='{{true}}'>
+</view>
+<view bindtap='' catchtouchmove='{{true}}' wx:if="{{GetImage}}" class="container" style='z-index:1000;position:absolute;margin-top:105px;'>
+<!-- <view class='background'></view> -->
+  <image bindtap='share_hide' catchtouchmove='{{true}}' src="{{shareImage}}" class="share-image" style="border-radius:8px;"></image>
+  <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage"/>
+
+  <!-- <button >绘制</button>
+  <button>保存到本地</button>  bind:tap="eventDraw"-->
+  <button catchtouchmove='{{true}}'  open-type='share'  class="wechat">
+    <image class="wechatimg" src='https://file.maiyatown.com/images/v1.2/explosion_icon_wechat.png'></image>
+  微信好友</button>
+  <button catchtouchmove='{{true}}'  bind:tap="eventSave"  class="wechat1">
+   <image class="wechatimg"  src='https://file.maiyatown.com/images/v1.2/explosion_icon_Img.png'></image>
+  保存图片</button>
+</view>
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="商品详情"
+>
+</navigation>
+<import src="/wxParse/wxParse.wxml"/>
+<scroll-view scroll-y="true" scroll-top="{{scrollTop}}" bindscroll="scroll" scroll-into-view="{{toView}}"  scroll-with-animation="true" class='goods_details back_hui' lazy-load>
+  <view class='nav_box' id='navBox'>
+    <!-- <view class='{{navActive==0?"active":""}}' data-index="0" bindtap='navActiveFun'>商品</view>
+    <view class='{{navActive==1?"active":""}}' data-index="1" bindtap='navActiveFun'>详情</view> -->
+    <!-- 视频导航 -->
+    <view class='{{navActive==0?"active":""}}' data-showvideo="1" wx:if='{{haveVideoType}}'  bindtap='imageSwitch'>视频</view>
+    <view class='{{navActive==1?"active":""}}' data-showvideo="2"  bindtap='imageSwitch'>图片</view>
+    <view class='{{navActive==2?"active":""}}' data-showvideo="3"  bindtap='imageSwitch'>详情</view>
+  </view>
+  <view class='swiper_box_box'>
+    <!-- 视频导航 -->
+    <view class='swiper_box' wx:if="{{showVideo==1}}">
+      <view class='video_image' wx:if="{{videoSwitchImage}}" bindtap='videoSwitch'>
+        <image src='{{gdInfo.mainImgList[1]}}'></image>
+        <image class='video_img_icon' src='https://file.maiyatown.com/images/goodsDetails/explosion_image_video.png'></image>
+      </view>
+      <video class='video_video' wx:else>
+        <video id="my_video" class='video_box' src='{{gdInfo.videoList[0]}}'></video>
+      </video>
+    </view>
+    <swiper  class='swiper_box' wx:else circular="true"  bindchange="swiperChange"
+    autoplay="true" interval="3000" duration="1000">
+      <block wx:for="{{gdInfo.mainImgList}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image"/>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class='swiper_tip' hidden='{{showVideo==1}}'>{{swiperActive+1}}/{{gdInfo.mainImgList.length}}</view>
+    <!-- <view class='swiper_button_box'>
+      <view class='all_button' round size='small' data-showvideo="1"  bindtap='imageSwitch'>视频</view>
+      <view class='all_button' round size='small' data-showvideo="2"  bindtap='imageSwitch'>图片</view>
+    </view> -->
+  </view>
+  <view class='play_countdown' wx:if="{{playCountdown==1&&!isRookieExclusive}}">
+    <text class='play_title'>即将开抢</text>
+    <view class='play_time'>
+      <view class='time_text' style='font-style:bold;'>距离开始</view>
+      <view class='time_box'>{{hhhh}}</view>
+      <view class='time_middle'>:</view>
+      <view class='time_box'>{{mmmm}}</view>
+      <view class='time_middle'>:</view>
+      <view class='time_box'>{{ssss}}</view>
+    </view>
+  </view>
+  <view class='play_countdown' wx:if="{{playCountdown==2&&!isRookieExclusive}}">
+    <text class='play_title'>正在爆抢</text>
+    <view class='play_time'>
+      <view class='time_text' style='font-style:bold;'>距离结束</view>
+      <view class='time_box'>{{hhhh}}</view>
+      <view class='time_middle'>:</view>
+      <view class='time_box'>{{mmmm}}</view>
+      <view class='time_middle'>:</view>
+      <view class='time_box'>{{ssss}}</view>
+    </view>
+  </view>
+  <image style='width:100%;height:78rpx;display:block;'src='https://file.maiyatown.com/images/v1.2/explosion_image_check.png' wx:if="{{gdInfo.crossBorder==1}}"></image>
+  <view class='rookie_exclusive_box' wx:if="{{isRookieExclusive}}">
+    <image src='https://file.maiyatown.com/images/v1.2/fight_group_image_label@2x.png'></image>
+    <view class='mainBoxLeft'>
+      <view class='top'>
+        <text class='topLeft'>¥ {{gdInfo.price}}</text>
+        <text class='topRight'>¥{{gdInfo.retailPrice}}</text>
+      </view>
+      <view class='bottom'>已售 {{gdInfo.dummySales}} 件</view>
+    </view>
+    <view class='mainBoxRight'>
+      <view class='top'>新人专享</view>
+      <view class='bottom'>每人限购{{gdActivityInfo.buyLimit}}次</view>
+    </view>
+  </view>
+  <view class='goods_about_box' wx:if="{{isRookieExclusive}}">
+    <view class='about_content'>{{gdInfo.title}}</view>
+    <view class='about_content_sub mar_t_20'>{{gdInfo.subTitle}}</view>
+  </view>
+  <view class='goods_about_box' wx:else>
+    <view><text class='about_now'>¥{{gdInfo.price}}</text><text class='about_old'>¥{{gdInfo.retailPrice}}</text></view>
+    <view class='about_buyout'>
+      <text>已售{{gdInfo.dummySales}}件</text>
+      <text class='color_333' wx:if="{{gdInfo.reducePrice!=0}}">下单立减<text class='color_red font_bold500'>{{gdInfo.reducePrice}}</text>元</text>
+    </view>
+    <view class='about_content'>{{gdInfo.title}}</view>
+    <view class='about_content_sub mar_t_20'>{{gdInfo.subTitle}}</view>
+  </view>
+  <!-- <view class='recommended mar_t_20'>
+    <view class='recommended_title font_32'>推荐理由</view>
+    <view class='recommended_content font_28 color_666 mar_t_25'>该商品参与了公益宝贝计划，卖家承诺每笔成交将为壹 乐园计划捐赠1.0元。该商品已累积捐赠333笔。</view>
+  </view> -->
+  <view class='about_size_box mar_t_20' bindtap='selectSize'>
+    <view class='about_size'>
+      <view class='color_666 font_32'>规格</view>
+      <text class='color_333 font_28' style='color:#999'>{{skuItemName.length>4?skuItemName:'请选择商品规格'}}</text>
+      <van-icon class='font_32 icon' name="arrow"/>
+    </view>
+  
+    <!-- <view class='about_parameter'>
+      <text class='color_666 font_32'>参数 <text class='color_333 font_33'>品牌 尺码..</text></text>
+      <van-icon class='font_32 icon' name="arrow"/>
+    </view> -->
+  </view>
+   <view class='clear clear20' wx:if="{{gdInfo.editRecommended==1}}"></view>
+    <view class='about_size_box' wx:if="{{gdInfo.editRecommended==1}}"> 
+    <view class='edit_tj' style=''>编辑推荐</view>
+    <view class='edit_text' style=''>{{gdInfo.recommendedContent}}</view>
+    </view>
+  <view class='clear clear20'></view>
+  <view class='img_about_box back_fff'>
+    <view id="wxparse" class='img_about_top'>图文详情</view>  
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+  <view class='font_24 color_999 mar_t_30' style='padding-bottom:30rpx;'><text>~~我也是有底线的~~</text></view>
+  <view class='clear clear70'></view>
+  <view class='clear clear70'></view>
+
+  
+  <van-dialog id="van-dialog"/>
+
+  <view class='to_top' wx:if="{{toTop}}" bindtap='toTopFun'>
+    <image src='https://file.maiyatown.com/images/goodsDetails/explosion_icon_topping.svg'></image>
+  </view>
+  
+</scroll-view >
+
+  <!-- 底部功能按钮 -->
+<view class='function_button_boxs' wx:if="{{isRookieExclusive}}">
+  <!-- wx:if="{{gdActivityInfo.activityStatus==1}}" -->
+  <view class='function_button_box'>
+    <view class='botton_yellow'>
+      <view class='buy_go'  bindtap="buyNow">立即购买</view>
+    </view>
+    <view class='button_box button_box1'>
+      <view class='button_icon'>
+        <image src='https://file.maiyatown.com/images/goodsDetails/explosion_icon_customer_service.svg'></image>
+      </view>
+      <view>客服</view>
+      <button class='kefu' bindtap='mdClick' open-type='contact'></button>
+    </view>
+    <view class='button_box button_box2'>
+      <view class='button_icon'>
+        <image src='https://file.maiyatown.com/images/goodsDetails/explosion_icon_share.svg'></image>
+      </view>
+      <view>分享</view>
+      <van-button class='nav_text_button' round size='small' bind:tap="eventDraw"></van-button>
+    </view>
+  </view>
+</view>
+
+
+<view class='botton_button_box' wx:else>
+  <view class='botton_button_main'>
+    <view class='botton_left_box'>
+      <view class='default_nav'>
+        <view class='nav_icon'>
+          <image src='https://file.maiyatown.com/images/goodsDetails/explosion_icon_customer_service.svg'/>
+        </view>
+        <view class='nav_text'>客服</view>
+        <van-button class='nav_text_button' round size='small' bindtap='mdClick' open-type='contact'></van-button>
+      </view>
+      <view class='default_nav'>
+        <view class='nav_icon'>
+          <image src='https://file.maiyatown.com/images/goodsDetails/explosion_icon_share.svg'/>
+        </view>
+        <view class='nav_text'>分享</view>
+        <!-- open-type='share' -->
+        <van-button class='nav_text_button' round size='small' bind:tap="eventDraw"></van-button>
+      </view>
+      <!-- <view class="add_cart {{left?'':'add_cart_right'}}" wx:if="{{gdInfo.dummyStock>0&&left==true}}" bindtap="addShopCar">
+        <view class='nav_icon two_icon'>
+          <image src='https://file.maiyatown.com/images/goodsDetails/explosion_icon_shopping_cart.svg'/>
+        </view>
+      </view> -->
+      <view class="botton_add_car {{left?'':'add_cart_right'}}" wx:if="{{gdInfo.dummyStock>0&&left==true}}" bindtap="addShopCar">
+        加入购物车
+      </view>
+      <view class="botton_add_car add_cart_right" wx:else>加入购物车</view>
+    </view>
+    <form bindsubmit="postFormId" class='nav_button_box' report-submit="true">
+      <button formType="submit" class='btn'>
+        <view class="vv">
+          <form bindsubmit="postFormId" report-submit="true">
+            <button formType="submit" class='btn'>
+              <view class="vv">
+                <form bindsubmit="postFormId" report-submit="true">
+                  <button formType="submit" class='btn'>
+                    <view class="vv">
+                      <form bindsubmit="postFormId" report-submit="true">
+                        <button formType="submit" class='btn'>
+                          <view class="vv">
+                            <form bindsubmit="postFormId" report-submit="true">
+                              <button formType="submit" class='btn'>
+                                <view class="vv">
+                                <button formType="submit" class='btn'>
+              <view class="vv">
+                <form bindsubmit="postFormId" report-submit="true">
+                  <button formType="submit" class='btn'>
+                    <view class="vv">
+                      <form bindsubmit="postFormId" report-submit="true">
+                        <button formType="submit" class='btn'>
+                          <view class="vv">
+                            <form bindsubmit="postFormId" report-submit="true">
+                              <button formType="submit" class='btn'>
+                                <view class="vv">
+                                  <button formType="submit" wx:if="{{gdInfo.dummyStock>0&&left==true}}" 
+                                  class="nav_button {{left?'':'add_cart_right'}}" 
+                                  bindtap='buyNow'>立即购买</button>
+                                  <button formType="submit" wx:else class="nav_button add_cart_right" 
+                                  bindtap='buyNow'>立即购买</button>
+                                </view>
+                              </button>
+                            </form>
+                          </view>
+                        </button>
+                      </form>
+                    </view>
+                  </button>
+                </form>
+              </view>
+            </button>
+                                </view>
+                              </button>
+                            </form>
+                          </view>
+                        </button>
+                      </form>
+                    </view>
+                  </button>
+                </form>
+              </view>
+            </button>
+          </form>
+        </view>
+      </button>
+    </form>
+  </view>
+</view>
+
+<van-action-sheet class='action_sheet_me' show="{{ actionSheetShow }}" z-index="1000" catchtouchmove="ture" >
+    <view class='action_sheet_box'>
+      <view class='shop_info mar_b_30'>
+        <view class='shop_img'>
+          <image src='{{gdInfo.goodImg}}'></image>
+        </view>
+        <view class='shop_size_color'>
+          <view class='shop_close mar_b_30'>
+            <view class='shop_money color_red font_36' style='font-weight: 600;'>¥{{activeSkuItem.price||gdInfo.price}}</view>
+            <view class='close_icon' bindtap='onClose'>
+              <image src='https://file.maiyatown.com/images/goodsDetails/explosion_icon_tclosed.svg'></image>
+            </view>
+          </view>
+          <view class='color_999 font_28 mar_b_20'>库存{{activeSkuItem.dummyStock||gdInfo.dummyStock}}件</view>
+          <view class='color_999 font_28'>选择商品规格</view>
+        </view>
+      </view>
+      <scroll-view scroll-y="true" scroll-with-animation="true" class='shop_info_size'>
+        <view wx:for="{{specList}}" wx:key="index"  wx:for-item="item" wx:for-index="index">
+          <view class='font_28 color_666 mar_b_20 shop_info_name'>{{item.name}}</view>
+          <view >
+            <!--{{citem.notClick?"button_off":""}}  {{citem.isActiveC?"button_on":""}} -->
+            <van-button class='shop_color_type {{citem.notClick?"button_off":""}}  {{citem.isActiveC?"button_on":""}}' 
+            wx:for="{{item.value}}" wx:for-index="cindex" wx:for-item='citem' wx:key="cindex" 
+            data-index='{{index}}' data-cindex='{{cindex}}' data-cid='{{citem.id}}' data-isactivec='{{citem.isActiveC}}'
+            bind:tap='tabInfoChange' data-citemnoclick='{{citem.notClick}}'
+            >
+            {{citem.cname}}
+            </van-button>
+          <!-- <van-button class='shop_color_type {{attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex]?(value==attrValueObj.selectedValue?"button_on":""):""}}' round size='small' 
+            bindtap="selectAttrValue" data-status="{{attrValueObj.attrValueStatus[valueIndex]}}"
+            data-value="{{value}}" data-key="{{attrValueObj.attrKey}}" data-code="{{attrCode}}" data-index="{{attrIndex}}"
+            data-selectedvalue="{{attrValueObj.selectedValue}}" wx:for="{{attrValueObj.attrValues}}" wx:for-item="value"
+            wx:for-index="valueIndex" wx:key="{{valueIndex}}" disabled='{{!(attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex])}}'>{{value}}</van-button> -->
+          </view>
+        </view>
+        <view class='shop_stepper'>
+          <view class='font_28 color_666'>购买数量 <text wx:if="{{isRookieExclusive}}">(商品只能购买{{gdActivityInfo.buyLimit}}件)</text></view>
+          <van-stepper class='stepper_main' value="{{ goodsNumber }}" disabled disable-input wx:if="{{isRookieExclusive}}"/>
+          <van-stepper class='stepper_main' value="{{ goodsNumber }}" bind:change="onChange" disable-input wx:else/>
+        </view>
+      </scroll-view>
+      
+      <view class='linetop'></view>
+      <view class='success_box'>
+        <van-button class='success_button' round size='small' bindtap='selectSizeSuccess'>确定</van-button>
+      </view>
+    </view>
+  </van-action-sheet>
+
+<view class='shade' wx:if="{{isShade}}" catchtouchmove="{}"></view>
+<view class='bg-light-contain' wx:if="{{isOpened}}"  catchtouchmove>
+  <image class='bg-light' src='https://file.maiyatown.com/images/redEnvelopes/guang.png' />
+</view>
+<image src='https://file.maiyatown.com/images/redEnvelopes/hongbao_0.png' class='red' wx:if="{{isOpen}}"  catchtouchmove/>
+<view class='bot' bindtap='openRed' wx:if="{{isOpen}}"  catchtouchmove="{}"></view>
+<image src='https://file.maiyatown.com/images/redEnvelopes/hongbao_x.png' class='red-opened' wx:if="{{isOpened}}"  catchtouchmove="{}"/>
+<text class='red-open-num' wx:if="{{isOpened}}"  catchtouchmove="{}">{{redOpenNum}}<text>元</text></text>
+<view class='bot-view' bindtap='viewRed' wx:if="{{isOpened}}"  catchtouchmove="{}"></view>
+<image class='{{close_red}}' bindtap='closeRed'  catchtouchmove="{}" wx:if="{{isShade}}" src='https://file.maiyatown.com/images/redEnvelopes/close.png' />

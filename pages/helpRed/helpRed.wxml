@@ -1,0 +1,89 @@
+<!--pages/helpRed/helpRed.wxml-->
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="{{title}}"
+>
+</navigation>
+<view class='helpred_box_over' wx:if="{{isEnd==1}}">
+  <view class='clear clear_146'></view>
+  <view class='over_logo'>
+    <image src='https://file.maiyatown.com/images/utils/common_img_activity_ends@2x.png'></image>
+  </view>
+  <view class='font_32 color_666'>活动已经结束了哦~</view>
+</view>
+<view class='helpred_box' wx:else>
+  <view class='main_box'>
+    <view class='main_box_fff1'>
+      <image class='red_rules' src='https://file.maiyatown.com/images/utils/red_envelope_img_rule_1@2x.png' bindtap='showRules'></image>
+      <image class='red_some' src='https://file.maiyatown.com/images/utils/red_envelope_img_color_bar@2x.png'></image>
+      <image class='red_some1' src='https://file.maiyatown.com/images/utils/red_envelope_img_gold _oin_1@2x.png'></image>
+      <view class='mian_main'>
+        <view class='red_money font_30 color_333'>
+          已拆<text class='money_have'>{{dismantledRed}}</text>元
+          <view style="display:inline-block" wx:if="{{stillHaveRed != 0}}">，还差<text class='color_red font_bold'>{{stillHaveRed}}</text>元</view>
+        </view>
+        <view class='money_step_box'>
+          <view class='money_step_back'></view>
+          <view class='money_step_red' style='width:{{redStep}}rpx;'></view>
+        </view>
+        <view class='font_24 color_999'>活动结束后您获得的红包直接进入您的账户余额</view>
+        <van-button wx:if="{{inviteTimes==0&&stillHaveRed!=0}}" class='red_go_on' round size='small' open-type='share'>邀请好友帮拆，一起拿红包</van-button>  
+        <van-button wx:elif="{{stillHaveRed==0}}" class='red_go_on' round size='small' open-type='share'>继续邀请好友加入麦芽</van-button>
+        <van-button wx:else class='red_go_on' round size='small' open-type='share'>继续邀请好友拆红包</van-button>
+        <view class='red_tip color_999 font_24'>距离活动结束还有        <text class='red_time_kong'></text><text class='red_time font_bold'>{{hour}}</text><text class='red_time_kong'><text class='red_time_kong'>:</text></text><text class='red_time font_bold'>{{minute}}</text><text class='red_time_kong'>:</text><text class='red_time font_bold'>{{second}}</text></view>
+      </view>
+    </view>
+    <view class='main_box_fff2'>
+      <image class='red_some2' src='https://file.maiyatown.com/images/utils/red_envelope_img_gold _oin_2@2x.png'></image>
+      <view class='main_box_middle'>
+        <image src='https://file.maiyatown.com/images/utils/red_middle.png'></image>
+      </view>
+      <view class='mian_main1'>
+        <view class='people_number font_bold'>目前总计邀请好友<text class='color_red'>{{inviterLists.length}}</text>名</view>
+        <view class='red_log font_30 color_666'>红包记录</view>
+        <scroll-view class='red_get_box' scroll-x  style='width:{{scrollWidth+"px"||"auto"}}'>
+
+          <view class='get_image_item1' wx:for='{{inviterLists}}' wx:key="index">
+            <view class='inviteNum' wx:if="{{(index+1) % doubleRed==0}}">第{{index+1}}个</view>
+            <view wx:else style='height:40rpx;margin-bottom:10rpx;position: absolute;top: 0;'></view>
+            <view class='get_image'>
+              <image src='{{item.inviteUrl||"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=246394096,3949388230&fm=27&gp=0.jpg"}}'></image>
+            </view>
+            <view class='get_text'>¥ {{item.inviteMoney}}</view>
+          </view>
+          
+          <view class='get_image_item'  wx:for='{{5}}' wx:key="index">
+
+            <view class='inviteNum' wx:if="{{(inviterLists.length+index+1) % doubleRed==0}}">第{{inviterLists.length+index+1}}个</view>
+            <view wx:else style='height:40rpx;margin-bottom:10rpx;position: absolute;top: 0;'></view>
+
+            <button class='empty_image' open-type='share'>
+              <image src='https://file.maiyatown.com/images/utils/red_envelope_img_double_the_amount.png' wx:if="{{(inviterLists.length+index+1) % doubleRed==0}}"></image>
+              <image src='https://file.maiyatown.com/images/utils/red_envelope_img_add.png' wx:else></image>              
+            </button>
+
+            <view class='empty_text'>
+              <text wx:if="{{(inviterLists.length+index+1)%doubleRed==0}}">金额翻倍</text>
+            </view>            
+          </view>
+        </scroll-view>
+        <view class='red_inst'>*说明：成功邀请了第{{doubleRed}}个、第{{doubleRed*2}}个（以此类推）新用户帮拆后您获得的红包值翻倍！</view>
+      </view>
+    </view>
+  </view>
+  
+  <view class='red_mask' wx:if="{{showRedMask}}"  catchtouchmove="{{true}}"></view>
+  <view class='red_rules_main' wx:if="{{showRedMask}}"  catchtouchmove="{{true}}">
+    <view class='red_mask_title'>
+      <image src='https://file.maiyatown.com/images/utils/red_envelope_img_rule.png'></image>
+    </view>
+    <scroll-view class='red_mask_about' scroll-y>
+      <view class='red_mask_text' wx:for="{{activityRule}}" wx:key="index">{{ item }}</view>
+      
+    </scroll-view>
+  </view>
+  <view class='red_close' wx:if="{{showRedMask}}" bindtap='closeRules' catchtouchmove="{{true}}">
+    <image src='https://file.maiyatown.com/images/utils/close.png'></image>
+  </view>
+</view>

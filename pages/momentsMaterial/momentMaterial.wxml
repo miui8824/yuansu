@@ -1,0 +1,50 @@
+<!--pages/momentsMaterial/momentMaterial.wxml-->
+<navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="{{title}}"
+>
+</navigation>
+
+<view class='mainBox'>
+  <van-tabs active="{{ navActive }}" style="font-weight:bold;position:fixed;z-index:999;width:100%;top:{{88+statusBarHeight}}rpx;" bind:change="tabChange" line-width="60" swipe-threshold='4'>
+    <van-tab title="{{item.catName}}" wx:for="{{navNames}}" wx:key="{{index}}"></van-tab>
+  </van-tabs>
+
+  <view class='emptyBox' wx:if="{{list.length==0}}">
+    <image
+          mode="{{mode}}"
+          src="https://file.maiyatown.com/test/images/afterSale_none/sale_empty.png"
+    ></image>
+    <view>暂无发圈素材~</view>
+  </view>
+
+  <view class='list_box' wx:else>
+    <view class='listItem' wx:for="{{list}}" wx:key="{{index}}">
+      <view class='infoBox'>
+        <view class='infoText'>{{item.content}}</view>
+        <view class='copyText' bindtap='copyText' data-index='{{index}}'>复制文案</view>
+        <view class='infoImg' bindtap='preview'  data-imgUrl='{{item.imgUrl}}'>
+          <image src='{{item.imgUrl}}'></image>
+        </view>
+      </view>
+      <view class='bottomBox'>
+        <view class='left' bindtap='clickLike' data-id="{{item.id}}" data-isLike="{{item.isLike}}" data-index="{{index}}">
+          <image src='https://file.maiyatown.com/images/v1.4/research_institute_icon_like_click.png' wx:if="{{item.isLike==1}}"></image>
+          <image src='https://file.maiyatown.com/images/v1.4/research_institute_icon_like_default.png' wx:else></image>
+          <text>{{item.likeCount}}</text>
+        </view>
+        <view class='line'></view>
+        <button open-type='' class='right' bindtap='save' data-imgUrl='{{item.imgUrl}}' style='background-color:transparent;'>
+          <image src='https://file.maiyatown.com/images/v1.4/research_institute_icon_image.png'></image>
+          <text>保存相册</text>
+        </button>
+      </view>
+    </view>
+
+  </view>
+    <!-- 底线 -->
+  <view class='bottom_line' wx:if="{{showNomore&&list.length!=0}}" id='btLine'>
+    ~~我也是有底线的~~
+  </view>
+</view>

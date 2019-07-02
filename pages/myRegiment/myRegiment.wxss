@@ -1,0 +1,225 @@
+/* pages/myRegiment/myRegiment.wxss */
+.container-all{
+width: 100%;
+height: 100%;
+}
+.bg-img{
+width: 100%;
+height: 100%;
+display: block;
+}
+
+page{
+  min-height: 100%;
+  /* position: relative; */
+  background-color: #f2f2f2;
+}
+.order_box{
+  background: #f2f2f2;
+  width: 100%;
+  /* height:100%; */
+  /* overflow: auto; */
+  /* position:fixed; */
+
+}
+.my_pt{
+  width:100%;
+  height:100%;
+  background:rgba(242,242,242,1);
+}
+.order_list {
+  /* position:fixed; */
+  position: relative;
+  background: #ffffff;
+  margin-bottom: 10rpx;
+}
+.list_title{
+  padding:30rpx 30rpx 30rpx 30rpx;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:36rpx;
+  font-size:24rpx;
+  line-height:36rpx;
+  vertical-align:bottom;
+  color:#999;
+  border-bottom:1rpx solid #eee;
+
+}
+.title_number{
+  font-size: 24rpx;
+  height:24rpx;
+  line-height: 24rpx;
+  color: #666666;
+}
+.list_status{
+  height:36rpx;
+  line-height:36rpx;
+  font-size:26rpx;
+  color:#ff262c;
+  font-weight:500;
+  display:inline-block;
+
+}
+.list_main{
+  padding:20rpx 40rpx 0 30rpx;
+  display:flex;
+  justify-content:space-between;
+  height:160rpx;
+  border-bottom:1rpx solid #eee;
+
+}
+.list_img{
+  height:140rpx;
+  width:140rpx;
+  border-radius:10rpx;
+  overflow:hidden;
+  margin:0 10px 0 0;
+  display:inline-block;
+  position: relative;
+}
+.zhezhao{
+  width:100%;
+  height:32rpx;
+  background:#FF262C;
+  position:absolute;
+
+  bottom:0rpx;
+  opacity: 0.9
+}
+.zhezhao_wenzi{
+    width:100%;
+    height:32rpx;
+    /* background:red; */
+    position:absolute;
+    bottom:0rpx;
+    /* opacity: 0.5 */
+    font-size:24rpx;
+    text-align: center;
+    color: white;
+    line-height:32rpx;
+
+}
+.list_text{
+  width:370rpx;
+
+}
+.list_name{
+  font-size:26rpx;
+  line-height:38rpx;
+  font-weight:500;
+  color:#333333;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+
+}
+.list_size{
+  margin-top:20rpx;
+  font-size:25rpx;
+  line-height:25rpx;
+  height:50rpx;
+  color:#999;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+
+}
+.list_mon{
+  min-width:100rpx;
+text-align:right;
+padding-top:6rpx;
+
+}
+.list_money{
+  font-size:26rpx;
+  line-height:26rpx;
+  color:#333333;
+  font-weight:600;
+}
+.list_number{
+  margin-top:13rpx;
+  font-size:26rpx;
+  line-height:26rpx;
+  color:#999999;
+
+}
+.list_moneys{
+  padding:28rpx 42rpx 28rpx 0;
+  text-align:right;
+  height:36rpx;
+  line-height:32rpx;
+  border-bottom:1rpx solid #eee;
+
+}
+.moneys_number{
+  font-size:26rpx;
+  color:#333333;
+  line-height:32rpx;
+
+}
+.moneys_money{
+  font-size:32rpx;
+  color:#ff262c;
+  line-height:32rpx;
+  font-weight:600;
+
+}
+.list_buttons{
+  padding:15rpx 30rpx 15rpx;
+  display:flex;
+  justify-content:flex-end;
+
+}
+ .buy_out>button{
+   margin-left:10rpx;
+    width:150rpx;
+    height:60rpx;
+    line-height:60rpx;
+    text-align:center;
+    border-radius:30rpx;
+    overflow:hidden;
+    font-size:25rpx;
+    color:#333333;
+    background:#ffffff;
+    /* border:1rpx solid #333333; */
+    background: #DD232F;
+    font-weight:600;
+ }  
+.back_hui{
+  background:#f2f2f2;
+  height:15rpx;
+}
+
+ .no_order_box {
+  padding-top: 292rpx;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+}
+ .no_order_box .no_order_logo {
+  margin-bottom: 48rpx;
+  width: 360rpx;
+  height: 204rpx;
+}
+ .no_order_box .no_order_text {
+  font-size: 32rpx;
+  line-height: 32rpx;
+  color: #666666;
+}
+ .no_order_box .no_order_button {
+  margin: 0 auto;
+  margin-top: 60rpx;
+  width: 240rpx;
+  height: 78rpx;
+  line-height: 78rpx;
+  border-radius: 39rpx;
+  background: #D73851;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 500;
+}

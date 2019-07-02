@@ -1,0 +1,104 @@
+<!--pages/orderDraw/orderDraw.wxml-->
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="下单抽奖"
+>
+</navigation>
+<image style='float:left;width:100%;' mode='widthFix' src='{{big_turntable_bg_one}}' />
+<image style='float:left;width:100%;' mode='widthFix' src='{{big_turntable_bg_two}}' />
+<image style='float:left;width:100%;' mode='widthFix' src='{{big_turntable_bg_three}}' />
+<view class='top'>
+  <image mode='widthFix' src='{{big_turntable_image_brand}}' />
+  <text class='fz' wx:if="{{turntableState==1}}">您已有{{chanceNum}}次抽奖机会</text>
+  <text class='fz' wx:if="{{turntableState==2}}">您剩余{{chanceNum}}次抽奖机会</text>
+  <text class='fz' wx:if="{{turntableState==3}}">活动已结束</text>
+</view>
+<view class='turntable'>
+  <view class='turntable-bg {{turntableN}}'>
+    <image mode='widthFix' class='tbgbg' src='{{big_turntable_image_disc}}' />
+    <block wx:for="{{products}}" wx:for-item='p' wx:for-index="i" wx:key="{{i}}">
+      <view wx:if="{{i<8}}" class='pro pro{{i}}'>
+        <text>{{p.name}}</text>
+        <image src="{{p.pic}}" />
+      </view>
+    </block>
+  </view>
+  <image class='pointer' src="https://file.maiyatown.com/miniProgram/{{turntableState!=2||chanceNum<=0?'big_turntable_image_pointer_gray.png':'big_turntable_image_pointer_orange.png'}}" />
+  <view class='pointer-but' bindtap="{{turntableState!=2||chanceNum<=0||sd!=1?'':'startDraw'}}"> </view>
+</view>
+<view class='ex'>
+  <view class='time' wx:if='{{turntableState!=3}}'>
+    <view class='time-top'>{{turntableState==1?'距离抽奖':'距离结束'}}</view>
+    <view class='time-body' style='width:{{turntableState==1?332:246}}rpx'>
+      <text wx:if="{{turntableState==1}}" class='time-body-1'>{{time[0]}}</text>
+      <text wx:if="{{turntableState==1}}" class='time-body-2'>天</text>
+      <text class='time-body-1'>{{time[1]}}</text>
+      <text class='time-body-2'>时</text>
+      <text class='time-body-1'>{{time[2]}}</text>
+      <text class='time-body-2'>分</text>
+      <text class='time-body-1'>{{time[3]}}</text>
+      <text class='time-body-2'>秒</text>
+    </view>
+  </view>
+  <view class='prize' wx:if='{{turntableState!=1}}'>
+    <view class='prize-top'>
+      <image mode='widthFix' src='{{big_turntable_title_winning}}' />
+    </view>
+    <view class='prize-body' >
+      <view class='prize-body-bg'>
+        <image src='https://file.maiyatown.com/images/draw/zpbj.png' mode='widthFix' class='pbbg-img1'/>
+        <image src='https://file.maiyatown.com/images/draw/zpbj.png' mode='widthFix' class='pbbg-img2'/>
+        <image src='https://file.maiyatown.com/images/draw/zpbj.png' mode='widthFix' class='pbbg-img3'/>
+        <image src='https://file.maiyatown.com/images/draw/zpbj.png' mode='widthFix' class='pbbg-img4'/>
+      </view>
+      <scroll-view  scroll-y="true" class='pb-body' bindscrolltolower="prizeScroll" scroll-into-view="{{toPrizeList}}">
+        <view wx:if="{{prizeList.length==0}}" class='pbbw'  >
+          <image src='https://file.maiyatown.com/images/draw/w.png' style='margin-top:170rpx'/>
+          <text style='color:#999'>
+          ～暂无用户中奖～</text>
+        </view>
+        <block wx:for="{{prizeList}}" wx:for-item='p' wx:for-index='i' wx:key='index' >
+          <view class='pbb-v' id='prize-page-{{i}}'>
+            <text class='pbbv-1'>恭喜<text style="color:red">{{p.name}}</text>中奖</text>
+            <!-- <text class='pbbv-2'>获得<text style='color:red'>{{p.type==1?p.value:p.product}}</text>{{p.type==1?'元优惠券':p.num+p.unit}}</text> -->
+            <text class='pbbv-2'>获得<text style='color:red'>{{p.product}}</text>X{{p.num}}</text>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+  <view class='explain' >
+    <view class='explain-top'>
+      <image mode='widthFix' src='{{big_turntable_title_activity}}' />
+    </view>
+    <view class='explain-body'>
+      <image src='{{big_turntable_bg_yellow}}'></image>
+      <view class='eb-boty'>
+        <text>{{activityContent}}
+</text>
+       
+      </view>
+    </view>
+  </view>
+  <view class='bottom'>
+    <image mode='widthFix' src='{{big_turntable_bg_cloud}}' />
+  </view>
+</view>
+<view class='shade' wx:if="{{shade==1}}" catchtouchmove="{}" style='top:{{scrollTop}}px'>
+  <view class='sd-bg'></view>
+  <image class='sd-light' src='https://file.maiyatown.com/images/redEnvelopes/guang.png' />
+  <view class='the-prize'>
+    <image class='tp-bg' src='{{big_turntable_image_red_envelope}}' />
+    <view class='tp-close' bindtap='closePrize'></view>
+    <text class='tp-top'>恭喜您中奖啦！</text>
+    <text class='tp-prize'>{{drawPrize}}</text>
+    <image class="tp-pro" src='{{drawPicture}}' />
+    <text class='tp-text'>获得{{drawProduct}}X{{drawNum}}</text>
+    <text class='tp-code'>领券码:{{drawCode}} 
+    已存入您的个人券包</text>
+  </view>
+</view>
+ <van-dialog
+  id="van-dialog"
+/>

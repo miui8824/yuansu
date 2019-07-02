@@ -1,0 +1,84 @@
+<!--pages/signin/signin.wxml-->
+    <navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="签到"
+>
+</navigation>
+<view class='signin_box'>
+  <view class='signin_top'>
+    <image src='https://file.maiyatown.com/images/signin/31.jpg'/>
+    <view class='signin_logo_box'>
+      <view class='logo_back'></view>
+      <view class='logo_main'>
+        签到
+      </view>
+      <view class='signin_rules'>签到规则</view>
+      <view class='signin_share'>分享</view>
+    </view>
+  </view>
+  <view class='signin_main'>
+    <view class='signin_list_box'>
+      <view class='list_title'>
+        每日签到有好礼
+        <view class='main_icon_left'>
+          <image src='https://file.maiyatown.com/images/signin/zuzi.png'/>
+        </view>
+        <view class='main_icon_right'>
+          <image src='https://file.maiyatown.com/images/signin/zuzi.png'/>
+        </view>
+      </view>
+      <view class='list_day'>
+        <view class='day_item' wx:for="{{stepsData}}" wx:key="{{index}}">
+          <!-- 默认判断index==2时候 就加个宝箱 -->
+          <view>第一天</view>
+          <view class='day_item_right'>第一天</view>
+        </view>
+       
+        <view class='list_steps'>
+          <view class='setps_box' wx:for="{{steps}}" wx:key="{{index}}">
+            <view class='setps_stick {{index<=active?"setps_stick_on":""}}'></view>
+            <view class='setps_stick1 {{index<active?"setps_stick1_on":""}}'></view>
+            <view class='setps_ball {{index<=active?"setps_ball_on":""}}'></view>
+            <view class='setps_ball_box {{index==active?"setps_ball_box_on":""}}'></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='signin_ok_box' wx:if="{{signinOk}}">
+    <view class='signin_ok_back'>
+    </view>
+    <view class='signin_ok'>  
+      <image src='https://file.maiyatown.com/images/signin/tanchuang.png'/>
+      <view class='signin_text_box'>
+        <view class='clear clear75'></view>
+        <view class='title'>签到成功</view>
+        <view class='title_day'>已经连续签到3天</view>
+        <view class='title_get'>今日获得5元优惠券1张</view>
+        <view class='title_goon'>再连续签到4天可开宝箱</view>
+      </view>
+    </view>
+    <view class='title_out'>
+      <image src='https://file.maiyatown.com/images/signin/guanbi.png' />
+    </view>
+  </view>
+  <view class='signin_rules_box' wx:if="{{signinRules}}">
+    <view class='signin_ok_back'>
+    </view>
+    <view class='signin_rules'>
+      <view class='rules_title'>
+        <image src='https://file.maiyatown.com/images/signin/biaoti.png'/>
+      </view>
+      <view class='rules_text_box'>
+        <view class='rules_text' wx:for="{{8}}">
+          1.用户签到期限7天为一组，签到可得积惠券和现金奖励。
+        </view>
+      </view>
+    </view>
+    <view class='rules_out'>
+      <image src='https://file.maiyatown.com/images/signin/guanbi.png' />
+    </view>
+  </view>  
+</view>

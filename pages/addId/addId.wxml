@@ -1,0 +1,59 @@
+<!--pages/addId/addId.wxml-->
+<navigation
+id='Navigation'
+show-icon='{{showIcon}}'
+title="实名认证"
+>
+</navigation>
+<view class='id_box'>
+  <view class='clear clear20'></view>
+  <view class='out_add_box'>
+    <view class='common_plank'>
+      <view class='border_botton'>
+        <view class='font_32 color_666'>跨境海淘必填区</view>
+      </view>
+      <view class='border_botton'>
+        <view class='font_28 color_666'>身份证号码</view>
+        <input placeholder-class="plank_place" class='plank_middle font_28' placeholder='请输入身份证号码'
+        value='{{idCard}}' bindblur='inputIdCard'></input>
+      </view>
+    </view>
+    <view class='image_box'>
+      <view class='image_main'>
+        <view class='image_close' wx:if="{{iscardSm}}" bindtap='closeSmImage'>
+          <image src='http://file.maiyatown.com/images/utils/refund_icon_closed.svg'></image>
+        </view>
+        <view class='image_text' wx:if="{{!iscardSm}}" bindtap='addSmCard'>
+          <view class='clear clear60'></view>
+          <view class='color_666 font_28'>拍照上传</view>
+          <view class='color_666 font_28 mar_t_10'>（身份证正面）</view>
+        </view>
+        <view class='image_image' wx:else>
+          <image  src='{{iscardSm}}' mode="aspectFit">
+          </image>
+        </view>
+      </view>
+      <view class='image_main' >
+        <view class='image_close' wx:if="{{iscardFm}}" bindtap='closeFmImage'>
+          <image src='http://file.maiyatown.com/images/utils/refund_icon_closed.svg'></image>
+        </view>
+        <view class='image_text' wx:if="{{!iscardFm}}" bindtap='addFmCard'>
+          <view class='clear clear60'></view>
+          <view class='color_666 font_28'>拍照上传</view>
+          <view class='color_666 font_28 mar_t_10'>（身份证反面）</view>
+        </view>
+        <view class='image_image' wx:else>
+          <image  src='{{iscardFm}}'  mode="aspectFit">
+          </image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='clear clear70'></view>  
+  <view class='clear clear70'></view>  
+  <view class='clear clear70'></view>  
+
+  <view class='add_add_button'>
+    <van-button class='success_button' round size='small' bindtap='bindSuccess'>提交</van-button>
+  </view>
+</view>
