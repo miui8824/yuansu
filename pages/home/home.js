@@ -6,10 +6,10 @@ var util = require('../../utils/util.js');
 import Dialog from '../../dist/dialog/dialog';
 Page({
   data: {
-    showIcon: false,//引入的自定义导航左边返回按钮
+    showIcon: false, //引入的自定义导航左边返回按钮
     painting: {}, //canvas画图的变量
-    shareImage: '',//canvas画图的变量
-    GetImage:false,
+    shareImage: '', //canvas画图的变量
+    GetImage: false,
     title: '元素城堡',
     swiperData: [],
     hotShopList: [],
@@ -43,78 +43,79 @@ Page({
     countDown: ['', '', '', ''],
     di: "",
     //是否新用户
-    isNew:false,
+    isNew: false,
     //拆红包新用户
-    newUser:true,
-    userWhiteList:false,//当前用户是否是白名单
-    isHelpRed: false,//是否帮拆
+    newUser: true,
+    userWhiteList: false, //当前用户是否是白名单
+    isHelpRed: false, //是否帮拆
     //..help
-    helpRedShow:false, //帮拆红包
-    helpRedOnShow:false, //帮开红包已打开
-    inviteeValue:0,
-    inviterValue:0,
-    redUp:0,
-    upUserId:"",
-    isEnd:false,//当前用户活动时间是否结束
-    isDismantle:false, //红包是否拆完
-    isTake:true,
-    redTotalOver:false, //所有红包是否发完
-    strDouble:null,//领取X倍红包
-    isHelp:false,   //新加字段isHelp判断红包发完但帮拆已参加问题
-    isHelpFirst:false,
-    controllUpUserId: false,// onLoad节流阀
+    helpRedShow: false, //帮拆红包
+    helpRedOnShow: false, //帮开红包已打开
+    inviteeValue: 0,
+    inviterValue: 0,
+    redUp: 0,
+    upUserId: "",
+    isEnd: false, //当前用户活动时间是否结束
+    isDismantle: false, //红包是否拆完
+    isTake: true,
+    redTotalOver: false, //所有红包是否发完
+    strDouble: null, //领取X倍红包
+    isHelp: false, //新加字段isHelp判断红包发完但帮拆已参加问题
+    isHelpFirst: false,
+    controllUpUserId: false, // onLoad节流阀
 
-    intervalSwitch:true,
+    intervalSwitch: true,
 
-    getHotListOk:false,
-    blackpoint:false, //已经获取了banner 活动信息
+    getHotListOk: false,
+    blackpoint: false, //已经获取了banner 活动信息
     //..
-    _iPage:1, //分页
-    _pageSize:10,
-    _iPageMore:true, //是否能加载更多
+    _iPage: 1, //分页
+    _pageSize: 10,
+    _iPageMore: true, //是否能加载更多
 
-    userId:null, //当前的userId
+    userId: null, //当前的userId
 
-    intervalSwitch:true,
-    hotListData:[],
-    swiperData1:[],
+    intervalSwitch: true,
+    hotListData: [],
+    swiperData1: [],
     actionSheetShow: false, //显示上拉菜单
-    hot_goodImg:"",
-    hot_dummyStock:"",//剩余库存
-    hot_price:"",
+    hot_goodImg: "",
+    hot_dummyStock: "", //剩余库存
+    hot_price: "",
     gdInfo: {},
     actionSheetType: 1, //加入购物车
     specList: [], //商品参数
     specListLength: 0,
-    skuList: [],//SKU列表
+    skuList: [], //SKU列表
     SKUResult: {}, //根据sku列表生成的所有能选的列表
     skuItemNameKey: [],
     skuItemNameValue: [],
-    activeSkuItem: {},//最后选中的SKu
+    activeSkuItem: {}, //最后选中的SKu
     goodsNumber: 1,
     skuId: '',
     haveChangedId: [],
 
-    groupDetailsUrl: '',//拼团详情路径
-    groupDetailsImgUrl:'',//拼团详情的banner图片
-    groupHomeImgUrl:'',//拼团列表banner
-    
-    rookieExclusiveBanner:'',//新人专享banner
+    groupDetailsUrl: '', //拼团详情路径
+    groupDetailsImgUrl: '', //拼团详情的banner图片
+    groupHomeImgUrl: '', //拼团列表banner
+    baokuanimg:"",
+    baokuanurl:'',
+    rookieExclusiveBanner: '', //新人专享banner
     groupTimeData: [],
     appointmentTimeData: [],
 
-    nowTimes: new Date().getTime(),//当前时间防止重复点击
+    nowTimes: new Date().getTime(), //当前时间防止重复点击
 
-    specialLists:[], //1.3专场广告位列表
+    specialLists: [], //1.3专场广告位列表
 
-        // v1.4首页爆款变量
+    // v1.4首页爆款变量
     active: 0,
     navNames: ['精选', '母婴', '美食', '女性', '居家', '男性', '奔驰', '宝马', '玩具', '饮食'],
-    isnav:'',
-    userid_weweima:""
+    isnav: '',
+    userid_weweima: ""
   },
   // 隐藏canvas画的图
-  share_hide: function () {
+  share_hide: function() {
     this.setData({
       GetImage: false,
       shareImage: ""
@@ -124,8 +125,8 @@ Page({
   eventDraw() {
     this.setData({
       GetImage: true,
-      shareImage:"",
-      painting:{}
+      shareImage: "",
+      painting: {}
     })
     let reqObj = {
       url: '/api/mainShare/homeShare',
@@ -160,102 +161,102 @@ Page({
           this.setData({
             userid_weweima: data.data
           })
-      
-        //回到顶部
-        wx.pageScrollTo({
-          scrollTop: 0
-        })
-        wx.showLoading({
-          title: '绘制分享图片中',
-          mask: true
-        })
-        console.log(this.data.copywriting, this.data.imgUrl)
-        this.setData({
-          painting: {
-            width: 375,
-            height: 555,
-            clear: true,
-            views: [
-              // 背景白图
-              {
-                type: 'image',
-                url: 'https://file.maiyatown.com/images/v1.2/home_bg.png',
-                top: 0,
-                left: 0,
-                width: 375,
-                height: 555
-              },
-              // 最上面的小麦
-              {
-                type: 'image',
 
-                url: 'http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621165146153.png',
-                top: 12,
-                left: 99,
-                width: 35,
-                height: 35
-              },
+          //回到顶部
+          wx.pageScrollTo({
+            scrollTop: 0
+          })
+          wx.showLoading({
+            title: '绘制分享图片中',
+            mask: true
+          })
+          console.log(this.data.copywriting, this.data.imgUrl)
+          this.setData({
+            painting: {
+              width: 375,
+              height: 555,
+              clear: true,
+              views: [
+                // 背景白图
+                {
+                  type: 'image',
+                  url: 'https://file.maiyatown.com/images/v1.2/home_bg.png',
+                  top: 0,
+                  left: 0,
+                  width: 375,
+                  height: 555
+                },
+                // 最上面的小麦
+                {
+                  type: 'image',
 
-              {
-                type: 'text',
-                content: '元素城堡',
-                fontSize: 16,
-                color: '#402D16',
-                textAlign: 'left',
-                top: 21,
-                left: 146,
-                bolder: true
-              },
-              // 中间的图 this.data.imgUrl   "https://file.maiyatown.com/images/v1.2/home_share_img1.png"
-              {
-                type: 'image',
-                url: this.data.imgUrl ,
-                top: 55,
-                left: 32.5,
-                width: 310,
-                height: 350
-              },  
-              // 二维码图片
-              {
-                type: 'image',
-                url: this.data.userid_weweima,
-                top: 420,
-                left: 250,
-                width: 88,
-                height: 88
-              },
-              // 动态生成的字
-              {
-                type: 'text',
-                content: this.data.copywriting,
-                fontSize: 14,
-                color: '#101010',
-                textAlign: 'left',
-                top: 440,
-                left: 32.5,
-                lineHeight: 20,
-                MaxLineNumber: 2,
-                breakWord: true,
-                width: 155,
-                bolder: true
-              },
-              // 二维码下面的字
-              {
-                type: 'text',
-                content: "长按识别小程序码",
-                fontSize: 12,
-                color: '#999999',
-                textAlign: 'left',
-                top: 520,
-                left: 240,
-                lineHeight: 20,
-                width: 155,
-                bolder: true
-              }
-            ]
-          }
+                  url: 'http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190621165146153.png',
+                  top: 12,
+                  left: 99,
+                  width: 35,
+                  height: 35
+                },
+
+                {
+                  type: 'text',
+                  content: '元素城堡',
+                  fontSize: 16,
+                  color: '#402D16',
+                  textAlign: 'left',
+                  top: 21,
+                  left: 146,
+                  bolder: true
+                },
+                // 中间的图 this.data.imgUrl   "https://file.maiyatown.com/images/v1.2/home_share_img1.png"
+                {
+                  type: 'image',
+                  url: this.data.imgUrl,
+                  top: 55,
+                  left: 32.5,
+                  width: 310,
+                  height: 350
+                },
+                // 二维码图片
+                {
+                  type: 'image',
+                  url: this.data.userid_weweima,
+                  top: 420,
+                  left: 250,
+                  width: 88,
+                  height: 88
+                },
+                // 动态生成的字
+                {
+                  type: 'text',
+                  content: this.data.copywriting,
+                  fontSize: 14,
+                  color: '#101010',
+                  textAlign: 'left',
+                  top: 440,
+                  left: 32.5,
+                  lineHeight: 20,
+                  MaxLineNumber: 2,
+                  breakWord: true,
+                  width: 155,
+                  bolder: true
+                },
+                // 二维码下面的字
+                {
+                  type: 'text',
+                  content: "长按识别小程序码",
+                  fontSize: 12,
+                  color: '#999999',
+                  textAlign: 'left',
+                  top: 520,
+                  left: 240,
+                  lineHeight: 20,
+                  width: 155,
+                  bolder: true
+                }
+              ]
+            }
+          })
         })
-      })
       }
     })
   },
@@ -277,7 +278,7 @@ Page({
           GetImage: false
         })
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log(res)
         if (res.errMsg === "saveImageToPhotosAlbum:fail:auth denied" || res.errMsg === "saveImageToPhotosAlbum:fail auth deny" || res.errMsg === "saveImageToPhotosAlbum:fail authorize no response") {
           console.log("打开设置窗口");
@@ -324,7 +325,10 @@ Page({
   eventGetImage(event) {
     console.log(event)
     wx.hideLoading()
-    const { tempFilePath, errMsg } = event.detail
+    const {
+      tempFilePath,
+      errMsg
+    } = event.detail
     if (errMsg === 'canvasdrawer:ok') {
       this.setData({
         shareImage: tempFilePath
@@ -362,48 +366,48 @@ Page({
       url: this.data.groupDetailsUrl
     })
   },
-    //加入购物车
-    addShopCar(event) {
-      console.log();
-      this.setData({ 
-        actionSheetShow: true, 
-        actionSheetType: 1 ,
-        hot_goodImg: event.currentTarget.dataset.alldata.goodImg,
-        hot_dummyStock: event.currentTarget.dataset.alldata.dummyStock,
-        hot_price: event.currentTarget.dataset.alldata.price,
-        gdInfo: {
-          dummystock: event.currentTarget.dataset.alldata.dummyStock,
-          price: event.currentTarget.dataset.alldata.price,
-          goodimg: event.currentTarget.dataset.alldata.goodImg,
-          dummysales: event.currentTarget.dataset.alldata.dummySales,
-          id: event.currentTarget.dataset.alldata.id,
-          speclist: event.currentTarget.dataset.alldata.specList,
-          valueskumap: event.currentTarget.dataset.alldata.valueSkuMap,
-        }
-  
-        })
-      // util.mdFun(this, event.currentTarget.dataset.alldata.activityId + '_' + event.currentTarget.dataset.alldata.id, '', '热卖单品');
-      util.mdFun(this, event.currentTarget.dataset.alldata.activityId + '_' + event.currentTarget.dataset.alldata.id, '', '热卖单品');
-      this.getSpecInfo()
-      this.queryDGoodsById();
-      //v1.3
-      setTimeout(() => {
-        let reqObj = {
-          index: 0,
-          cindex: 0,
-          cid: this.data.specList[0].value[0].id,
-          isActiveC: false,
-          citemnoclick: false
-        }
-        this.tabInfoChange('', reqObj)
-      }, 500)
-    },
-    onClose() {
-      this.setData({
-        actionSheetShow: false,
-        actionSheetType: 0
-      });
-    },
+  //加入购物车
+  addShopCar(event) {
+    console.log();
+    this.setData({
+      actionSheetShow: true,
+      actionSheetType: 1,
+      hot_goodImg: event.currentTarget.dataset.alldata.goodImg,
+      hot_dummyStock: event.currentTarget.dataset.alldata.dummyStock,
+      hot_price: event.currentTarget.dataset.alldata.price,
+      gdInfo: {
+        dummystock: event.currentTarget.dataset.alldata.dummyStock,
+        price: event.currentTarget.dataset.alldata.price,
+        goodimg: event.currentTarget.dataset.alldata.goodImg,
+        dummysales: event.currentTarget.dataset.alldata.dummySales,
+        id: event.currentTarget.dataset.alldata.id,
+        speclist: event.currentTarget.dataset.alldata.specList,
+        valueskumap: event.currentTarget.dataset.alldata.valueSkuMap,
+      }
+
+    })
+    // util.mdFun(this, event.currentTarget.dataset.alldata.activityId + '_' + event.currentTarget.dataset.alldata.id, '', '热卖单品');
+    util.mdFun(this, event.currentTarget.dataset.alldata.activityId + '_' + event.currentTarget.dataset.alldata.id, '', '热卖单品');
+    this.getSpecInfo()
+    this.queryDGoodsById();
+    //v1.3
+    setTimeout(() => {
+      let reqObj = {
+        index: 0,
+        cindex: 0,
+        cid: this.data.specList[0].value[0].id,
+        isActiveC: false,
+        citemnoclick: false
+      }
+      this.tabInfoChange('', reqObj)
+    }, 500)
+  },
+  onClose() {
+    this.setData({
+      actionSheetShow: false,
+      actionSheetType: 0
+    });
+  },
   //选择尺寸的确认按钮
   selectSizeSuccess() {
     let activeSkuItem = {};
@@ -451,406 +455,408 @@ Page({
     }
 
   },
-    addShopCarRequest() {
-      let reqObj = {
-        url: '/api/shopCar/addShopCar?from=goodsDetails',
-        data: {
-          goodsId: this.data.gdInfo.id,
-          goodsNumber: this.data.goodsNumber,
-          skuId: this.data.skuId,
-        }
+  addShopCarRequest() {
+    let reqObj = {
+      url: '/api/shopCar/addShopCar?from=goodsDetails',
+      data: {
+        goodsId: this.data.gdInfo.id,
+        goodsNumber: this.data.goodsNumber,
+        skuId: this.data.skuId,
       }
-      util.RequestPost(reqObj, null, (res, message) => {
-        if (message) {
-          wx.showToast({
-            title: "请选择规格",
-            image: "../../static/toastImage/tishi_icon.png",
-            duration: 1500
-          })
-        }
-        if (res.resCode == '0000') {
-          //成功数据
-          wx.showToast({
-            title: '添加成功!',
-            icon: 'success',
-            duration: 1500
-          })
-          this.setData({
-            isSelectSize: false,
-            goodsNumber: 1,
-            haveChangedId: []
-          })
-        }
-      })
-    },
-    getSpecInfo() {
-      let { gdInfo } = this.data
-      let specList = gdInfo.speclist;
+    }
+    util.RequestPost(reqObj, null, (res, message) => {
+      if (message) {
+        wx.showToast({
+          title: "请选择规格",
+          image: "../../static/toastImage/tishi_icon.png",
+          duration: 1500
+        })
+      }
+      if (res.resCode == '0000') {
+        //成功数据
+        wx.showToast({
+          title: '添加成功!',
+          icon: 'success',
+          duration: 1500
+        })
+        this.setData({
+          isSelectSize: false,
+          goodsNumber: 1,
+          haveChangedId: []
+        })
+      }
+    })
+  },
+  getSpecInfo() {
+    let {
+      gdInfo
+    } = this.data
+    let specList = gdInfo.speclist;
 
-      let skuList = {};
-      //skuList 的key进行升序排列
-      let temp = gdInfo.valueskumap;
-      for (let key in temp) {
-        let value = temp[key]
-        let attres = key.split(";")
-        attres.sort((obj1, obj2) => {
-          return Number(obj1) - Number(obj2)
-        })
-        let newKey = attres.join(";")
-        skuList[newKey] = value
-      }
-      
-      let _spectList = []
-      console.log(gdInfo,specList)
-      let skuItemNameKey = [];
-      specList.forEach((item, index) => {
-        skuItemNameKey.push(item.specName);
-        let pushObj = {
-          name: item.specName,
-          isActive: index == 0 ? true : false
-        }
-        let value = [];
-        item.specValue.forEach((item1, index1) => {
-          value.push({
-            id: item1.id,
-            cname: item1.valueName,
-            isActiveC: false,
-            notClick: false
-          })
-        })
-        pushObj.value = value;
-        _spectList.push(pushObj);
+    let skuList = {};
+    //skuList 的key进行升序排列
+    let temp = gdInfo.valueskumap;
+    for (let key in temp) {
+      let value = temp[key]
+      let attres = key.split(";")
+      attres.sort((obj1, obj2) => {
+        return Number(obj1) - Number(obj2)
       })
-      this.setData({
-        specList: _spectList, //商品参数
-        skuList: skuList,
-        specListLength: specList.length,
-        skuItemNameKey: skuItemNameKey
+      let newKey = attres.join(";")
+      skuList[newKey] = value
+    }
+
+    let _spectList = []
+    console.log(gdInfo, specList)
+    let skuItemNameKey = [];
+    specList.forEach((item, index) => {
+      skuItemNameKey.push(item.specName);
+      let pushObj = {
+        name: item.specName,
+        isActive: index == 0 ? true : false
+      }
+      let value = [];
+      item.specValue.forEach((item1, index1) => {
+        value.push({
+          id: item1.id,
+          cname: item1.valueName,
+          isActiveC: false,
+          notClick: false
+        })
       })
-    },
-    // sku
-    /*商品详情数据*/
-    queryDGoodsById() {
-      this.initSKU();//初始化，得到SKUResult
-      /*根据SKUResult得到初始化的时候哪些不能点击*/
-      for (let i = 0; i < this.data.specList.length; i++) {
-        for (let j = 0; j < this.data.specList[i].value.length; j++) {
-          if (this.data.SKUResult[this.data.specList[i].value[j].id] == null) {
-            this.data.specList[i].value[j].notClick = true;
-          }
+      pushObj.value = value;
+      _spectList.push(pushObj);
+    })
+    this.setData({
+      specList: _spectList, //商品参数
+      skuList: skuList,
+      specListLength: specList.length,
+      skuItemNameKey: skuItemNameKey
+    })
+  },
+  // sku
+  /*商品详情数据*/
+  queryDGoodsById() {
+    this.initSKU(); //初始化，得到SKUResult
+    /*根据SKUResult得到初始化的时候哪些不能点击*/
+    for (let i = 0; i < this.data.specList.length; i++) {
+      for (let j = 0; j < this.data.specList[i].value.length; j++) {
+        if (this.data.SKUResult[this.data.specList[i].value[j].id] == null) {
+          this.data.specList[i].value[j].notClick = true;
         }
       }
-    },
-    //获得对象的key 
-    getObjKeys(obj) {
-      if (obj !== Object(obj)) throw new TypeError('Invalid object');
-      var keys = [];
-      for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key))
-          keys[keys.length] = key;
-      return keys;
-    },
-  
-    //把组合的key放入结果集SKUResult
-    add2SKUResult(combArrItem, sku) {
-      var key = combArrItem.join(";");
-      if (this.data.SKUResult[key]) { //SKU信息key属性·
-        this.data.SKUResult[key].count += sku.count;
-        this.data.SKUResult[key].prices.push(sku.price);
+    }
+  },
+  //获得对象的key 
+  getObjKeys(obj) {
+    if (obj !== Object(obj)) throw new TypeError('Invalid object');
+    var keys = [];
+    for (var key in obj)
+      if (Object.prototype.hasOwnProperty.call(obj, key))
+        keys[keys.length] = key;
+    return keys;
+  },
+
+  //把组合的key放入结果集SKUResult
+  add2SKUResult(combArrItem, sku) {
+    var key = combArrItem.join(";");
+    if (this.data.SKUResult[key]) { //SKU信息key属性·
+      this.data.SKUResult[key].count += sku.count;
+      this.data.SKUResult[key].prices.push(sku.price);
+    } else {
+      this.data.SKUResult[key] = {
+        count: sku.count,
+        prices: [sku.price]
+      };
+    }
+  },
+
+  //初始化得到结果集
+  initSKU() {
+    var i, j, skuKeys = this.getObjKeys(this.data.skuList);
+    for (i = 0; i < skuKeys.length; i++) {
+      var skuKey = skuKeys[i]; //一条SKU信息key
+      var sku = this.data.skuList[skuKey]; //一条SKU信息value
+      var skuKeyAttrs = skuKey.split(";"); //SKU信息key属性值数组
+      skuKeyAttrs.sort(function(value1, value2) {
+        return parseInt(value1) - parseInt(value2);
+      });
+
+      //对每个SKU信息key属性值进行拆分组合
+      var combArr = this.combInArray(skuKeyAttrs);
+      for (j = 0; j < combArr.length; j++) {
+        this.add2SKUResult(combArr[j], sku);
+      }
+
+      //结果集接放入SKUResult
+      this.data.SKUResult[skuKeyAttrs.join(";")] = {
+        count: sku.count,
+        prices: [sku.price]
+      }
+    }
+  },
+  combInArray(aData) {
+    if (!aData || !aData.length) {
+      return [];
+    }
+    var len = aData.length;
+    var aResult = [];
+    for (var n = 1; n < len; n++) {
+      var aaFlags = this.getCombFlags(len, n);
+      while (aaFlags.length) {
+        var aFlag = aaFlags.shift();
+        var aComb = [];
+        for (var i = 0; i < len; i++) {
+          aFlag[i] && aComb.push(aData[i]);
+        }
+        aResult.push(aComb);
+      }
+    }
+    return aResult;
+  },
+  getCombFlags(m, n) {
+    if (!n || n < 1) {
+      return [];
+    }
+
+    var aResult = [];
+    var aFlag = [];
+    var bNext = true;
+    var i, j, iCnt1;
+
+    for (i = 0; i < m; i++) {
+      aFlag[i] = i < n ? 1 : 0;
+    }
+
+    aResult.push(aFlag.concat());
+    while (bNext) {
+      iCnt1 = 0;
+      for (i = 0; i < m - 1; i++) {
+        if (aFlag[i] == 1 && aFlag[i + 1] == 0) {
+          for (j = 0; j < i; j++) {
+            aFlag[j] = j < iCnt1 ? 1 : 0;
+          }
+          aFlag[i] = 0;
+          aFlag[i + 1] = 1;
+          var aTmp = aFlag.concat();
+          aResult.push(aTmp);
+          if (aTmp.slice(-n).join("").indexOf('0') == -1) {
+            bNext = false;
+          }
+          break;
+        }
+        aFlag[i] == 1 && iCnt1++;
+      }
+    }
+    return aResult;
+  },
+  /*商品条件筛选*/
+  tabInfoChange(event, reqObj) {
+    //思路 
+    //根据 index的值 对当前已经选中的sku id进行处理
+    //当选择上排的时候 清空haveChangedId 下一排选择 和之后的值
+
+    //v1.3
+    let index, cindex, cid, isActiveC, citemnoclick;
+    if (reqObj) {
+      index = reqObj.index
+      cindex = reqObj.cindex
+      cid = reqObj.cid
+      isActiveC = reqObj.isActiveC
+      citemnoclick = reqObj.citemnoclick
+    } else {
+      index = event.currentTarget.dataset.index;
+      cindex = event.currentTarget.dataset.cindex;
+      cid = event.currentTarget.dataset.cid;
+      isActiveC = event.currentTarget.dataset.isactivec;
+      citemnoclick = event.currentTarget.dataset.citemnoclick;
+    }
+    if (citemnoclick) {
+      return false;
+    }
+    let _specList = this.data.specList;
+    let orderInfoChild = _specList[index].value; /*当前点击的规格的所有子属性内容*/
+    //选中自己，兄弟节点取消选中
+    if (orderInfoChild[cindex].notClick != true) {
+      if (orderInfoChild[cindex].isActiveC == true) {
+        orderInfoChild[cindex].isActiveC = false;
       } else {
-        this.data.SKUResult[key] = {
-          count: sku.count,
-          prices: [sku.price]
-        };
-      }
-    },
-  
-    //初始化得到结果集
-    initSKU() {
-      var i, j, skuKeys = this.getObjKeys(this.data.skuList);
-      for (i = 0; i < skuKeys.length; i++) {
-        var skuKey = skuKeys[i]; //一条SKU信息key
-        var sku = this.data.skuList[skuKey]; //一条SKU信息value
-        var skuKeyAttrs = skuKey.split(";"); //SKU信息key属性值数组
-        skuKeyAttrs.sort(function (value1, value2) {
-          return parseInt(value1) - parseInt(value2);
-        });
-  
-        //对每个SKU信息key属性值进行拆分组合
-        var combArr = this.combInArray(skuKeyAttrs);
-        for (j = 0; j < combArr.length; j++) {
-          this.add2SKUResult(combArr[j], sku);
+        for (let i = 0; i < orderInfoChild.length; i++) {
+          orderInfoChild[i].isActiveC = false;
         }
-  
-        //结果集接放入SKUResult
-        this.data.SKUResult[skuKeyAttrs.join(";")] = {
-          count: sku.count,
-          prices: [sku.price]
+        orderInfoChild[cindex].isActiveC = true;
+      }
+    }
+
+    //已经选择的节点
+    let haveChangedId = [];
+
+    for (let i = 0; i < _specList.length; i++) {
+      for (let j = 0; j < _specList[i].value.length; j++) {
+        if (_specList[i].value[j].isActiveC == true) {
+          haveChangedId.push(_specList[i].value[j].id);
         }
       }
-    },
-    combInArray(aData) {
-      if (!aData || !aData.length) {
-        return [];
-      }
-      var len = aData.length;
-      var aResult = [];
-      for (var n = 1; n < len; n++) {
-        var aaFlags = this.getCombFlags(len, n);
-        while (aaFlags.length) {
-          var aFlag = aaFlags.shift();
-          var aComb = [];
-          for (var i = 0; i < len; i++) {
-            aFlag[i] && aComb.push(aData[i]);
-          }
-          aResult.push(aComb);
-        }
-      }
-      return aResult;
-    },
-    getCombFlags(m, n) {
-      if (!n || n < 1) {
-        return [];
-      }
-  
-      var aResult = [];
-      var aFlag = [];
-      var bNext = true;
-      var i, j, iCnt1;
-  
-      for (i = 0; i < m; i++) {
-        aFlag[i] = i < n ? 1 : 0;
-      }
-  
-      aResult.push(aFlag.concat());
-      while (bNext) {
-        iCnt1 = 0;
-        for (i = 0; i < m - 1; i++) {
-          if (aFlag[i] == 1 && aFlag[i + 1] == 0) {
-            for (j = 0; j < i; j++) {
-              aFlag[j] = j < iCnt1 ? 1 : 0;
-            }
-            aFlag[i] = 0;
-            aFlag[i + 1] = 1;
-            var aTmp = aFlag.concat();
-            aResult.push(aTmp);
-            if (aTmp.slice(-n).join("").indexOf('0') == -1) {
-              bNext = false;
-            }
-            break;
-          }
-          aFlag[i] == 1 && iCnt1++;
-        }
-      }
-      return aResult;
-    },
-    /*商品条件筛选*/
-    tabInfoChange(event,reqObj) {
-      //思路 
-      //根据 index的值 对当前已经选中的sku id进行处理
-      //当选择上排的时候 清空haveChangedId 下一排选择 和之后的值
-  
-      //v1.3
-      let index, cindex, cid, isActiveC, citemnoclick;
-      if (reqObj) {
-        index = reqObj.index
-        cindex = reqObj.cindex
-        cid = reqObj.cid
-        isActiveC = reqObj.isActiveC
-        citemnoclick = reqObj.citemnoclick
-      } else {
-        index = event.currentTarget.dataset.index;
-        cindex = event.currentTarget.dataset.cindex;
-        cid = event.currentTarget.dataset.cid;
-        isActiveC = event.currentTarget.dataset.isactivec;
-        citemnoclick = event.currentTarget.dataset.citemnoclick;
-      }
-      if (citemnoclick) {
-        return false;
-      }
-      let _specList = this.data.specList;
-      let orderInfoChild = _specList[index].value;/*当前点击的规格的所有子属性内容*/
-      //选中自己，兄弟节点取消选中
-      if (orderInfoChild[cindex].notClick != true) {
-        if (orderInfoChild[cindex].isActiveC == true) {
-          orderInfoChild[cindex].isActiveC = false;
-        } else {
-          for (let i = 0; i < orderInfoChild.length; i++) {
-            orderInfoChild[i].isActiveC = false;
-          }
-          orderInfoChild[cindex].isActiveC = true;
-        }
-      }
-  
-      //已经选择的节点
-      let haveChangedId = [];
-  
-      for (let i = 0; i < _specList.length; i++) {
-        for (let j = 0; j < _specList[i].value.length; j++) {
-          if (_specList[i].value[j].isActiveC == true) {
-            haveChangedId.push(_specList[i].value[j].id);
-          }
-        }
-      }
-  
-      //如果之前 每个尺寸已经选过一遍
-      if (this.data.allItemSelect && haveChangedId.length == this.data.specListLength) {
-        if (index + 1 < this.data.specListLength) {
-          let specList = this.data.specList;
-          let _haveChangedId = [];
-          for (let iii = 0; iii < this.data.specListLength; iii++) {
-            //如果已经全部 选过一遍，现在是来回切 
-            //当前是点第几行  保留当前 这行 和之前的选项
-            if (iii <= index) {
-              _haveChangedId.push(haveChangedId[iii]);
-            } else {
-              //他后面行的都全部置灰
-              specList[iii].value.forEach((item, index) => {
-                item.isActiveC = false;
-                item.notClick = false;
-              })
-            }
-          }
-          this.setData({
-            specList: specList
-          })
-          haveChangedId = [];
-          haveChangedId = _haveChangedId;
-        }
-      }
-  
-      //当选择上排的时候 清空haveChangedId 下一排选择 和之后的值
-      //..
-      if (haveChangedId.length == this.data.specListLength) {
-        this.setData({
-          allItemSelect: true
-        })
-      } else {
-        this.setData({
-          allItemSelect: false
-        })
-      }
-  
-      if (haveChangedId.length) {
-        //获得组合key价格
-        haveChangedId.sort(function (value1, value2) {
-          return parseInt(value1) - parseInt(value2);
-        });
-  
-        var len = haveChangedId.length;
-        //..判断如果全部选项都选了 就得到最后的SKU
-        if (haveChangedId.length == this.data.specListLength) {
-          //
-          let _haveChangedId = haveChangedId;
-          _haveChangedId = _haveChangedId.sort(function (x, y) {
-            return x - y;
-          });
-  
-          if (_haveChangedId.length > 1) {
-            _haveChangedId = _haveChangedId.join(';');
+    }
+
+    //如果之前 每个尺寸已经选过一遍
+    if (this.data.allItemSelect && haveChangedId.length == this.data.specListLength) {
+      if (index + 1 < this.data.specListLength) {
+        let specList = this.data.specList;
+        let _haveChangedId = [];
+        for (let iii = 0; iii < this.data.specListLength; iii++) {
+          //如果已经全部 选过一遍，现在是来回切 
+          //当前是点第几行  保留当前 这行 和之前的选项
+          if (iii <= index) {
+            _haveChangedId.push(haveChangedId[iii]);
           } else {
-            _haveChangedId = _haveChangedId[0]
-          }
-          if (this.data.skuList.hasOwnProperty(_haveChangedId)) {
-            //.. 选中的SKU列表
-            this.setData({
-              activeSkuItem: this.data.skuList['' + _haveChangedId]
+            //他后面行的都全部置灰
+            specList[iii].value.forEach((item, index) => {
+              item.isActiveC = false;
+              item.notClick = false;
             })
           }
-  
+        }
+        this.setData({
+          specList: specList
+        })
+        haveChangedId = [];
+        haveChangedId = _haveChangedId;
+      }
+    }
+
+    //当选择上排的时候 清空haveChangedId 下一排选择 和之后的值
+    //..
+    if (haveChangedId.length == this.data.specListLength) {
+      this.setData({
+        allItemSelect: true
+      })
+    } else {
+      this.setData({
+        allItemSelect: false
+      })
+    }
+
+    if (haveChangedId.length) {
+      //获得组合key价格
+      haveChangedId.sort(function(value1, value2) {
+        return parseInt(value1) - parseInt(value2);
+      });
+
+      var len = haveChangedId.length;
+      //..判断如果全部选项都选了 就得到最后的SKU
+      if (haveChangedId.length == this.data.specListLength) {
+        //
+        let _haveChangedId = haveChangedId;
+        _haveChangedId = _haveChangedId.sort(function(x, y) {
+          return x - y;
+        });
+
+        if (_haveChangedId.length > 1) {
+          _haveChangedId = _haveChangedId.join(';');
         } else {
+          _haveChangedId = _haveChangedId[0]
+        }
+        if (this.data.skuList.hasOwnProperty(_haveChangedId)) {
+          //.. 选中的SKU列表
           this.setData({
-            activeSkuItem: {}
+            activeSkuItem: this.data.skuList['' + _haveChangedId]
           })
         }
-  
-        //用已选中的节点验证待测试节点 
-        let daiceshi = [];//待测试节点
-        let daiceshiId = [];
-        for (let i = 0; i < _specList.length; i++) {
-          for (let j = 0; j < _specList[i].value.length; j++) {
-            if (_specList[index].value[cindex].id != _specList[i].value[j].id) {
-              daiceshi.push({
-                index: i,
-                cindex: j,
-                id: _specList[i].value[j].id
-              });
-              daiceshiId.push(_specList[i].value[j].id);
-            }
-          }
-        }
-        for (let i = 0; i < haveChangedId.length; i++) {
-          var indexs = daiceshiId.indexOf(haveChangedId[i]);
-          if (indexs > -1) {
-            daiceshi.splice(indexs, 1);
-          }
-        }
-        for (let i = 0; i < daiceshi.length; i++) {
-          let testAttrIds = []; //从选中节点中去掉选中的兄弟节点
-          let siblingsId = "";
-          for (let m = 0; m < _specList[daiceshi[i].index].value.length; m++) {
-            if (_specList[daiceshi[i].index].value[m].isActiveC == true) {
-              siblingsId = _specList[daiceshi[i].index].value[m].id;
-            }
-          }
-          if (siblingsId != "") {
-            for (let j = 0; j < len; j++) {
-              (haveChangedId[j] != siblingsId) && testAttrIds.push(haveChangedId[j]);
-            }
-          } else {
-            testAttrIds = haveChangedId.concat();
-          }
-          testAttrIds = testAttrIds.concat(_specList[daiceshi[i].index].value[daiceshi[i].cindex].id);
-          testAttrIds.sort(function (value1, value2) {
-            return parseInt(value1) - parseInt(value2);
-          });
-          if (!this.data.SKUResult[testAttrIds.join(';')]) {
-            _specList[daiceshi[i].index].value[daiceshi[i].cindex].notClick = true;
-            _specList[daiceshi[i].index].value[daiceshi[i].cindex].isActiveC = false;
-          } else {
-            _specList[daiceshi[i].index].value[daiceshi[i].cindex].notClick = false;
-          }
-        }
-        this.setData({
-          specList: _specList,
-          haveChangedId: haveChangedId
-        })
+
       } else {
-        //设置属性状态
-        for (let i = 0; i < _specList.length; i++) {
-          for (let j = 0; j < _specList[i].value.length; j++) {
-            if (this.data.SKUResult[_specList[i].value[j].id]) {
-              _specList[i].value[j].notClick = false;
-            } else {
-              _specList[i].value[j].notClick = true;
-              _specList[i].value[j].isActiveC = false;
-            }
-          }
-        }
         this.setData({
-          specList: _specList,
-          haveChangedId: haveChangedId
+          activeSkuItem: {}
         })
       }
-    },
-    //修改计数器
-    onChange(event) {
+
+      //用已选中的节点验证待测试节点 
+      let daiceshi = []; //待测试节点
+      let daiceshiId = [];
+      for (let i = 0; i < _specList.length; i++) {
+        for (let j = 0; j < _specList[i].value.length; j++) {
+          if (_specList[index].value[cindex].id != _specList[i].value[j].id) {
+            daiceshi.push({
+              index: i,
+              cindex: j,
+              id: _specList[i].value[j].id
+            });
+            daiceshiId.push(_specList[i].value[j].id);
+          }
+        }
+      }
+      for (let i = 0; i < haveChangedId.length; i++) {
+        var indexs = daiceshiId.indexOf(haveChangedId[i]);
+        if (indexs > -1) {
+          daiceshi.splice(indexs, 1);
+        }
+      }
+      for (let i = 0; i < daiceshi.length; i++) {
+        let testAttrIds = []; //从选中节点中去掉选中的兄弟节点
+        let siblingsId = "";
+        for (let m = 0; m < _specList[daiceshi[i].index].value.length; m++) {
+          if (_specList[daiceshi[i].index].value[m].isActiveC == true) {
+            siblingsId = _specList[daiceshi[i].index].value[m].id;
+          }
+        }
+        if (siblingsId != "") {
+          for (let j = 0; j < len; j++) {
+            (haveChangedId[j] != siblingsId) && testAttrIds.push(haveChangedId[j]);
+          }
+        } else {
+          testAttrIds = haveChangedId.concat();
+        }
+        testAttrIds = testAttrIds.concat(_specList[daiceshi[i].index].value[daiceshi[i].cindex].id);
+        testAttrIds.sort(function(value1, value2) {
+          return parseInt(value1) - parseInt(value2);
+        });
+        if (!this.data.SKUResult[testAttrIds.join(';')]) {
+          _specList[daiceshi[i].index].value[daiceshi[i].cindex].notClick = true;
+          _specList[daiceshi[i].index].value[daiceshi[i].cindex].isActiveC = false;
+        } else {
+          _specList[daiceshi[i].index].value[daiceshi[i].cindex].notClick = false;
+        }
+      }
       this.setData({
-        goodsNumber: event.detail
+        specList: _specList,
+        haveChangedId: haveChangedId
       })
-    },
+    } else {
+      //设置属性状态
+      for (let i = 0; i < _specList.length; i++) {
+        for (let j = 0; j < _specList[i].value.length; j++) {
+          if (this.data.SKUResult[_specList[i].value[j].id]) {
+            _specList[i].value[j].notClick = false;
+          } else {
+            _specList[i].value[j].notClick = true;
+            _specList[i].value[j].isActiveC = false;
+          }
+        }
+      }
+      this.setData({
+        specList: _specList,
+        haveChangedId: haveChangedId
+      })
+    }
+  },
+  //修改计数器
+  onChange(event) {
+    this.setData({
+      goodsNumber: event.detail
+    })
+  },
   openTurntable() {
     wx.navigateTo({
       url: "/pages/orderDraw/orderDraw"
     })
   },
-  onUnload() {//当小程序进入后台时更新时间
+  onUnload() { //当小程序进入后台时更新时间
     clearInterval(this.data.di);
   },
   onHide() {
     clearInterval(this.data.di);
     this.setData({
-      blackpoint:true,
+      blackpoint: true,
       GetImage: false //画得的图片消失
     })
   },
@@ -899,14 +905,14 @@ Page({
   onLoad(options) {
     //判断是否是新用户 
     //.. help 帮拆红包
-    console.log("options",options)
+    console.log("options", options)
     let that = this
-    if (options.upUserId){
+    if (options.upUserId) {
       console.log('帮拆红包邀请人id', options.upUserId)
       app.globalData.upUserId = options.upUserId;
       that.setData({
         upUserId: options.upUserId,
-        controllUpUserId:true,
+        controllUpUserId: true,
         // controllSend:true
       })
     }
@@ -914,8 +920,8 @@ Page({
     if (!options.upUserId) {
       that.userHavePlay()
     }
-      //首页新用户
-      //判断是否是新用户
+    //首页新用户
+    //判断是否是新用户
     if (options.isnew == 1) {
       // this.isOpenRed();        //与新人红包是否冲突？？？？？？？？？？？？？？？？？？
       this.setData({
@@ -924,9 +930,9 @@ Page({
       })
     }
     //.. userId
-    if (options.userId){
+    if (options.userId) {
       app.globalData.userIdPro = options.userId;
-      util.bindfriend(options.userId)//绑定好友关系
+      util.bindfriend(options.userId) //绑定好友关系
       console.log(options.userId)
       console.log(options.userId)
       console.log('首页' + options.userId)
@@ -934,7 +940,7 @@ Page({
     }
     this.getHotShopList('')
     this.hotList();
-    
+
     //开启预约提醒
     util.groupPlayFun()
 
@@ -948,8 +954,8 @@ Page({
     let upUserId = app.globalData.upUserId
     this.setData({
       upUserId
-    },()=>{
-      console.log("onshowupuserid",that.data.upUserId)
+    }, () => {
+      console.log("onshowupuserid", that.data.upUserId)
       this.userHavePlayOnly()
       if (that.data.controllUpUserId) {
         that.userHavePlay()
@@ -959,11 +965,11 @@ Page({
       }
     })
     // this.userHavePlayOnly()
-    if (this.data.blackpoint){
+    if (this.data.blackpoint) {
       this.setData({
-        blackpoint:false
+        blackpoint: false
       })
-    }else{
+    } else {
       if (wx.getStorageSync('myxzToken')) {
 
         this.getHotShopList('');
@@ -983,9 +989,9 @@ Page({
     this.getBannerList();
     this.getHotShopList('')
     this.setData({
-      _iPage:1,
-      _pageSize:10
-    },()=>{
+      _iPage: 1,
+      _pageSize: 10
+    }, () => {
       this.hotList();
     })
     this.levelUpDialog()
@@ -997,20 +1003,19 @@ Page({
     //   util.mdFun(this, '', '')
     // }
     //初始化代码 影藏tabbar
-    let _setInter = setInterval(function () {
-    }, 900)
+    let _setInter = setInterval(function() {}, 900)
     clearInterval(this.data.di)
-    console.log("当页数据",this.data)
+    console.log("当页数据", this.data)
   },
   //..
-  onReachBottom(){
+  onReachBottom() {
     let _iPage = this.data._iPage;
     _iPage++;
     this.setData({
       _iPage: _iPage
-    },function(){
+    }, function() {
       console.log(_iPage)
-      this.data._iPageMore ? this.hotList(): '';
+      this.data._iPageMore ? this.hotList() : '';
     })
   },
   //得到活动时间
@@ -1029,7 +1034,7 @@ Page({
         header: header,
         method: 'GET',
         dataType: 'json',
-        success: function (res) {
+        success: function(res) {
           console.log(res);
           if (res.data.resCode != '0000') {
             _this.setData({
@@ -1058,11 +1063,11 @@ Page({
             }
             var now = new Date().getTime();
             var activeState;
-            var isState = function (now_) {
-              if (activeStart > now_) activeState = 0;  //抽奖未开始
-              if (activeStart <= now_ && now_ < drawStart) activeState = 1;   // 距离抽奖
+            var isState = function(now_) {
+              if (activeStart > now_) activeState = 0; //抽奖未开始
+              if (activeStart <= now_ && now_ < drawStart) activeState = 1; // 距离抽奖
               if (drawStart <= now_ && now_ < drawEnd) activeState = 2; // 开始抽奖  
-              if (now_ >= drawEnd && now_ < activeEnd) activeState = 3;  //抽奖结束到活动结束 至少保留24小时 
+              if (now_ >= drawEnd && now_ < activeEnd) activeState = 3; //抽奖结束到活动结束 至少保留24小时 
               if (now_ >= activeEnd) activeState = 4;
               var countDown = ['', '', '', ''];
               if (activeState == 2) {
@@ -1092,7 +1097,7 @@ Page({
             })
           }
         },
-        fail: function (res) {
+        fail: function(res) {
           console.log(res);
           _this.setData({
             turntableStart: '加载失败',
@@ -1116,8 +1121,8 @@ Page({
     }
     console.log(event);
     wx.navigateTo({
-      url: '/pages/goodsDetails/goodsDetails?id=' + event.currentTarget.dataset.id + '&activityId='
-        + event.currentTarget.dataset.activityid + '&left=' + event.currentTarget.dataset.left
+      url: '/pages/goodsDetails/goodsDetails?id=' + event.currentTarget.dataset.id + '&activityId=' +
+        event.currentTarget.dataset.activityid + '&left=' + event.currentTarget.dataset.left
     })
   },
   //热卖单品列表
@@ -1134,7 +1139,11 @@ Page({
     }
     util.RequestGet(reqObj, null, (res, message) => {
       if (message) {
-        wx.showToast({ title: res.resDesc, icon: 'none', duration: 1500 });
+        wx.showToast({
+          title: res.resDesc,
+          icon: 'none',
+          duration: 1500
+        });
       }
       // if (res.resCode == '0000') {
       //   console.log(res.resultList);
@@ -1183,35 +1192,35 @@ Page({
   },
   //..help
   //判断用户是否参与过活动
-  userHavePlay(){
+  userHavePlay() {
     let that = this
     let upUserId = app.globalData.upUserId
     let isFromDetail1 = app.globalData.isFromDetail1
-    console.log('isfrom',isFromDetail1);
+    console.log('isfrom', isFromDetail1);
     let reqObj = {
       url: '/api/user/userRedActivityIsNo'
     }
-    if (upUserId != "" && upUserId != null && upUserId != "undefined"){
+    if (upUserId != "" && upUserId != null && upUserId != "undefined") {
       reqObj = {
         url: '/api/user/userRedActivityIsNo?upCustomerNo=' + upUserId
       }
     }
     util.RequestPost(reqObj, null, (res, message) => {
-      console.log("是否参加Play",res)
+      console.log("是否参加Play", res)
       if (res.resCode == '0000') {
         let that = this
-        if (res.data.userWhiteList==1){
+        if (res.data.userWhiteList == 1) {
           that.setData({
-            userWhiteList:false
+            userWhiteList: false
           })
-        }else{
+        } else {
           that.setData({
-            userWhiteList:true
+            userWhiteList: true
           })
         }
-        if(res.data.newUser==1){
+        if (res.data.newUser == 1) {
           that.setData({
-            newUser:true
+            newUser: true
           })
         }
         if (res.data.newUser == 0) {
@@ -1232,29 +1241,29 @@ Page({
         if (res.data.isHelp == 1) {
           that.setData({
             isHelp: true,
-            isHelpFirst:true
+            isHelpFirst: true
           })
         } else {
           that.setData({
             isHelp: false,
-            isHelpFirst:false
+            isHelpFirst: false
           })
         }
-        console.log("upUserId",this.data.upUserId)
+        console.log("upUserId", this.data.upUserId)
         that.setData({
           redUp: res.data.redUp
         })
         //历史上未参加的自拆新用户
-        if (res.data.newUser == 1 && res.data.isTake != 1 && res.data.isTotalDismantle != 1 && (that.data.upUserId == "" || that.data.upUserId == "undefined") && isFromDetail1==false){
+        if (res.data.newUser == 1 && res.data.isTake != 1 && res.data.isTotalDismantle != 1 && (that.data.upUserId == "" || that.data.upUserId == "undefined") && isFromDetail1 == false) {
           that.setData({
-            isHelpRed:false,
+            isHelpRed: false,
             helpRedShow: true,
-            redUp:res.data.redUp
-          },()=>{
-            console.log("isHelp自己拆1",that.data.isHelpRed)
+            redUp: res.data.redUp
+          }, () => {
+            console.log("isHelp自己拆1", that.data.isHelpRed)
           })
-          console.log("isHelp自己拆2",that.data.isHelpRed)
-          app.globalData.isFromDetail1=false
+          console.log("isHelp自己拆2", that.data.isHelpRed)
+          app.globalData.isFromDetail1 = false
         }
         //未参加的白名单老用户
         if (res.data.newUser == 0 && res.data.isTake != 1 && res.data.isTotalDismantle != 1 && (that.data.upUserId == "" || that.data.upUserId == "undefined") && isFromDetail1 == false && res.data.userWhiteList == 2) {
@@ -1266,16 +1275,16 @@ Page({
           app.globalData.isFromDetail1 = false
         }
         //未参加的帮拆新用户
-        if (res.data.newUser == 1 && that.data.upUserId != "" && that.data.upUserId != "undefined" && res.data.isTake != 1 && res.data.isHelp!=1 &&res.data.isDismantle == 0){
+        if (res.data.newUser == 1 && that.data.upUserId != "" && that.data.upUserId != "undefined" && res.data.isTake != 1 && res.data.isHelp != 1 && res.data.isDismantle == 0) {
           that.openHelpRed()
           that.setData({
-            isHelpRed:true,
+            isHelpRed: true,
             helpRedShow: true,
-            helpRedOnShow:true
-          },()=>{
-            console.log("isHelp帮拆1",that.data.isHelpRed)
+            helpRedOnShow: true
+          }, () => {
+            console.log("isHelp帮拆1", that.data.isHelpRed)
           })
-          console.log("isHelp帮拆2",that.data.isHelpRed)
+          console.log("isHelp帮拆2", that.data.isHelpRed)
         }
         //老活动帮拆过但没参加的新用户，参加新活动
         if (res.data.newUser == 1 && res.data.isTake != 1 && res.data.isTotalDismantle != 1 && that.data.upUserId != "" && that.data.upUserId != "undefined" && res.data.isHelp == 1) {
@@ -1305,7 +1314,7 @@ Page({
           that.setData({
             helpRedShow: true,
             redUp: res.data.redUp,
-            isDismantle:true
+            isDismantle: true
           })
         }
 
@@ -1342,7 +1351,7 @@ Page({
     }
     util.RequestPost(reqObj, null, (res, message) => {
       console.log("是否参加PlayOnly", res)
-     
+
       if (res.resCode == '0000') {
         let that = this
         if (res.data.userWhiteList == 1) {
@@ -1355,14 +1364,14 @@ Page({
           })
         }
         if (res.data.newUser == 1) {
-          console.log(typeof (res.data.newUser))
+          console.log(typeof(res.data.newUser))
           that.setData({
             newUser: true
           })
           console.log(this.data.newUser)
-        } 
+        }
         if (res.data.newUser == 0) {
-          console.log(typeof (res.data.newUser))
+          console.log(typeof(res.data.newUser))
           that.setData({
             newUser: false
           })
@@ -1394,8 +1403,7 @@ Page({
             isHelpRed: false,
             // helpRedShow: true,
             // redUp: res.data.redUp
-          }, () => {
-          })
+          }, () => {})
         }
         if (res.data.newUser == 1 && that.data.upUserId != "" && res.data.isTake != 1 && res.data.isDismantle == 0) {
           that.setData({
@@ -1424,12 +1432,12 @@ Page({
     })
   },
   //帮拆红包关闭
-  helpRedClose(){
+  helpRedClose() {
     // let { levelUpDialog } = this.data
     this.setData({
-      helpRedShow:false,
-      helpRedOnShow:false
-    },()=>{
+      helpRedShow: false,
+      helpRedOnShow: false
+    }, () => {
       // if (levelUpDialog){
       //   Dialog.alert({
       //     title: "恭喜您，",
@@ -1442,69 +1450,69 @@ Page({
     })
   },
   //打开帮拆红包
-  openHelpRed(){
+  openHelpRed() {
     //发送请求
     let that = this
     let reqObj = {
       url: '/api/activity/userRedActivity'
     }
-    console.log("邀请人Id",this.data.upUserId)
-    if (this.data.upUserId != "" && this.data.upUserId != "undefined" && !this.data.isHelp && this.data.newUser){
+    console.log("邀请人Id", this.data.upUserId)
+    if (this.data.upUserId != "" && this.data.upUserId != "undefined" && !this.data.isHelp && this.data.newUser) {
       reqObj = {
         url: '/api/activity/userRedActivity?upUserId=' + this.data.upUserId,
       }
     }
     util.RequestPost(reqObj, null, (res, message) => {
-      console.log(res,message)
+      console.log(res, message)
       if (message) {
         wx.showToast({
           title: res.resDesc,
           icon: 'none',
           duration: 2000,
-          success:function(){
-            setTimeout(function(){
+          success: function() {
+            setTimeout(function() {
               that.setData({
                 helpRedShow: false,
                 helpRedOnShow: false
               })
               that.userHavePlayOnly()
-            },2000)
+            }, 2000)
           }
         })
       }
       if (res.resCode == '0000') {
         //成功且获取到金额数据
-        if(res.data.isHelp==0){
-          if(res.data.isPrize==1){
+        if (res.data.isHelp == 0) {
+          if (res.data.isPrize == 1) {
             this.setData({
-              helpRedShow:false,
-              helpRedOnShow:false
+              helpRedShow: false,
+              helpRedOnShow: false
             })
             wx.navigateTo({
               url: '/pages/helpRed/helpRed'
             })
           }
-          console.log("接口返回是否帮拆0",res.data.isHelp)
+          console.log("接口返回是否帮拆0", res.data.isHelp)
           this.setData({
-            isHelpRed:false,
+            isHelpRed: false,
             inviteeValue: Number(res.data.inviteeValue).toFixed(2),
             inviterValue: Number(res.data.inviterValue).toFixed(2),
             redUp: res.data.redUp,
-            isTake:true
+            isTake: true
           })
-        }else{
-          console.log("接口返回是否帮拆1",res.data.isHelp)
+        } else {
+          console.log("接口返回是否帮拆1", res.data.isHelp)
           this.setData({
-            isHelpRed:true,
+            isHelpRed: true,
             helpRedOnShow: true,
             inviteeValue: Number(res.data.inviteeValue).toFixed(2),
             inviterValue: Number(res.data.inviterValue).toFixed(2),
             redUp: res.data.redUp,
             strDouble: res.data.strDouble,
-            isTake:true
+            isTake: true
           })
         }
-          // this.userHavePlayOnly()
+        // this.userHavePlayOnly()
         that.setData({
           helpRedOnShow: true
         })
@@ -1513,14 +1521,18 @@ Page({
 
   },
   //跳转红包活动
-  goRedPlay(){
-    let { newUser, isTake, userWhiteList} = this.data
+  goRedPlay() {
+    let {
+      newUser,
+      isTake,
+      userWhiteList
+    } = this.data
     let that = this
-    if ((newUser && !isTake) || (userWhiteList && !isTake)){
+    if ((newUser && !isTake) || (userWhiteList && !isTake)) {
       that.setData({
-        helpRedShow:true
+        helpRedShow: true
       })
-    }else{
+    } else {
       wx.navigateTo({
         url: '/pages/helpRed/helpRed',
       })
@@ -1542,10 +1554,10 @@ Page({
     // });
   },
   // 展示首页
-  goHome(){
+  goHome() {
     this.setData({
-      helpRedShow:false,
-      helpRedOnShow:false
+      helpRedShow: false,
+      helpRedOnShow: false
     })
   },
   //得到banner
@@ -1555,30 +1567,44 @@ Page({
     }
     util.RequestGet(reqObj, null, (res, message) => {
       if (message) {
-        wx.showToast({ title: res.resDesc, icon: 'none', duration: 1500 });
+        wx.showToast({
+          title: res.resDesc,
+          icon: 'none',
+          duration: 1500
+        });
       }
       if (res.resCode == '0000') {
         //保存到本地存储
         wx.setStorageSync('bannerUrl', res.resultList ? res.resultList[0].bannerUrl : '');
 
-        let groupDetailsUrl = '', groupDetailsImgUrl = '', groupHomeImgUrl='';
-        let swiperData=[];//首页banner图片
+        let groupDetailsUrl = '',
+          groupDetailsImgUrl = '',
+          groupHomeImgUrl = '',
+          baokuanimg="",
+          baokuanurl='';
+        let swiperData = []; //首页banner图片
         let rookieExclusiveBanner = ""
         let specialList = []
-        for (let ii of res.resultList){
-          if (ii.positionId == 6 || ii.positionId == 7 || ii.positionId == 8 || ii.positionId == 9 || ii.positionId == 10){
+        for (let ii of res.resultList) {
+          if (ii.positionId == 6 || ii.positionId == 7 || ii.positionId == 8 || ii.positionId == 9 || ii.positionId == 10 || ii.positionId == 12 || ii.positionId == 13 || ii.positionId == 14 || ii.positionId == 15 || ii.positionId == 11) {
             specialList.push(ii)
           }
-          specialList.sort(function(a,b){
-            return a.positionId-b.positionId
+          specialList.sort(function(a, b) {
+            return a.positionId - b.positionId
           })
+
           if (ii.positionId == 1) {
             swiperData.push(ii)
           }
           //拼团详情
-          if (ii.positionId==2){
+          if (ii.positionId == 2) {
             groupDetailsUrl = ii.redirectUrl;
             groupDetailsImgUrl = ii.bannerUrl
+          }
+          ///爆款专区
+          if (ii.positionId == 20){
+            baokuanimg = ii.bannerUrl
+            baokuanurl = ii.redirectUrl
           }
           //拼团列表
           if (ii.positionId == 3) {
@@ -1597,7 +1623,9 @@ Page({
           groupDetailsImgUrl: groupDetailsImgUrl,
           groupHomeImgUrl: groupHomeImgUrl,
           rookieExclusiveBanner,
-          specialList
+          specialList,
+          baokuanimg,
+          baokuanurl
         })
 
         wx.setStorage({
@@ -1615,7 +1643,7 @@ Page({
     var reqObj = {
       iPage: iPage,
       pageSize: pageSize,
-      selectTypes: ['10001', '10002', '10003', '10004', '10005'].join(',')    //设置一二三四五等奖
+      selectTypes: ['10001', '10002', '10003', '10004', '10005'].join(',') //设置一二三四五等奖
     }
     if (token) {
       let header = {
@@ -1627,7 +1655,7 @@ Page({
         data: reqObj,
         method: 'GET',
         dataType: 'json',
-        success: function (res) {
+        success: function(res) {
           console.log(res);
           if (res && res.data) {
             var resultCount = res.data.resultCount;
@@ -1662,7 +1690,7 @@ Page({
 
           }
         },
-        fail: function (res) {
+        fail: function(res) {
           console.log(res);
         }
       });
@@ -1688,7 +1716,11 @@ Page({
     }
     util.RequestGet(reqObj, null, (res, message) => {
       if (message) {
-        wx.showToast({ title: res.resDesc, icon: 'none', duration: 1500 });
+        wx.showToast({
+          title: res.resDesc,
+          icon: 'none',
+          duration: 1500
+        });
       }
       if (res.resCode == '0000') {
         for (let i of res.resultList) {
@@ -1696,19 +1728,19 @@ Page({
           i.retailPrice = Number(i.retailPrice).toFixed(2);
         }
         console.log(res);
-        if(res.data!=null){
+        if (res.data != null) {
           this.setData({
             hotShopList: res.resultList,
             navNames: res.data.labelList,
-            isnav:res.data==null?false:true
+            isnav: res.data == null ? false : true
           })
-        }else{
+        } else {
           this.setData({
             hotShopList: res.resultList,
 
             isnav: res.data == null ? false : true
           })
-         
+
         }
 
 
@@ -1735,11 +1767,11 @@ Page({
   navClick(event) {
     let type = event.currentTarget.dataset.types == "left" ? true : false;
     //..
-    this.setData({ 
+    this.setData({
       navLeft: type,
-      _iPage:1,
-      iPage:1,
-      _iPageMore:true
+      _iPage: 1,
+      iPage: 1,
+      _iPageMore: true
     }, () => {
       // this.getHotShopList();
       this.hotList();
@@ -1759,8 +1791,8 @@ Page({
       return false;
     }
     wx.navigateTo({
-      url: '/pages/goodsDetails/goodsDetails?id=' + event.currentTarget.dataset.id + '&activityId='
-        + event.currentTarget.dataset.activityid + '&left=' + event.currentTarget.dataset.left
+      url: '/pages/goodsDetails/goodsDetails?id=' + event.currentTarget.dataset.id + '&activityId=' +
+        event.currentTarget.dataset.activityid + '&left=' + event.currentTarget.dataset.left
     })
   },
   bannerJump(event) {
@@ -1772,7 +1804,7 @@ Page({
       url: url
     })
   },
-  isOpenRed: function () {
+  isOpenRed: function() {
     this.setData({
       isShade: true,
       isOpen: true,
@@ -1786,7 +1818,7 @@ Page({
       isOpened: true
     })
   },
-  closeRed: function () {
+  closeRed: function() {
     this.setData({
       isShade: false,
       isOpen: false,
@@ -1801,7 +1833,7 @@ Page({
     });
     this.closeRed();
   },
-  onShareAppMessage: function (res) {
+  onShareAppMessage: function(res) {
     this.setData({
       GetImage: false
     })
@@ -1827,14 +1859,14 @@ Page({
       path: '/pages/home/home?userId=' + this.data.userId
     }
   },
-  stopPageScroll(){
+  stopPageScroll() {
     return
   },
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     //..
     this.setData({
-      _iPage:1,
-      _iPageMore:true
+      _iPage: 1,
+      _iPageMore: true
     })
     this.getBannerList();
     this.getHotShopList('');
@@ -1855,20 +1887,24 @@ Page({
       url: '/pages/rookieExclusive/rookieExclusive'
     })
   },
-  levelUpDialog(){
+  levelUpDialog() {
     let reqObj = {
       url: '/api/my/oldUpLevelInfo'
     }
     util.RequestGet(reqObj, null, (res, message) => {
       let that = this
       if (message) {
-        wx.showToast({ title: res.resDesc, icon: 'none', duration: 1500 });
+        wx.showToast({
+          title: res.resDesc,
+          icon: 'none',
+          duration: 1500
+        });
       }
       if (res.resCode == '0000') {
         //  && !helpRedShow如果需要按顺序弹出加上该条件
-        if (res.data.isNotice == "2"){
+        if (res.data.isNotice == "2") {
           that.setData({
-            levelUpDialog:true
+            levelUpDialog: true
           })
           Dialog.alert({
             title: "恭喜您，",
@@ -1877,7 +1913,7 @@ Page({
           }).then(() => {
             // on close
           });
-        }else{
+        } else {
           that.setData({
             levelUpDialog: false
           })

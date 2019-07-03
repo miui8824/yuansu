@@ -1069,7 +1069,6 @@ swiper-item {
   height: 100%;
 }
 .pintuan_content{
-  border:1px solid red;
   background: #fff;
   padding: 45rpx 30rpx 28rpx 30rpx;
   
@@ -1078,13 +1077,11 @@ swiper-item {
   font-weight: bold;
 }
 .pintuan_content .flex{
-  border:1px solid red;
   margin-top:50rpx;
   display: flex;
   justify-content: space-between;
 }
 .pintuan_content .flex .baokuang{
-  border:1px solid blue;
   width: 451rpx;
   height: 384rpx;
 }
@@ -1093,7 +1090,6 @@ swiper-item {
   height: 100%;
 }
 .pintuan_content .flex .right{
-  border:1px solid red;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1101,7 +1097,6 @@ swiper-item {
 .pintuan_content .flex .right view{
   width: 217rpx;
   height: 180rpx;
-  border:1px solid red;
 }
 .pintuan_content .flex .right view image{
   width: 100%;
@@ -1199,18 +1194,22 @@ button {
 /* 画图的css */
 
 .goodsSpecial {
-  height: 138rpx;
   background-color: #fff;
   padding: 30rpx;
   display: flex;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  justify-content:space-between;
 }
 
 .goodsSpecial .itemBox {
   height: 100%;
-  width: 100rpx;
+  width:20%;
   background: #fff;
-  margin-right: 48rpx;
+  margin:37rpx 0;
+  text-align: center;
+  color:#626264;
+  /* border:1px solid red; */
+  /* border:1px solid red; */
 }
 
 .goodsSpecial .itemBox:nth-last-child(1) {
@@ -1220,6 +1219,7 @@ button {
 .goodsSpecial .itemBox .topImg {
   width: 100rpx;
   height: 100rpx;
+  margin:0 auto;
   border-radius: 50%;
   background: #fff;
 }

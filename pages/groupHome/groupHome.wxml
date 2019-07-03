@@ -1,26 +1,29 @@
 <!--pages/groupHome/groupHome.wxml-->
 <view class='group_box'>
-  <navigation id='Navigation' show-icon='{{showIcon}}' title="拼团">
+  <navigation id='Navigation' show-icon='{{showIcon}}' title="拼团专区">
   </navigation>
-  <view class='group_tap'>
+  <!-- <view class='group_tap'>
     <view class="tap_item {{navType==2?'tap_item_on':''}}" data-types="2" bindtap='navClick'>正在疯抢</view>
     <view class="tap_item {{navType==1?'tap_item_on':''}}" data-types="1" bindtap='navClick'>即将开抢</view>
-  </view>
+  </view> -->
   <scroll-view scroll-y="true" bindscrolltolower="getGroupList" scroll-with-animation="true" class='group_home_scroll' lazy-load wx:if="{{groupList.length>0}}">
-    <view class='clear clear108'></view>
+    <view class='clear clear108'>
+      <image src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190703205203342.png'></image>
+    </view>
     <view class='group_main'>
       <view class='group_main_item' wx:for="{{groupList}}" wx:key="{{index}}" data-goodsId='{{item.id}}' data-activityId='{{item.activityId}}' bindtap='goGroup'>
         <image src='{{item.goodImg}}'></image>
         <view class='good_text_box'>
           <view class='text_title'>{{item.title}}</view>
-          <view class='text_icon_box mar_t_10'>
-            <view class='text_icon' wx:if="{{item.groupType==2}}">{{item.categoryName}}</view>
-            <view class='text_icon'>{{item.groupPeopleLimit}}人团</view>
-          </view>
+          <view class='small_title'>{{item.subTitle}}</view>
           <view class='text_button_box'>
             <text>¥{{item.price}}</text>
-            <van-button class='buy_now' wx:if="{{navType==2}}" round size='small'>马上抢</van-button>
-            <van-button class='buy_now' wx:if="{{navType==1}}" round size='small'>即将开抢</van-button>
+            <view class='text_icon_box mar_t_10'>
+              <view class='text_icon' wx:if="{{item.groupType==2}}">{{item.categoryName}}</view>
+              <view class='text_icon'>{{item.groupPeopleLimit}}人团</view>
+              <van-button class='buy_now' wx:if="{{navType==2}}" round size='small'>马上抢</van-button>
+              <van-button class='buy_now' wx:if="{{navType==1}}" round size='small'>即将开抢</van-button>
+            </view>
           </view>
         </view>
       </view>

@@ -76,15 +76,7 @@
         <van-notice-bar custom-class="van-notice" color='#DD232F' backgroundColor='none' text="{{prizeListStr}}" />
       </view>
     </view>
-    <!-- 1.3商品专场 -->
-    <view class='goodsSpecial' wx:if="{{specialList.length>0}}">
-      <view class='itemBox' wx:for="{{specialList}}" wx:key="{{item.id}}" data-redirecturl="{{item.redirectUrl}}" bindtap="bannerJump">
-        <view class='topImg'>
-          <image src='{{item.bannerUrl}}' />
-        </view>
-        <view class='bottomTitle'>{{item.bannerDesc}}</view>
-      </view>
-    </view>
+
     <!-- 活动导航 新人有礼 -->
     <view class='nav_new_play font_36' bindtap='goRookieSpecial' wx:if="{{rookieExclusiveBanner}}">
       <image src='{{rookieExclusiveBanner}}' />
@@ -94,7 +86,7 @@
       <text class='title'> 精选优质专区 Select high quality</text>
       <view class='flex'>
         <view class="baokuang">
-          <image src='http://yscb.oss-cn-shanghai.aliyuncs.com/pro/static/img/20190702214249706.png'></image>
+          <image src='{{baokuanimg}}'></image>
         </view>
         <view class='right'>
           <view bindtap='goGroupPage1'>
@@ -105,6 +97,15 @@
             <image src='{{groupHomeImgUrl}}' />
           </view>
         </view>
+      </view>
+    </view>
+    <!-- 1.3商品专场 -->
+    <view class='goodsSpecial' wx:if="{{specialList.length>0}}">
+      <view class='itemBox' wx:for="{{specialList}}" wx:key="{{item.id}}" data-redirecturl="{{item.redirectUrl}}" bindtap="bannerJump">
+        <view class='topImg'>
+          <image src='{{item.bannerUrl}}' />
+        </view>
+        <view class='bottomTitle'>{{item.bannerDesc}}</view>
       </view>
     </view>
     <!-- 拼团专区 -->
