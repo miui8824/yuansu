@@ -3,30 +3,26 @@
 <view bindtap='share_hide' wx:if="{{GetImage}}" style='position:absolute;width:100%;height:100%;background:black;opacity:0.3;z-index:1000;' catchtouchmove='{{true}}'>
 </view>
 <view bindtap='' catchtouchmove='{{true}}' wx:if="{{GetImage}}" class="container" style='z-index:1000;position:absolute;margin-top:105px;'>
-<!-- <view class='background'></view> -->
+  <!-- <view class='background'></view> -->
   <image bindtap='share_hide' catchtouchmove='{{true}}' src="{{shareImage}}" class="share-image"></image>
-  <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage"/>
+  <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage" />
 
   <!-- <button >绘制</button>
   <button>保存到本地</button>  bind:tap="eventDraw"-->
-  <button catchtouchmove='{{true}}'  open-type='share'  class="wechat">
+  <button catchtouchmove='{{true}}' open-type='share' class="wechat">
     <image class="wechatimg" src='https://file.maiyatown.com/images/v1.2/explosion_icon_wechat.png'></image>
-  微信好友</button>
-  <button catchtouchmove='{{true}}'  bind:tap="eventSave"  class="wechat1">
-   <image class="wechatimg"  src='https://file.maiyatown.com/images/v1.2/explosion_icon_Img.png'></image>
-  保存图片</button>
+    微信好友</button>
+  <button catchtouchmove='{{true}}' bind:tap="eventSave" class="wechat1">
+    <image class="wechatimg" src='https://file.maiyatown.com/images/v1.2/explosion_icon_Img.png'></image>
+    保存图片</button>
 </view>
 
 <van-dialog id="van-dialog" />
-<import src="/wxParse/wxParse.wxml"/>
+<import src="/wxParse/wxParse.wxml" />
 <view class='group_details'>
-  <navigation
-  id='Navigation'
-  show-icon='{{showIcon}}'
-  title="商品详情"
-  >
+  <navigation id='Navigation' show-icon='{{showIcon}}' title="商品详情">
   </navigation>
-  <scroll-view scroll-y="true" scroll-top="{{scrollTop}}" bindscroll="scroll" scroll-into-view="{{toView}}"  scroll-with-animation="true" class='group_details_scroll' lazy-load>
+  <scroll-view scroll-y="true" scroll-top="{{scrollTop}}" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-with-animation="true" class='group_details_scroll' lazy-load>
     <view class='group_tap'>
       <view class="tap_item {{tapActive==1?'tap_item_on':''}}" data-types="1" bindtap='navClick' wx:if="{{showVideoNav}}">视频</view>
       <view class="tap_item {{tapActive==2?'tap_item_on':''}}" data-types="2" bindtap='navClick'>商品</view>
@@ -39,52 +35,41 @@
           <video id="my_video" class='video_main' src="{{gdInfo.videoList[0]}}"></video>
         </view>
         <view class='video_logo' wx:else bindtap='videoClick'>
-          <image class='videp_logo_back' src='{{gdInfo.mainImgList[0]}}'/>
-          <image class='videp_logo_icon' 
-          src='https://file.maiyatown.com/images/goodsDetails/explosion_image_video.png'/>
+          <image class='videp_logo_back' src='{{gdInfo.mainImgList[0]}}' />
+          <image class='videp_logo_icon' src='https://file.maiyatown.com/images/goodsDetails/explosion_image_video.png' />
         </view>
       </view>
       <!-- 商品轮播图 -->
-      <swiper wx:else class='swiper_main' circular="true"  bindchange="swiperChange"
-      autoplay="true" interval="3000" duration="1000">
+      <swiper wx:else class='swiper_main' circular="true" bindchange="swiperChange" autoplay="true" interval="3000" duration="1000">
         <swiper-item wx:for="{{gdInfo.mainImgList}}" wx:key="{{index}}">
-          <image src="{{item}}" class="slide_image"/>
+          <image src="{{item}}" class="slide_image" />
         </swiper-item>
       </swiper>
       <!-- 计数器 -->
       <view class='swiper_tip' hidden="{{tapActive==1}}">{{swiperActive+1}}/{{gdInfo.mainImgList.length}}</view>
     </view>
     <view class='play_time_box'>
-      <image src='https://file.maiyatown.com/images/v1.2/fight_group_image_label@2x.png'></image>
-      <view class='play_time_main'>
-        <view>
-          <view class='good_money'>
-            <text class='font_36 color_fff mar_r_20 font_bold'>¥{{gdInfo.price}}</text>
-            <text class='font_28 color_fff mar_r_20'>¥{{gdInfo.retailPrice}}</text>
-            <text class='all_text'>一起拼</text>
-          </view>
-          <view class='good_text' wx:if="{{gdActivityInfo.groupType==2}}">邀请新人参团才可享受特惠价格～</view>
-          <view class='good_text' wx:if="{{gdActivityInfo.groupType==1&&gdActivityInfo.leaderPreferAmt>0}}">
-            发起拼团，团长优惠 {{gdActivityInfo.leaderPreferAmt}} 元； 
-          </view>
-        </view>
-        <view class='play_time' wx:if='{{gdActivityInfo.activityStatus==1}}'>
-          <view class='font_28 color_333 font_bold'>距离结束</view>
-          <view class='time_box'>
-            <text class='time_value'>{{hhhh}}</text>
-            <text class='time_dian'>:</text>
-            <text class='time_value'>{{mmmm}}</text>
-            <text class='time_dian'>:</text>
-            <text class='time_value'>{{ssss}}</text>
-          </view>
-        </view>
-        <view class='play_time' wx:if='{{gdActivityInfo.activityStatus==2}}'>
-          <view class='font_32 color_333'>{{riqi}}{{shijian}}{{fenzhong}}</view>
-          <view class='font_32 color_333'>开始拼团</view>
+      <view class="scd">正在爆抢</view>
+      <view class='play_time' wx:if='{{gdActivityInfo.activityStatus==1}}'>
+        <view class='stop'>距离结束</view>
+        <view class='time_box'>
+          <text class='time_value'>{{hhhh}}</text>
+          <text class='time_dian'>:</text>
+          <text class='time_value'>{{mmmm}}</text>
+          <text class='time_dian'>:</text>
+          <text class='time_value'>{{ssss}}</text>
         </view>
       </view>
     </view>
     <view class='goods_text'>
+      <view class='price'>
+        <view class='price_box'>
+          <view>¥{{gdInfo.price}}</view>
+          <view>¥{{gdInfo.retailPrice}}</view>
+        </view>
+        <view class='show'>已售47件</view>
+      </view>
+
       <view class='goods_title'>{{gdInfo.title}}</view>
       <view class='goods_title1'>{{gdInfo.subTitle}}</view>
     </view>
@@ -102,8 +87,11 @@
           <image src='{{item.headImageUrl}}'></image>
           <text class='font_28 color_333 plays_name mar_l_30'>{{item.nickName}}</text>
           <view style="margin-left:80rpx;">
-            <view class='color_333 font_26'>还差<text class='color_red'>{{item.remainderPart}}人</text>拼成</view>
-            <view class='color_666 font_26 mar_t_10' style='display:inline-block;width:180rpx;'>剩余 <text class='time_tip'>{{item.remainderTimeData}}</text></view>
+            <view class='color_333 font_26'>还差
+              <text class='color_red'>{{item.remainderPart}}人</text>拼成</view>
+            <view class='color_666 font_26 mar_t_10' style='display:inline-block;width:180rpx;'>剩余
+              <text class='time_tip'>{{item.remainderTimeData}}</text>
+            </view>
           </view>
           <van-button class='go_group mar_l_30' round size='small' data-groupId='{{item.groupId}}' bindtap='goToSpell'>去参团</van-button>
         </view>
@@ -112,7 +100,7 @@
     <view class='clear clear20'></view>
     <view class='goods_image_box back_fff'>
       <view id="wxparse" class='image_title'>图文详情</view>
-      <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
     </view>
     <view class='clear clear70'></view>
     <view class='clear clear70'></view>
@@ -127,29 +115,24 @@
   <view class='function_button_boxs'>
     <!-- wx:if="{{gdActivityInfo.activityStatus==1}}" -->
     <view class='function_button_box'>
-      <view class='botton_yellow' bindtap='spellClick1'>
-        <view>
-          <view class='font_36 color_333 font_bold'>¥{{gdInfo.price}}</view>
-          <view class='font_22 color_666 font_bold'>¥{{gdInfo.retailPrice}}</view>
+      <view class='lay'>
+        <view class='button_box button_box1'>
+          <view class='button_icon'>
+            <image src='https://file.maiyatown.com/images/goodsDetails/explosion_icon_customer_service.svg'></image>
+          </view>
+          <view>客服</view>
+          <button class='kefu' bindtap='mdClick' open-type='contact'></button>
         </view>
-        <view class='buy_middle'></view>
-        <view class='buy_go'>发起拼团</view>
-      </view>
-      <view class='button_box button_box1'>
-        <view class='button_icon'>
-          <image src='https://file.maiyatown.com/images/goodsDetails/explosion_icon_customer_service.svg'></image>
+        <!--  bindtap='eventDraw' -->
+        <view class='button_box button_box2'>
+          <view class='button_icon'>
+            <image src='https://file.maiyatown.com/images/goodsDetails/explosion_icon_share.svg'></image>
+          </view>
+          <view>分享</view>
+          <button bind:tap="eventDraw" class='button_share'></button>
         </view>
-        <view>客服</view>
-        <button class='kefu' bindtap='mdClick' open-type='contact'></button>
       </view>
-      <!--  bindtap='eventDraw' -->
-      <view class='button_box button_box2' >
-        <view class='button_icon'>
-          <image src='https://file.maiyatown.com/images/goodsDetails/explosion_icon_share.svg'></image>
-        </view>
-        <view>分享</view>
-        <button bind:tap="eventDraw" class='button_share'></button>
-      </view>
+      <view class='buy_go'  catchtap='spellClick1'>发起拼团</view>
     </view>
     <!-- wx:if="{{gdActivityInfo.activityStatus==2}}" -->
     <view wx:if="{{gdActivityInfo.activityStatus==2&&openTips==2}}" class='function_button_image' bindtap='openTipsFun'>
@@ -160,7 +143,7 @@
     </view>
   </view>
 
-  <van-action-sheet class='action_sheet_me' show="{{ actionSheetShow }}" z-index="1000" catchtouchmove="ture" >
+  <van-action-sheet class='action_sheet_me' show="{{ actionSheetShow }}" z-index="1000" catchtouchmove="ture">
     <view class='action_sheet_box'>
       <view class='shop_info mar_b_30'>
         <view class='shop_img'>
@@ -178,16 +161,13 @@
         </view>
       </view>
       <scroll-view scroll-y="true" scroll-with-animation="true" class='shop_info_size'>
-        <view wx:for="{{specList}}" wx:key="index"  wx:for-item="item" wx:for-index="index">
+        <view wx:for="{{specList}}" wx:key="index" wx:for-item="item" wx:for-index="index">
           <view class='font_28 color_666 mar_b_20 shop_info_name'>{{item.name}}</view>
-          <view >
+          <view>
             <!--{{citem.notClick?"button_off":""}}  {{citem.isActiveC?"button_on":""}} -->
-            <van-button class='shop_color_type {{citem.notClick?"button_off":""}}  {{citem.isActiveC?"button_on":""}}' 
-            wx:for="{{item.value}}" wx:for-index="cindex" wx:for-item='citem' wx:key="cindex" 
-            data-index='{{index}}' data-cindex='{{cindex}}' data-cid='{{citem.id}}' data-isactivec='{{citem.isActiveC}}'
-            bind:tap='tabInfoChange' data-citemnoclick='{{citem.notClick}}'
-            >
-            {{citem.cname}}
+            <van-button class='shop_color_type {{citem.notClick?"button_off":""}}  {{citem.isActiveC?"button_on":""}}' wx:for="{{item.value}}" wx:for-index="cindex" wx:for-item='citem' wx:key="cindex" data-index='{{index}}' data-cindex='{{cindex}}' data-cid='{{citem.id}}'
+              data-isactivec='{{citem.isActiveC}}' bind:tap='tabInfoChange' data-citemnoclick='{{citem.notClick}}'>
+              {{citem.cname}}
             </van-button>
           </view>
         </view>
@@ -197,7 +177,7 @@
           <van-stepper class='stepper_main' disabled="{{gdActivityInfo.groupType==2}}" value="{{ groupNumber }}" bind:change="onChange" disable-input/>
         </view>
       </scroll-view>
-      
+
       <view class='linetop'></view>
       <view class='success_box'>
         <van-button class='success_button' round size='small' bindtap='selectSizeSuccess'>确定</van-button>
@@ -210,39 +190,43 @@
     <view wx:if="{{GetImage}}" style='position:absolute;width:100%;height:100%;background:black;opacity:0.3;z-index:1;'>
     </view>
     <view wx:if="{{GetImage}}" class="container" style='z-index:100;position:absolute;margin-top:35%;'>
-    <!-- <view class='background'></view> -->
+      <!-- <view class='background'></view> -->
       <image src="{{shareImage}}" class="share-image"></image>
-      <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage"/>
+      <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage" />
 
       <!-- <button >绘制</button>
       <button>保存到本地</button>  bind:tap="eventDraw"-->
-      <button  open-type='share'  class="wechat">微信好友</button>
-      <button  bind:tap="eventSave"  class="wechat1">保存图片</button>
+      <button open-type='share' class="wechat">微信好友</button>
+      <button bind:tap="eventSave" class="wechat1">保存图片</button>
     </view>
-  </view>  
+  </view>
 </view>
 
 
 <!-- 帮开红包 -->
-  <view class='help_red_layer' wx:if="{{helpRedShow}}" catchtouchmove="{{true}}"></view>
-  <image class='help_red_guang' wx:if="{{helpRedOnShow}}" src='https://file.maiyatown.com/images/redEnvelopes/guang.png' catchtouchmove="{{true}}"></image>
-  <view class='help_red_box' wx:if="{{helpRedShow}}" catchtouchmove="{{true}}">
-    <image class='help_red_close' src='https://file.maiyatown.com/images/utils/icon_closed.png' bindtap='helpRedClose'></image>
-    <view wx:if="{{helpRedOnShow}}">
-      <image class='help_red_back' src='https://file.maiyatown.com/images/utils/red_envelope_on.png'></image>
-      <view class='help_red_main'>   
-        <view wx:if="{{isHelpRed}}" class='font_24 color_333 red_title'>您帮好友拆得</view>
-        <view wx:if="{{!isHelpRed}}" class='font_24 color_333 red_title'>恭喜获得现金红包！</view>
-        <view wx:if="{{!isHelpRed}}" class='red_money'>{{inviteeValue}}<text class='red_money_one'>元</text></view>
-        <view wx:if="{{isHelpRed}}" class='red_money'>{{inviterValue}}<text class='red_money_one'>元</text></view>
-        <view class='red_up'>最高{{redUp}}元</view>
-        <van-button wx:if="{{isHelpRed && !isEnd && !isDismantle && !redTotalOver}}" class='red_get' round size='small' hover-class="red_get_hover" bindtap='goRedPlay'>点击领取{{strDouble}}倍红包</van-button>
-        <van-button wx:if="{{isHelpRed && (isEnd || isDismantle || redTotalOver)}}" class='red_get' round size='small' hover-class="red_get_hover" bindtap='goHome'>去首页逛逛</van-button>
-        <van-button wx:if="{{!isHelpRed}}" class='red_get' round size='small' hover-class="red_get_hover" bindtap='goRedPlay'>领取红包</van-button>
+<view class='help_red_layer' wx:if="{{helpRedShow}}" catchtouchmove="{{true}}"></view>
+<image class='help_red_guang' wx:if="{{helpRedOnShow}}" src='https://file.maiyatown.com/images/redEnvelopes/guang.png' catchtouchmove="{{true}}"></image>
+<view class='help_red_box' wx:if="{{helpRedShow}}" catchtouchmove="{{true}}">
+  <image class='help_red_close' src='https://file.maiyatown.com/images/utils/icon_closed.png' bindtap='helpRedClose'></image>
+  <view wx:if="{{helpRedOnShow}}">
+    <image class='help_red_back' src='https://file.maiyatown.com/images/utils/red_envelope_on.png'></image>
+    <view class='help_red_main'>
+      <view wx:if="{{isHelpRed}}" class='font_24 color_333 red_title'>您帮好友拆得</view>
+      <view wx:if="{{!isHelpRed}}" class='font_24 color_333 red_title'>恭喜获得现金红包！</view>
+      <view wx:if="{{!isHelpRed}}" class='red_money'>{{inviteeValue}}
+        <text class='red_money_one'>元</text>
       </view>
-    </view>
-    <view class='help_red_front_box' wx:else bindtap='openHelpRed'>
-      <image class='help_red_back' src='http://file.shangyingds.com/images/v1.3.1/red_envelope_img.png' ></image>
+      <view wx:if="{{isHelpRed}}" class='red_money'>{{inviterValue}}
+        <text class='red_money_one'>元</text>
+      </view>
       <view class='red_up'>最高{{redUp}}元</view>
+      <van-button wx:if="{{isHelpRed && !isEnd && !isDismantle && !redTotalOver}}" class='red_get' round size='small' hover-class="red_get_hover" bindtap='goRedPlay'>点击领取{{strDouble}}倍红包</van-button>
+      <van-button wx:if="{{isHelpRed && (isEnd || isDismantle || redTotalOver)}}" class='red_get' round size='small' hover-class="red_get_hover" bindtap='goHome'>去首页逛逛</van-button>
+      <van-button wx:if="{{!isHelpRed}}" class='red_get' round size='small' hover-class="red_get_hover" bindtap='goRedPlay'>领取红包</van-button>
     </view>
   </view>
+  <view class='help_red_front_box' wx:else bindtap='openHelpRed'>
+    <image class='help_red_back' src='http://file.shangyingds.com/images/v1.3.1/red_envelope_img.png'></image>
+    <view class='red_up'>最高{{redUp}}元</view>
+  </view>
+</view>

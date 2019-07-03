@@ -18,11 +18,11 @@
           <view class='small_title'>{{item.subTitle}}</view>
           <view class='text_button_box'>
             <text>¥{{item.price}}</text>
-            <view class='text_icon_box mar_t_10'>
+            <view class='text_icon_box'>
               <view class='text_icon' wx:if="{{item.groupType==2}}">{{item.categoryName}}</view>
               <view class='text_icon'>{{item.groupPeopleLimit}}人团</view>
-              <van-button class='buy_now' wx:if="{{navType==2}}" round size='small'>马上抢</van-button>
-              <van-button class='buy_now' wx:if="{{navType==1}}" round size='small'>即将开抢</van-button>
+              <view class='buy_now' wx:if="{{navType==2}}" round size='small'>马上抢</view>
+              <view class='buy_now' wx:if="{{navType==1}}" round size='small'>即将开抢</view>
             </view>
           </view>
         </view>

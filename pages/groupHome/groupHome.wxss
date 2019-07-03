@@ -1,34 +1,39 @@
 /* pages/groupHome/groupHome.wxss */
 @import "/static/css/common.wxss";
-.container-all{
-width: 100%;
-height: 100%;
-}
-.bg-img{
-width: 100%;
-height: 100%;
-display: block;
+
+.container-all {
+  width: 100%;
+  height: 100%;
 }
 
-page{
+.bg-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+page {
   min-height: 100%;
   /* position: relative; */
   background: #f2f2f2;
 }
-::-webkit-scrollbar{
+
+::-webkit-scrollbar {
   width: 0;
   height: 0;
   color: transparent;
 }
+
 .group_box {
   background: #f2f2f2;
 }
+
 .group_box .group_home_scroll {
   position: fixed;
-  border:1px solid red;
   width: 100%;
   height: 100%;
 }
+
 .group_box .group_tap {
   position: fixed;
   display: flex;
@@ -38,14 +43,17 @@ page{
   background: #fff;
   z-index: 99;
 }
+
 .group_box .clear108.clear {
   height: 259rpx;
   background: #f2f2f2;
 }
-.group_box .clear108.clear image{
+
+.group_box .clear108.clear image {
   width: 100%;
   height: 259rpx;
 }
+
 .group_box .tap_item {
   height: 86rpx;
   font-size: 32rpx;
@@ -53,89 +61,95 @@ page{
   color: #999;
   font-weight: 600;
 }
+
 .group_box .tap_item_on {
   color: #333;
-  border-bottom: 6rpx solid #DD232F;
 }
+
 .group_box .group_main {
   background: #fff;
   border-radius: 20rpx;
   transform: translateY(-20rpx);
 }
+
 .group_box .group_main_item {
-  padding:40rpx 30rpx;
+  padding: 20rpx 30rpx 0rpx 30rpx;
   display: flex;
   justify-content: space-between;
-  height: 240rpx;
-  border:1px solid red;
   border-bottom: 1rpx solid #eee;
 }
+
 .group_box .group_main_item:last-child {
   border-bottom: none;
 }
+
 .group_box .group_main_item>image {
-  width: 240rpx;
-  height: 240rpx;
-  border-radius: 8rpx;
+  width: 205rpx;
+  height: 205rpx;
+  border-radius: 10rpx;
 }
+
 .group_box .group_main_item .good_text_box {
   width: 420rpx;
   height: 240rpx;
+  
 }
+
 .group_box .group_main .text_title {
   line-height: 40rpx;
   font-size: 25rpx;
-  overflow : hidden;
+  overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-.group_box .group_main .small_title{
+
+.group_box .group_main .small_title {
   font-size: 22rpx;
-  color:#999;
-  margin:24rpx 0;
+  color: #999;
+  margin: 24rpx 0;
 }
+
 .group_box .group_main .text_icon_box {
-  border:1px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-/* .group_box .group_main .text_icon {
-  margin-right: 30rpx;
-  padding: 0 8rpx;
-  display: inline-block;
-  height: 32rpx;
-  font-size: 22rpx;
-  line-height: 32rpx;
-  color: #ff262c;
-  font-weight: 600;
-  border: 1rpx solid #ff262c;
-  border-radius: 8rpx;
-} */
+
 .group_box .group_main .text_button_box {
   margin-top: 56rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* height: 60rpx; */
-  border:1px solid blue;
 }
+
 .group_box .group_main .text_button_box>text {
   font-size: 36rpx;
   color: #ff262c;
   font-weight: 600;
 }
-.group_box .group_main .buy_now>button {
-  width: 160rpx;
-  height: 60rpx;
-  line-height: 60rpx;
-  background: #DD232F;
-  font-weight: 600;
-  font-size: 28rpx;
-  color: #333;
+.group_box .group_main .text_icon{
+  border:1px solid #A0A0A0;
+  width: 115rpx;
+  height: 41rpx;
+  line-height:41rpx;
+  font-size: 20rpx;
+  text-align: center;
+  margin-right: 20rpx;
+  border-radius: 21rpx;
+  color:#5B5B5B;
 }
-
-
-
+.group_box .group_main .buy_now{
+  width: 115rpx;
+  height: 41rpx;
+  line-height: 41rpx;
+  background: linear-gradient(180deg, rgba(255, 62, 63, 1) 0%, rgba(225, 0, 64, 1) 100%);
+  border-radius: 21rpx;
+  font-size: 20rpx;
+  text-align: center;
+  color: #fff;
+}
 
 .group_box .group_footer {
   height: 80rpx;
@@ -146,6 +160,7 @@ page{
 }
 
 /* 没有数据 */
+
 .group_box .no_order_box {
   /* padding-top: 141rpx; */
   padding-top: 200rpx;
@@ -154,26 +169,28 @@ page{
   text-align: center;
   background: #f2f2f2;
 }
+
 .group_box .no_order_box .no_order_logo {
   margin-bottom: 48rpx;
   width: 360rpx;
   height: 204rpx;
 }
+
 .group_box .no_order_box .no_order_text {
   font-size: 32rpx;
   line-height: 32rpx;
-  color: #666666;
+  color: #666;
   text-align: center;
 }
+
 .group_box .no_order_box .no_order_button {
   width: 240rpx;
   height: 78rpx;
   line-height: 78rpx;
   border-radius: 39rpx;
-  background-color: #DD232F;
+  background-color: #dd232f;
   font-size: 32rpx;
   font-weight: 500;
   color: #fff;
   margin: 60rpx auto 0;
 }
-

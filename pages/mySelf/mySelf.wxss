@@ -21,7 +21,7 @@ page {
   padding: 30rpx 0rpx 10rpx 0rpx;
   height: 300rpx;
   color:#fff;
-  background: linear-gradient(0deg, rgba(223, 56, 82, 1) 0%, rgba(255, 96, 121, 1) 100%);
+ background:linear-gradient(135deg,rgba(255,62,63,1) 0%,rgba(225,0,64,1) 100%);
 }
 
 .my_self .self_info_box {
@@ -63,6 +63,7 @@ page {
   overflow: hidden;
   text-overflow: ellipsis;
   height: 54rpx;
+  color:#fff;
 }
 
 .my_self .user_info .user_type {
@@ -73,7 +74,7 @@ page {
   color: #333;
   background: #FFD101;
   text-align: center;
-  border-radius: 4rpx;
+  border-radius: 17rpx;
 }
 
 .my_self .self_top .self_bind {
@@ -113,6 +114,7 @@ page {
 .my_self .self_money_box {
   display: flex;
   align-items: center;
+  border:1px solid red;
 }
 
 .my_self .self_money_box>view {
@@ -127,7 +129,14 @@ page {
   border-right: 1rpx solid #333;
   opacity: 0.5;
 }
-
+.bgpadd{
+  border:1px solid red;
+  border-radius: 20rpx;
+  background: #F8F8F8;
+  transform: translateY(-20rpx);
+  padding:20rpx;
+  z-index: 1000;
+}
 .my_self .self_money_box .balance_number {
   height: 36rpx;
   font-size: 36rpx;
@@ -197,11 +206,14 @@ page {
 
 .my_self .my_order_box {
   background: #fff;
+  border:1px solid blue;
+  border-radius: 10rpx;
 }
 
 .my_order_box .my_order_title {
   padding: 0rpx 30rpx;
   display: flex;
+  font-weight: 500;
   height: 100rpx;
   justify-content: space-between;
   border-bottom: 1rpx solid #eee;
@@ -225,6 +237,7 @@ page {
   padding-bottom: 30rpx;  */
   padding: 30rpx 30rpx 30rpx 30rpx;
   display: flex;
+  font-weight: 500;
   justify-content: space-between;
 }
 
@@ -244,227 +257,23 @@ page {
   width: 54rpx;
   height: 60rpx;
 }
-
-.my_fans .fans_title {
-  padding: 30rpx 30rpx 50rpx 30rpx;
-}
-
-.my_fans .fans_title>image {
-  display: inline-block;
-  width: 26rpx;
-  height: 26rpx;
-  position: relative;
-  top: 6rpx;
-  left: 8rpx;
-}
-
-.my_fans .fans_number_box {
-  margin-bottom: 30rpx;
-  padding-left: 30rpx;
-  height: 68rpx;
+/* 菜单 */
+.tabmenu{
+  border-radius: 10rpx;
+  border:1px solid red;
+  background:#FFF;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
-
-.my_fans .fans_number_box .fans_number {
-  font-size: 68rpx;
-  height: 68rpx;
-  line-height: 68rpx;
-}
-
-.my_fans .fans_number_box .fans_data {
-  width: 450rpx;
-}
-
-.my_fans .fans_number_box .today, .my_fans .fans_number_box .yesterday {
-  display: inline-block;
-  width: 220rpx;
-  height: 68rpx;
-  text-align: center;
-}
-
-.my_fans .fans_number_box .today .color_333,
-.my_fans .fans_number_box .yesterday .color_333 {
+.tabmenu .tab{
+  width: 33.3333%;
+  /* border:1px solid blue; */
+  font-size: 25rpx;
   font-weight: 500;
-}
-
-.my_fans .fans_number_box .font_26.color_666 {
-  margin-bottom: 14rpx;
-}
-
-.my_fans .fans_number_box .fans_border {
-  display: inline-block;
-  width: 0rpx;
-  height: 68rpx;
-  border-right: 2rpx solid #f2f2f2;
-}
-
-.my_self .fans_invitation {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  height: 40rpx;
-}
-
-.my_self .fans_invitation>image {
-  width: 32rpx;
-  height: 32rpx;
-}
-
-.my_add_box .fans_invitation {
-  height: 40rpx;
-}
-
-.my_add_box .add_icon1 {
-  position: relative;
-  top: 12rpx;
-  width: 44rpx;
-  height: 44rpx;
-  line-height: 44rpx;
-}
-
-.my_add_box .add_icon2 {
-  position: relative;
-  top: 2rpx;
-  width: 44rpx;
-  height: 44rpx;
-  line-height: 44rpx;
-  display: inline-block;
-}
-
-.my_add_box .add_name {
-  margin-left: 20rpx;
-  padding-left: 0;
-  display: inline-block;
-  width: 300rpx;
-  height: 44rpx;
-  font-size: 32rpx;
-  line-height: 44rpx;
   background: #fff;
-  text-align: left;
 }
-
-.my_self .inviter_box .inviter_item {
-  padding: 15rpx 30rpx;
-  height: 80rpx;
-  display: flex;
-  align-items: center;
-  font-size: 28rpx;
-  color: #333;
-  border-bottom: 1rpx solid #f2f2f2;
+.tabmenu .tab image{
+  width: 53rpx;
+  height: 53rpx;
 }
-
-.my_self .inviter_box .inviter_item .mar_l_20 {
-  word-break: break-all; /*允许在单词内换行*/
-  text-overflow: -o-ellipsis-lastline; /*css3中webkit内核提供的一个方法类似ellipsis*/
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box; /*自适应盒子*/
-  -webkit-line-clamp: 1; /*此处为1行,如果是两行就改成2*/
-  -webkit-box-orient: vertical;
-  width: 400rpx;
-}
-
-.my_self .inviter_box .inviter_item:first-child {
-  border-top: 1rpx solid #f2f2f2;
-}
-
-.my_self .inviter_box .inviter_item>image {
-  height: 80rpx;
-  width: 80rpx;
-  border-radius: 40rpx;
-}
-
-.my_self .inviter_box .inviter_time {
-  flex-grow: 2;
-  text-align: right;
-  width: 180rpx;
-  font-size: 26rpx;
-  line-height: 26rpx;
-}
-
-.button_replace {
-  position: fixed;
-  bottom: 40rpx;
-  right: 30rpx;
-  width: 100rpx;
-  height: 80rpx;
-  background: transparent;
-  z-index: 99;
-}
-
-.order_one {
-  width: 30rpx;
-  height: 30rpx;
-  border-radius: 50%;
-  float: right;
-  border: 1px solid red;
-  position: absolute;
-  right: 17%;
-  background: red;
-  color: white;
-  line-height: 30rpx;
-  font-size: 18rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-}
-
-/* 画图的css */
-
-.share-image {
-  width: 660rpx;
-  height: 975rpx;
-  margin: 0 45rpx;
-  /* border: 1px solid black; */
-  z-index: 1;
-  /* position:absolute; */
-}
-
-.background {
-  width: 600rpx;
-  height: 888rpx;
-  background: #000;
-  opacity: 0.2;
-  position: absolute;
-  left: 78rpx;
-}
-
-button {
-  margin-top: 20rpx;
-}
-
-.wechat {
-  width: 305rpx;
-  height: 98rpx;
-  background: rgba(71, 186, 68, 1);
-  border-radius: 49px;
-  margin: 30rpx;
-  line-height: 98rpx;
-  text-align: center;
-  color: white;
-  display: inline-block;
-}
-
-.wechat1 {
-  width: 305rpx;
-  height: 98rpx;
-  background: #ff911b;
-  border-radius: 49px;
-  margin: 30rpx;
-  line-height: 98rpx;
-  text-align: center;
-  color: white;
-  display: inline-block;
-}
-
-.wechatimg {
-  width: 40rpx;
-  height: 40rpx;
-  top: 5px;
-  position: relative;
-}
-
-/* 画图的css */

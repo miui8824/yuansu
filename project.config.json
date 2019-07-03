@@ -41,7 +41,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 10,
 			"list": [
 				{
 					"id": 0,
@@ -96,6 +96,28 @@
 					"id": -1,
 					"name": "拼团专区",
 					"pathName": "pages/groupHome/groupHome",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "拼团详情",
+					"pathName": "pages/groupDetails/groupDetails",
+					"query": "activityId=92&goodsId=1198",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "拼团确认订单",
+					"pathName": "pages/confirmOrder/confirmOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "wode ",
+					"pathName": "pages/mySelf/mySelf",
+					"query": "",
 					"scene": null
 				}
 			]

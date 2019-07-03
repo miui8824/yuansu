@@ -27,7 +27,7 @@ button::after{
 .clear160 {height: 160rpx;}
 
 .color_red {
-  color: #E23E53;
+  color: #FF4F60;
 }
 .color_font,.color_333 { color: #333333;}
 .color_666 { color: #666666;}
